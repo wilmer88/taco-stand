@@ -13,7 +13,7 @@ require("./models/quote");
 
 mongoose
   .connect(
-    process.env.MONGODB_CONNECTION_STRING,
+    process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/taco-stand" ,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
