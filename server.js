@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 //import your models
-require("./models/quote");
+// require("./models/quote");
 
 mongoose
   .connect(
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //import routes
-require("./routes/quoteRoute.js")(app);
+// require("./routes/quoteRoute.js")(app);
 
 const PORT = process.env.PORT || 3001;
 
