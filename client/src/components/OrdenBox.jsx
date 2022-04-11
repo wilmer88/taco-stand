@@ -1,4 +1,5 @@
 import NombreField from "./NombreField";
+import SelectField from "./Selectfield";
 // import { Link } from "react-router-dom";
 // import React, {useState, useEffect } from "react";
 // import API from "../utils/API";
@@ -16,7 +17,9 @@ function OrdenBox() {
               <br></br>
               <div className="field is-horizontal">
                 <NombreField/>
-                
+                <SelectField/>
+                <SelectField/>
+                <SelectField/>
               </div>
              </div>
            </div>
