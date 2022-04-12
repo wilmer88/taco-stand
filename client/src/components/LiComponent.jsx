@@ -40,7 +40,7 @@ function LiComponent (props) {
   <header is-family-monospace="true" style={liestilo.atras} className="card-header">
     <div  className="card-header-title is-family-monospace is-size-4">
       {/* change data */}
-  Nombre:  <span><strong>{props.nombreDeOrden}</strong>  </span> 
+  Nombre: {props.nombreDeOrden}
    </div>
   
   </header>

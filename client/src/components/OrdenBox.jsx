@@ -11,7 +11,12 @@ import API from "../utils/API";
 function OrdenBox() {
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
   const [orden,setOrden] = useState({
-    
+    nombreDeOrden: "",
+    azada: 0,
+    pollo: 0,
+    barbacoa: 0,
+    pastor: 0,
+    chorizo: 0,
   });
   const [formObj, setFormObj] = useState({
     nombreDeOrden: "",
@@ -27,6 +32,8 @@ function OrdenBox() {
     setOrden({...orden, [name]: value})
     setFormObj({...formObj, [name]: value})
   };
+
+
   function handleSubmit(e) {
     e.preventDefault();
 API.saveOrden({
@@ -79,16 +86,22 @@ API.saveOrden({
             Nombre Para La Orden:
             </label>
             <div className="is-mobile">
-              <input onChange={handleChangeI}
-              type="text"
+              <input
+                onChange={handleChangeI}
+                     className="input is-normal is-rounded"
+              type="nombre"
+              id="orden-name"
+              name="nombreDeOrden"
                 aria-label="iput for order name"
-                className="input is-normal is-rounded"
-                name="nombrDeOrden"
+         
+                
                 placeholder="Gonzalo"
                 value={orden.nombreDeOrden}
+              
               />
             </div>
          </div>
+
          <div className="ml-6 field">
         <label className="mr-6 label">
                 Azada
