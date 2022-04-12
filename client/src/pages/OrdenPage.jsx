@@ -10,13 +10,9 @@ const OrdenPage = () => {
 
 
  <div className="content has-text-centered">
- <div className="card">
- <div className="card-content">
- <div className="box is-shadowless is-align-self-center">
+
 <OrdenBox/>
-</div>
- </div>
- </div>
+
  </div>
          
 
