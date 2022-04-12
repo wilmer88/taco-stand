@@ -2,7 +2,7 @@
 const NombreField = (props) => {
   return (
     <>
-      <div className="field">
+      <div className="field is-horizontal">
         <div className="m-5 mr-8 media-content">
 
           <label className="label">
