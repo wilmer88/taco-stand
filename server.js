@@ -27,8 +27,7 @@ mongoose
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//import routes
-// require("./routes/quoteRoute.js")(app);
+
 
 const PORT = process.env.PORT || 3001;
 
