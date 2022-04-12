@@ -127,7 +127,7 @@ API.saveOrden({
          </label>
          <div className="mr-6  select is-small">
            <select
-             name="azada"
+             name="pollo"
              value={orden.pollo}
              onChange={handleChangeI}
            >
@@ -146,7 +146,7 @@ API.saveOrden({
          </label>
          <div className="mr-6  select is-small">
            <select
-             name="azada"
+             name="barbacoa"
              value={orden.barbacoa}
              onChange={handleChangeI}
            >
@@ -165,7 +165,7 @@ API.saveOrden({
          </label>
          <div className="mr-6  select is-small">
            <select
-             name="azada"
+             name="pastor"
              value={orden.pastor}
              onChange={handleChangeI}
            >
@@ -184,7 +184,7 @@ API.saveOrden({
          </label>
          <div className="mr-6  select is-small">
            <select
-             name="azada"
+             name="chorizo"
              value={orden.chorizo}
              onChange={handleChangeI}
            >
