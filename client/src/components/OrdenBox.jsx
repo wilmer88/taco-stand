@@ -85,7 +85,7 @@ API.saveOrden({
                 className="input is-normal is-rounded"
                 name="nombrDeOrden"
                 placeholder="Gonzalo"
-                // value={orden.nombreDeOrden}
+                value={orden.nombreDeOrden}
               />
             </div>
          </div>

@@ -15,7 +15,7 @@ function LiComponent (props) {
     console.log(id)
       API.deleteOrden(id).then((res) => {
  console.log(res.data)
-        // window.location.reload()
+        window.location.reload()
       })
   };
   const navigate = useNavigate()
