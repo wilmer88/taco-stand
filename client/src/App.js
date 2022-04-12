@@ -10,9 +10,9 @@ function App() {
     <Router>
       <OrdenLevel/>
     <Routes> 
-    <Route exact path="/" element={<OrdenPage/>}></Route>
-    <Route exact path="/ClientLine" element={<FinishedOrden/>}></Route>
-    <Route exact path="/orden/:ordenId" element={<Editar/>}></Route>
+    <Route  path="/" element={<OrdenPage/>}></Route>
+    <Route  path="/ClientLine" element={<FinishedOrden/>}></Route>
+    <Route  path="/orden/:ordenId" element={<Editar/>}></Route>
 
     </Routes> 
     </Router>

@@ -5,12 +5,15 @@ export default {
         return axios.post("/api/orden", ordenData);
     },
     getOrdens: function() {
-        return axios.get("http://localhost:3001/api/orden/")
+        return axios.get("/api/orden/")
     },
     getOrden: function(id) {
-        return axios.get("http://localhost:3001/api/orden/" + id)
+        return axios.get("/api/orden/" + id)
+    },
+    deleteOrden: function(id) {
+        return axios.get("/api/orden/" + id)
     },
     putOrden: function(id,ordenData) {
-        return axios.put("http://localhost:3001/api/orden/" + id, ordenData);
+        return axios.put("/api/orden/" + id, ordenData);
       }
 }

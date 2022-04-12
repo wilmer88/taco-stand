@@ -1,5 +1,6 @@
 // import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import API from "../utils/API";
 
 
 const liestilo = {
@@ -10,15 +11,16 @@ const liestilo = {
  }
   //  changed props to hooks
 function LiComponent (props) {
+  function eliminar(id){
+    console.log(id)
+      API.deleteOrden(id).then((res) => {
+ console.log(res.data)
+        // window.location.reload()
+      })
+  };
   const navigate = useNavigate()
 
-  //  function deleteOrder(id){
-  //   console.log(id)
-  //     axios.delete("/api/orden/" +  id).then((response) => {
-  //      console.log(response.data)
-  //       window.location.reload()
-  //    })
-  // };
+
 
 
   function editarOrden(id) {
@@ -80,7 +82,7 @@ function LiComponent (props) {
     </div>
   </div>
   <footer className="card-footer">
-   {/* <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> deleteOrder(props._id)}>cancelar</button></div> */}
+   <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
     <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
 
    
