@@ -41,7 +41,7 @@ module.exports = {
 
   },
 
-  delete: function(req, res) {
+  remove: function(req, res) {
    
     db.Orden
     .findById({_id: req.params.id})
