@@ -3,8 +3,27 @@ import { Link } from "react-router-dom";
 const OrdenPage = () => {
     return (
         <>
+ 
  <footer className="footer">
-          <OrdenBox/>
+
+
+
+
+ <div className="content has-text-centered">
+ <div className="card">
+ <div className="card-content">
+ <div className="box is-shadowless is-align-self-center">
+<OrdenBox/>
+</div>
+ </div>
+ </div>
+ </div>
+         
+
+
+
+
+
           <div className="content has-text-centered">
                 
                 <strong>Tacos Don Santos</strong> 
@@ -19,6 +38,14 @@ const OrdenPage = () => {
           </Link>
          
          </div>
+
+
+
+
+
+
+        
+
          </footer>
         </>
     );
