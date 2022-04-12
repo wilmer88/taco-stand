@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 // import React, {useState, useEffect } from "react";
 // import API from "../utils/API";
 // import NombreSelect from "./NombreSelect";
-import axios from "axios";
+import API from "../utils/API";
 
 
 function OrdenBox() {
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
-  const [orden,setOrden] = useState([]);
+  const [orden,setOrden] = useState({
+    
+  });
   const [formObj, setFormObj] = useState({
     nombreDeOrden: "",
     azada: 0,
@@ -23,30 +25,36 @@ function OrdenBox() {
     function handleChangeI(e) {
    const {name, value} = e.target;
     setOrden({...orden, [name]: value})
-    // setFormObj({...formObj, [name]: value})
+    setFormObj({...formObj, [name]: value})
   };
   function handleSubmit(e) {
-    e.preventDefault(e);
-    axios.post("/api/orden",formObj).then((response)  => {
-      console.log(response.data)
-      setOrden({
-        nombreDeOrden: "",
-        azada: 0,
-        pollo: 0,
-        barbacoa: 0,
-        pastor: 0,
-        chorizo: 0,
-      })
-      setFormObj({
-        nombreDeOrden: "",
-        azada: 0,
-        pollo: 0,
-        barbacoa: 0,
-        pastor: 0,
-        chorizo: 0,
-      })
-  
-        })
+    e.preventDefault();
+API.saveOrden({
+  nombreDeOrden: formObj.nombreDeOrden,
+  azada: formObj.azada,
+  pollo: formObj.pollo,
+  barbacoa: formObj.barbacoa,
+  pastor: formObj.pastor,
+  chorizo: formObj.chorizo,
+}).then((response)=>{
+  console.log(response.data);
+  setOrden({
+    nombreDeOrden: "",
+    azada: 0,
+    pollo: 0,
+    barbacoa: 0,
+    pastor: 0,
+    chorizo: 0,
+  })
+  setFormObj({
+    nombreDeOrden: "",
+    azada: 0,
+    pollo: 0,
+    barbacoa: 0,
+    pastor: 0,
+    chorizo: 0,
+  })
+})
         .catch((err) =>{ 
           console.log(err)
         });
@@ -77,7 +85,7 @@ function OrdenBox() {
                 className="input is-normal is-rounded"
                 name="nombrDeOrden"
                 placeholder="Gonzalo"
-                value={orden.nombreDeOrden}
+                // value={orden.nombreDeOrden}
               />
             </div>
          </div>
