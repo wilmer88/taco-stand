@@ -120,6 +120,82 @@ API.saveOrden({
            </select>
          </div>
         </div>
+
+        <div className="ml-6 field">
+        <label className="mr-6 label">
+                Pollo
+         </label>
+         <div className="mr-6  select is-small">
+           <select
+             name="azada"
+             value={orden.pollo}
+             onChange={handleChangeI}
+           >
+             {numeros.map((nume) => (
+               <option key={nume.toString()} value={nume}>
+                 {nume}
+               </option>
+             ))}
+           </select>
+         </div>
+        </div>
+
+        <div className="ml-6 field">
+        <label className="mr-6 label">
+                Barbacoa
+         </label>
+         <div className="mr-6  select is-small">
+           <select
+             name="azada"
+             value={orden.barbacoa}
+             onChange={handleChangeI}
+           >
+             {numeros.map((nume) => (
+               <option key={nume.toString()} value={nume}>
+                 {nume}
+               </option>
+             ))}
+           </select>
+         </div>
+        </div>
+
+        <div className="ml-6 field">
+        <label className="mr-6 label">
+                Pastor
+         </label>
+         <div className="mr-6  select is-small">
+           <select
+             name="azada"
+             value={orden.pastor}
+             onChange={handleChangeI}
+           >
+             {numeros.map((nume) => (
+               <option key={nume.toString()} value={nume}>
+                 {nume}
+               </option>
+             ))}
+           </select>
+         </div>
+        </div>
+
+        <div className="ml-6 field">
+        <label className="mr-6 label">
+                Chorizo
+         </label>
+         <div className="mr-6  select is-small">
+           <select
+             name="azada"
+             value={orden.chorizo}
+             onChange={handleChangeI}
+           >
+             {numeros.map((nume) => (
+               <option key={nume.toString()} value={nume}>
+                 {nume}
+               </option>
+             ))}
+           </select>
+         </div>
+        </div>
           
             </div>
             </div>
