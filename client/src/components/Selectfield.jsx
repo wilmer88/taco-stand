@@ -5,15 +5,15 @@ const SelectField = (props) => {
         <>
         <div className="field">
 
-               <label className="mr-2 label ">
+               <label className="mr-6 label">
                      {props.text}
                         </label>
                         <div className="mr-6  select is-small">
                           <select
                           
                             name={props.meatName}
-                            value={props.onChange}
-                            onChange={props.onChange}
+                            value={`${props.azada}`}
+                            onChange={()=>{}}
                           >
                             {numeros.map((nume) => (
                               <option key={nume.toString()} value={nume}>
