@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export default {
-    // getOrden: function(id) {
-    //     return axios.get("http://localhost:3000/api/orden/") + id)
-    // },
+
 
     deleteOrden: function(id) {
         return axios.delete("/api/orden/" + id)
@@ -13,6 +11,9 @@ export default {
     },
     getOrdens: function() {
         return axios.get("/api/orden")
+    },
+    getOrden: function() {
+        return axios.get("/api/orden/"+ id)
     },
   
     putOrden: function(id,ordenData) {

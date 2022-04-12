@@ -10,9 +10,6 @@ router
   .get(ordenController.findById)
   .put(ordenController.update)
   .delete(ordenController.remove);
-// router.route("/:id")
-// .get(ordenController.findById)
-// .put(ordenController.update)
-// .delete(ordenController.delete)
+
 
 module.exports = router;
