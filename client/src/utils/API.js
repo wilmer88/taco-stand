@@ -5,7 +5,7 @@ export default {
         return axios.post("/api/orden", ordenData);
     },
     getOrdens: function() {
-        return axios.get("http://localhost:3001/api/orden")
+        return axios.get("http://localhost:3001/api/orden/")
     },
     getOrden: function(id) {
         return axios.get("http://localhost:3001/api/orden/" + id)
