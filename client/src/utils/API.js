@@ -12,7 +12,7 @@ export default {
     getOrdens: function() {
         return axios.get("/api/orden")
     },
-    getOrden: function() {
+    getOrden: function(id) {
         return axios.get("/api/orden/"+ id)
     },
   
