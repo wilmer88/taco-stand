@@ -8,7 +8,7 @@ const [den, setDen] = useState([])
 
 useEffect(() => {
 
-  API.getOrden().then(response  => setDen(response.data)
+  API.getOrdens().then(response  => setDen(response.data)
       )
       .catch((err) =>{ 
         console.log(err)

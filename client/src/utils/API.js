@@ -2,13 +2,13 @@ import axios from "axios";
 
 export default {
 
-
-    deleteOrden: function(id) {
-        return axios.delete("/api/orden/" + id)
-    },
     saveOrden: function(ordenData) {
         return axios.post("/api/orden", ordenData);
     },
+    deleteOrden: function(id) {
+        return axios.delete("/api/orden/" + id)
+    },
+ 
     getOrdens: function() {
         return axios.get("/api/orden")
     },
