@@ -11,7 +11,7 @@ export default {
         return axios.get("/api/orden/" + id)
     },
     deleteOrden: function(id) {
-        return axios.get("/api/orden/" + id)
+        return axios.get("/api/" + id)
     },
     putOrden: function(id,ordenData) {
         return axios.put("/api/orden/" + id, ordenData);
