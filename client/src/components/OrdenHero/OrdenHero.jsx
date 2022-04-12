@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 import React, {useState} from 'react';
-import {Notification} from 'react-bulma-components';
+
 import "./hero.css"
 
 const OrdenHero = () => {
@@ -29,23 +29,23 @@ const OrdenHero = () => {
 
         <div className="hero-body">
     <div className="container has-text-centered">
-      <p className="title">
+      <div className="title">
       Porfavor Ordene
-      </p>
-      <p className="subtitle">
+      </div>
+      <div className="subtitle">
       Tacos
-      </p>
+      </div>
 
     </div>
   </div>
 </section>
-<Notification color={buissnesStatus.luzita}>
+<div color={buissnesStatus.luzita}>
 
 
   <h3 style={{textAlign: "center"}}>{buissnesStatus.dicho} </h3>
   
 
-  </Notification>
+  </div>
         </>
     );
 }
