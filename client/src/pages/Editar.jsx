@@ -20,15 +20,19 @@ const Editar = () => {
   
   const [orden, setOrden] = useState({})
   const [formObj, setFormObj] = useState({
-    // nombreDeOrden:"",
-    // azada: 0,
-    // pollo: 0,
-    // total: 0,
-    // precio: 0,
+    nombreDeOrden:"",
+    azada: 0,
+    pollo: 0,
+    pastor: 0,
+    barbacoa: 0,
+    chorizo: 0,
+    total: 0,
+    precio: 0,
   })
   useEffect(() => {
     API.getOrden(ordenId).then((response) => {
        setOrden(response.data)
+       setFormObj(response.data)
        console.log(response.data)
      })
    }, [])
@@ -50,11 +54,11 @@ const Editar = () => {
   };
 
 
-  orden.precio = parseInt(orden.total) * 3
+
   function handleSubmit(e) {
    
-  orden.total = parseInt(orden.azada) +  parseInt(orden.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa)
-
+  formObj.total = parseInt(orden.azada) +  parseInt(orden.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa)
+  formObj.precio = parseInt(formObj.total) * 3
  
     e.preventDefault(e);
   
@@ -67,7 +71,7 @@ const Editar = () => {
       pastor: formObj.pastor,
       chorizo: formObj.chorizo,
       total: parseInt(orden.azada) + parseInt(orden.pollo),
-      precio: orden.precio,
+      precio: formObj.precio,
     }).then((response) => {
       console.log(response.data)
       alert("Nombre:" + orden.nombreDeOrden + "\n azada: " + orden.azada + "\n pollo: " + orden.pollo);
