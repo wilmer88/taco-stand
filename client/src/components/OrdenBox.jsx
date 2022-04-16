@@ -210,28 +210,17 @@ API.saveOrden({
                   </div>
                   <div className="card-footer-item">
                     <span>
-                      Share on{" "}
-                      <Link to="https://twitter.com/codinghorror/status/506010907021828096">
-                        Facebook
+                      Buscar una{" "}
+                      <Link to="/findPage">
+                        Orden  
                       </Link>
                     </span>
                   </div>
                 </footer>
- 
- 
- 
- 
- 
- 
  </div>
  </div>   
 </form>
-
-         
-    
-       
        </>
- 
     
     );
   

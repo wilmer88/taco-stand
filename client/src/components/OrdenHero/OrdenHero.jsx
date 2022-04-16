@@ -23,7 +23,7 @@ const OrdenHero = () => {
                  <nav className="pagination" role="navigation" aria-label="pagination">
   <button onClick={() => setBuissnesStatus({ ...buissnesStatus, dicho: buissnesStatus.cerradol , luzita: buissnesStatus.luzRoja})} className=" mr-6 is-small "></button>
   <button onClick={() => setBuissnesStatus({ ...buissnesStatus, dicho: buissnesStatus.labierto, luzita: buissnesStatus.luzVerde})} className=" ml-6 is-small "></button>
- 
+
 </nav>
          <section className="hero is-medium is-link">
 

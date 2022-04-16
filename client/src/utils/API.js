@@ -3,20 +3,21 @@ import axios from "axios";
 export default {
 
     saveOrden: function(ordenData) {
-        return axios.post("/api/orden", ordenData);
+        return axios.post("http://localhost:3001/api/orden", ordenData);
     },
     deleteOrden: function(id) {
-        return axios.delete("/api/orden/" + id)
+        return axios.delete("http://localhost:3001/api/orden/" + id)
     },
  
     getOrdens: function() {
-        return axios.get("/api/orden")
+        return axios.get("http://localhost:3001/api/orden")
     },
     getOrden: function(id) {
-        return axios.get("/api/orden/"+ id)
+        return axios.get("http://localhost:3001/api/orden/"+ id)
     },
+
   
     putOrden: function(id,ordenData) {
-        return axios.put("/api/orden/" + id, ordenData);
+        return axios.put("http://localhost:3001/api/orden/" + id, ordenData);
       }
 }

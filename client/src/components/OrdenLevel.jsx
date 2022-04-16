@@ -26,7 +26,7 @@ const OrdenLevel = () => {
   
   <nav className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
-  <Link to="/signIn"> Registrarse</Link>
+  <Link to="/signUp"> Registrarse</Link>
  </div>
         <div className="level-item has-text-centered" style={estilo.altura}>
         Inicio

@@ -6,6 +6,12 @@ const { Orden } = require("../models");
 const db = require("../models");
 
 module.exports = {
+  findByName: function(req, res){
+    db.Orden
+    .find(req.params.name)
+    .then(dModel => res.json(dModel))
+    .catch(err => res.status(422).json(err))
+  },
   findById: function(req, res){
     db.Orden
     .findById(req.params.id)

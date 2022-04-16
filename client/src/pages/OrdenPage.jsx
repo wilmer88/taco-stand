@@ -1,6 +1,8 @@
 import OrdenHero from "../components/OrdenHero/OrdenHero";
 import OrdenBox from "../components/OrdenBox";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+// import Footer from "./components/Footer";
 const OrdenPage = () => {
     return (
         <>
@@ -34,11 +36,12 @@ const OrdenPage = () => {
             <Link to="http://creativecommons.org/licenses/by-nc-sa/4.0/">
           Tacos Don Santos
           </Link>
+          <hr></hr>
          
          </div>
 
 
-
+<Footer/>
 
 
 

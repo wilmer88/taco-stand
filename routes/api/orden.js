@@ -7,6 +7,7 @@ router.route("/")
 
 router
   .route("/:id")
+
   .get(ordenController.findById)
   .put(ordenController.update)
   .delete(ordenController.remove);
