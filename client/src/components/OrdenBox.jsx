@@ -7,7 +7,7 @@ function OrdenBox() {
   
       const [showModel, setshowModel] = useState("");
       const handleOpen = (e)=>{e.preventDefault(); setshowModel("is-active")};
-      const handleClose = ()=>{ setshowModel("")}
+      const handleClose = (e)=>{e.preventDefault();  setshowModel("")}
       
       // function handleShow() =>{}
 
@@ -194,7 +194,7 @@ API.saveOrden({
             </div>
             </div>
             </div>
-
+                 
             <div id="modalll" className={`modal ${showModel}`}>
               <div className="modal-background"></div>
               <div className="modal-content ">
