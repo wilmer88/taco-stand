@@ -3,7 +3,7 @@
 // import UserContext from '../userContext';
 
 import { Link } from "react-router-dom";
-function Footer() {
+const Footer = ()=> {
   
     return (
       
