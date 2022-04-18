@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-import React, {useState} from 'react';
+// import React, {useState} from 'react';
 
 import "./hero.css"
 
@@ -25,8 +25,8 @@ const OrdenHero = () => {
   <button onClick={() => setBuissnesStatus({ ...buissnesStatus, dicho: buissnesStatus.labierto, luzita: buissnesStatus.luzVerde})} className=" ml-6 is-small "></button>
 
 </nav> */}
-         <section className="hero is-medium is-link">
-
+         <section style={{background:`url(${process.env.PUBLIC_URL + '/images/orden_de_tacos.jpg'})`, 
+         position: "relative",  backgroundPosition: "center ", backgroundSize: "cover", filter: "grayscale(19%)" }} className="hero is-responsive is-medium is-link">
         <div className="hero-body">
     <div className="container has-text-centered">
       <div className="title">

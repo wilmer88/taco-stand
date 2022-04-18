@@ -20,7 +20,7 @@ function StartPage() {
     // }
     const liestilo = {
         atras: {
-          background: `url(${process.env.PUBLIC_URL + '/tacos.jpg'})`
+          background: `url(${process.env.PUBLIC_URL + '/images/tacos.jpg'})`
         },
         opaci: {
           backgroundColor: "rgba(255, 255, 255, .9)",

@@ -228,7 +228,7 @@ API.saveOrden({
     
                   <div className="card-footer-item">
                     <span>
-                    Share on {""}
+                    Conparte en {""}
                       <Link to="#">
                        Facebook 
                       </Link>

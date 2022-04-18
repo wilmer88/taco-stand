@@ -1,6 +1,5 @@
 .hero {
     height: 50%; 
-    background-image: url("https://www.placecage.com/g/200/300");
     background-position: center;
     background-repeat: no-repeat, repeat;
     background-size: cover;
@@ -17,4 +16,5 @@
 
 #santos{
     border-radius: 50%;
+    filter: grayscale(100%);
 }

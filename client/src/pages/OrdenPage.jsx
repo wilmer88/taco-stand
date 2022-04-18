@@ -12,30 +12,19 @@ const OrdenPage = () => {
  
  <footer className="footer is-fixed-bottom">
 
-
-
-
  <div className="content has-text-centered">
-
 <OrdenBox/>
-
  </div>
-         
-
-
-
-
-
           <div className="content has-text-centered">
                 
-                <strong>Tacos Don Santos</strong> 
-           <Link to="https://jgthms.com">Santos Alonzo</Link>. The source code is
-           owned and developed by
-           <Link to="http://opensource.org/licenses/mit-license.php">
+          {""}  <strong> Tacos Don Santos</strong> by{""}
+           <Link to="https://facebook.com/">Santos Alonzo</Link>
+           {""}. Code is  property of {""}
+           <Link to="http://instagram.com">
           Wilmer Rivera
           </Link>
-            The website content is exclusively made for
-            <Link to="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            . App features exclusively built for {""}
+            <Link to="#">
           Tacos Don Santos
           </Link>
           <hr></hr>
@@ -44,10 +33,6 @@ const OrdenPage = () => {
 
 
 <Footer/>
-
-
-
-        
 
          </footer>
         </>

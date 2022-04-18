@@ -21,8 +21,8 @@ const OrdenLevel = () => {
 
 <div className="columns is-mobile is-12">
   <div className="column is-12">  
-  
-  <nav className="level">
+
+  <nav  className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
 <Link to="/logIn"><label className="label">  Iniciar Sesión</label></Link>
  </div>
@@ -30,7 +30,7 @@ const OrdenLevel = () => {
         <label className="label">
             Ordenar
             </label>
-        <Link to="/ordenar"><img id="santos" src="https://www.placecage.com/g/200/300"  alt="" style={{ height: "65px" } }/> </Link> 
+      <Link to="/ordenar"><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
         
         </div>
  

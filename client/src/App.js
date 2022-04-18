@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, {useState } from "react";
 
+// import React, {useState } from "react";
 // import React, {useState} from "react";
 // import userContext from "./contex/userContex";
 import StartPage from "./pages/StartPage";
@@ -10,6 +9,7 @@ import FinishedOrden from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
 import LogIn from "./pages/LogIn";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import FindPage from "./pages/FindPage";
 function App() {
   // const [token, setToken] = useState("")

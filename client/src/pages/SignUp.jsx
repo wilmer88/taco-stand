@@ -2,6 +2,7 @@
 // import React, {useContext, useState} from 'react';
 // import UserContext from '../userContext';
 // import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import React, {useState } from "react";
 import API from "../utils/API";
 import OrdenLevel from "../components/OrdenLevel";
@@ -136,7 +137,10 @@ const SignUp = () => {
   <div className="column is-two-fifth"></div>
   </div>
   </div>
+  <br></br>
+  <br></br>
 
+      <Footer/>
 
   </>)
 
