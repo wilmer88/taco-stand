@@ -6,6 +6,7 @@ const UserSchema = new Schema({
     fullname: {
         type: String,
         trim: true,
+        
       },
     userName: {
     type: String,

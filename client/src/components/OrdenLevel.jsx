@@ -26,11 +26,11 @@ const OrdenLevel = () => {
   
   <nav className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
-  <Link to="/signUp"> Registrarse</Link>
+  <Link to="/logIn"> Registrarse</Link>
  </div>
         <div className="level-item has-text-centered" style={estilo.altura}>
-        Inicio
-        <Link to="/"><img id="santos" src="https://www.placecage.com/g/200/300"  alt="" style={{ height: "60px" } }/> </Link> 
+        Ordenar
+        <Link to="/ordenar"><img id="santos" src="https://www.placecage.com/g/200/300"  alt="" style={{ height: "60px" } }/> </Link> 
         
         </div>
  

@@ -19,5 +19,9 @@ export default {
   
     putOrden: function(id,ordenData) {
         return axios.put("http://localhost:3001/api/orden/" + id, ordenData);
-      }
+      },
+
+      saveUser: function(userData) {
+        return axios.post("http://localhost:3001/api/signup", userData);
+    },
 }

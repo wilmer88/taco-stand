@@ -203,16 +203,17 @@ API.saveOrden({
 <footer className="card-footer">
                   <div className="card-footer-item">
                     <input
+                    className="is-link"
                       aria-label="order submit button"
                       type="submit"
-                      value="Submit"
+                      value="Ordenar"
                     />
                   </div>
                   <div className="card-footer-item">
                     <span>
-                      Buscar una{" "}
-                      <Link to="/findPage">
-                        Orden  
+                    Share on {""}
+                      <Link to="#">
+                       Facebook 
                       </Link>
                     </span>
                   </div>

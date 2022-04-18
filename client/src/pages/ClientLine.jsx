@@ -2,6 +2,7 @@ import Licomponent from "../components/LiComponent";
 // import axios from "axios";
 import React, {useEffect, useState} from "react";
 import API from "../utils/API";
+import OrdenLevel from "../components/OrdenLevel";
 const FinishedOrden = () => {
   // const [azada, pollo, total, precio, nombreDeOrden] = useState([]);
 const [den, setDen] = useState([])
@@ -16,6 +17,7 @@ useEffect(() => {
 }, []);
 
   return (<>
+  <OrdenLevel/>
 { den.map( res =>(
    <Licomponent key= {res._id} {...res} />
 ))}
