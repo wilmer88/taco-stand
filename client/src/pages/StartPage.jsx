@@ -36,7 +36,7 @@ function StartPage() {
   
     return (
     <>
-  <div className="hero is-fullheight" style={liestilo.atras}>
+  <div className="hero is is-fullheight" style={liestilo.atras}>
   <div className='mt-6 columns is-mobile'>
   <div className="column is-two-fifth"> </div>
 

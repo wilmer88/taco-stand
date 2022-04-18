@@ -1,9 +1,8 @@
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
-
 function OrdenBox() {
-        
+
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
   
       const [showModel, setshowModel] = useState("");
@@ -47,7 +46,7 @@ API.saveOrden({
   chorizo: formObj.chorizo,
 }).then((response)=>{
   handleClose()
-   alert("gracioas por su orden");
+   alert("Gracioas Por su Orden");
   setOrden({
     nombreDeOrden: "",
     azada: 0,
@@ -196,13 +195,11 @@ API.saveOrden({
             </div>
             </div>
 
-            <div
-             id="modalll" 
-             className={`modal ${showModel}`}>
+            <div id="modalll" className={`modal ${showModel}`}>
               <div className="modal-background"></div>
               <div className="modal-content ">
-                <div className="box">
-                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden {orden.nombreDeOrden}?</div>
+                <div className="box is-mobile">
+                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
                   <div style={{fontSize: "25px"}}> Nombre: {orden.nombreDeOrden}</div>
                   <div style={{fontSize: "25px"}}> Azada: {orden.azada}</div>
                   <div style={{fontSize: "25px"}}>Pollo: {orden.pollo}</div>
@@ -210,21 +207,15 @@ API.saveOrden({
                   <div style={{fontSize: "25px"}}>Chorizo: {orden.chorizo}</div>
                   <div style={{fontSize: "25px"}}>Pastor: {orden.pastor}</div>
                   <hr></hr>
-
-
-                  <br></br>
-                  
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
-                <br />
                 <br></br>
                 <br></br>
-                  <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
                 </div>
               </div>
               <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
             </div> 
-
-            
+     
 <footer className="card-footer">
                   <div className="card-footer-item">
                   <span>

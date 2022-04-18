@@ -49,3 +49,18 @@ app.get("*", function (request, response) {
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+
+      // const liestilo = {
+    //     atras: {
+    //       background: `url(${process.env.PUBLIC_URL + '/tacos.jpg'})`
+    //     },
+    //     opaci: {
+    //       backgroundColor: "rgba(255, 255, 255, .9)",
+    //       color: "white"
+    //     },
+    //     fonte:{
+    //       fontSize: "27px",
+    //       // background: "lightyellow"
+    //     },
+       
+    //    }
