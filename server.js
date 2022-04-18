@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 require("dotenv").config();
 const routes= require("./routes")
 
@@ -18,8 +18,8 @@ mongoose
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-  //       useCreateIndex: true,
-  // useFindAndModify: false,
+        useCreateIndex: true,
+  useFindAndModify: false,
     }
   )
   .then(() => console.log("MongoDB has been connected"))
