@@ -14,11 +14,11 @@ function Footer() {
 
 <div className= "column is-three-quarters-mobile" >
   
-<nav className="breadcrumb" aria-label="breadcrumbs">
+<nav className="breadcrumb is-fixed-bottom" aria-label="breadcrumbs">
   <ul>
-    <li><Link to="#">Bulma</Link></li>
+    <li><Link to="#">Home</Link></li>
     <li><Link to="#">Documentation</Link></li>
-    <li><Link to="#">Components</Link></li>
+    <li><Link to="#">Ordenar</Link></li>
   
   </ul>
 </nav>

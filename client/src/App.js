@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, {useState } from "react";
+
 // import React, {useState} from "react";
-// import UserContext from "./contex/ordenContex";
+// import userContext from "./contex/userContex";
 import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
 // import OrdenLevel from "./components/OrdenLevel";
@@ -10,7 +12,11 @@ import Editar from "./pages/Editar";
 import LogIn from "./pages/LogIn";
 // import FindPage from "./pages/FindPage";
 function App() {
+  // const [token, setToken] = useState("")
   return(
+    // <userContext.provider
+    // value={{token, setToken}}
+    // >
     <Router>
       
     <Routes> 
@@ -25,6 +31,7 @@ function App() {
     </Routes> 
   
     </Router>
+    // </userContext.provider>
   )
 
 

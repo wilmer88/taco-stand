@@ -3,6 +3,7 @@ import Licomponent from "../components/LiComponent";
 import React, {useEffect, useState} from "react";
 import API from "../utils/API";
 import OrdenLevel from "../components/OrdenLevel";
+import Footer from "../components/Footer";
 const FinishedOrden = () => {
   // const [azada, pollo, total, precio, nombreDeOrden] = useState([]);
 const [den, setDen] = useState([])
@@ -16,12 +17,17 @@ useEffect(() => {
       });
 }, []);
 
-  return (<>
+  return (
+  <>
   <OrdenLevel/>
-{ den.map( res =>(
+{den.length ? (den.map( res =>(
    <Licomponent key= {res._id} {...res} />
-))}
-
+))
+): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No hay fila/ No Orders Yet.</h1>)}
+<br></br>
+<hr></hr>
+       
+    <Footer/>
   </>
 
       )}

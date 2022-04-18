@@ -26,23 +26,22 @@ const OrdenLevel = () => {
   
   <nav className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
-  <Link to="/logIn"> Registrarse</Link>
+<Link to="/ClientLine"><label className="label">  Iniciar Sesión</label></Link>
  </div>
-        <div className="level-item has-text-centered" style={estilo.altura}>
-        Ordenar
-        <Link to="/ordenar"><img id="santos" src="https://www.placecage.com/g/200/300"  alt="" style={{ height: "60px" } }/> </Link> 
+        <div className="level-item has-text-centered is-hoverable" style={estilo.altura}>
+        <label className="label">
+            Ordenar
+            </label>
+        <Link to="/ordenar"><img id="santos" src="https://www.placecage.com/g/200/300"  alt="" style={{ height: "65px" } }/> </Link> 
         
         </div>
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
-        <Link to="/ClientLine"> Lista de espera</Link>
+        <Link to="/ClientLine"> <label className="label"> Lista De Espera </label></Link>
         </div>
       </nav>
       </div>
 </div>
-
-
-     
     );
   
 }

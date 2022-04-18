@@ -1,9 +1,10 @@
 // import UserContext from '../userContext';
 // import React, {useContext, useState} from 'react';
-
+// import userContex from '../contex/userContex';
+import OrdenLevel from "../components/OrdenLevel";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
-import OrdenLevel from "../components/OrdenLevel";
+
 const pxhi = {
   fonte:{
     fontSize: "27px",
@@ -11,29 +12,28 @@ const pxhi = {
   }
 }
  function LogIn() {
-//     const [userName, setUserName] = useState("");
-//     const [password, setPassword] = useState("");
-    // const user = useContext(UserContext);
+    // const [userName, setUserName] = useState("");
+    // const [password, setPassword] = useState("");
+    // const user = useContext(userContex);
+    
+    
+    // const handleChange = (e) =>{
+    //   e.preventDefault();
+    //   const {name, value} = e.target;
+    // // setUserName(userName: name, value);
+    // // user.setToken(data.password);
+   
+    // }
   
     // const handleSubmit = (e) =>{
     //   e.preventDefault();
-    //   const data = { token: 'ergerter',
-    // userName: "chango"}
+
   
     // user.setUserName(data.userName);
-    // user.setToken(data.token);
+    // user.setPassword(data.token);
    
     // }
       
-    // const handleUser = (e) =>{
-    //   e.preventDefault();
-    //   const {userName, password} = e.target;
-    // setUserName([userName]:userName);
-    // user.setToken(data.password);
-   
-    // }
-  
-  
     return (
     <>
   <OrdenLevel/>
@@ -56,12 +56,26 @@ const pxhi = {
     <form onSubmit={() =>{}}>
     <label className="label has-text-centered">e-mail/User Name</label>
   <div className="control is-expanded">
-      <input className="input" type="text" placeholder="email or username"/>
+      <input 
+        //  onChange={handleInputChange}
+         name="userName"
+         className="input" 
+        //  value={formObj.userName}
+         type="text"
+          placeholder="email or username"
+      />
       <br></br>
       <br></br>
   
       <label className="label has-text-centered">Password</label>
-      <input className="input" type="text" placeholder="password"/>
+      <input 
+          //  onChange={handleInputChange}
+           name="password"
+           className="input" 
+          //  value={formObj.password}
+         type="text" 
+         placeholder="password"
+      />
       <br></br>
       <br></br>
       <button className="button is-info"

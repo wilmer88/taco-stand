@@ -1,14 +1,9 @@
-// import NombreField from "./NombreField";
-// import SelectField from "./Selectfield";
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
-// import React, {useState, useEffect } from "react";
-// import API from "../utils/API";
-// import NombreSelect from "./NombreSelect";
 import API from "../utils/API";
 
-
 function OrdenBox() {
+
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
   const [orden,setOrden] = useState({
     nombreDeOrden: "",
@@ -61,13 +56,9 @@ API.saveOrden({
     pastor: 0,
     chorizo: 0,
   })
-})
-        .catch((err) =>{ 
+}).catch((err) =>{ 
           console.log(err)
         });
- 
-    //debugger
-    // window.location.href="http://localhost:3000/ClientLine" ;
   };
   
     return (
@@ -75,7 +66,6 @@ API.saveOrden({
 <form onSubmit={handleSubmit}>
  <div className="box is-shadowless is-align-self-center">
  <div className="card">
-
 
  <div className="card-content">
 <div className="m-5 mr-8 media-content">
@@ -93,11 +83,8 @@ API.saveOrden({
               id="orden-name"
               name="nombreDeOrden"
                 aria-label="iput for order name"
-         
-                
                 placeholder="Gonzalo"
                 value={orden.nombreDeOrden}
-              
               />
             </div>
          </div>
@@ -202,12 +189,12 @@ API.saveOrden({
             </div>
 <footer className="card-footer">
                   <div className="card-footer-item">
-                    <input
-                    className="is-link"
+                  <Link to="#">  <input style={{fontSize: "18px"}}
+                    className="is-link is-hoverable"
                       aria-label="order submit button"
                       type="submit"
-                      value="Ordenar"
-                    />
+                      value="Entregar"
+                    /> </Link>
                   </div>
                   <div className="card-footer-item">
                     <span>
@@ -222,8 +209,6 @@ API.saveOrden({
  </div>   
 </form>
        </>
-    
     );
-  
-}
+  }
 export default OrdenBox;

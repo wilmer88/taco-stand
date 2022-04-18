@@ -10,7 +10,7 @@ const OrdenPage = () => {
         <OrdenLevel/>
         <OrdenHero/>
  
- <footer className="footer">
+ <footer className="footer is-fixed-bottom">
 
 
 

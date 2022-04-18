@@ -3,7 +3,7 @@
 // import UserContext from '../userContext';
 // import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import "./startpage/startpage.css"
+
 function StartPage() {
     // const [userName, setUserName] = useState("");
     // const [password, setPassword] = useState("");
@@ -23,49 +23,44 @@ function StartPage() {
           background: `url(${process.env.PUBLIC_URL + '/tacos.jpg'})`
         },
         opaci: {
-            opacity: "0.9"
-        }
+          backgroundColor: "rgba(255, 255, 255, .9)",
+          color: "white"
+        },
+        fonte:{
+          fontSize: "27px",
+          // background: "lightyellow"
+        },
+       
         
        }
   
     return (
     <>
-  
-  
-  
-
-
-
   <div className="hero is-fullheight" style={liestilo.atras}>
   <div className='mt-6 columns is-mobile'>
   <div className="column is-two-fifth"> </div>
 
-  
   <div className= "mt-6 column is-three-quarters-mobile"  >
-
   <br></br>
       <br></br>
   <div className="is-mobile" >
-
+ 
   <div className="mt-6 box" style={liestilo.opaci}>
-  <h2> <label className="label has-text-centered">Que Quieres Hacer?</label></h2>
-  <div className="ml-6  field">
+  <h2> <label className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?</label></h2>
+  <div className="ml-4  field">
   <br></br>
- <Link to="./ordenar"> <button className="button is-black is-outlined">Ordenar Tacos</button></Link> 
+ <Link to="./ordenar"> <button className="button is-black is-outlined">Ordenar Tacos/ Order Now</button></Link> 
 
  <br></br>
  <br></br>
 
- <Link to="./logIn"><button className="button is-black is-outlined">Iniciar sesión</button></Link>
+ <Link to="./logIn"><button className="button is-black is-outlined">Iniciar Sesión/ Log In</button></Link>
  <br></br>
  <br></br>
- <Link to="./signup"><button className="button is-black is-outlined">Sign Up</button></Link>
-
+ <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/ Sign Up</button></Link>
   
 </div>
-
 </div>
-  
   
   </div>
   </div>
@@ -73,12 +68,7 @@ function StartPage() {
   <div className="column is-two-fifth"></div>
   </div>
   </div>
- 
-  
-  
-    </>)
-    
-  
+   </>)
   }
   
   export default StartPage;

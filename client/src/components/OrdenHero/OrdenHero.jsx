@@ -7,24 +7,24 @@ const OrdenHero = () => {
 
 
 
-  const [buissnesStatus, setBuissnesStatus] = useState({
-    dicho: "",
-    labierto: "Si Ay Tacos De Venta",
-    cerradol: "No Ay Tacos Por Hoy",
-    luzVerde: "notification is-success",
-    luzRoja: "notification is-danger",
-    luzita: ""
+  // const [buissnesStatus, setBuissnesStatus] = useState({
+  //   dicho: "",
+  //   labierto: "Si Ay Tacos De Venta",
+  //   cerradol: "No Ay Tacos Por Hoy",
+  //   luzVerde: "notification is-success",
+  //   luzRoja: "notification is-danger",
+  //   luzita: ""
   
-  });
+  // });
 
  
     return (
         <>
-                 <nav className="pagination" role="navigation" aria-label="pagination">
+                 {/* <nav className="pagination" role="navigation" aria-label="pagination">
   <button onClick={() => setBuissnesStatus({ ...buissnesStatus, dicho: buissnesStatus.cerradol , luzita: buissnesStatus.luzRoja})} className=" mr-6 is-small "></button>
   <button onClick={() => setBuissnesStatus({ ...buissnesStatus, dicho: buissnesStatus.labierto, luzita: buissnesStatus.luzVerde})} className=" ml-6 is-small "></button>
 
-</nav>
+</nav> */}
          <section className="hero is-medium is-link">
 
         <div className="hero-body">
@@ -39,13 +39,9 @@ const OrdenHero = () => {
     </div>
   </div>
 </section>
-<div color={buissnesStatus.luzita}>
-
-
+{/* <div color={buissnesStatus.luzita}>
   <h3 style={{textAlign: "center"}}>{buissnesStatus.dicho} </h3>
-  
-
-  </div>
+  </div> */}
         </>
     );
 }
