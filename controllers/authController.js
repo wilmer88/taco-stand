@@ -9,16 +9,16 @@ const jwt = require("jsonwebtoken");
 module.exports={
 
 create: function (req, res){
-  // const { userName, password } = req.body;
-  // if (!userName.trim() || !password.trim()) {
-  //   res.status(400);
-  // } else {
-  //   console.log(userName);
-  //   console.log(password);
-  //   bcrypt
-  //     .hash(req.body.password, 10)
-  //     .then((hashedPassword) => {
-  //       console.log(hashedPassword);
+  const { userName, password } = req.body;
+  if (!userName.trim() || !password.trim()) {
+    res.status(400);
+  } else {
+    console.log(userName);
+    console.log(password);
+    bcrypt
+      .hash(req.body.password, 10)
+      .then((hashedPassword) => {
+        console.log(hashedPassword);
         db.User.create({
           userName: userName,
           password: password,
@@ -46,16 +46,17 @@ create: function (req, res){
               message: "failed to hash",
             });
           });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       res.status(500).json({
-  //         error: true,
-  //         data: null,
-  //         message: "failed to create user",
-  //       });
-  //     });
-  // }
+          
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: true,
+          data: null,
+          message: "failed to create user",
+        });
+      });
+  }
 
 }
 
