@@ -23,11 +23,11 @@ useEffect(() => {
 {den.length ? (den.map( res =>(
    <Licomponent key= {res._id} {...res} />
 ))
-): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No hay fila/ No Orders Yet.</h1>)}
+): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No Hay Fila/ No Orders Found.</h1>)}
 <br></br>
 <hr></hr>
        
-    <Footer/>
+   <div><Footer/></div> 
   </>
 
       )}

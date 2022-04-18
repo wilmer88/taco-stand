@@ -4,7 +4,7 @@
 import OrdenLevel from "../components/OrdenLevel";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
-
+import Footer from "../components/Footer";
 const pxhi = {
   fonte:{
     fontSize: "27px",
@@ -94,6 +94,9 @@ const pxhi = {
   
   <div className="column is-two-fifth"></div>
   </div>
+      <br></br>
+      <hr></hr>
+        <Footer/>
     </>)
   }
   

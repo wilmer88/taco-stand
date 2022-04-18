@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import API from "../utils/API";
 
 function OrdenBox() {
+        
+  const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
+  
+      const [showModel, setshowModel] = useState("");
+      const handleOpen = (e)=>{e.preventDefault(); setshowModel("is-active")};
+      const handleClose = ()=>{ setshowModel("")}
+      
+      // function handleShow() =>{}
 
-  const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
   const [orden,setOrden] = useState({
     nombreDeOrden: "",
     azada: 0,
@@ -39,7 +46,8 @@ API.saveOrden({
   pastor: formObj.pastor,
   chorizo: formObj.chorizo,
 }).then((response)=>{
-  console.log(response.data);
+  handleClose()
+   alert("gracioas por su orden");
   setOrden({
     nombreDeOrden: "",
     azada: 0,
@@ -56,6 +64,7 @@ API.saveOrden({
     pastor: 0,
     chorizo: 0,
   })
+
 }).catch((err) =>{ 
           console.log(err)
         });
@@ -63,7 +72,7 @@ API.saveOrden({
   
     return (
        <>
-<form onSubmit={handleSubmit}>
+<form >
  <div className="box is-shadowless is-align-self-center">
  <div className="card">
 
@@ -78,7 +87,7 @@ API.saveOrden({
             <div className="is-mobile">
               <input
                 onChange={handleChangeI}
-                     className="input is-normal is-rounded"
+                     className="input is-medium is-rounded"
               type="nombre"
               id="orden-name"
               name="nombreDeOrden"
@@ -93,7 +102,7 @@ API.saveOrden({
         <label className="mr-6 label">
                 Azada
          </label>
-         <div className="mr-6  select is-small">
+         <div className="mr-6  select">
            <select
              name="azada"
              value={orden.azada}
@@ -112,7 +121,7 @@ API.saveOrden({
         <label className="mr-6 label">
                 Pollo
          </label>
-         <div className="mr-6  select is-small">
+         <div className="mr-6  select ">
            <select
              name="pollo"
              value={orden.pollo}
@@ -131,7 +140,7 @@ API.saveOrden({
         <label className="mr-6 label">
                 Barbacoa
          </label>
-         <div className="mr-6  select is-small">
+         <div className="mr-6  select ">
            <select
              name="barbacoa"
              value={orden.barbacoa}
@@ -150,7 +159,7 @@ API.saveOrden({
         <label className="mr-6 label">
                 Pastor
          </label>
-         <div className="mr-6  select is-small">
+         <div className="mr-6  select">
            <select
              name="pastor"
              value={orden.pastor}
@@ -169,7 +178,7 @@ API.saveOrden({
         <label className="mr-6 label">
                 Chorizo
          </label>
-         <div className="mr-6  select is-small">
+         <div className="mr-6  select">
            <select
              name="chorizo"
              value={orden.chorizo}
@@ -183,19 +192,49 @@ API.saveOrden({
            </select>
          </div>
         </div>
-          
             </div>
             </div>
             </div>
+
+            <div
+             id="modalll" 
+             className={`modal ${showModel}`}>
+              <div className="modal-background"></div>
+              <div className="modal-content ">
+                <div className="box">
+                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden {orden.nombreDeOrden}?</div>
+                  <div style={{fontSize: "25px"}}> Nombre: {orden.nombreDeOrden}</div>
+                  <div style={{fontSize: "25px"}}> Azada: {orden.azada}</div>
+                  <div style={{fontSize: "25px"}}>Pollo: {orden.pollo}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {orden.barbacoa}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {orden.chorizo}</div>
+                  <div style={{fontSize: "25px"}}>Pastor: {orden.pastor}</div>
+                  <hr></hr>
+
+
+                  <br></br>
+                  
+                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
+                <br />
+                <br></br>
+                <br></br>
+                  <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+                </div>
+              </div>
+              <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
+            </div> 
+
+            
 <footer className="card-footer">
                   <div className="card-footer-item">
-                  <Link to="#">  <input style={{fontSize: "18px"}}
-                    className="is-link is-hoverable"
-                      aria-label="order submit button"
-                      type="submit"
-                      value="Entregar"
-                    /> </Link>
+                  <span>
+                  <button onClick={handleOpen} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
+                    <strong>Entregar</strong>
+                  </button>
+     
+                    </span>
                   </div>
+    
                   <div className="card-footer-item">
                     <span>
                     Share on {""}
@@ -206,9 +245,14 @@ API.saveOrden({
                   </div>
                 </footer>
  </div>
- </div>   
+ </div>  
+
 </form>
+
+
        </>
     );
   }
 export default OrdenBox;
+
+      

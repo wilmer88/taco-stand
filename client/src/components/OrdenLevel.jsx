@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const estilo = {
  nombre: {
    background: "#e8eaf6",
-
-
  },
 
  cambio: {
@@ -26,7 +24,7 @@ const OrdenLevel = () => {
   
   <nav className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
-<Link to="/ClientLine"><label className="label">  Iniciar Sesión</label></Link>
+<Link to="/logIn"><label className="label">  Iniciar Sesión</label></Link>
  </div>
         <div className="level-item has-text-centered is-hoverable" style={estilo.altura}>
         <label className="label">
