@@ -9,7 +9,7 @@ const OrdenPage = () => {
         <>
         <OrdenLevel/>
         <OrdenHero/>
- 
+
  <footer className="footer is-fixed-bottom">
 
  <div className="content has-text-centered">
