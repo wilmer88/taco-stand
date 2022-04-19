@@ -1,15 +1,11 @@
 import axios from "axios";
-
-
-  
-
 export default {
     saveUser: function(userNamepassword) {
         return axios.post("/api/signup", userNamepassword);
     },
  
     putOrden: function(id,ordenData) {
-        return axios.put("/api/orden/" + id, ordenData);
+        return axios.put("/api/orden" + id, ordenData);
       },
 
     deleteOrden: function(id) {
@@ -20,7 +16,7 @@ export default {
     },
 
     saveOrden: function(ordenData) {
-        return axios.post("/api/orden", ordenData);
+        return axios.post("http://localhost:3001/api/orden", ordenData);
     },
     getOrdens: function() {
         return axios.get("/api/orden")

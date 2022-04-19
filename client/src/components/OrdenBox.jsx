@@ -45,7 +45,7 @@ API.saveOrden({
   pastor: formObj.pastor,
   chorizo: formObj.chorizo,
 }).then((response)=>{
-  handleClose()
+ 
    alert("Gracioas Por su Orden");
   setOrden({
     nombreDeOrden: "",
@@ -63,7 +63,7 @@ API.saveOrden({
     pastor: 0,
     chorizo: 0,
   })
-
+handleClose()
 }).catch((err) =>{ 
           console.log(err)
         });
