@@ -54,6 +54,9 @@ const StartPage = ()=> {
  <br></br>
  <br></br>
  <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/ Sign Up</button></Link>
+ <br></br>
+ <br></br>
+ <Link to="./ClientLine"><button className="button is-black is-outlined">YourPlace In line/ Ver Su Puesto</button></Link>
   
 </div>
 </div>

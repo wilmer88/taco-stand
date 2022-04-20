@@ -1,54 +1,41 @@
-// import UserContext from '../userContext';
+import AuthContext from '../context/AuthContext';
 // import React, {useContext, useState} from 'react';
 // import UserContext from '../userContext';
 // import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import React, {useState } from "react";
+import React, {useContext, useState } from "react";
 import API from "../utils/API";
 import OrdenLevel from "../components/OrdenLevel";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const pxhi = {
   fonte:{
     fontSize: "27px",
     background: "lightyellow"
   }
 }
+
+
 const SignUp = () => {
+  const {setJwt}  = useContext(AuthContext)
+const [userName, setUserName] = useState("");
+const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
-  const [formObj, setformObj] = useState(
-{    
-    userName: "",
-    password: ""
-}
-
-  );
-  
-  function handleInputChange(e) {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setformObj({...formObj, [name]: value})
-  };
-
+  // const navigate = useNavigate()
   function formSubmit (e){
     e.preventDefault();
-    if(formObj.userName && formObj.password){
+    if(userName.trim() && password.trim()){
     API.saveUser({
-      userName: formObj.userName,
-      password: formObj.password
+      userName:userName,
+      password: password
     }).then((response) => {
-      navigate(`/ClientLine`)
-        console.log(response.data)
-        setformObj({
-   userName:"",
-   password:""
-        })
-    
+      console.log(response.data);
+      setJwt(response.data.data)
+      setUserName("")
+      setPassword("")
+      // navigate(`/ClientLine`)
       }).catch((err) => {
         console.log(err);
       });
-
-
     } 
 
   }
@@ -95,10 +82,10 @@ const SignUp = () => {
       <div className="control is-expanded">
        
         <input 
-        onChange={handleInputChange}
+        onChange={(e) => setUserName(e.target.value)}
         name="userName"
         className="input" 
-        value={formObj.userName}
+        value={userName}
         type="text"
          placeholder="email or username"/>
         <br></br>
@@ -106,10 +93,10 @@ const SignUp = () => {
     
         <label className="label has-text-centered">Password</label>
         <input 
-          onChange={handleInputChange}
+          onChange={(e) => setPassword(e.target.value)}
           name="password"
           className="input" 
-          value={formObj.password}
+          value={password}
         type="text" 
         placeholder="password"/>
 
@@ -125,13 +112,8 @@ const SignUp = () => {
     
     </div>
         </form>
-    
     </div>
-    
-    
     </div>
-      
-  
   </div>
   
   <div className="column is-two-fifth"></div>

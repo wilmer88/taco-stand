@@ -4,6 +4,8 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
+
 //sign up
 //jwt.io
 module.exports={
@@ -21,7 +23,7 @@ create: function (req, res){
         console.log(hashedPassword);
         db.User.create({
           userName: userName,
-          password: password,
+          password: hashedPassword,
         })
           .then((newUser) => {
             const token = jwt.sign(
@@ -58,61 +60,61 @@ create: function (req, res){
       });
   }
 
+},
+logUser: function (req, res){
+  const { userName, password } = req.body;
+  db.User.findOne({ userName: userName })
+    .then((founduser) => {
+      if (founduser) {
+        bcrypt
+          .compare(password, founduser.password)
+          .then(function (resultado) {
+            console.log(resultado);
+            if (resultado) {
+              const token = jwt.sign(
+                {
+                  
+                  userName: founduser.userName,
+                  password: founduser.password,
+                },
+                process.env.SECRET
+              );
+              res.json({
+                error: false,
+                data: token,
+                message: "succesfully logged in",
+              });
+            } else {
+              res.status(401).json({
+                error: true,
+                data: null,
+                message: "somthing went wrong",
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+              error: true,
+              data: null,
+              message: "failed to delete user",
+            });
+          });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "failed to delete user",
+      });
+    });
+}
+          
 }
 
-}
 
-
-// router.post("/api/login", (req, res) => {
-//   const { userName, password } = req.body;
-//   db.User.findOne({ userName: userName })
-//     .then((founduser) => {
-//       if (founduser) {
-//         bcrypt
-//           .compare(password, founduser.password)
-//           .then(function (resultado) {
-//             console.log(resultado);
-//             if (resultado) {
-//               const token = jwt.sign(
-//                 {
-//                   _id: resultado._id,
-//                   userName: resultado.userName,
-//                   name: resultado.name,
-//                 },
-//                 process.env.SECRET
-//               );
-//               res.json({
-//                 error: false,
-//                 data: token,
-//                 message: "succesfully logged in",
-//               });
-//             } else {
-//               res.status(401).json({
-//                 error: true,
-//                 data: null,
-//                 message: "somthing went wrong",
-//               });
-//             }
-//           })
-//           .catch((err) => {
-//             console.log(err);
-//             res.status(500).json({
-//               error: true,
-//               data: null,
-//               message: "failed to delete user",
-//             });
-//           });
-//       }
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: true,
-//         data: null,
-//         message: "failed to delete user",
-//       });
-//     });
-// });
 
 
 //bcrypt

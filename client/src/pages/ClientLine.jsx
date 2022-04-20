@@ -19,17 +19,28 @@ useEffect(() => {
 
   return (
   <>
-  <OrdenLevel/>
-{den.length ? (den.map( res =>(
-   <Licomponent key= {res._id} {...res} />
-))
-): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No Hay Fila/ No Orders Found.</h1>)}
-<br></br>
-<hr></hr>
-       
-   <div><Footer/></div> 
+
+
+<OrdenLevel/>
+        
+        <div className="column is-narrow"></div>
+            <div className="container mobile is-centered">
+            
+            {den.length ? (den.map( res =>(
+              <Licomponent key= {res._id} {...res} />
+            ))
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No Hay Fila/ No Orders Found.</h1>)}
+              </div>
+            <hr></hr>
+          
+            
+            <div className="column is-narrow"></div>
+             
+              <hr></hr>
+              <div><Footer/></div> 
   </>
 
       )}
 
 export default FinishedOrden;
+

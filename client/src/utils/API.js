@@ -1,25 +1,30 @@
 import axios from "axios";
 export default {
-    saveUser: function(userNamepassword) {
-        return axios.post("/api/signup", userNamepassword);
-    },
- 
+  
     putOrden: function(id,ordenData) {
-        return axios.put("/api/orden" + id, ordenData);
+        return axios.put("http://localhost:3001/api/orden/" + id, ordenData);
       },
-
+      
     deleteOrden: function(id) {
-        return axios.delete("/api/orden/" + id)
+        return axios.delete("http://localhost:3001/api/orden/" + id)
     },
+    
+
     getOrden: function(id) {
-        return axios.get("/api/orden/"+ id)
+        return axios.get("http://localhost:3001/api/orden/"+ id)
     },
 
+    logUser: function(NnP){
+        return axios.post("http://localhost:3001/api/login", NnP);
+    },
+    saveUser: function(userNamepassword) {
+        return axios.post("http://localhost:3001/api/signup", userNamepassword);
+    },
     saveOrden: function(ordenData) {
-        return axios.post("/api/orden", ordenData);
+        return axios.post("http://localhost:3001/api/orden", ordenData);
     },
     getOrdens: function() {
-        return axios.get("/api/orden")
+        return axios.get("http://localhost:3001/api/orden")
     },
 };
 // http://localhost:3001

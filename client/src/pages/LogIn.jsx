@@ -1,6 +1,7 @@
-// import UserContext from '../userContext';
-// import React, {useContext, useState} from 'react';
-// import userContex from '../contex/userContex';
+import AuthContext from '../context/AuthContext';
+import React, {useContext, useState} from 'react';
+import API from "../utils/API";
+
 import OrdenLevel from "../components/OrdenLevel";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
@@ -12,27 +13,33 @@ const pxhi = {
   }
 }
  function LogIn() {
-    // const [userName, setUserName] = useState("");
-    // const [password, setPassword] = useState("");
-    // const user = useContext(userContex);
-    
-    
-    // const handleChange = (e) =>{
-    //   e.preventDefault();
-    //   const {name, value} = e.target;
-    // // setUserName(userName: name, value);
-    // // user.setToken(data.password);
-   
-    // }
-  
-    // const handleSubmit = (e) =>{
-    //   e.preventDefault();
+  const {setJwt} = useContext(AuthContext)
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
+
+    function formSubmit (e){
+      e.preventDefault();
+      if(userName.trim() && password.trim()){
+      API.logUser({
+        userName: userName,
+        password: password
+      }).then((response) => {
+        console.log(response.data);
+        setJwt(response.data.data)
+        // navigate(`/ClientLine`)
+         setUserName("")
+         setPassword("")
   
-    // user.setUserName(data.userName);
-    // user.setPassword(data.token);
-   
-    // }
+      
+        }).catch((err) => {
+          console.log(err);
+        });
+  
+  
+      } 
+  
+    }
       
     return (
     <>
@@ -53,14 +60,14 @@ const pxhi = {
   <label className="label has-text-centered" style={pxhi.fonte}>Log In</label>
   <hr></hr>
         <br></br>
-    <form onSubmit={() =>{}}>
+    <form onSubmit={formSubmit}>
     <label className="label has-text-centered">e-mail/User Name</label>
   <div className="control is-expanded">
       <input 
-        //  onChange={handleInputChange}
+         onChange={(e) => setUserName(e.target.value)}
          name="userName"
          className="input" 
-        //  value={formObj.userName}
+         value={userName}
          type="text"
           placeholder="email or username"
       />
@@ -69,10 +76,10 @@ const pxhi = {
   
       <label className="label has-text-centered">Password</label>
       <input 
-          //  onChange={handleInputChange}
+        onChange={(e) => setPassword(e.target.value)}
            name="password"
            className="input" 
-          //  value={formObj.password}
+           value={password}
          type="text" 
          placeholder="password"
       />

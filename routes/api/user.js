@@ -5,9 +5,8 @@ router.route("/")
 // .get(ordenController.findAll)
 .post(authController.create)
 
-// router
-//   .route("/:id")
-
+// router.route("/login")
+// .post(authController.logUser)
 //   .get(ordenController.findById)
 //   .put(ordenController.update)
 //   .delete(ordenController.remove);

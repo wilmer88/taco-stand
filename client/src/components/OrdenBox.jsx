@@ -1,24 +1,16 @@
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
 
+  const navigate = useNavigate()
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
   
-      const [showModel, setshowModel] = useState("");
-      const handleOpen = (e)=>{e.preventDefault(); setshowModel("is-active")};
-      const handleClose = (e)=>{e.preventDefault();  setshowModel("")}
-      
-      // function handleShow() =>{}
+      const [showModel, setshowModel] = useState("modal");
+      const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
+      const handleClose = (e)=>{e.preventDefault();  setshowModel("modal")}
 
-  const [orden,setOrden] = useState({
-    nombreDeOrden: "",
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-  });
   const [formObj, setFormObj] = useState({
     nombreDeOrden: "",
     azada: 0,
@@ -30,12 +22,11 @@ const OrdenBox = () => {
 
     function handleChangeI(e) {
    const {name, value} = e.target;
-    setOrden({...orden, [name]: value})
     setFormObj({...formObj, [name]: value})
   };
 
 
-  function handleSubmit(e) {
+  const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden({
   nombreDeOrden: formObj.nombreDeOrden,
@@ -45,16 +36,10 @@ API.saveOrden({
   pastor: formObj.pastor,
   chorizo: formObj.chorizo,
 }).then((response)=>{
- 
+console.log(response)
+navigate("/")
    alert("Gracioas Por su Orden");
-  setOrden({
-    nombreDeOrden: "",
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-  })
+
   setFormObj({
     nombreDeOrden: "",
     azada: 0,
@@ -63,7 +48,7 @@ API.saveOrden({
     pastor: 0,
     chorizo: 0,
   })
-handleClose()
+
 }).catch((err) =>{ 
           console.log(err)
         });
@@ -92,7 +77,7 @@ handleClose()
               name="nombreDeOrden"
                 aria-label="iput for order name"
                 placeholder="Gonzalo"
-                value={orden.nombreDeOrden}
+                value={formObj.nombreDeOrden}
               />
             </div>
          </div>
@@ -104,7 +89,7 @@ handleClose()
          <div className="mr-6  select">
            <select
              name="azada"
-             value={orden.azada}
+             value={formObj.azada}
              onChange={handleChangeI}
            >
              {numeros.map((nume) => (
@@ -123,7 +108,7 @@ handleClose()
          <div className="mr-6  select ">
            <select
              name="pollo"
-             value={orden.pollo}
+             value={formObj.pollo}
              onChange={handleChangeI}
            >
              {numeros.map((nume) => (
@@ -142,7 +127,7 @@ handleClose()
          <div className="mr-6  select ">
            <select
              name="barbacoa"
-             value={orden.barbacoa}
+             value={formObj.barbacoa}
              onChange={handleChangeI}
            >
              {numeros.map((nume) => (
@@ -161,7 +146,7 @@ handleClose()
          <div className="mr-6  select">
            <select
              name="pastor"
-             value={orden.pastor}
+             value={formObj.pastor}
              onChange={handleChangeI}
            >
              {numeros.map((nume) => (
@@ -180,7 +165,7 @@ handleClose()
          <div className="mr-6  select">
            <select
              name="chorizo"
-             value={orden.chorizo}
+             value={formObj.chorizo}
              onChange={handleChangeI}
            >
              {numeros.map((nume) => (
@@ -200,12 +185,12 @@ handleClose()
               <div className="modal-content ">
                 <div className="box is-mobile">
                   <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "25px"}}> Nombre: {orden.nombreDeOrden}</div>
-                  <div style={{fontSize: "25px"}}> Azada: {orden.azada}</div>
-                  <div style={{fontSize: "25px"}}>Pollo: {orden.pollo}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {orden.barbacoa}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {orden.chorizo}</div>
-                  <div style={{fontSize: "25px"}}>Pastor: {orden.pastor}</div>
+                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
+                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
+                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
+                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
                   <hr></hr>
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
@@ -222,10 +207,8 @@ handleClose()
                   <button onClick={handleOpen} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
                     <strong>Entregar</strong>
                   </button>
-     
                     </span>
                   </div>
-    
                   <div className="card-footer-item">
                     <span>
                     Conparte en {""}
@@ -237,10 +220,7 @@ handleClose()
                 </footer>
  </div>
  </div>  
-
 </form>
-
-
        </>
     );
   }
