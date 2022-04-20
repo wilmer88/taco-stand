@@ -3,13 +3,16 @@ import React, {useContext, useState} from 'react';
 import API from "../utils/API";
 import OrdenLevel from "../components/OrdenLevel";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 const pxhi = {
   fonte:{
     fontSize: "27px",
-    background: "lightyellow"
+    
   }
 }
- function LogIn() {
+const LogIn = () => {
+  
+  const navigate = useNavigate()
   const {setJwt} = useContext(AuthContext)
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -20,11 +23,12 @@ const pxhi = {
       if(userName.trim() && password.trim()){
       API.logUser({
         userName: userName,
-        password: password
+        password: password,
       }).then((response) => {
-        console.log(response.data);
-        setJwt(response.data.data)
-        // navigate(`/ClientLine`)
+        setTimeout(() => {setJwt(response.data.data)  }, 2000);
+        
+        navigate(`/ordenar`)
+        alert("welcome")
          setUserName("")
          setPassword("")
   

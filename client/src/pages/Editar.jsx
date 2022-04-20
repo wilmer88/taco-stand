@@ -49,8 +49,9 @@ const Editar = () => {
 
   function handleSubmit(e) {
     e.preventDefault(e);
-  formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa)
-  formObj.precio = parseInt(formObj.total) * 3
+    setTimeout(() => {  formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
+      formObj.precio = parseInt(formObj.total) * 3;}, 1000);
+
  
   setTimeout(() => { API.putOrden(ordenId, {
     nombreDeOrden: formObj.nombreDeOrden,
@@ -79,7 +80,7 @@ const Editar = () => {
   })
     .catch((err) => {
       console.log(err)
-    })}, 1000);
+    })}, 500);
   
    
   };

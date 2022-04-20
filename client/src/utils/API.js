@@ -1,21 +1,22 @@
 import axios from "axios";
 export default {
   
-    putOrden: function(id,ordenData) {
-        return axios.put("/api/orden/" + id, ordenData);
-      },
+    
       
     deleteOrden: function(id) {
-        return axios.delete("/api/orden/" + id)
+        return axios.delete("/orden/" + id)
     },
     
 
     getOrden: function(id) {
-        return axios.get("/api/orden/"+ id)
+        return axios.get("/orden/"+ id)
     },
+    putOrden: function(id,ordenData) {
+        return axios.put("/api/orden/" + id, ordenData);
+      },
 
     logUser: function(NnP){
-        return axios.post("/api/login", NnP);
+        return axios.post("/login", NnP);
     },
     saveUser: function(userNamepassword) {
         return axios.post("/api/signup", userNamepassword);
