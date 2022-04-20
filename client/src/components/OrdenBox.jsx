@@ -1,15 +1,24 @@
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
+  async function firstFunction(){
+    handleClose()
 
-  const navigate = useNavigate()
-  const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
+    };
+
+    async function secondFunction(){
+   alert("Gracias por su orden!")
   
+      };
+
+
+  // const navigate = useNavigate()
+  const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
       const [showModel, setshowModel] = useState("modal");
       const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
-      const handleClose = (e)=>{e.preventDefault();  setshowModel("modal")}
+      const handleClose = ()=>{  setshowModel("modal")}
 
   const [formObj, setFormObj] = useState({
     nombreDeOrden: "",
@@ -19,13 +28,10 @@ const OrdenBox = () => {
     pastor: 0,
     chorizo: 0,
   })
-
     function handleChangeI(e) {
    const {name, value} = e.target;
     setFormObj({...formObj, [name]: value})
   };
-
-
   const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden({
@@ -36,10 +42,8 @@ API.saveOrden({
   pastor: formObj.pastor,
   chorizo: formObj.chorizo,
 }).then((response)=>{
-console.log(response)
-navigate("/")
-   alert("Gracioas Por su Orden");
-
+  firstFunction()
+  setTimeout(() => {secondFunction()}, 600);
   setFormObj({
     nombreDeOrden: "",
     azada: 0,

@@ -7,15 +7,16 @@ const liestilo = {
   
  }
 
-function LiComponent (props) {
+const LiComponent =  (props) => {
+  const navigate = useNavigate()
   function eliminar(id){
     console.log(id)
       API.deleteOrden(id).then((res) => {
  console.log(res.data)
-        window.location.reload()
+        navigate("/")
       })
   };
-  const navigate = useNavigate()
+  
 
   function editarOrden(id) {
     console.log(id)

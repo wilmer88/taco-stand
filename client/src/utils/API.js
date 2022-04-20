@@ -24,7 +24,7 @@ export default {
         return axios.post("/api/orden", ordenData);
     },
     getOrdens: function() {
-        return axios.get("http://localhost:3001/api/orden")
+        return axios.get("/api/orden")
     },
 };
 // http://localhost:3001

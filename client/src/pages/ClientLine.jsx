@@ -28,7 +28,7 @@ useEffect(() => {
             {den.length ? (den.map( res =>(
               <Licomponent key= {res._id} {...res} />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No Hay Fila/ No Orders Found.</h1>)}
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: You must be sign in to see/ cancel or edit your order.</h1>)}
               </div>
             <hr></hr>
           

@@ -29,19 +29,20 @@ const StartPage = ()=> {
   <h2> <label className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?</label></h2>
   <div className="ml-4  field">
   <br></br>
- <Link to="./ordenar"> <button className="button is-black is-outlined">Ordenar Tacos/ Order Now</button></Link> 
-
+ <Link to="./ordenar"> <button className="button is-black is-outlined">Ordene Ya!</button></Link> 
  <br></br>
  <br></br>
-
- <Link to="./logIn"><button className="button is-black is-outlined">Iniciar Sesión/ Log In</button></Link>
+ <Link to="./ClientLine"><button className="button is-black is-outlined">Cancelar Orden</button></Link>
  <br></br>
  <br></br>
- <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/ Sign Up</button></Link>
+ <Link to="./ClientLine"><button className="button is-black is-outlined">Ver Ordenes</button></Link>
  <br></br>
  <br></br>
- <Link to="./ClientLine"><button className="button is-black is-outlined">YourPlace In line/ Ver Su Puesto</button></Link>
-  
+ <Link to="./logIn"><button className="button is-black is-outlined"> Log In</button></Link>
+ <br></br>
+ <br></br>
+ <Link to="./signup"><button className="button is-black is-outlined">Sign Up</button></Link>
+ 
 </div>
 </div>
   
