@@ -1,6 +1,7 @@
+import axios from "axios";
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
-import API from "../utils/API";
+
 // import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
   async function firstFunction(){
@@ -34,7 +35,7 @@ const OrdenBox = () => {
   };
   const handleSubmit= (e)=> {
     e.preventDefault();
-API.saveOrden({
+axios.put({
   nombreDeOrden: formObj.nombreDeOrden,
   azada: formObj.azada,
   pollo: formObj.pollo,

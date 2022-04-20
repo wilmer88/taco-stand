@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 // const bodyParser = require("body-parser");
 require("dotenv").config();
-const routes= require("./routes")
+
 
 const cors = require("cors");
 
@@ -32,7 +32,12 @@ app.use(express.json());
 
 
 const PORT = process.env.PORT || 3001;
-
+const AuthoController = require("./controllers/authController");
+const ordenControler = require("./controllers/OrdenControllers");
+const userController = require("./controllers/UserController");
+app.use(AuthoController);
+app.use(userController);
+app.use(ordenControler)
 // Accessing the path module
 const path = require("path");
 
@@ -40,7 +45,7 @@ const path = require("path");
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
-  app.use(routes);
+
 // Step 2:
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

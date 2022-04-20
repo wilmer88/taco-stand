@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
@@ -6,10 +7,9 @@ import SignUp from "./pages/SignUp";
 import FinishedOrden from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
-import LogIn from "./pages/LogIn";
+import ULog from "./pages/ULog";
+// import FindPage from "./pages/FindPage";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-import FindPage from "./pages/FindPage";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
 
   const [jwt, setJwt] = useState("");
@@ -23,21 +23,23 @@ function App() {
 
   return(
   <div>
-<AuthContext.Provider value= {{jwt, setJwt}}> 
+
 <Router>
-        
+<AuthContext.Provider value= {{jwt, setJwt}}>   
     <Routes> 
-    <Route exact path="/ClientLine" element={<FinishedOrden/>}></Route>
-    <Route exact path="/orden/:ordenId" element={<Editar/>}></Route>
-    <Route  path="/login" element={<LogIn/>}></Route>
-    <Route exact path="/signup" element={<SignUp/>}></Route>
-    <Route exact path="/findPage" element={<FindPage/>}></Route>
+      <Route  path="/ClientLine" element={<FinishedOrden/>}></Route>
+    <Route  path="/orden/:ordenId" element={<Editar/>}></Route>
+    {/* <Route  path="/findPage" element={<FindPage/>}></Route> */}
     <Route exact path="/ordenar" element={<OrdenPage/>}></Route>
+    <Route  path="/signup" element={<SignUp/>}></Route>
+    <Route exact path="/login" element={<ULog/>}></Route>
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
-   
-    </Router>
+     
+
     </AuthContext.Provider>
+    </Router>
+  
  
   </div>
 

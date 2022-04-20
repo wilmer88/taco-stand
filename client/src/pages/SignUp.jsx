@@ -1,7 +1,7 @@
 import AuthContext from '../context/AuthContext';
 import Footer from "../components/Footer";
 import React, {useContext, useState } from "react";
-import API from "../utils/API";
+import axios from 'axios';
 import OrdenLevel from "../components/OrdenLevel";
 // import { useNavigate } from "react-router-dom";
 const pxhi = {
@@ -19,7 +19,7 @@ const [password, setPassword] = useState("");
   function formSubmit (e){
     e.preventDefault();
     if(userName.trim() && password.trim()){
-    API.saveUser({
+    axios.post({
       userName:userName,
       password: password
     }).then((response) => {

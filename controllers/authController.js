@@ -6,9 +6,7 @@ const jwt = require("jsonwebtoken");
 
 //sign up
 //jwt.io
-module.exports={
-
-create: function (req, res){
+router.post("/api/signup", (req, res) => {
   const { userName, password } = req.body;
   if (!userName.trim() || !password.trim()) {
     res.status(400);
@@ -21,14 +19,14 @@ create: function (req, res){
         console.log(hashedPassword);
         db.User.create({
           userName: userName,
-          password: hashedPassword,
+          password: password,
         })
           .then((newUser) => {
             const token = jwt.sign(
               {
-           
+                _id: newUser._id,
                 userName: newUser.userName,
-                password: newUser.password,
+                name: newUser.name,
               },
               process.env.SECRET
             );
@@ -46,7 +44,6 @@ create: function (req, res){
               message: "failed to hash",
             });
           });
-          
       })
       .catch((err) => {
         console.log(err);
@@ -57,9 +54,9 @@ create: function (req, res){
         });
       });
   }
+});
 
-},
-logUser: function (req, res){
+router.post("/api/login", (req, res) => {
   const { userName, password } = req.body;
   db.User.findOne({ userName: userName })
     .then((founduser) => {
@@ -71,9 +68,9 @@ logUser: function (req, res){
             if (resultado) {
               const token = jwt.sign(
                 {
-                  
-                  userName: founduser.userName,
-                  password: founduser.password,
+                  _id: resultado._id,
+                  userName: resultado.userName,
+                  name: resultado.name,
                 },
                 process.env.SECRET
               );
@@ -108,6 +105,6 @@ logUser: function (req, res){
         message: "failed to delete user",
       });
     });
-}
-          
-}
+});
+
+module.exports = router;

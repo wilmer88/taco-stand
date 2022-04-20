@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import API from "../utils/API";
 import OrdenLevel from "../components/OrdenLevel";
 import Footer from "../components/Footer";
+import axios from "axios";
 const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
 
 const liestilo = {
@@ -31,7 +30,7 @@ const Editar = () => {
     precio: 0,
   })
   useEffect(() => {
-    API.getOrden(ordenId).then((response) => {
+    axios.get(ordenId).then((response) => {
       
        setFormObj(response.data)
      
@@ -53,7 +52,7 @@ const Editar = () => {
       formObj.precio = parseInt(formObj.total) * 3;}, 1000);
 
  
-  setTimeout(() => { API.putOrden(ordenId, {
+  setTimeout(() => { axios.put(ordenId, {
     nombreDeOrden: formObj.nombreDeOrden,
     azada: formObj.azada,
     pollo: formObj.pollo,

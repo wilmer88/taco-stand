@@ -1,7 +1,7 @@
 import Licomponent from "../components/LiComponent";
-// import axios from "axios";
+import axios from "axios";
 import React, {useEffect, useState} from "react";
-import API from "../utils/API";
+
 import OrdenLevel from "../components/OrdenLevel";
 import Footer from "../components/Footer";
 const FinishedOrden = () => {
@@ -10,7 +10,7 @@ const [den, setDen] = useState([])
 
 useEffect(() => {
 
-  API.getOrdens().then(response  => setDen(response.data)
+  axios.get("http://localhost:3001/orden")(response  => setDen(response.data)
       )
       .catch((err) =>{ 
         console.log(err)
