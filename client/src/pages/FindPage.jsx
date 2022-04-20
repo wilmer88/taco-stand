@@ -1,3 +1,32 @@
+import {useForm} from "react-hook-form";
+
+import React from "react";
+
+const FindPage = () => {
+
+    const {register, handleSubmit} = useForm()
+   const onSubmit = (data) => {
+
+    }
+    return(
+        <form  onSubmit={handleSubmit(onSubmit)}>
+            <input style={{fontSize: "40px"}} ref={{...register("test",{required: true})}} type="file" name="pic"/>
+            <button style={{fontSize: "40px"}}>submit</button>
+        </form> 
+    )
+
+
+
+}
+
+  
+  export default FindPage
+  
+
+
+
+
+
 // // import UserContext from '../userContext';
 // // import query from 'express/lib/middleware/query';
 // import { response } from 'express';

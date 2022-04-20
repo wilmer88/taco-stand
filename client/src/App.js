@@ -10,7 +10,7 @@ import LogIn from "./pages/LogIn";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-// import FindPage from "./pages/FindPage";
+import FindPage from "./pages/FindPage";
 function App() {
   const [jwt, setJwt] = useState("");
 
@@ -33,7 +33,7 @@ function App() {
     <Route exact path="/ordenar" element={<OrdenPage/>}></Route>
     <Route exact path="/ClientLine" element={<FinishedOrden/>}></Route>
     <Route exact path="/" element={<StartPage/>}></Route>
-    {/* <Route exact path="/findPage" element={<FindPage/>}></Route> */}
+    <Route exact path="/findPage" element={<FindPage/>}></Route>
     </Routes> 
    
     </Router>
