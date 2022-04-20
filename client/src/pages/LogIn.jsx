@@ -50,7 +50,7 @@ const LogIn = () => {
   <div className='columns is-mobile'>
    
 
-  <div className="column is-two-fifth"></div>
+  <div className="column is-one-fifth"></div>
   
   <div className= "column is-three-quarters-mobile" >
 
@@ -101,7 +101,7 @@ const LogIn = () => {
   </div>
   </div>
   
-  <div className="column is-two-fifth"></div>
+  <div className="column is-one-fifth"></div>
   </div>
       <br></br>
       <hr></hr>

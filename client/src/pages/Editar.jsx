@@ -90,7 +90,7 @@ const Editar = () => {
     <>
 
   <div className='mt-6 columns is-mobile'>
-  <div className="column is-two-fifth"> </div>
+  <div className="column is-one-fifth"> </div>
 
   
 
@@ -223,10 +223,10 @@ const Editar = () => {
 
 
 
-  <div className="column is-two-fifth"></div>
+  <div className="column is-one-fifth"></div>
   </div>
 <hr></hr>
-  <div className="column">   <Footer/> </div>
+  <div className="columns">   <Footer/> </div>
     </>
   );
 };
