@@ -11,14 +11,15 @@ import { setAxiosDefaults } from "./utils/axiosDefaults";
 import FindPage from "./pages/FindPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
+
   const [jwt, setJwt] = useState("");
 
   useEffect(() => {
 
-          if(jwt) {
-            setAxiosDefaults(jwt)
-          }
-  }, [jwt])
+    if(jwt) {
+      setAxiosDefaults(jwt)
+    }
+}, [jwt])
 
   return(
   <div>

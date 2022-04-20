@@ -89,14 +89,7 @@ const Editar = () => {
 
     <>
 
-  <div className='mt-6 columns is-mobile'>
-  <div className="column is-one-fifth"> </div>
-
-  
-
-  
-
-
+  <OrdenLevel/>
 
   <hr></hr>
   <form onSubmit={handleSubmit}>
@@ -223,10 +216,7 @@ const Editar = () => {
 
 
 
-  <div className="column is-one-fifth"></div>
-  </div>
-<hr></hr>
-  <div className="columns">   <Footer/> </div>
+    <Footer/> 
     </>
   );
 };
