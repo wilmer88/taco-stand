@@ -25,10 +25,11 @@ const LogIn = () => {
         userName: userName,
         password: password,
       }).then((response) => {
-        setTimeout(() => {setJwt(response.data.data)  }, 2000);
+        setJwt(response.data.data) 
+        setTimeout(() => {navigate(`/ordenar`)
+        alert("welcome")}, 2000);
         
-        navigate(`/ordenar`)
-        alert("welcome")
+    
          setUserName("")
          setPassword("")
   
