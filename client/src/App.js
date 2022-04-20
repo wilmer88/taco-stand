@@ -7,10 +7,9 @@ import FinishedOrden from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
 import LogIn from "./pages/LogIn";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import FindPage from "./pages/FindPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const [jwt, setJwt] = useState("");
 
@@ -22,23 +21,25 @@ function App() {
   }, [jwt])
 
   return(
-  
+  <div>
 <AuthContext.Provider value= {{jwt, setJwt}}> 
 <Router>
         
     <Routes> 
+    <Route exact path="/ClientLine" element={<FinishedOrden/>}></Route>
     <Route exact path="/orden/:ordenId" element={<Editar/>}></Route>
     <Route  path="/login" element={<LogIn/>}></Route>
     <Route exact path="/signup" element={<SignUp/>}></Route>
-    <Route exact path="/ordenar" element={<OrdenPage/>}></Route>
-    <Route exact path="/ClientLine" element={<FinishedOrden/>}></Route>
-    <Route exact path="/" element={<StartPage/>}></Route>
     <Route exact path="/findPage" element={<FindPage/>}></Route>
+    <Route exact path="/ordenar" element={<OrdenPage/>}></Route>
+    <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
    
     </Router>
     </AuthContext.Provider>
  
+  </div>
+
   )
 
 

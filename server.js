@@ -50,3 +50,5 @@ app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
 
+// MONGODB_URI
+// mongodb+srv://wilmerbaby:alfredo4269@cluster1.bdhv6.mongodb.net/taco-stand?retryWrites=true&w=majority
