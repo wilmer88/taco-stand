@@ -1,7 +1,3 @@
-// import UserContext from '../userContext';
-// import React, {useContext, useState} from 'react';
-// import UserContext from '../userContext';
-
 import { Link } from "react-router-dom";
 const Footer = ()=> {
   

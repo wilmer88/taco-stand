@@ -1,23 +1,7 @@
-// import UserContext from '../userContext';
-// import React, {useContext, useState} from 'react';
-// import UserContext from '../userContext';
-// import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
 const StartPage = ()=> {
-    // const [userName, setUserName] = useState("");
-    // const [password, setPassword] = useState("");
-    // const user = useContext(UserContext);
-  
-    // const handleSubmit = (e) =>{
-    //   e.preventDefault();
-    //   const data = { token: 'ergerter',
-    // userName: "chango"}
-  
-    // user.setUserName(data.userName);
-    // user.setToken(data.token);
-   
-    // }
+ 
     const liestilo = {
         atras: {
           // background: `url(${process.env.PUBLIC_URL + '/images/tacos.jpg'})`

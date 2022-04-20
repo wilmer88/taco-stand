@@ -38,9 +38,6 @@ function App() {
    
     </Router>
     </AuthContext.Provider>
-
-
-   
  
   )
 

@@ -17,8 +17,6 @@ const estilo = {
 const OrdenLevel = () => {
  
     return (
-
-
 <div className="columns is-mobile is-12">
   <div className="column is-12">  
 

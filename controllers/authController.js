@@ -4,8 +4,6 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
-
 //sign up
 //jwt.io
 module.exports={
@@ -113,10 +111,3 @@ logUser: function (req, res){
 }
           
 }
-
-
-
-
-//bcrypt
-//jwt
-//expiresIn

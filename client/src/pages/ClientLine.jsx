@@ -20,7 +20,6 @@ useEffect(() => {
   return (
   <>
 
-
 <OrdenLevel/>
         
         <div className="column is-narrow"></div>

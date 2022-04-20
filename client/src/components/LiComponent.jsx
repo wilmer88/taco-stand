@@ -1,15 +1,12 @@
-// import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import API from "../utils/API";
-
-
 const liestilo = {
   atras: {
     background: "lightyellow"
   }
   
  }
-  //  changed props to hooks
+
 function LiComponent (props) {
   function eliminar(id){
     console.log(id)
@@ -20,15 +17,9 @@ function LiComponent (props) {
   };
   const navigate = useNavigate()
 
-
-
-
   function editarOrden(id) {
     console.log(id)
-
       navigate(`/orden/${id}`)
-
-
   }
     return (<>
     <div className="columns is-mobile">
@@ -59,7 +50,6 @@ function LiComponent (props) {
 
       </tbody>
 
-
   <tbody>
 
   <tr>
@@ -77,7 +67,6 @@ function LiComponent (props) {
       <label style={liestilo.atras} className="label">Tacos: <span>{props.total}</span> </label>
     <label style={liestilo.atras} className="label">Precio Total:$<span>{props.precio}.00</span> </label>
 
-  
       <time dateTime="2016-1-1">{props.tiempo}</time>
     </div>
   </div>
@@ -85,10 +74,8 @@ function LiComponent (props) {
    <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
     <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
 
-   
   </footer>
 </div>
-
 
   </div>
   <div className="column is-3"></div>

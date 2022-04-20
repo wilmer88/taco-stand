@@ -1,7 +1,4 @@
 import AuthContext from '../context/AuthContext';
-// import React, {useContext, useState} from 'react';
-// import UserContext from '../userContext';
-// import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import React, {useContext, useState } from "react";
 import API from "../utils/API";
@@ -12,9 +9,7 @@ const pxhi = {
     fontSize: "27px",
     background: "lightyellow"
   }
-}
-
-
+};
 const SignUp = () => {
   const {setJwt}  = useContext(AuthContext)
 const [userName, setUserName] = useState("");
@@ -39,18 +34,6 @@ const [password, setPassword] = useState("");
     } 
 
   }
-  // const user = useContext(UserContext);
-
-  // const handleSubmit = (e) =>{
-  //   e.preventDefault();
-  //   const data = { token: 'ergerter',
-  // userName: "chango"}
-
-  // // user.setUserName(data.userName);
-  // // user.setToken(data.token);
- 
-  // }
-
 
   return (
 

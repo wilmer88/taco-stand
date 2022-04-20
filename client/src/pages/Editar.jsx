@@ -37,13 +37,7 @@ const Editar = () => {
      })
    }, [ordenId])
 
-
   const navigate = useNavigate()
-
-
-
-
-
 
   function handleChangeI(e) {
     const { name, value } = e.target;
@@ -53,15 +47,12 @@ const Editar = () => {
 
   };
 
-
-
   function handleSubmit(e) {
    
   formObj.total = parseInt(orden.azada) +  parseInt(orden.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa)
   formObj.precio = parseInt(formObj.total) * 3
  
     e.preventDefault(e);
-  
   
     API.putOrden(ordenId, {
       nombreDeOrden: formObj.nombreDeOrden,
@@ -92,13 +83,10 @@ const Editar = () => {
       .catch((err) => {
         console.log(err)
       });
-   
-
-
   };
 
   return (
-    //<h1>me</h1>
+
     <>
 
       <div className="columns is-mobile">
@@ -221,8 +209,6 @@ const Editar = () => {
               <footer className="card-footer">
                 <div className="card-footer-item"> <button className="button is-danger is-light" type="submit" value="Submit">guardar </button></div>
                 {/* <div className="card-footer-item"> <button class="button is-success is-light" onClick={()=> deleteOrder(props._id)}>editar</button></div> */}
-
-
               </footer>
             </div>
           </form>

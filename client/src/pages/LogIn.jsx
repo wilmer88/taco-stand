@@ -1,10 +1,7 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
 import API from "../utils/API";
-
 import OrdenLevel from "../components/OrdenLevel";
-// import { Link } from "react-router-dom";
-// import axios from "axios";
 import Footer from "../components/Footer";
 const pxhi = {
   fonte:{
