@@ -21,7 +21,7 @@ const StartPage = ()=> {
     return (
     <>
   <div className="hero is is-fullheight" style={liestilo.atras}>
-  <div className='mt-6 columns is-mobile'>
+  <div className=' columns is-mobile'>
   <div className="column is-two-fifth"> </div>
 
   <div className= "mt-6 column is-three-quarters-mobile"  >

@@ -6,9 +6,9 @@ const Footer = ()=> {
     <>
       <hr></hr>
     <div className='columns is-mobile'>
-    <div className="column is-two-fifth"></div>
+    <div className="column is-one-fifth"></div>
 
-<div className= "column is-three-quarters-mobile" >
+<div className= "column is-mobile" >
 
 <nav className="breadcrumb is-fixed-bottom" aria-label="breadcrumbs">
   <ul>
@@ -22,7 +22,7 @@ const Footer = ()=> {
 
 </div>
 
-<div className="column is-two-fifth"></div>
+<div className="column is-one-fifth"></div>
 
 
     </div>
