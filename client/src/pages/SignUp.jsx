@@ -27,7 +27,7 @@ const [password, setPassword] = useState("");
       setJwt(response.data.data)
       setUserName("")
       setPassword("")
-      navigate("/ordens")
+      navigate("/orden")
       }).catch((err) => {
         console.log(err);
       });
