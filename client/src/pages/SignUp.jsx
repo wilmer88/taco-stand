@@ -1,8 +1,7 @@
 import AuthContext from '../context/AuthContext';
-import Footer from "../components/Footer";
 import React, {useContext, useState } from "react";
 import axios from 'axios';
-import OrdenLevel from "../components/OrdenLevel";
+
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -11,7 +10,7 @@ const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
 
   const navigate = useNavigate()
-  
+
   function formSubmit (e){
     e.preventDefault();
 
@@ -26,15 +25,13 @@ const [password, setPassword] = useState("");
       }).catch((err) => {
         console.log(err);
       });
-
-
   }
 
   return (
 
   <>
   
-<OrdenLevel/>
+
   
   <div>
   <div className='columns is-mobile'>
@@ -100,7 +97,7 @@ const [password, setPassword] = useState("");
   <br></br>
   <br></br>
 
-      <Footer/>
+   
 
   </>)
 

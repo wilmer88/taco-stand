@@ -4,11 +4,12 @@ const Footer = ()=> {
     return (
       
     <>
+      <hr></hr>
     <div className='columns is-mobile'>
     <div className="column is-two-fifth"></div>
 
 <div className= "column is-three-quarters-mobile" >
-  
+
 <nav className="breadcrumb is-fixed-bottom" aria-label="breadcrumbs">
   <ul>
     <li><Link to="/">Home</Link></li>

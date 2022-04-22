@@ -1,7 +1,5 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
-import OrdenLevel from "../components/OrdenLevel";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -41,7 +39,7 @@ const ULog = () => {
       
     return (
     <>
-    <OrdenLevel/>
+  
       <div>
         <br></br>
   <div className='columns is-mobile'>
@@ -88,10 +86,6 @@ const ULog = () => {
   </div>
   </div>
 
-  <hr></hr>
-
-
-    <Footer/> 
     </>
     )
   }

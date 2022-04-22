@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import OrdenLevel from "../components/OrdenLevel";
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -94,7 +90,7 @@ const Editar = () => {
   return (
 
     <>
-<OrdenLevel/>
+
 
 <div className="columns is-mobile">
   <div className="column is-1"></div>
@@ -242,14 +238,6 @@ const Editar = () => {
 <div className="column is-1"></div>
 
 </div>
-
-   
-
-
-  <hr></hr>
-
-
-    <Footer/> 
     </>
   );
 };

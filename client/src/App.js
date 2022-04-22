@@ -3,12 +3,13 @@ import React, {useEffect, useState} from "react";
 import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
-// import OrdenLevel from "./components/OrdenLevel";
+import OrdenLevel from "./components/OrdenLevel";
 import FinishedOrden from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
+import Footer from "./components/Footer";
 function App(){
 
   const [jwt, setJwt] = useState("");
@@ -24,6 +25,7 @@ function App(){
     <>
     
     <Router>
+      <OrdenLevel/>
 <AuthContext.Provider value= {{jwt, setJwt}}>   
     <Routes> 
     <Route exact path="/signup" element={<SignUp/>}></Route>
@@ -34,6 +36,7 @@ function App(){
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
     </AuthContext.Provider>
+    <Footer/>
     </Router>
     
     </>
