@@ -1,28 +1,43 @@
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
+
+  
+
+
+
+const LiComponent =  (props) => {
+  
 const liestilo = {
   atras: {
     background: "lightyellow"
-  }
-  
- }
+  },
+  letras: {
+     font: {
 
-const LiComponent =  (props) => {
+     }
+    }
+ };
   const navigate = useNavigate()
+
+
   function eliminar(id){
     console.log(id)
-      axios.delete(id).then((res) => {
+      axios.delete(`http://localhost:3001/api/orden/${id}`).then((res) => {
  console.log(res.data)
         navigate("/")
-      })
+      }).catch((err) =>{ 
+        console.log(err)
+      });
   };
-  
 
-  function editarOrden(id) {
+    function editarOrden(id) {
     console.log(id)
-      navigate(`/orden/${id}`)
+    navigate(`/orden/${id}/edit`)
+    
   }
+
     return (<>
     <div className="columns is-mobile">
   <div className="column is-1"></div>

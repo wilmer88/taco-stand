@@ -35,7 +35,7 @@ const StartPage = ()=> {
  <Link to="./ClientLine"><button className="button is-black is-outlined">Cancelar Orden</button></Link>
  <br></br>
  <br></br>
- <Link to="./ClientLine"><button className="button is-black is-outlined">Ver Ordenes</button></Link>
+ <Link to="./ordens"><button className="button is-black is-outlined">Ver Ordenes</button></Link>
  <br></br>
  <br></br>
  <Link to="./logIn"><button className="button is-black is-outlined"> Log In</button></Link>

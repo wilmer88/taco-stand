@@ -28,12 +28,12 @@ const OrdenLevel = () => {
         <label className="label">
             Ordenar
             </label>
-      <Link to="/ordenar"><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
+      <Link to="/orden"><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
         
         </div>
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
-        <Link to="/ClientLine"> <label className="label"> Lista De Espera </label></Link>
+        <Link to="/ordens"> <label className="label"> Lista De Espera </label></Link>
         </div>
       </nav>
       </div>

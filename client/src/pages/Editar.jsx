@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OrdenLevel from "../components/OrdenLevel";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
 
 const liestilo = {
@@ -16,11 +18,25 @@ const liestilo = {
     }
   }
 }
+
 const Editar = () => {
   const { ordenId } = useParams();
+
+  useEffect(() => {
+  
+    axios.get(`http://localhost:3001/api/orden/${ordenId}`).then((response) => {
+      console.log(response)
+       setFormObj(response.data)
+     
+     }).catch((err) =>{ 
+      console.log(err)
+    });
+   }, [ordenId])
+
+
   const navigate = useNavigate()
   const [formObj, setFormObj] = useState({
-    nombreDeOrden:"",
+
     azada: 0,
     pollo: 0,
     pastor: 0,
@@ -29,13 +45,6 @@ const Editar = () => {
     total: 0,
     precio: 0,
   })
-  useEffect(() => {
-    axios.get(ordenId).then((response) => {
-      
-       setFormObj(response.data)
-     
-     })
-   }, [ordenId])
 
 
 
@@ -48,12 +57,11 @@ const Editar = () => {
 
   function handleSubmit(e) {
     e.preventDefault(e);
-    setTimeout(() => {  formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
-      formObj.precio = parseInt(formObj.total) * 3;}, 1000);
+      formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
+      formObj.precio = parseInt(formObj.total) * 3;
 
  
-  setTimeout(() => { axios.put(ordenId, {
-    nombreDeOrden: formObj.nombreDeOrden,
+  setTimeout(() => { axios.put(`http://localhost:3001/api/orden/${ordenId}`, {
     azada: formObj.azada,
     pollo: formObj.pollo,
     barbacoa: formObj.barbacoa,

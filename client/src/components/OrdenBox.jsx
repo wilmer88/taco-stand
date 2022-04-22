@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const OrdenBox = () => {
   async function firstFunction(){
     handleClose()
-
     };
 
     async function secondFunction(){
@@ -35,14 +34,7 @@ const OrdenBox = () => {
   };
   const handleSubmit= (e)=> {
     e.preventDefault();
-axios.put({
-  nombreDeOrden: formObj.nombreDeOrden,
-  azada: formObj.azada,
-  pollo: formObj.pollo,
-  barbacoa: formObj.barbacoa,
-  pastor: formObj.pastor,
-  chorizo: formObj.chorizo,
-}).then((response)=>{
+axios.post("http://localhost:3001/api/orden/", formObj).then((response)=>{
   firstFunction()
   setTimeout(() => {secondFunction()}, 600);
   setFormObj({
