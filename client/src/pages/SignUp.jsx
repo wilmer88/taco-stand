@@ -19,9 +19,10 @@ const [password, setPassword] = useState("");
       password: password
     }).then((response) => {
       setJwt(response.data.data)
-      setUserName("")
-      setPassword("")
-      navigate("/orden")
+      setTimeout(() => {navigate("/orden")
+      alert("welcome you are loged in")}, 1500);
+       setUserName("")
+       setPassword("")
       }).catch((err) => {
         console.log(err);
       });

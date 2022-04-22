@@ -27,7 +27,7 @@ const ULog = () => {
         console.log(response.data)
         setJwt(response.data.data) 
         setTimeout(() => {navigate("/orden")
-        alert("welcome")}, 2000);
+        alert("welcome, you just signd up")}, 1500);
          setUserName("")
          setPassword("")
         }).catch((err) => {

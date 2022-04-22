@@ -7,7 +7,7 @@ const [den, setDen] = useState([])
 
 useEffect(() => {
 
-  axios.get("http://localhost:3001/api/ordens").then(response  => setDen(response.data)
+  axios.get("/api/ordens").then(response  => setDen(response.data)
       )
       .catch((err) =>{ 
         console.log(err)
