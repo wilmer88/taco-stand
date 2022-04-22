@@ -8,9 +8,8 @@ import FinishedOrden from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
-// import FindPage from "./pages/FindPage";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-const App =()=> {
+function App(){
 
   const [jwt, setJwt] = useState("");
 
@@ -22,9 +21,9 @@ const App =()=> {
 }, [jwt])
 
   return(
-  <div>
-
-<Router>
+    <>
+    
+    <Router>
 <AuthContext.Provider value= {{jwt, setJwt}}>   
     <Routes> 
     <Route exact path="/signup" element={<SignUp/>}></Route>
@@ -32,16 +31,12 @@ const App =()=> {
     <Route  exact path="/orden/:ordenId/edit" element={<Editar/>}></Route>
       <Route exact path="/ordens" element={<FinishedOrden/>}></Route>
     <Route exact path="/orden" element={<OrdenPage/>}></Route>
-   
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
-     
-
     </AuthContext.Provider>
     </Router>
-  
- 
-  </div>
+    
+    </>
 
   )
 

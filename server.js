@@ -9,8 +9,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-//import your models
-// require("./models/quote");
+
 
 mongoose
   .connect(
@@ -28,8 +27,6 @@ mongoose
 //middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
 
 const PORT = process.env.PORT || 3001;
 const AuthoController = require("./controllers/authController");
@@ -55,5 +52,4 @@ app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
 
-// MONGODB_URI
-// mongodb+srv://wilmerbaby:alfredo4269@cluster1.bdhv6.mongodb.net/taco-stand?retryWrites=true&w=majority
+

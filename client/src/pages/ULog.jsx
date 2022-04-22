@@ -1,8 +1,6 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
 import OrdenLevel from "../components/OrdenLevel";
-
-
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -19,8 +17,7 @@ const ULog = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-
-    function formSubmit (e){
+    const formSubmit = (e, userName, password) => {
       e.preventDefault();
       if(userName.trim() && password.trim()){
         // debugger
@@ -28,9 +25,9 @@ const ULog = () => {
         { userName: userName,
       password: password}
         ).then((response) => {
-        
+        console.log(response)
         setJwt(response.data.data) 
-        setTimeout(() => {navigate(`/orden`)
+        setTimeout(() => {navigate("/orden")
         alert("welcome")}, 2000);
          setUserName("")
          setPassword("")

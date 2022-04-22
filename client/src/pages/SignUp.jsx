@@ -4,12 +4,7 @@ import React, {useContext, useState } from "react";
 import axios from 'axios';
 import OrdenLevel from "../components/OrdenLevel";
 import { useNavigate } from "react-router-dom";
-const pxhi = {
-  fonte:{
-    fontSize: "27px",
-    background: "lightyellow"
-  }
-};
+
 const SignUp = () => {
   const {setJwt}  = useContext(AuthContext)
 const [userName, setUserName] = useState("");
@@ -23,7 +18,6 @@ const [password, setPassword] = useState("");
       userName:userName,
       password: password
     }).then((response) => {
-      console.log(response.data);
       setJwt(response.data.data)
       setUserName("")
       setPassword("")
@@ -54,7 +48,7 @@ const [password, setPassword] = useState("");
    
 
     <div className="mt-6 box">
-    <label className="label has-text-centered" style={pxhi.fonte}>Sign Up</label>
+    <label className="label has-text-centered">Sign Up</label>
 
     <hr></hr>
         <br></br>
