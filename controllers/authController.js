@@ -68,9 +68,9 @@ router.post("/api/login", (req, res) => {
             if (resultado) {
               const token = jwt.sign(
                 {
-                  _id: resultado._id,
-                  userName: resultado.userName,
-                  name: resultado.name,
+                 
+                  userName: founduser.userName,
+                  password: founduser.password,
                 },
                 process.env.SECRET
               );

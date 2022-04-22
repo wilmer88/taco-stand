@@ -11,9 +11,10 @@ const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
 
   const navigate = useNavigate()
+  
   function formSubmit (e){
     e.preventDefault();
-    if(userName.trim() && password.trim()){
+
     axios.post("/api/signup",{
       userName:userName,
       password: password
@@ -25,7 +26,7 @@ const [password, setPassword] = useState("");
       }).catch((err) => {
         console.log(err);
       });
-    } 
+
 
   }
 

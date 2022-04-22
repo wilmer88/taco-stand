@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const ULog = () => {
+
   const pxhi = {
     fonte:{
       fontSize: "27px",
@@ -17,15 +18,15 @@ const ULog = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const formSubmit = (e, userName, password) => {
+    const formSubmit = (e) => {
       e.preventDefault();
-      if(userName.trim() && password.trim()){
+    
         // debugger
     axios.post("/api/login",
         { userName: userName,
       password: password}
         ).then((response) => {
-        console.log(response)
+        console.log(response.data)
         setJwt(response.data.data) 
         setTimeout(() => {navigate("/orden")
         alert("welcome")}, 2000);
@@ -35,7 +36,6 @@ const ULog = () => {
           console.log(err);
         });
 
-      } 
 
     }
       
