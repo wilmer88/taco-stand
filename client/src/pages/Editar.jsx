@@ -96,7 +96,7 @@ const Editar = () => {
   <div className="column is-1"></div>
 
 <div className="column is-narrow-mobile">
-  
+<div className="container mobile is-centered">
   <form onSubmit={handleSubmit}>
 
 <div className="card">
@@ -123,12 +123,11 @@ const Editar = () => {
 
         </tbody>
 
-
         <tbody>
 
           <tr>
             <td>
-              <div className="select is-small">
+              <div className="select">
                 <select
                   name="azada"
                   value={formObj.azada}
@@ -144,7 +143,7 @@ const Editar = () => {
               </td>
 
             <td>
-              <div className="select is-small">
+              <div className="select ">
                 <select
                   name="pollo"
                   value={formObj.pollo}
@@ -161,7 +160,7 @@ const Editar = () => {
 
 
             <td>
-               <div className="select is-small">
+               <div className="select ">
               <select
                 name="pastor"
                 value={formObj.pastor}
@@ -177,7 +176,7 @@ const Editar = () => {
             </td>
 
             <td>
-              <div className="select is-small">
+              <div className="select">
               <select
                 name="chorizo"
                 value={formObj.chorizo}
@@ -194,7 +193,7 @@ const Editar = () => {
 
 
             <td> 
-              <div className="select is-small">
+              <div className="select">
               <select
                 name="barbacoa"
                 value={formObj.barbacoa}
@@ -232,7 +231,7 @@ const Editar = () => {
 </form>
 
 
-
+</div>
 </div>
 
 <div className="column is-1"></div>

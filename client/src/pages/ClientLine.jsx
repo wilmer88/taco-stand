@@ -7,7 +7,7 @@ const [den, setDen] = useState([])
 
 useEffect(() => {
 
-  axios.get("/api/ordens").then(response  => setDen(response.data)
+  axios.get("http://localhost:3001/api/ordens").then(response  => setDen(response.data)
       )
       .catch((err) =>{ 
         console.log(err)
@@ -16,15 +16,10 @@ useEffect(() => {
 
   return (
   <>
-
-<div className="column is-one-fifth"></div>
+ <div className='columns is-mobile'>
 
 <div className= "column is-three-quarters-mobile" >
 
-<br></br>
-
-<div className="field is-mobile" >
-           
 <div className="column is-narrow">
 
 <div className="container mobile is-centered">
@@ -37,10 +32,12 @@ useEffect(() => {
               
         </div>
       </div>
-     </div>
+   
    </div>
 
-       <div className="column is-one-fifth"></div>
+
+ </div>
+
 
 
   

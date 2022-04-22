@@ -17,10 +17,10 @@ const estilo = {
 const OrdenLevel = () => {
  
     return (
-<div className="columns is-mobile is-12">
-  <div className="column is-12">  
 
-  <nav  className="level">
+  <div className="column is-12">  
+        <div className="container is-centered">
+        <nav  className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
 <Link to="/login"><label className="label">  Iniciar Sesión</label></Link>
  </div>
@@ -36,8 +36,11 @@ const OrdenLevel = () => {
         <Link to="/ordens"> <label className="label"> Lista De Espera </label></Link>
         </div>
       </nav>
+
+        </div>
+
       </div>
-</div>
+
     );
   
 }
