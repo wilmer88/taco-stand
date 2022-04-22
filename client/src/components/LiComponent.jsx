@@ -1,14 +1,7 @@
 import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
 
-
-  
-
-
-
 const LiComponent =  (props) => {
-  
 const liestilo = {
   atras: {
     background: "lightyellow"
@@ -21,10 +14,9 @@ const liestilo = {
  };
   const navigate = useNavigate()
 
-
   function eliminar(id){
     console.log(id)
-      axios.delete(`http://localhost:3001/api/orden/${id}`).then((res) => {
+      axios.delete(`/api/orden/${id}`).then((res) => {
  console.log(res.data)
         navigate("/")
       }).catch((err) =>{ 

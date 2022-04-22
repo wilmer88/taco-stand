@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OrdenLevel from "../components/OrdenLevel";
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ const Editar = () => {
 
   useEffect(() => {
   
-    axios.get(`http://localhost:3001/api/orden/${ordenId}`).then((response) => {
+    axios.get(`/api/orden/${ordenId}`).then((response) => {
       console.log(response)
        setFormObj(response.data)
      
@@ -61,7 +61,7 @@ const Editar = () => {
       formObj.precio = parseInt(formObj.total) * 3;
 
  
-  setTimeout(() => { axios.put(`http://localhost:3001/api/orden/${ordenId}`, {
+  setTimeout(() => { axios.put(`/api/orden/${ordenId}`, {
     azada: formObj.azada,
     pollo: formObj.pollo,
     barbacoa: formObj.barbacoa,
@@ -91,136 +91,162 @@ const Editar = () => {
   
    
   };
-
   return (
 
     <>
+<OrdenLevel/>
 
-  <OrdenLevel/>
+<div className="columns is-mobile">
+  <div className="column is-1"></div>
 
-  <hr></hr>
+<div className="column is-narrow-mobile">
+  
   <form onSubmit={handleSubmit}>
 
-    <div className="card">
-      <header is-family-monospace="true" style={liestilo.atras} className="card-header">
-        <p className="card-header-title is-family-monospace is-size-4">
-          {/* change data */}
-          Nombre:  <span><strong>{formObj.nombreDeOrden}</strong>  </span>
-        </p>
+<div className="card">
 
-      </header>
-      <div className="card-content">
-        <div className="content">
-          <table>
-            <tbody>
-              <tr>
-                <th>Azada</th>
-                <th>Pollo</th>
-                <th>pastor</th>
-                <th>chorizo</th>
-                <th>barbacoa</th>
-
-              </tr>
-
-            </tbody>
-
-
-            <tbody>
-
-              <tr>
-                <td>
-                  <div className="mr-6  select is-small">
-                    <select
-                      name="azada"
-                      value={formObj.azada}
-                      onChange={handleChangeI}
-                    >
-                      {numeros.map((nume) => (
-                        <option key={nume.toString()} value={nume}>
-                          {nume}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="mr-6  select is-small">
-                    <select
-                      name="pollo"
-                      value={formObj.pollo}
-                      onChange={handleChangeI}
-                    >
-                      {numeros.map((nume) => (
-                        <option key={nume.toString()} value={nume}>
-                          {nume}
-                        </option>
-                      ))}
-                    </select>
-                  </div></td>
-                <td> <div className="mr-6  select is-small">
-                  <select
-                    name="pastor"
-                    value={formObj.pastor}
-                    onChange={handleChangeI}
-                  >
-                    {numeros.map((nume) => (
-                      <option key={nume.toString()} value={nume}>
-                        {nume}
-                      </option>
-                    ))}
-                  </select>
-                </div></td>
-                <td>{<div className="mr-6  select is-small">
-                  <select
-                    name="chorizo"
-                    value={formObj.chorizo}
-                    onChange={handleChangeI}
-                  >
-                    {numeros.map((nume) => (
-                      <option key={nume.toString()} value={nume}>
-                        {nume}
-                      </option>
-                    ))}
-                  </select>
-                </div>}</td>
-                <td> <div className="mr-6  select is-small">
-                  <select
-                    name="barbacoa"
-                    value={formObj.barbacoa}
-                    onChange={handleChangeI}
-                  >
-                    {numeros.map((nume) => (
-                      <option key={nume.toString()} value={nume}>
-                        {nume}
-                      </option>
-                    ))}
-                  </select>
-                </div></td>
-              </tr>
-            </tbody>
-
-          </table>
-
-          <br></br>
-          <label style={liestilo.atras} className="label">Tacos: <span>{formObj.total}</span> </label>
-          <label style={liestilo.atras} className="label">Precio Total:$<span>{formObj.precio}.00</span> </label>
-
-
-          <time dateTime="2016-1-1">{formObj.tiempo}</time>
-        </div>
-      </div>
-      <footer className="card-footer">
-        <div className="card-footer-item"> <button className="button is-danger is-light" type="submit" value="Submit">guardar </button></div>
-        {/* <div className="card-footer-item"> <button class="button is-success is-light" onClick={()=> deleteOrder(props._id)}>editar</button></div> */}
-      </footer>
+  <header is-family-monospace="true" style={liestilo.atras} className="card-header">
+    <div className="card-header-title is-family-monospace is-size-4">
+      {/* change data */}
+      Nombre:  <span><strong>{formObj.nombreDeOrden}</strong>  </span>
     </div>
-  </form>
+
+  </header>
+  <div className="card-content">
+  <div className="content">
+    
+      <table>
+        <tbody>
+          <tr>
+            <th>Azada</th>
+            <th>Pollo</th>
+            <th>pastor</th>
+            <th>chorizo</th>
+            <th>barbacoa</th>
+          </tr>
+
+        </tbody>
+
+
+        <tbody>
+
+          <tr>
+            <td>
+              <div className="select is-small">
+                <select
+                  name="azada"
+                  value={formObj.azada}
+                  onChange={handleChangeI}
+                >
+                  {numeros.map((nume) => (
+                    <option key={nume.toString()} value={nume}>
+                      {nume}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              </td>
+
+            <td>
+              <div className="select is-small">
+                <select
+                  name="pollo"
+                  value={formObj.pollo}
+                  onChange={handleChangeI}
+                >
+                  {numeros.map((nume) => (
+                    <option key={nume.toString()} value={nume}>
+                      {nume}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              </td>
+
+
+            <td>
+               <div className="select is-small">
+              <select
+                name="pastor"
+                value={formObj.pastor}
+                onChange={handleChangeI}
+              >
+                {numeros.map((nume) => (
+                  <option key={nume.toString()} value={nume}>
+                    {nume}
+                  </option>
+                ))}
+              </select>
+            </div>
+            </td>
+
+            <td>
+              <div className="select is-small">
+              <select
+                name="chorizo"
+                value={formObj.chorizo}
+                onChange={handleChangeI}
+              >
+                {numeros.map((nume) => (
+                  <option key={nume.toString()} value={nume}>
+                    {nume}
+                  </option>
+                ))}
+              </select>
+            </div>
+            </td>
+
+
+            <td> 
+              <div className="select is-small">
+              <select
+                name="barbacoa"
+                value={formObj.barbacoa}
+                onChange={handleChangeI}
+              >
+                {numeros.map((nume) => (
+                  <option key={nume.toString()} value={nume}>
+                    {nume}
+                  </option>
+                ))}
+              </select>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <br></br>
+      <label style={liestilo.atras} className="label">Tacos: <span>{formObj.total}</span> </label>
+      <label style={liestilo.atras} className="label">Precio Total:$<span>{formObj.precio}.00</span> </label>
+
+
+      <time dateTime="2016-1-1">{formObj.tiempo}</time>
+     </div>
+     </div>
+  <footer className="card-footer">
+    <div className="card-footer-item"> <button className="button is-danger is-light" type="submit" value="Submit">guardar </button></div>
+    {/* <div className="card-footer-item"> <button class="button is-success is-light" onClick={()=> deleteOrder(props._id)}>editar</button></div> */}
+  </footer>
+
+
+</div>
+
+</form>
 
 
 
+</div>
+
+<div className="column is-1"></div>
+
+</div>
+
+   
 
 
+  <hr></hr>
 
 
     <Footer/> 
@@ -229,3 +255,5 @@ const Editar = () => {
 };
 
 export default Editar;
+
+

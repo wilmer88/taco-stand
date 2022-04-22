@@ -12,8 +12,8 @@ const Footer = ()=> {
 <nav className="breadcrumb is-fixed-bottom" aria-label="breadcrumbs">
   <ul>
     <li><Link to="/">Home</Link></li>
-    <li><Link to="/ClientLine">Find</Link></li>
-    <li><Link to="/ordenar">Ordenar</Link></li>
+    <li><Link to="/ordens">Find</Link></li>
+    <li><Link to="/orden">Ordenar</Link></li>
   
   </ul>
 

@@ -34,7 +34,7 @@ const OrdenBox = () => {
   };
   const handleSubmit= (e)=> {
     e.preventDefault();
-axios.post("http://localhost:3001/api/orden/", formObj).then((response)=>{
+axios.post("/api/orden/", formObj).then((response)=>{
   firstFunction()
   setTimeout(() => {secondFunction()}, 600);
   setFormObj({

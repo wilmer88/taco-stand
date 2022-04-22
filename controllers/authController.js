@@ -19,14 +19,14 @@ router.post("/api/signup", (req, res) => {
         console.log(hashedPassword);
         db.User.create({
           userName: userName,
-          password: password,
+          password: hashedPassword,
         })
           .then((newUser) => {
             const token = jwt.sign(
               {
-                _id: newUser._id,
+              
                 userName: newUser.userName,
-                name: newUser.name,
+                password: newUser.password,
               },
               process.env.SECRET
             );

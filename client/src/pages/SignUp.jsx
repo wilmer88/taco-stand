@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import React, {useContext, useState } from "react";
 import axios from 'axios';
 import OrdenLevel from "../components/OrdenLevel";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const pxhi = {
   fonte:{
     fontSize: "27px",
@@ -15,11 +15,11 @@ const SignUp = () => {
 const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   function formSubmit (e){
     e.preventDefault();
     if(userName.trim() && password.trim()){
-    axios.post({
+    axios.post("/api/signup",{
       userName:userName,
       password: password
     }).then((response) => {
@@ -27,7 +27,7 @@ const [password, setPassword] = useState("");
       setJwt(response.data.data)
       setUserName("")
       setPassword("")
-      // navigate(`/ClientLine`)
+      navigate("/ordens")
       }).catch((err) => {
         console.log(err);
       });

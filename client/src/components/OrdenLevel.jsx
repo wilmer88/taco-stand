@@ -22,7 +22,7 @@ const OrdenLevel = () => {
 
   <nav  className="level">
 <div className="level-item has-text-centered" style={estilo.nombre}>
-<Link to="/logIn"><label className="label">  Iniciar Sesión</label></Link>
+<Link to="/login"><label className="label">  Iniciar Sesión</label></Link>
  </div>
         <div className="level-item has-text-centered is-hoverable" style={estilo.altura}>
         <label className="label">

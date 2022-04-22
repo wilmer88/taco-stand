@@ -10,7 +10,7 @@ const [den, setDen] = useState([])
 
 useEffect(() => {
 
-  axios.get("http://localhost:3001/api/ordens").then(response  => setDen(response.data)
+  axios.get("/api/ordens").then(response  => setDen(response.data)
       )
       .catch((err) =>{ 
         console.log(err)
@@ -20,23 +20,47 @@ useEffect(() => {
   return (
   <>
 
+
+<div className="columns is-centered">
+<div className="column">
 <OrdenLevel/>
-        
-        <div className="column is-narrow"></div>
-            <div className="container mobile is-centered">
+</div>
+</div>
+
+
+
+<div className="column is-one-fifth"></div>
+
+<div className= "column is-three-quarters-mobile" >
+
+<br></br>
+
+<div className="field is-mobile" >
+           
+<div className="column is-narrow">
+
+<div className="container mobile is-centered">
             
             {den.length ? (den.map( res =>(
               <Licomponent key= {res._id} {...res} />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: You must be sign in to see/ cancel or edit your order.</h1>)}
-              </div>
-            <hr></hr>
-          
-            
-            <div className="column is-narrow"></div>
-             
-              <hr></hr>
-              <div><Footer/></div> 
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: You must be signed in to view this page</h1>)}
+              
+              
+        </div>
+      </div>
+     </div>
+   </div>
+
+       <div className="column is-one-fifth"></div>
+  <hr></hr>
+
+  <div className="columns is-centered">
+<div className="column">
+<Footer/>
+</div>
+</div>
+
   </>
 
       )}

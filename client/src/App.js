@@ -27,11 +27,12 @@ const App =()=> {
 <Router>
 <AuthContext.Provider value= {{jwt, setJwt}}>   
     <Routes> 
+    <Route exact path="/signup" element={<SignUp/>}></Route>
+    <Route exact path="/login" element={<ULog/>}></Route>
     <Route  exact path="/orden/:ordenId/edit" element={<Editar/>}></Route>
       <Route exact path="/ordens" element={<FinishedOrden/>}></Route>
     <Route exact path="/orden" element={<OrdenPage/>}></Route>
-    <Route exact path="/signup" element={<SignUp/>}></Route>
-    <Route exact path="/login" element={<ULog/>}></Route>
+   
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
      
