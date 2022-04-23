@@ -1,15 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
+const routes = require("./routes");
 require("dotenv").config();
-
-
 const cors = require("cors");
 
 const app = express();
 app.use(cors());
-
-
 
 mongoose
   .connect(
@@ -17,33 +13,32 @@ mongoose
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-  //       useCreateIndex: true,
-  // useFindAndModify: false,
+
     }
   )
   .then(() => console.log("MongoDB has been connected"))
   .catch((err) => console.log(err));
 
-//middleware
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
-const AuthoController = require("./controllers/authController");
-const ordenControler = require("./controllers/OrdenControllers");
-const userController = require("./controllers/UserController");
-app.use(AuthoController);
-app.use(userController);
-app.use(ordenControler)
-// Accessing the path module
+// const AuthoController = require("./controllers/authController");
+// const ordenControler = require("./controllers/OrdenControllers");
+// const userController = require("./controllers/UserController");
+// app.use(AuthoController);
+// app.use(userController);
+// app.use(ordenControler);
+app.use(routes);
+
 const path = require("path");
 
-// Step 1:
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
 
-// Step 2:
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });

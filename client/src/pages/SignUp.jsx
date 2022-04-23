@@ -1,8 +1,8 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState } from "react";
-import axios from 'axios';
-
+// import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import API from '../utils/API';
 
 const SignUp = () => {
   const {setJwt}  = useContext(AuthContext)
@@ -14,13 +14,13 @@ const [password, setPassword] = useState("");
   function formSubmit (e){
     e.preventDefault();
 
-    axios.post("/api/signup",{
+    API.signup({
       userName:userName,
       password: password
     }).then((response) => {
       setJwt(response.data.data)
-      setTimeout(() => {navigate("/orden")
-      alert("welcome you are loged in")}, 1500);
+      setTimeout(() => {navigate("/ordens")
+      alert("welcome you are signd up")}, 1500);
        setUserName("")
        setPassword("")
       }).catch((err) => {
@@ -29,11 +29,7 @@ const [password, setPassword] = useState("");
   }
 
   return (
-
   <>
-  
-
-  
   <div>
   <div className='columns is-mobile'>
 
@@ -98,11 +94,7 @@ const [password, setPassword] = useState("");
   <br></br>
   <br></br>
 
-   
-
   </>)
-
-
 };
 
 export default SignUp;

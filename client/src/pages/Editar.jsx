@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+// import API from "../utils/API";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
@@ -29,7 +30,6 @@ const Editar = () => {
     });
    }, [ordenId])
 
-
   const navigate = useNavigate()
   const [formObj, setFormObj] = useState({
 
@@ -40,9 +40,7 @@ const Editar = () => {
     chorizo: 0,
     total: 0,
     precio: 0,
-  })
-
-
+  });
 
   function handleChangeI(e) {
     const { name, value } = e.target;
@@ -56,8 +54,7 @@ const Editar = () => {
       formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
       formObj.precio = parseInt(formObj.total) * 3;
 
- 
-  setTimeout(() => { axios.put(`/api/orden/${ordenId}`, {
+  setTimeout(() => { axios.put("/orden",{
     azada: formObj.azada,
     pollo: formObj.pollo,
     barbacoa: formObj.barbacoa,
@@ -80,18 +77,13 @@ const Editar = () => {
       chorizo: "",
     })
 
-  })
-    .catch((err) => {
+  }).catch((err) => {
       console.log(err)
     })}, 500);
   
-   
   };
   return (
-
     <>
-
-
 <div className="columns is-mobile">
   <div className="column is-1"></div>
 
@@ -157,8 +149,6 @@ const Editar = () => {
                 </select>
               </div>
               </td>
-
-
             <td>
                <div className="select ">
               <select
@@ -191,7 +181,6 @@ const Editar = () => {
             </div>
             </td>
 
-
             <td> 
               <div className="select">
               <select
@@ -209,13 +198,11 @@ const Editar = () => {
             </td>
           </tr>
         </tbody>
-
       </table>
 
       <br></br>
       <label style={liestilo.atras} className="label">Tacos: <span>{formObj.total}</span> </label>
       <label style={liestilo.atras} className="label">Precio Total:$<span>{formObj.precio}.00</span> </label>
-
 
       <time dateTime="2016-1-1">{formObj.tiempo}</time>
      </div>
@@ -225,11 +212,9 @@ const Editar = () => {
     {/* <div className="card-footer-item"> <button class="button is-success is-light" onClick={()=> deleteOrder(props._id)}>editar</button></div> */}
   </footer>
 
-
 </div>
 
 </form>
-
 
 </div>
 </div>

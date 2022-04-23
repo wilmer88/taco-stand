@@ -1,10 +1,10 @@
 import OrdenHero from "../components/OrdenHero/OrdenHero";
 import OrdenBox from "../components/OrdenBox";
 import { Link } from "react-router-dom";
+
 const OrdenPage = () => {
     return (
         <>
-       
         <OrdenHero/>
 
  <footer className="footer is-fixed-bottom">
@@ -27,7 +27,6 @@ const OrdenPage = () => {
           <hr></hr>
          
          </div>
-
 
          </footer>
         </>

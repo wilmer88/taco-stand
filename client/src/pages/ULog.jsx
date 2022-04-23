@@ -1,7 +1,8 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
+import API from "../utils/API"
 
 const ULog = () => {
 
@@ -20,20 +21,19 @@ const ULog = () => {
       e.preventDefault();
     
         // debugger
-    axios.post("/api/login",
+    API.logIn(
         { userName: userName,
       password: password}
         ).then((response) => {
         console.log(response.data)
         setJwt(response.data.data) 
-        setTimeout(() => {navigate("/orden")
-        alert("welcome, you just signd up")}, 1500);
+        setTimeout(() => {navigate("/ordens")
+        alert("welcome, you are loged in")}, 1500);
          setUserName("")
          setPassword("")
         }).catch((err) => {
           console.log(err);
         });
-
 
     }
       
