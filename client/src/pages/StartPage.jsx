@@ -19,12 +19,12 @@ const StartPage = ()=> {
   
     return (
     <>
-  <div className="hero is is-fullheight" style={liestilo.atras}>
+
   <div className=' columns is-mobile'>
   <div className="column is-two-fifth"> </div>
 
   <div className= "mt-6 column is-three-quarters-mobile"  >
-  <div className="mt-6 box" style={liestilo.opaci}>
+  <div className="mt-6 box" >
   <h2> <label className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?</label></h2>
   <div className="ml-4  field">
   <br></br>
@@ -50,7 +50,7 @@ const StartPage = ()=> {
 
   <div className="column is-two-fifth"></div>
   </div>
-  </div>
+
    </>)
   }
   
