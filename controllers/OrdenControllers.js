@@ -7,7 +7,7 @@ const db = require("../models");
 
 module.exports = {
       allOrdens: function(req, res) {
-         console.log(req.headers);
+        //  console.log(req.headers);
   if (!req.headers.authorization) {
     return res.status(401).json({
       error: true,
@@ -27,12 +27,11 @@ module.exports = {
           message: "bad credentials",
         });
       } else {
+        
         console.log(decoded);
-        db.Orden.find({})
-          
-        .then((foundOrden) => {
-          res.json(foundOrden);
-        })
+        db.Orden.find(req.query).sort({ date: -1 })
+        
+        .then((foundOrden) => {res.json(foundOrden)})
         .catch((err) => {
           console.log(err);
           res.status(500).json({
@@ -46,8 +45,6 @@ module.exports = {
   );
       
       }
-
-
 }
 
 router.put("/api/orden", (req, res) =>{

@@ -18,6 +18,7 @@ const [password, setPassword] = useState("");
       userName:userName,
       password: password
     }).then((response) => {
+      console.log(response.data)
       setJwt(response.data.data);
       setTimeout(() => {navigate("/ordens")
       alert("welcome you are signd up")}, 1500);
