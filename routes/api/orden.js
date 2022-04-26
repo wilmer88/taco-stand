@@ -4,7 +4,7 @@ const ordenController = require("../../controllers/OrdenControllers");
 // Matches with "/api/books"
 router.route("/")
   .get(ordenController.allOrdens)
-  // .post(ordenController.create);
+  .post(ordenController.create);
 
 // Matches with "/api/books/:id"
 // router

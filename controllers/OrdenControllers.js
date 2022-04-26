@@ -6,6 +6,25 @@ const db = require("../models");
 
 
 module.exports = {
+      create: function(req,res){
+        
+        const orden = new Orden(req.body);
+      orden.addTotal();
+      orden.getPrecio();
+      db.Orden.create(orden)
+        .then((dbOrden) => {
+          res.json(dbOrden);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.json({
+            error: true,
+            data: null,
+            message: "failed to post order/orden data",
+          });
+        });
+      },
+
       allOrdens: function(req, res) {
         //  console.log(req.headers);
   if (!req.headers.authorization) {
@@ -27,23 +46,15 @@ module.exports = {
           message: "bad credentials",
         });
       } else {
-        
         console.log(decoded);
+
         db.Orden.find(req.query).sort({ date: -1 })
-        
         .then((foundOrden) => {res.json(foundOrden)})
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json({
-            error: true,
-            data: null,
-            message: "faild to get all orders.",
-          });
-        });
+        .catch((err) =>  res.status(422).json(err));
+
            }
     }
   );
-      
       }
 }
 

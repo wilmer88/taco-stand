@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+import API from "../utils/API"
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -34,7 +35,7 @@ const OrdenBox = () => {
   };
   const handleSubmit= (e)=> {
     e.preventDefault();
-axios.post("http://localhost:3001/api/orden/", formObj).then((response)=>{
+API.saveOrden(formObj).then((response)=>{
   firstFunction()
   setTimeout(() => {secondFunction()}, 600);
   setFormObj({
