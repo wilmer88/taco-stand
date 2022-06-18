@@ -5,7 +5,7 @@ import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
 import OrdenLevel from "./components/OrdenLevel";
 import FinishedOrden from "./pages/ClientLine";
-// import OrdenPage from "./pages/OrdenPage";
+import OrdenPage from "./pages/OrdenPage";
 import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
@@ -29,9 +29,9 @@ function App(){
     <Routes> 
     <Route exact path="/signup" element={<SignUp/>}></Route>
     <Route exact path="/login" element={<ULog/>}></Route>
-    <Route  exact path="/orden/:ordenId/edit" element={<Editar/>}></Route>
+    <Route  exact path="/orden/:ordenId" element={<Editar/>}></Route>
       <Route exact path="/ordens" element={<FinishedOrden/>}></Route>
-    {/* <Route exact path="/orden" element={<OrdenPage/>}></Route> */}
+    <Route exact path="/orden" element={<OrdenPage/>}></Route>
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
     <Footer/>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-// import API from "../utils/API";
+// import axios from "axios";
+import API from "../utils/API";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,]
@@ -17,12 +17,16 @@ const liestilo = {
 }
 
 const Editar = () => {
+  const [formObj, setFormObj] = useState({});
   const { ordenId } = useParams();
+  const navigate = useNavigate();
+ 
 
   useEffect(() => {
   
-    axios.get(`/api/orden/${ordenId}`).then((response) => {
-      console.log(response)
+    API.getOrden(ordenId).then((response) => {
+      // console.log(response)
+      // console.log(response.data)
        setFormObj(response.data)
      
      }).catch((err) =>{ 
@@ -30,17 +34,17 @@ const Editar = () => {
     });
    }, [ordenId])
 
-  const navigate = useNavigate()
-  const [formObj, setFormObj] = useState({
 
-    azada: 0,
-    pollo: 0,
-    pastor: 0,
-    barbacoa: 0,
-    chorizo: 0,
-    total: 0,
-    precio: 0,
-  });
+  // const [formObj, setFormObj] = useState({
+
+  //   azada: 0,
+  //   pollo: 0,
+  //   pastor: 0,
+  //   barbacoa: 0,
+  //   chorizo: 0,
+  //   total: 0,
+  //   precio: 0,
+  // });
 
   function handleChangeI(e) {
     const { name, value } = e.target;
@@ -54,7 +58,8 @@ const Editar = () => {
       formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
       formObj.precio = parseInt(formObj.total) * 3;
 
-  setTimeout(() => { axios.put("/orden",{
+  setTimeout(() => {
+     API.updateOrden(ordenId, {
     azada: formObj.azada,
     pollo: formObj.pollo,
     barbacoa: formObj.barbacoa,

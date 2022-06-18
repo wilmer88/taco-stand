@@ -21,7 +21,7 @@ const ULog = () => {
       e.preventDefault();
     
         // debugger
-    API.logIn(
+    API.login(
         { userName: userName,
       password: password}
         ).then((response) => {

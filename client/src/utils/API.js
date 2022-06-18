@@ -1,30 +1,30 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all ordens
   getOrdens: function() {
-    return axios.get("/api/orden");
+    return axios.get("http://localhost:3001/api/orden");
   },
-  // Gets the book with the given id
+  // Gets the orden with the given id
   getOrden: function(id) {
-    return axios.get("/api/orden/" + id);
+    return axios.get("http://localhost:3001/api/orden/" + id);
   },
   // Deletes the book with the given id
   deleteOrden: function(id) {
-    return axios.delete("/api/orden/" + id);
+    return axios.delete("http://localhost:3001/api/orden/" + id);
   },
   // Saves a book to the database
   saveOrden: function(ordenData) {
-    return axios.post("/api/orden", ordenData);
+    return axios.post("http://localhost:3001/api/orden", ordenData);
   },
-  upDateOrden: function(ordenData) {
-    return axios.put("/api/orden/", ordenData);
+  updateOrden: function(id, ordenData) {
+    return axios.put("http://localhost:3001/api/orden/" + id, ordenData);
   },
-  logIn: function(userData) {
-    return axios.post("/api/user/", userData);
+  login: function(userData) {
+    return axios.post("http://localhost:3001/api/login/", userData);
   },
   signup: function(userData) {
-    return axios.post("/api/signup/", userData);
+    return axios.post("http://localhost:3001/api/signup/", userData);
   }
 
 

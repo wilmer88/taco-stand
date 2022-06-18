@@ -1,6 +1,6 @@
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import API from "../utils/API"
 const LiComponent =  (props) => {
 const liestilo = {
   atras: {
@@ -16,7 +16,7 @@ const liestilo = {
 
   function eliminar(id){
     console.log(id)
-      axios.delete(`/api/orden/${id}`).then((res) => {
+      API.deleteOrden(id).then((res) => {
  console.log(res.data)
         navigate("/")
       }).catch((err) =>{ 
@@ -26,7 +26,7 @@ const liestilo = {
 
     function editarOrden(id) {
     console.log(id)
-    navigate(`/orden/${id}/edit`)
+    navigate(`/orden/${id}`)
     
   }
 
@@ -52,8 +52,8 @@ const liestilo = {
     <th>Azada</th>
     <th>Pollo</th>
     <th>pastor</th>
-    <th>chorizo</th>
     <th>barbacoa</th>
+    <th>chorizo</th>
 
   </tr>
 

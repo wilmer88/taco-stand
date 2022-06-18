@@ -8,7 +8,9 @@ const FinishedOrden = () => {
 
 
 useEffect(() => {
-  API.getOrdens().then((response ) => { console.log(response.data); setDen(response.data) }
+  API.getOrdens().then((response ) => {
+    //  console.log(response.data);
+      setDen(response.data) }
       )
       .catch((err) =>{ 
         console.log(err)

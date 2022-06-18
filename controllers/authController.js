@@ -111,63 +111,63 @@ module.exports = {
 
 
 
-//sign up
-// //jwt.io
-// module.exports = {
-//   logIn: function(req, res) {
-  router.post("/api/signup", (req, res)=>{
-    const { userName, password } = req.body;
-    if (!userName.trim() || !password.trim()) {
-      res.status(400);
-    } else {
-      console.log(userName);
-      console.log(password);
-      bcrypt
-        .hash(req.body.password, 10)
-        .then((hashedPassword) => {
-          console.log(hashedPassword);
-          db.User.create({
-            userName: userName,
-            password: hashedPassword,
-          })
-            .then((newUser) => {
-              const token = jwt.sign(
-                {
+// //sign up
+// // //jwt.io
+// // module.exports = {
+// //   logIn: function(req, res) {
+//   router.post("/api/signup", (req, res)=>{
+//     const { userName, password } = req.body;
+//     if (!userName.trim() || !password.trim()) {
+//       res.status(400);
+//     } else {
+//       console.log(userName);
+//       console.log(password);
+//       bcrypt
+//         .hash(req.body.password, 10)
+//         .then((hashedPassword) => {
+//           console.log(hashedPassword);
+//           db.User.create({
+//             userName: userName,
+//             password: hashedPassword,
+//           })
+//             .then((newUser) => {
+//               const token = jwt.sign(
+//                 {
                 
-                  userName: newUser.userName,
-                  password: newUser.password,
-                },
-                process.env.SECRET
-              );
-              res.json({
-                error: false,
-                data: token,
-                message: "succesfully signed up",
-              });
-            })
-            .catch((err) => {
-              console.log(err);
-              res.json({
-                error: true,
-                data: null,
-                message: "failed to hash",
-              });
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json({
-            error: true,
-            data: null,
-            message: "failed to create user",
-          });
-        });
-    }
-  } )
+//                   userName: newUser.userName,
+//                   password: newUser.password,
+//                 },
+//                 process.env.SECRET
+//               );
+//               res.json({
+//                 error: false,
+//                 data: token,
+//                 message: "succesfully signed up",
+//               });
+//             })
+//             .catch((err) => {
+//               console.log(err);
+//               res.json({
+//                 error: true,
+//                 data: null,
+//                 message: "failed to hash",
+//               });
+//             });
+//         })
+//         .catch((err) => {
+//           console.log(err);
+//           res.status(500).json({
+//             error: true,
+//             data: null,
+//             message: "failed to create user",
+//           });
+//         });
+//     }
+//   } )
   
   
-//   }
-// };
+// //   }
+// // };
 
   
 
@@ -222,4 +222,4 @@ router.post("/api/login", (req, res) => {
     });
 });
 
-// module.exports = router;
+// // module.exports = router;

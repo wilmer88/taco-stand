@@ -14,7 +14,6 @@
     "client": "cd client && npm run start",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
- 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wilmer88/taco-stand.git"
@@ -28,6 +27,7 @@
   "homepage": "https://github.com/wilmer88/taco-stand#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chai-http": "^4.3.0",
     "concurrently": "^7.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -38,6 +38,7 @@
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
     "path": "^0.12.7",
+    "proxy-sinon-chai": "^0.0.1",
     "sinon": "^13.0.2"
   },
   "devDependencies": {

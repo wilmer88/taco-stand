@@ -15,7 +15,7 @@ const [password, setPassword] = useState("");
     e.preventDefault();
 
     API.signup({
-      userName:userName,
+      userName: userName,
       password: password
     }).then((response) => {
       console.log(response.data)
