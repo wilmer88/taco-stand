@@ -1,4 +1,4 @@
-const { assert } = require("chai");
+const { assert, should } = require("chai");
 const chai = require("chai");
 let chaiHttp = require("chai-http");
 let baseurl = "http://localhost:3001"
@@ -11,17 +11,105 @@ const sinonChai = require("sinon-chai");
 // const { allOrdens } = require("../controllers/OrdenControllers");
 // const { returns } = require("sinon/lib/sinon/fake");
 var psc = require('proxy-sinon-chai');
-
+const testOrden = require("../models/Orden")
 const ordenController = require("../controllers/OrdenControllers");
-const { find } = require("../models/Orden");
+const { find, deleteOne } = require("../models/Orden");
 const { json } = require("express/lib/response");
 
 const expect = chai.expect;
 chai.use(sinonChai);
 let token = jwt;
 describe("ordenController", () => {
-    describe("allOrdens", () => {
+    describe("create", function(){
+        const sandbox = sinon.createSandbox();
+        afterEach(function () {
+          sinon.restore();
+          sandbox.restore();
+        });
+        const req = {
+            params: {
+              id: 1,
+              azada:1,
+              total:1,
+              precio:3,
+              
+            },
+          };
+          const statusJsonSpy = sinon.spy();
+          const res = {
+            json: sinon.spy(),
+            status: sinon.stub().returns({ json: statusJsonSpy }),
+          };
+        it("Creates new Orden", function () {
+            let newTestOrden = new testOrden({name: "chango", azada: 2, pollo:3});
+            newTestOrden.save()
+            .then(() => {
+                deleteOne()
+            })
+        });
+        // describe("orden.addTotal", function (){
+            it("adds all tacos together and returns a total", function(){
+                function addTotal (newTestOrden) {
+                    let total = newTestOrden.azada + newTestOrden.pollo
+                    return total
+                };
+      
+            });
+            // describe("orden.getPrecio", function () {
+                it("adds all the tocos together and multiplies the total by three", function () {
+                  
+                    function getPrecio (newTestOrden){
+                        let alltacos = newTestOrden.azada + newTestOrden.pollo
+                        let elPrecio = alltacos * 3;
+                        return elPrecio
+
+                    }
+                })
+            // });
+            // describe("db.Orden.create",function(){
+                it("creates a new orden and returns a promise resolved",async () => {
+                  
+       
+            
+                
+                    
+                        mongoose.Model.create = sandbox
+                          .stub()
+                          .returns(Promise.resolve("new orden"));
+                            await ordenController.create(req, res);
+                
+                    expect(statusJsonSpy).to.have.been.calledWith("new orden");
+                })
+  
+                  
+              
+            // })
+
+          
+                // it("shoud throw a error if there is an error", async ()=> {
+                //  const sandbox = sinon.createSandbox();
+                //  const statusJsonSpy = sinon.spy();
+                //  const res = {
+                //     json: sinon.spy(),
+                //     status: sinon.stub().returns({ json: statusJsonSpy }),
+                //   };
+                //     mongoose.Model.create = sandbox
+                //     .stub()
+                //     .returns(Promise.reject("failed to post order/orden dat"));
+                //     await testOrden.create();
+                //     await console.log("---");
+              
+                //     expect(res.json).to.have.been.calledWith("failed to post order/orden data");
+                //     // expect(statusJsonSpy).to.have.been.calledWith("error message");
+                // })
+
+          
+            
+
+        // })
+
         // const sandbox = sinon.createSandbox();
+        
         // afterEach(function () {
         //     sinon.restore();
         //     sandbox.restore();
@@ -40,7 +128,7 @@ describe("ordenController", () => {
             
         // };
 
-            it("should return the models if found", async () => {
+            // it("should return the models if found", async () => {
             
                 // const mockAllOrdens = { 
                 //      authCheck:
@@ -62,12 +150,12 @@ describe("ordenController", () => {
                    
                 // };
                 
-                mongoose.Model.jwtV = mockAllOrdens.authCheck
-                mongoose.Model.find = mockAllOrdens.find;
-               mongoose.Model.sort = mockAllOrdens.sort;
-               await ordenController.allOrdens(req, res);
-               expect (res).to.be.Arguments(401)
-            });
+            //     mongoose.Model.jwtV = mockAllOrdens.authCheck
+            //     mongoose.Model.find = mockAllOrdens.find;
+            //    mongoose.Model.sort = mockAllOrdens.sort;
+            //    await ordenController.allOrdens(req, res);
+            //    expect (res).to.be.Arguments(401)
+            // });
 
         //     it("should check for headers", async () => {
              

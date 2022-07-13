@@ -1,5 +1,5 @@
 ### quiero tacos/taco-Stand
-Built for food service workers.The aplication helps customers and buisness owner save time by allowing the customer to order tacos/foods before leaving their current location, helps the seller by not slowing down or stoping their current order. the app does the math and chargest  on the submited order. The App informs both parties of the order cost/bill .
+Built for food service trucks.The aplication helps customers and buisness owner save time by allowing the customer to order tacos/foods before leaving their current location, helps the seller by not slowing down or stoping their current order. the app does the math and chargest  on the submited order. The App informs both parties of the order cost/bill .
 ### technoligies/libraries
 ES6,bulma,react, jsx, axios, NODE, Mongoose, MongoDB Atlas, Express, bcrypt, jwt, JavaScript, heroku.
  Front end Is built with Reacts version 18.0.0  and bulma css framework library, uses react-router-dom for Route rendering functuallity. Applied webdevelopment best practices. Designed to be mobile responsive for all mobile devises. 

@@ -12,7 +12,7 @@ module.exports = {
       orden.getPrecio();
       db.Orden.create(orden)
         .then((dbOrden) => {
-          res.json(dbOrden);
+         res.status(201).res.json(dbOrden);
         })
         .catch((err) => {
           console.log(err);
