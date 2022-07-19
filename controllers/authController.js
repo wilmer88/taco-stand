@@ -109,7 +109,7 @@ module.exports = {
 }
 
 
-
+/////////legacy code///////
 
 // //sign up
 // // //jwt.io
@@ -171,55 +171,55 @@ module.exports = {
 
   
 
-router.post("/api/login", (req, res) => {
-  const { userName, password } = req.body;
-  db.User.findOne({ userName: userName })
-    .then((founduser) => {
-      if (founduser) {
-        bcrypt
-          .compare(password, founduser.password)
-          .then(function (resultado) {
-            console.log(resultado);
-            if (resultado) {
-              const token = jwt.sign(
-                {
+// router.post("/api/login", (req, res) => {
+//   const { userName, password } = req.body;
+//   db.User.findOne({ userName: userName })
+//     .then((founduser) => {
+//       if (founduser) {
+//         bcrypt
+//           .compare(password, founduser.password)
+//           .then(function (resultado) {
+//             console.log(resultado);
+//             if (resultado) {
+//               const token = jwt.sign(
+//                 {
                  
-                  userName: founduser.userName,
-                  password: founduser.password,
-                },
-                process.env.SECRET
-              );
-              res.json({
-                error: false,
-                data: token,
-                message: "succesfully logged in",
-              });
-            } else {
-              res.status(401).json({
-                error: true,
-                data: null,
-                message: "somthing went wrong",
-              });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json({
-              error: true,
-              data: null,
-              message: "failed to delete user",
-            });
-          });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: true,
-        data: null,
-        message: "failed to delete user",
-      });
-    });
-});
+//                   userName: founduser.userName,
+//                   password: founduser.password,
+//                 },
+//                 process.env.SECRET
+//               );
+//               res.json({
+//                 error: false,
+//                 data: token,
+//                 message: "succesfully logged in",
+//               });
+//             } else {
+//               res.status(401).json({
+//                 error: true,
+//                 data: null,
+//                 message: "somthing went wrong",
+//               });
+//             }
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//             res.status(500).json({
+//               error: true,
+//               data: null,
+//               message: "failed to delete user",
+//             });
+//           });
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({
+//         error: true,
+//         data: null,
+//         message: "failed to delete user",
+//       });
+//     });
+// });
 
 // // module.exports = router;
