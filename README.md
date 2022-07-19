@@ -1,16 +1,18 @@
 ### quiero tacos/taco-Stand
-Built for food service trucks.The aplication helps customers and buisness owner save time by allowing the customer to order tacos/foods before leaving their current location, helps the seller by not slowing down or stoping their current order. the app does the math and chargest  on the submited order. The App informs both parties of the order cost/bill .
+Api driven cloude based SaaS for food service trucks or restaurant business. The aplication helps customers and buisness owner save time by allowing the customer to place an order at the business location or pre ordering at customer home or current location, helps the business by not slowing down or stoping preperation process, by not needing to have someone there when an order is being placed. 
+On a submited order the app calculates the amount due saves the order details to a database and instantly places the the order to be seen by the business. The App informs both parties of the amount due and the customer place in line if signed in to the app; Using athorization authentication process.
 ### technoligies/libraries
-ES6,bulma,react, jsx, axios, NODE, Mongoose, MongoDB Atlas, Express, bcrypt, jwt, JavaScript, heroku.
+ES6,bulma,react, jsx, axios, NODE, Mongoose, MongoDB Atlas, Express, bcrypt, jwt, JavaScript, heroku, mocha and nyc for testing covarage.
  Front end Is built with Reacts version 18.0.0  and bulma css framework library, uses react-router-dom for Route rendering functuallity. Applied webdevelopment best practices. Designed to be mobile responsive for all mobile devises. 
 react handles all webpacks
 
- The backend is incorpriated with Node, NPM packages like Morgan for logging errors; nth-check for parseing and compiling; axios for making API calls; svgo for optimizing files. I chose  MongoDB a nosql data platform/database; and and used Mongoose for modeleing the data. Express middleware  is used as server sofware for comunicating with the database thru the frontend and backend.
+ The backend is incorpriated with Node, NPM packages like Morgan for logging errors; nth-check for parseing and compiling; axios for making API calls; svgo for optimizing files. I chose  MongoDB a nosql data platform/database; Mongoose for the data models. Express middleware  is used as server software communicating the frontend with the backend database.
  
- Aplication uses .env file for environment variables, bcrypt for hashing passwords, incoperated with json web tokens in the use of headers. Athorization, Authentication as protection to some application access. The Aplication is Currently in production hosted by Github and Heroku; Heroku enables the applicaction to store data from the backend.
+ For security/restricting some application access; Aplication uses/has .env file with environment variables. bcrypt for hashing passwords, json web tokens in the use of headers. The Aplication is Currently in production and hosted by Github and Heroku; Heroku is enabling the applicaction backend to an AWS cloud database.
 
 ### pitch
- No more wasted time waiting in line or missed information when talking on the phone, no more screaming thru foodtruck ordering windows over a busy street/plaza; just a smooth ride for both sides.
-to help out on one or two things that were holding back production.
-quiero tacos was buildt as a passion project with the idea of solving, helping and enjoying the food truck industry, home cooks, and food service worker. taco-stand was buildt as a passion project with the idea of solving, helping and enjoying the food truck industry, home cooks, and food service worker.
-
+How would you like?
+No more wasted time waiting in line or missed information when placing an order over the phone. No more poluting noise when screaming thru foodtruck window ordering over a busy street or plaza.
+how would you like?
+When taking lunch and without waiting in line, pre order your meal for quick and easy pick up.
+For that this passion project application was created, built to help the food truck industry, caters and restaurant businessess by smoothening and automate the ordering process for both customer and client without holding back production or making an expensive investment
