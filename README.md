@@ -15,7 +15,7 @@ Visual Studio Code, MongoDB Atlas ran on Amazon Web Service, Postman, Studio 3T,
 ![screenshot](/client/public/images/casa.png)
 ![screenshot](/client/public/images/ordenar.png)
 ![screenshot](/client/public/images/auth.png)
-![screenshot](/client/public/images/allordens.png)
+![screenshot](/client/public/images/alloredens.png)
 ![screenshot](/client/public/images/edit.png)
 
 
