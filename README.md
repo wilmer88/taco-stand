@@ -12,11 +12,11 @@ Visual Studio Code, MongoDB Atlas ran on Amazon Web Service, Postman, Studio 3T,
  
 [this is the link to the page](https://taco-stand.herokuapp.com/)
 
-![screenshot](./client/public/assets/images/casa.png)
-![screenshot](./client/public/assets/images/ordenar.png)
-![screenshot](./client/public/assets/images/auth.png)
-![screenshot](./public/assets/images/allordens.png)
-![screenshot](./client/public/assets/images/edit.png)
+![screenshot](/client/public/assets/images/casa.png)
+![screenshot](/client/public/assets/images/ordenar.png)
+![screenshot](/client/public/assets/images/auth.png)
+![screenshot](/public/assets/images/allordens.png)
+![screenshot](/client/public/assets/images/edit.png)
 
 
 
