@@ -9,10 +9,10 @@ module.exports = {
   
       const { userName, password } = req.body;
       if (!userName.trim() || !password.trim()) {
-        res.status(400);
+       return res.status(400);
       } else {
-        console.log(userName);
-        console.log(password);
+        // console.log(userName);
+        // console.log(password);
         bcrypt
           .hash(req.body.password, 10)
           .then((hashedPassword) => {
