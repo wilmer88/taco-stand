@@ -50,8 +50,7 @@ API.saveOrden(formObj).then((response)=>{
           console.log(err)
         });
         };
-        // const cilantroCounter = 1;
-        const cevollaCounter = 1;
+     
 
   
     return (
@@ -200,40 +199,8 @@ API.saveOrden(formObj).then((response)=>{
             {/* this div below has no content but helps center content  */}
             <div className="columns"></div>
             
-          <div className="card-content">
-          <hr></hr>
-          <div>   
-      <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Cevolla</strong></h5>
-      </div>
-    <article className="columns is-mobile field is-grouped">
-      <div className="column is-responsive mt-2">
-      <figure className="content image is-96x96">
-      <img src="https://www.fillmurray.com/300/300" alt="" />
-      </figure>
-      </div>
-      <div className="columns  is-mobile"> </div>
-      <div className="column is-responsive"> 
-              <div className="container">
-              <button className="button is-rounded is-light"><strong style={{fontSize:"22px"}}>-</strong></button>
-         <div className="content m-1"> 
-         <span><h4>{cevollaCounter}</h4></span> 
-         </div> 
-         <button className="button is-info is-rounded"><strong style={{fontSize:"20px"}}>+</strong></button> 
-      </div>
-      </div>
-       </article>
-  
          
-    {/* <article className="subtitle field "> <button className="button is-medium">-</button> <span></span> <button>+</button> </article>  */}
-    <hr></hr>
-    <button>+</button> <span></span> <button>+</button>
-    <hr></hr>
-    <button>+</button> <span></span> <button>+</button>
-    <hr></hr>
-    
-    
-  </div>
-
+              {/* above goes condimentos */}
             </div>
       
  <footer className="card-footer">
