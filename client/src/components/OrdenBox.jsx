@@ -46,24 +46,45 @@ API.saveOrden(formObj).then((response)=>{
     pastor: 0,
     chorizo: 0,
   })
-
 }).catch((err) =>{ 
           console.log(err)
         });
-  };
+        };
+        // const cilantroCounter = 1;
+        const cevollaCounter = 1;
+
   
     return (
        <>
 <form >
+<div id="modalll" className={`modal ${showModel}`}>
+              <div className="modal-background"></div>
+              <div className="modal-content ">
+                <div className="box is-mobile">
+                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
+                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
+                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
+                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
+                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
+                  <hr></hr>
+                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
+                <br></br>
+                <br></br>
+                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+                </div>
+              </div>
+              <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
+            </div> 
  <div className="box is-shadowless is-align-self-center">
  <div className="card">
 
  <div className="card-content">
-<div className="m-5 mr-8 media-content">
-<div className="field is-horizontal">
-
-<div className="field"> 
-<label className="label">
+ <div className="m-5 mr-8 media-content">
+  <div className="field is-horizontal">
+ <div className="field"> 
+      <label className="label">
             Nombre Para La Orden:
             </label>
             <div className="is-mobile">
@@ -176,30 +197,46 @@ API.saveOrden(formObj).then((response)=>{
         </div>
             </div>
             </div>
+            {/* this div below has no content but helps center content  */}
+            <div className="columns"></div>
+            
+          <div className="card-content">
+          <hr></hr>
+          <div>   
+      <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Cevolla</strong></h5>
+      </div>
+    <article className="columns is-mobile field is-grouped">
+      <div className="column is-responsive mt-2">
+      <figure className="content image is-96x96">
+      <img src="https://www.fillmurray.com/300/300" alt="" />
+      </figure>
+      </div>
+      <div className="columns  is-mobile"> </div>
+      <div className="column is-responsive"> 
+              <div className="container">
+              <button className="button is-rounded is-light"><strong style={{fontSize:"22px"}}>-</strong></button>
+         <div className="content m-1"> 
+         <span><h4>{cevollaCounter}</h4></span> 
+         </div> 
+         <button className="button is-info is-rounded"><strong style={{fontSize:"20px"}}>+</strong></button> 
+      </div>
+      </div>
+       </article>
+  
+         
+    {/* <article className="subtitle field "> <button className="button is-medium">-</button> <span></span> <button>+</button> </article>  */}
+    <hr></hr>
+    <button>+</button> <span></span> <button>+</button>
+    <hr></hr>
+    <button>+</button> <span></span> <button>+</button>
+    <hr></hr>
+    
+    
+  </div>
+
             </div>
-                 
-            <div id="modalll" className={`modal ${showModel}`}>
-              <div className="modal-background"></div>
-              <div className="modal-content ">
-                <div className="box is-mobile">
-                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
-                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
-                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
-                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
-                  <hr></hr>
-                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
-                <br></br>
-                <br></br>
-                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
-                </div>
-              </div>
-              <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
-            </div> 
-     
-<footer className="card-footer">
+      
+ <footer className="card-footer">
                   <div className="card-footer-item">
                   <span>
                   <button onClick={handleOpen} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
@@ -216,7 +253,7 @@ API.saveOrden(formObj).then((response)=>{
                     </span>
                   </div>
                 </footer>
- </div>
+  </div>
  </div>  
 </form>
        </>
