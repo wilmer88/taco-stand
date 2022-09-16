@@ -50,13 +50,12 @@ API.saveOrden(formObj).then((response)=>{
           console.log(err)
         });
         };
-     
+                                                                                                                        // const cilantroCounter = 1;
+                                                                                                                        const cevollaCounter = 1;
 
-  
-    return (
-       <>
-<form >
-<div id="modalll" className={`modal ${showModel}`}>
+ return (<>
+         <form >
+          <aside id="modalll" className={`modal ${showModel}`}>
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
@@ -75,21 +74,32 @@ API.saveOrden(formObj).then((response)=>{
                 </div>
               </div>
               <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
-            </div> 
- <div className="box is-shadowless is-align-self-center">
- <div className="card">
+          </aside> 
+          <main className="box is-shadowless is-align-self-center">
+          <section className="card">
 
- <div className="card-content">
- <div className="m-5 mr-8 media-content">
-  <div className="field is-horizontal">
- <div className="field"> 
-      <label className="label">
+
+
+
+
+
+
+
+
+
+ 
+
+ <article className="card-content">
+ <aside className="m-1 content">
+  <main className="columns">
+            <section className="field ml-1"> 
+            <label className="label">
             Nombre Para La Orden:
             </label>
             <div className="is-mobile">
               <input
                 onChange={handleChangeI}
-                     className="input is-medium is-rounded"
+              className="input is-medium is-rounded"
               type="nombre"
               id="orden-name"
               name="nombreDeOrden"
@@ -98,9 +108,9 @@ API.saveOrden(formObj).then((response)=>{
                 value={formObj.nombreDeOrden}
               />
             </div>
-         </div>
+         </section>
 
-         <div className="ml-6 field">
+         <div className="ml-3 field">
         <label className="mr-6 label">
                 Azada
          </label>
@@ -119,7 +129,7 @@ API.saveOrden(formObj).then((response)=>{
          </div>
         </div>
 
-        <div className="ml-6 field">
+        <div className="ml-3 field">
         <label className="mr-6 label">
                 Pollo
          </label>
@@ -138,7 +148,7 @@ API.saveOrden(formObj).then((response)=>{
          </div>
         </div>
 
-        <div className="ml-6 field">
+        <div className="ml-3 field">
         <label className="mr-6 label">
                 Barbacoa
          </label>
@@ -157,7 +167,7 @@ API.saveOrden(formObj).then((response)=>{
          </div>
         </div>
 
-        <div className="ml-6 field">
+        <div className="ml-3 field">
         <label className="mr-6 label">
                 Pastor
          </label>
@@ -176,7 +186,7 @@ API.saveOrden(formObj).then((response)=>{
          </div>
         </div>
 
-        <div className="ml-6 field">
+        <div className="ml-3 field">
         <label className="mr-6 label">
                 Chorizo
          </label>
@@ -194,16 +204,55 @@ API.saveOrden(formObj).then((response)=>{
            </select>
          </div>
         </div>
-            </div>
-            </div>
-            {/* this div below has no content but helps center content  */}
-            <div className="columns"></div>
-            
-         
-              {/* above goes condimentos */}
-            </div>
+
+            </main>
+            </aside>
+            </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <aside className="card-content">
+          <hr></hr>
+          <figcaption>   
+      <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Cebolla</strong></h5>
+      </figcaption>
+    <article className="columns is-mobile field is-grouped">
+      <div className="column is-responsive  mb-6">
+      <figure className="content image is-128x128 mr-1">
+        
+      <img id="onions" src={"/images/onions.png" }alt="" style={{ overflow: "hidden" } } /> 
+        
       
- <footer className="card-footer">
+      </figure>
+      </div>
+     
+      <aside className="column is-responsive "> 
+              <section className="container mt-5">
+              <button className="button is-rounded is-light ml-3"><strong style={{fontSize:"26px"}}>-</strong></button>
+         <figcaption className="content m-1 mt-3 ml-3"> 
+         <h3 ><mark >{cevollaCounter}</mark></h3>
+         </figcaption> 
+         <button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>+</strong></button> 
+      </section>
+      </aside>
+       </article>  
+    
+          </aside>
+
+         
+          <footer className="card-footer">
                   <div className="card-footer-item">
                   <span>
                   <button onClick={handleOpen} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
@@ -219,12 +268,22 @@ API.saveOrden(formObj).then((response)=>{
                       </Link>
                     </span>
                   </div>
-                </footer>
-  </div>
- </div>  
+            </footer>
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  </section>
+ </main>  
 </form>
-       </>
-    );
+       </>);
   }
 export default OrdenBox;
 
