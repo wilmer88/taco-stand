@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 // import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
+  // state= {cebollaCount : 1}
+  
+
   async function firstFunction(){
     handleClose()
     };
@@ -29,7 +32,14 @@ const OrdenBox = () => {
     barbacoa: 0,
     pastor: 0,
     chorizo: 0,
-  })
+    cebollaCount: 1,
+   
+  });
+
+  // function cebollaIncrement(){
+  //   this.setState({ cebollaCount: this.state.cebollaCount + 1 });
+
+  // }
     function handleChangeI(e) {
    const {name, value} = e.target;
     setFormObj({...formObj, [name]: value})
@@ -78,16 +88,6 @@ API.saveOrden(formObj).then((response)=>{
           <main className="box is-shadowless is-align-self-center">
           <section className="card">
 
-
-
-
-
-
-
-
-
-
- 
 
  <article className="card-content">
  <aside className="m-1 content">
@@ -210,46 +210,11 @@ API.saveOrden(formObj).then((response)=>{
             </article>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-< Condimentos/>
-          {/* <aside className="card-content">
-          <hr></hr>
-          <figcaption>   
-      <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Cebolla</strong></h5>
-      </figcaption>
-    <article className="columns is-mobile field is-grouped">
-      <div className="column is-responsive  mb-6">
-      <figure className="content image is-128x128 mr-1">
-        
-      <img id="onions" src={"/images/onions.png" }alt="" style={{ overflow: "hidden" } } /> 
-        
+      < Condimentos
+      // cebollaCount= {this.cebollaCount}
+      // cebollaIncrement={this.cebollaIncrement}
+      />
       
-      </figure>
-      </div>
-     
-      <aside className="column is-responsive "> 
-              <section className="container mt-5">
-              <button className="button is-rounded is-light ml-3"><strong style={{fontSize:"26px"}}>-</strong></button>
-         <figcaption className="content m-1 mt-3 ml-3"> 
-         <h3 ><mark >{cevollaCounter}</mark></h3>
-         </figcaption> 
-         <button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>+</strong></button> 
-      </section>
-      </aside>
-       </article>  
-    
-          </aside> */}
 
          
           <footer className="card-footer">

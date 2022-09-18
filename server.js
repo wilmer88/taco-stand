@@ -4,18 +4,16 @@ const routes = require("./routes");
 require("dotenv").config();
 const cors = require("cors");
 
+
 const app = express();
 app.use(cors());
 
-mongoose
-  .connect(
+mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/taco-stand" ,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log("MongoDB has been connected"))
+    }).then(() => console.log("MongoDB has been connected"))
   .catch((err) => console.log(err));
 
 
