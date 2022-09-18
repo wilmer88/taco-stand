@@ -10,6 +10,7 @@ import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
+
 function App(){
 
   const [jwt, setJwt] = useState("");

@@ -1,4 +1,5 @@
 // import axios from "axios";
+import Condimentos from "../components/Condimentos"
 import API from "../utils/API"
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
@@ -50,8 +51,7 @@ API.saveOrden(formObj).then((response)=>{
           console.log(err)
         });
         };
-                                                                                                                        // const cilantroCounter = 1;
-                                                                                                                        const cevollaCounter = 1;
+                                                                                                                        
 
  return (<>
          <form >
@@ -222,8 +222,8 @@ API.saveOrden(formObj).then((response)=>{
 
 
 
-
-          <aside className="card-content">
+< Condimentos/>
+          {/* <aside className="card-content">
           <hr></hr>
           <figcaption>   
       <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Cebolla</strong></h5>
@@ -249,7 +249,7 @@ API.saveOrden(formObj).then((response)=>{
       </aside>
        </article>  
     
-          </aside>
+          </aside> */}
 
          
           <footer className="card-footer">
