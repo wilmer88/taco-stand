@@ -40,6 +40,7 @@ const OrdenSchema = new Schema({
     type: String,
     trim: true,
   },
+
   clienteId: {
     type: Schema.Types.ObjectId,
     ref: "User",

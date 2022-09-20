@@ -57,11 +57,7 @@ const CondimentosSchema = new Schema({
     default: false,
   },
   
-  conectcion: {
-    type: Schema.Types.ObjectId,
-    ref: "OrdenShema",
-    strictPopulate: false,
-  },
+
   tiempo: {
     type: Date,
     default: Date.now

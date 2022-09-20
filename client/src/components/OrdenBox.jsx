@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 
 // import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
-  // state= {cebollaCount : 1}
   
-
   async function firstFunction(){
     handleClose()
     };
@@ -23,7 +21,7 @@ const OrdenBox = () => {
   const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
       const [showModel, setshowModel] = useState("modal");
       const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
-      const handleClose = ()=>{  setshowModel("modal")}
+      const handleClose = ()=>{setshowModel("modal")}
 
   const [formObj, setFormObj] = useState({
     nombreDeOrden: "",
@@ -32,8 +30,6 @@ const OrdenBox = () => {
     barbacoa: 0,
     pastor: 0,
     chorizo: 0,
-    cebollaCount: 1,
-   
   });
 
   // function cebollaIncrement(){
@@ -48,7 +44,7 @@ const OrdenBox = () => {
     e.preventDefault();
 API.saveOrden(formObj).then((response)=>{
   firstFunction()
-  setTimeout(() => {secondFunction()}, 600);
+  setTimeout(() => {secondFunction()}, 1800);
   setFormObj({
     nombreDeOrden: "",
     azada: 0,
@@ -65,26 +61,7 @@ API.saveOrden(formObj).then((response)=>{
 
  return (<>
          <form >
-          <aside id="modalll" className={`modal ${showModel}`}>
-              <div className="modal-background"></div>
-              <div className="modal-content ">
-                <div className="box is-mobile">
-                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
-                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
-                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
-                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
-                  <hr></hr>
-                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
-                <br></br>
-                <br></br>
-                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
-                </div>
-              </div>
-              <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
-          </aside> 
+      
           <main className="box is-shadowless is-align-self-center">
           <section className="card">
 
@@ -215,7 +192,26 @@ API.saveOrden(formObj).then((response)=>{
       // cebollaIncrement={this.cebollaIncrement}
       />
       
-
+      <aside id="modalll" className={`modal ${showModel}`}>
+              <div className="modal-background"></div>
+              <div className="modal-content ">
+                <div className="box is-mobile">
+                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
+                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
+                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
+                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
+                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
+                  <hr></hr>
+                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
+                <br></br>
+                <br></br>
+                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+                </div>
+              </div>
+              <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
+          </aside> 
          
           <footer className="card-footer">
                   <div className="card-footer-item">

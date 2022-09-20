@@ -1,15 +1,16 @@
-const router = require("express").Router();
-const ordenController = require("../../controllers/OrdenControllers");
+// const router = require("express").Router();
+// const CondimentosController = require("../../controllers/CondimentosController");
 
-// Matches with "/api/ordens"
-router.route("/")
-  .get(ordenController.allCondimentosNdrinks)
-  .post(ordenController.create);
 
-// Matches with "/api/orden/:id"
-router.route("/:id")
-  .get(ordenController.getOne)
-  .put(ordenController.updateOrden)
-  .delete(ordenController.remove);
+// // Matches with "/api/ordens"
+// router.route("/")
+//   .get(CondimentosController.allSideOrders)
+//   .post(CondimentosController.createSideOrder);
 
-module.exports = router;
+// // Matches with "/api/orden/:id"
+// // router.route("/:id")
+// //   .get(ordenController.getOne)
+// //   .put(ordenController.updateOrden)
+// //   .delete(ordenController.remove);
+
+// module.exports = router;
