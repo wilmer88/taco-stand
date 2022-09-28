@@ -6,5 +6,5 @@ module.exports = {
   
     User: require("./User.js"),
 
-    condimentosNdrinks: require("./Condimentos.js")
+    SideOrderNdrinks: require("./sideOrders.js")
   };

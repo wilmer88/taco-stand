@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CondimentosSchema = new Schema({
+const sideOrderSchema = new Schema({
   cebolla: {
     type: Number,
     default: 0,
@@ -22,6 +22,22 @@ const CondimentosSchema = new Schema({
     type: Number,
     default: 0,
   },
+  horchata: [
+    {
+    large: {
+      type: Number,
+      default:0,
+    },
+    small: {
+      type: Number,
+      default:0,
+    },
+    horchataPrice: {
+      type: Number,
+      default:0,
+    }
+  }
+  ],
   coca: {
     type: Number,
     default: 0,
@@ -45,9 +61,8 @@ const CondimentosSchema = new Schema({
   },
   verduraPrice: {
     type: Number,
-    
   },
-  
+
   cancelar: {
     type: Boolean,
     default: false,
@@ -56,26 +71,32 @@ const CondimentosSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  
 
   tiempo: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-
 });
 
-CondimentosSchema.methods.verdurasTogether = function () {
+sideOrderSchema.methods.verdurasTogether = function () {
   this.allVerduras =
     this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa;
   return this.allVerduras;
 };
-CondimentosSchema.methods.addingVerduraPrice = function () {
+sideOrderSchema.methods.addingVerduraPrice = function () {
   let verduarasAddedtogetherPrice =
-  this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa;
-  this.priceOfVerduras = verduarasAddedtogetherPrice * .50;
+    this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa;
+  this.priceOfVerduras = verduarasAddedtogetherPrice * 0.5;
   return this.verduarasAddedtogetherPrice;
 };
-const condimentosNdrinks = mongoose.model("condimentosNdrinks", CondimentosSchema);
+sideOrderSchema.methods.getHorchataPrice = function () {
+  this.horchata.horchataPrice =
+    this.horchata.large * 4 + this.horchata.large * 2
+  return  this.horchata.horchataPrice;
+};
+const SideOrderNdrinks = mongoose.model(
+  "condimentosNdrinks",
+  sideOrderSchema
+);
 
-module.exports = condimentosNdrinks;
+module.exports = SideOrderNdrinks;
