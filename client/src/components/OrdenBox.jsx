@@ -52,6 +52,8 @@ API.saveOrden(formObj).then((response)=>{
     barbacoa: 0,
     pastor: 0,
     chorizo: 0,
+    precios:0,
+    total:0,
   })
 }).catch((err) =>{ 
           console.log(err)
@@ -231,16 +233,7 @@ API.saveOrden(formObj).then((response)=>{
                   </div>
             </footer>
   
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
   </section>
  </main>  
 </form>

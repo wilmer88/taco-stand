@@ -41,8 +41,11 @@ module.exports = {
 //  );
      },    
      create: function(req, res){
+      const orden = new Orden(req.body);
+      orden.addTotal();
+      orden.getPrecio();
 
-      db.Orden.create(req.body).then((dbOrden) => {
+      db.Orden.create(orden).then((dbOrden) => {
           res.json(dbOrden); res.status(201)}).catch((err) => {
           console.log(err);
           res.json({

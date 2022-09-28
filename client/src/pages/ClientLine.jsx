@@ -3,10 +3,8 @@ import Licomponent from "../components/LiComponent";
 import React, {useEffect, useState} from "react";
 import API from "../utils/API"
 const FinishedOrden = () => {
+  
   const [den, setDen] = useState([])
-
-
-
 useEffect(() => {
   API.getOrdens().then((response ) => {
     //  console.log(response.data);
