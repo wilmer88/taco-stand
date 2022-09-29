@@ -1,5 +1,7 @@
 // import axios from "axios";
-import Condimentos from "../components/Condimentos"
+import Condimentos from "../components/Condimentos";
+import TacoField from "../components/tacoField";
+
 import API from "../utils/API"
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
@@ -18,7 +20,7 @@ const OrdenBox = () => {
 
 
   // const navigate = useNavigate()
-  const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
+
       const [showModel, setshowModel] = useState("modal");
       const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
@@ -35,11 +37,13 @@ const OrdenBox = () => {
   // function cebollaIncrement(){
   //   this.setState({ cebollaCount: this.state.cebollaCount + 1 });
 
-  // }
-    function handleChangeI(e) {
-   const {name, value} = e.target;
-    setFormObj({...formObj, [name]: value})
-  };
+  // };
+
+  //   function handleChangeI(e) {
+  //  const {name, value} = e.target;
+  //   setFormObj({...formObj, [name]: value})
+  // };
+
   const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden(formObj).then((response)=>{
@@ -69,120 +73,13 @@ API.saveOrden(formObj).then((response)=>{
 
 
  <article className="card-content">
- <aside className="m-1 content">
-  <main className="columns">
-            <section className="field ml-1"> 
-            <label className="label">
-            Nombre Para La Orden:
-            </label>
-            <div className="is-mobile">
-              <input
-                onChange={handleChangeI}
-              className="input is-medium is-rounded"
-              type="nombre"
-              id="orden-name"
-              name="nombreDeOrden"
-                aria-label="iput for order name"
-                placeholder="Gonzalo"
-                value={formObj.nombreDeOrden}
-              />
-            </div>
-         </section>
+ <aside className="m-3 content" >
+  <main className="columns" >
+ 
 
-         <div className="ml-3 field">
-        <label className="mr-6 label">
-                Azada
-         </label>
-         <div className="mr-6  select">
-           <select
-             name="azada"
-             value={formObj.azada}
-             onChange={handleChangeI}
-           >
-             {numeros.map((nume) => (
-               <option key={nume.toString()} value={nume}>
-                 {nume}
-               </option>
-             ))}
-           </select>
-         </div>
-        </div>
+         <TacoField  style={{display: 'flex',}}  />
 
-        <div className="ml-3 field">
-        <label className="mr-6 label">
-                Pollo
-         </label>
-         <div className="mr-6  select ">
-           <select
-             name="pollo"
-             value={formObj.pollo}
-             onChange={handleChangeI}
-           >
-             {numeros.map((nume) => (
-               <option key={nume.toString()} value={nume}>
-                 {nume}
-               </option>
-             ))}
-           </select>
-         </div>
-        </div>
-
-        <div className="ml-3 field">
-        <label className="mr-6 label">
-                Barbacoa
-         </label>
-         <div className="mr-6  select ">
-           <select
-             name="barbacoa"
-             value={formObj.barbacoa}
-             onChange={handleChangeI}
-           >
-             {numeros.map((nume) => (
-               <option key={nume.toString()} value={nume}>
-                 {nume}
-               </option>
-             ))}
-           </select>
-         </div>
-        </div>
-
-        <div className="ml-3 field">
-        <label className="mr-6 label">
-                Pastor
-         </label>
-         <div className="mr-6  select">
-           <select
-             name="pastor"
-             value={formObj.pastor}
-             onChange={handleChangeI}
-           >
-             {numeros.map((nume) => (
-               <option key={nume.toString()} value={nume}>
-                 {nume}
-               </option>
-             ))}
-           </select>
-         </div>
-        </div>
-
-        <div className="ml-3 field">
-        <label className="mr-6 label">
-                Chorizo
-         </label>
-         <div className="mr-6  select">
-           <select
-             name="chorizo"
-             value={formObj.chorizo}
-             onChange={handleChangeI}
-           >
-             {numeros.map((nume) => (
-               <option key={nume.toString()} value={nume}>
-                 {nume}
-               </option>
-             ))}
-           </select>
-         </div>
-        </div>
+       
 
             </main>
             </aside>

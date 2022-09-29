@@ -46,6 +46,11 @@ const OrdenSchema = new Schema({
     ref: "User",
     strictPopulate: false,
   },
+  xOrden: [{
+    type: Schema.Types.ObjectId,
+    ref: "SideOrderNdrinks",
+    strictPopulate: true,
+  }],
   tiempo: {
     type: Date,
     default: Date.now
