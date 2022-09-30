@@ -40,6 +40,9 @@ module.exports = {
 //    }
 //  );
      },    
+
+
+     
      create: function(req, res){
       const orden = new Orden(req.body);
       orden.addTotal();

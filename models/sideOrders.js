@@ -69,12 +69,10 @@ const sideOrderSchema = new Schema({
     default: false,
   },
 
-orginOrder: [{
+orginId: {
     type: Schema.Types.ObjectId,
     ref: "Orden",
-    strictPopulate: true,
-  }],
-
+  },
   
 });
 sideOrderSchema.methods.getHorchataPrice = function () {
@@ -95,7 +93,7 @@ sideOrderSchema.methods.addingBebidasPrice = function () {
 };
 
 const SideOrderNdrinks = mongoose.model(
-  "condimentosNdrinks",
+  "SideOrderNdrinks",
   sideOrderSchema
 );
 
