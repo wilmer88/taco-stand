@@ -6,6 +6,7 @@ const cors = require("cors");
 
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
@@ -19,7 +20,7 @@ mongoose.connect(
 
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 const PORT = process.env.PORT || 3001;
 // const AuthoController = require("./controllers/authController");
@@ -44,6 +45,5 @@ app.get("*", function (request, response) {
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
-
 
 

@@ -12,14 +12,15 @@ module.exports = {
   },
 
     createSideOrder: function(req,res){
-        const sideOrder = new SideOrderNdrinks(req.body);
+        const createdSideOrder = new SideOrderNdrinks(req.body);
         
         
 
-      db.SideOrderNdrinks.create(sideOrder)
+      db.SideOrderNdrinks.create(createdSideOrder)
         .then((dbSideOrden) => {
           console.log(dbSideOrden)
-         res.status(201).res.json(dbSideOrden);
+         res.status(201);
+         res.json(dbSideOrden);
         })
         .catch((err) => {
           console.log(err);
