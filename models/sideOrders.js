@@ -22,17 +22,17 @@ const sideOrderSchema = new Schema({
     type: Number,
     default: 0,
   },
-  horchata: [
+  aguas: [
     {
-    large: {
+    largeHorchata: {
       type: Number,
       default:0,
     },
-    small: {
+    smallHorchata: {
       type: Number,
       default:0,
     },
-    horchatasPrice: {
+    aguasPrice: {
       type: Number,
       default:0,
     }
@@ -56,7 +56,7 @@ const sideOrderSchema = new Schema({
   allVerdurasPrice: {
     type: Number,
   },
-  CanbebidasPrice: {
+  completeSideOrderPrice: {
     type: Number,
   },
 
@@ -75,10 +75,10 @@ orginId: {
   },
   
 });
-sideOrderSchema.methods.getHorchataPrice = function () {
-  this.horchata.horchataPrice =
-    this.horchata.large * 4 + this.horchata.large * 2
-  return  this.horchata.horchataPrice;
+sideOrderSchema.methods.getAguasOnlyPrice = function () {
+  this.aguas.aguasPrice =
+    this.aguas.largeHorchata * 4 + this.aguas.smallHorchata * 2
+  return  this.aguas.aguasPrice;
 };
 
 sideOrderSchema.methods.verdurasTogether = function () {
@@ -86,12 +86,16 @@ sideOrderSchema.methods.verdurasTogether = function () {
     this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa * 0.5;
   return this.allVerduras;
 };
-sideOrderSchema.methods.addingBebidasPrice = function () {
-  allBeibidasPrice = this.fanta + this.coca + this.sprite + this.horchata.horchatasPrice;
-  
+
+sideOrderSchema.methods.addAllBebidasPrice = function () {
+  allBeibidasPrice = this.fanta + this.coca + this.sprite * 2 + this.aguas.aguasPrice;
   return this.allBebidasPrice
 };
 
+sideOrderSchema.methods.addSideOrderTotal = function () {
+  completeSideOrderPrice = this.allBeibidasPrice + this.allVerdurasPrice;
+  return this.completeSideOrderPrice
+};
 const SideOrderNdrinks = mongoose.model(
   "SideOrderNdrinks",
   sideOrderSchema
