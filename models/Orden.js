@@ -2,6 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const OrdenSchema = new Schema({
+  clienteId: {
+    type: Schema.Types.ObjectId,
+    ref: "Users",
+    strictPopulate: false,
+  },
+  nombreDeOrden: {
+    type: String,
+    trim: true,
+    required: "nombrDeOrden is required"
+  },
   azada: {
     type: Number,
     default: 0,
@@ -22,10 +32,19 @@ const OrdenSchema = new Schema({
     type: Number,
     default: 0,
   },
-  total: {
+  xOrden: [{
+    type: Schema.Types.ObjectId,
+    ref: "SideOrden",
+  }],
+  drinks: [{
+    type: Schema.Types.ObjectId,
+    ref: "drink",
+    strictPopulate: true,
+  }],
+  tacosTotal: {
     type: Number,
   },
-  precio: {
+  ordenPrice: {
     type: Number,
   },
   cancelar: {
@@ -36,38 +55,22 @@ const OrdenSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  nombreDeOrden: {
-    type: String,
-    trim: true,
-  },
-
-  clienteId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    strictPopulate: false,
-  },
-  xOrden: [{
-    type: Schema.Types.ObjectId,
-    ref: "SideOrderNdrinks",
-    strictPopulate: true,
-  }],
-  tiempo: {
+  timeCreated: {
     type: Date,
     default: Date.now
   },
 
 });
 
-OrdenSchema.methods.addTotal = function () {
-  this.total =
-    this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
-  return this.total;
-};
 OrdenSchema.methods.getPrecio = function () {
   let cuantos =
     this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
-  this.precio = cuantos * 3;
-  return this.precio;
+  this.tacosTotal = cuantos * 3;
+  return this.tacosTotal;
+};
+OrdenSchema.methods.addTacoTotalSideOrderNDrinks = function () {
+  this.ordenPrice = this.drinks.allBeibidasPrice + this.sideOrden.allVerdurasPrice + tacosTotal;
+  return this.ordenPrice;
 };
 const Orden = mongoose.model("Orden", OrdenSchema);
 

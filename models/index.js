@@ -4,5 +4,7 @@ module.exports = {
   
     User: require("./User.js"),
 
-    SideOrderNdrinks: require("./sideOrders.js")
+    SideOrden: require("./sideOrders.js"),
+
+    drinks: require("./Drinks.js")
   };

@@ -31,8 +31,8 @@ module.exports = {
 //      } else {
 //        console.log(decoded);
      
-       db.Orden.find(req.query)
-       .sort({ date: -1 })
+      db.Orden.find(req.query)
+       .populate("xOrden")
        .then((foundOrden) => {res.json(foundOrden)})
        .catch((err) =>  res.status(422).json(err));
 
@@ -45,8 +45,7 @@ module.exports = {
      
      create: function(req, res){
       const orden = new Orden(req.body);
-      orden.addTotal();
-      orden.getPrecio();
+   
 
       db.Orden.create(orden).then((dbOrden) => {
           res.json(dbOrden); res.status(201)}).catch((err) => {

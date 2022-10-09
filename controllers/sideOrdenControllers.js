@@ -1,22 +1,20 @@
 // const express = require("express");
-const { SideOrderNdrinks } = require("../models");
+const { SideOrden } = require("../models");
 const db = require("../models");
 
 module.exports = {
 
   SideOrders: function(req, res){
-    db.SideOrderNdrinks.find(req.query)
+    db.SideOrden.find(req.query)
     .sort({ date: -1 })
     .then((foundOrden) => {res.json(foundOrden)})
     .catch((err) =>  res.status(422).json(err));
   },
 
     createSideOrder: function(req,res){
-        const createdSideOrder = new SideOrderNdrinks(req.body);
-        
-        
-
-      db.SideOrderNdrinks.create(createdSideOrder)
+        const createdSideOrder = new SideOrden(req.body);
+      
+      db.SideOrden.create(createdSideOrder)
         .then((dbSideOrden) => {
           console.log(dbSideOrden)
          res.status(201);
@@ -27,7 +25,7 @@ module.exports = {
           res.json({
             error: true,
             data: null,
-            message: "failed to post condimento data",
+            message: "failed to post sideOrder data",
           });
         });
       },
