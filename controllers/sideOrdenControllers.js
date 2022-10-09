@@ -6,6 +6,7 @@ module.exports = {
 
   SideOrders: function(req, res){
     db.SideOrden.find(req.query)
+    .populate("mainOrden")
     .sort({ date: -1 })
     .then((foundOrden) => {res.json(foundOrden)})
     .catch((err) =>  res.status(422).json(err));
@@ -13,6 +14,7 @@ module.exports = {
 
     createSideOrder: function(req,res){
         const createdSideOrder = new SideOrden(req.body);
+        createdSideOrder.verdurasTogether()
       
       db.SideOrden.create(createdSideOrder)
         .then((dbSideOrden) => {

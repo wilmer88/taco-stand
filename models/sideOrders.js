@@ -25,12 +25,18 @@ const SideOrdenSchema = new Schema({
   allVerdurasPrice: {
     type: Number,
   },
+  mainOrden: 
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Orden", 
+  }
 });
 
 SideOrdenSchema.methods.verdurasTogether = function () {
-  this.allVerdurasPrice =
-    this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa * 0.5;
-  return this.allVerduras;
+  let verdurasPrice =
+    this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa 
+    this.allVerdurasPrice = verdurasPrice * .5
+  return this.allVerdurasPrice;
 };
 
 const SideOrden = mongoose.model(

@@ -6,8 +6,6 @@ const db = require("../models");
 
 
 module.exports = {
-  
-
       allOrdens: function(req, res) {
 //         console.log(req.headers);
 //  if (!req.headers.authorization) {
@@ -31,11 +29,15 @@ module.exports = {
 //      } else {
 //        console.log(decoded);
      
-      db.Orden.find(req.query)
+      // db.Orden.find(req.query)
+      db.Orden.find({})
        .populate("xOrden")
        .then((foundOrden) => {res.json(foundOrden)})
-       .catch((err) =>  res.status(422).json(err));
-
+       .catch((err) =>{
+        console.log(err)
+        res.status(422)
+       .json(err)
+       });
 //           }
 //    }
 //  );
@@ -59,6 +61,7 @@ module.exports = {
       },
       remove: function(req, res) {
         db.Orden.findByIdAndDelete(req.params.id)
+        
         .then((result) => {
           res.json(result);
         })
@@ -75,6 +78,7 @@ module.exports = {
 
         getOne: function(req, res) {
           db.Orden.findOne({ _id: req.params.id })
+          .populate("xOrden")
           .then((foundOrden) => {
             res.json(foundOrden);
           })

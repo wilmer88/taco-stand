@@ -32,14 +32,17 @@ const OrdenSchema = new Schema({
     type: Number,
     default: 0,
   },
-  xOrden: [{
+  xOrden: 
+    {
     type: Schema.Types.ObjectId,
     ref: "SideOrden",
-  }],
+    strictPopulate: false,
+  },
+
   drinks: [{
     type: Schema.Types.ObjectId,
     ref: "drink",
-    strictPopulate: true,
+    strictPopulate: false,
   }],
   tacosTotal: {
     type: Number,
