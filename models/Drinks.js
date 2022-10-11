@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+
 const drinksSchema = new Schema({
   largeHorchata: {
     type: Number,
@@ -28,22 +29,26 @@ const drinksSchema = new Schema({
   },
   allBebidasPrice: {
     type: Number,
+    default: 0,
   },
-  orginId: {
+  orderLink: {
     type: Schema.Types.ObjectId,
     ref: "Orden",
-    strictPopulate: true,
+    strictPopulate: false,
   },
 });
 drinksSchema.methods.getAguasOnlyPrice = function () {
-  this.aguasPrice =
-    this.largeHorchata * 4 + this.smallHorchata * 2;
+  let lH =  this.largeHorchata * 4;
+  let sH = this.smallHorchata * 2
+  this.aguasPrice = lH + sH
+    
   return this.aguasPrice;
 };
 
 drinksSchema.methods.addAllBebidasPrice = function () {
-  allBeibidasPrice =
-    this.fanta + this.coca + this.sprite * 2 + this.aguas.aguasPrice;
+  let canBebidas = this.fanta + this.coca + this.sprite;
+  let canBebidasPrice = canBebidas * 2;
+  this.allBebidasPrice = canBebidasPrice + this.aguasPrice;
   return this.allBebidasPrice;
 };
 

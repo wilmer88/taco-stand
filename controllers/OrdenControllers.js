@@ -30,9 +30,18 @@ module.exports = {
 //        console.log(decoded);
      
       // db.Orden.find(req.query)
-      db.Orden.find({})
-       .populate("xOrden")
-       .then((foundOrden) => {res.json(foundOrden)})
+      db.Orden.find(req.query)
+      
+      
+     
+      .populate({path: "drinksPrice", select: "allBebidasPrice -_id" }, )
+    
+
+      
+      
+       .then((foundOrden) => {
+        res.json(foundOrden)})
+     
        .catch((err) =>{
         console.log(err)
         res.status(422)
@@ -47,10 +56,14 @@ module.exports = {
      
      create: function(req, res){
       const orden = new Orden(req.body);
-   
+      orden.getTacoPrice();
+      db.Orden.create(orden)
+      .then((dbOrden) => {
+          res.json(dbOrden); res.status(201);
+          console.log(dbOrden.drinksPrice)
 
-      db.Orden.create(orden).then((dbOrden) => {
-          res.json(dbOrden); res.status(201)}).catch((err) => {
+        
+        }).catch((err) => {
           console.log(err);
           res.json({
             error: true,
@@ -111,6 +124,12 @@ module.exports = {
 
 };
                       ////////legacy code///////
+                      // db.Orden.aggregate([
+                      //   {
+                      //     $project: {
+                      //       ordenTotal: { $sum: [ "$drinksPrice", "$tacoTotal" ] }
+                      //     }
+                      //   }])
       
 // router.put("/api/orden", (req, res) =>{
 //   db.Orden.findByIdAndUpdate(req.params.id, req.body, { new: true })

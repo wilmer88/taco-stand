@@ -1,4 +1,3 @@
-// const express = require("express");
 const { SideOrden } = require("../models");
 const db = require("../models");
 
@@ -30,9 +29,5 @@ module.exports = {
             message: "failed to post sideOrder data",
           });
         });
-      },
-
-      
-     
-    
+      },   
 }

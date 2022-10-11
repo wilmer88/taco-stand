@@ -1,5 +1,7 @@
+const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const {Schema} = mongoose;
+const drinks = require("./Drinks")
 
 const OrdenSchema = new Schema({
   clienteId: {
@@ -36,20 +38,27 @@ const OrdenSchema = new Schema({
     {
     type: Schema.Types.ObjectId,
     ref: "SideOrden",
-    strictPopulate: false,
   },
 
-  drinks: [{
+  drinksPrice: {
     type: Schema.Types.ObjectId,
-    ref: "drink",
+    ref: "drinks",
     strictPopulate: false,
-  }],
+    default: 0,
+
+  },
   tacosTotal: {
     type: Number,
+    default: 0,
+
   },
-  ordenPrice: {
+  ordenTotal: {
     type: Number,
+    default: 0,
+
   },
+
+
   cancelar: {
     type: Boolean,
     default: false,
@@ -62,19 +71,35 @@ const OrdenSchema = new Schema({
     type: Date,
     default: Date.now
   },
+ 
 
 });
 
-OrdenSchema.methods.getPrecio = function () {
-  let cuantos =
-    this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
+
+OrdenSchema.methods.getTacoPrice = function () {
+  let cuantos = this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
   this.tacosTotal = cuantos * 3;
   return this.tacosTotal;
 };
-OrdenSchema.methods.addTacoTotalSideOrderNDrinks = function () {
-  this.ordenPrice = this.drinks.allBeibidasPrice + this.sideOrden.allVerdurasPrice + tacosTotal;
-  return this.ordenPrice;
-};
+
+
+// OrdenSchema.aggregate([
+//     {
+//       $project: {
+//         ordenTotal: { $sum: [ "$drinksPrice", "$tacoTotal" ] }
+//       }
+//     }]);
+
+
+
+
+
+
+
 const Orden = mongoose.model("Orden", OrdenSchema);
 
 module.exports = Orden;
+// OrdenSchema.methods.addEverything = function () {
+//    this.ordenTotal = this.drinksPrice.allBebidasPrice + this.tacosTotal ;
+//   return this.ordenTotal;
+// };

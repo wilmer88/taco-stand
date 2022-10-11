@@ -24,6 +24,7 @@ const SideOrdenSchema = new Schema({
   },
   allVerdurasPrice: {
     type: Number,
+    default: 0,
   },
   mainOrden: 
     {
@@ -33,8 +34,7 @@ const SideOrdenSchema = new Schema({
 });
 
 SideOrdenSchema.methods.verdurasTogether = function () {
-  let verdurasPrice =
-    this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa 
+  let verdurasPrice = this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa 
     this.allVerdurasPrice = verdurasPrice * .5
   return this.allVerdurasPrice;
 };
