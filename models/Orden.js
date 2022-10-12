@@ -90,6 +90,33 @@ OrdenSchema.methods.getTacoPrice = function () {
 //       }
 //     }]);
 
+OrdenSchema.methods.addEverything = function () {
+  var Helper = require('path_to_the_module_where_the_method_check_is_defined_and_exported');
+
+  function verifyOTP(user) {
+      var position = user.position;
+      var operation = user.operation;
+      var useripp = user.userip;
+      Helper.check(position, operation, useripp);
+  };
+  
+  var query = {
+      // Your query here
+  };
+  
+  var projection = {
+       position: 1,
+       operation: 1,
+       userip: 1,
+       _id: 0
+  };
+  
+  User.findOne( query, projection, function(err, user) {
+      if(err) console.log("Error: " + JSON.stringify(err));
+      if(user) verifyOTP(user);
+  });
+};
+
 
 
 
