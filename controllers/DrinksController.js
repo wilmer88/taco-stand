@@ -1,5 +1,6 @@
 const { drinks } = require("../models");
 const db = require("../models");
+const {Orden} = require("../models")
 
 module.exports = {
 
@@ -15,9 +16,13 @@ module.exports = {
         const createDrinkOrder = new drinks(req.body);
         createDrinkOrder.getAguasOnlyPrice();
         createDrinkOrder.addAllBebidasPrice();
+        createDrinkOrder.jEverything();
+
+    
       db.drinks.create(createDrinkOrder)
         .then((dbDrinks) => {
-          console.log(dbDrinks)
+        
+        
          res.status(201);
          res.json(dbDrinks);
         })

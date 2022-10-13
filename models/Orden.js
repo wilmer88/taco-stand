@@ -2,6 +2,8 @@ const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const drinks = require("./Drinks")
+const dbfor = require("../models");
+
 
 const OrdenSchema = new Schema({
   clienteId: {
@@ -40,12 +42,10 @@ const OrdenSchema = new Schema({
     ref: "SideOrden",
   },
 
-  drinksPrice: {
+  BebidasPrice: {
     type: Schema.Types.ObjectId,
     ref: "drinks",
     strictPopulate: false,
-    default: 0,
-
   },
   tacosTotal: {
     type: Number,
@@ -82,6 +82,67 @@ OrdenSchema.methods.getTacoPrice = function () {
   return this.tacosTotal;
 };
 
+OrdenSchema.methods.getPrice = function () {
+  console.log(this.BebidasPrice)
+ 
+};
+
+
+
+// {
+//   $lookup:
+//   {
+//      from: drinks;
+//      localField : this.allBebidasPrice;
+//      foreignField: drinks.bebidasPrice;
+//      as: this.allBebidasPrice
+//   }
+// }
+// let me = this
+//   let tt = this.tacosTotal
+//   let exam = this.drinksPrice
+
+
+// drinks.findById(exam).then((hopeI)=>{
+// aggregate(
+//     [
+//       {$project: {ordenTotal: {$add: [tt, hopeI.allBebidasPrice]}} }
+//     ]
+// )
+//   .then((finishedPromise)=>{
+
+
+
+//   }).catch((err) => {
+//     console.log(err);
+//   });
+// }) .catch((err) => {
+//   console.log(err);
+ 
+// });
+// Orden.updateOne(this.ordenTotal,).then((what)=> {
+
+//  this.ordenTotal = tt + what.allBebidasPrice
+// return  this.ordenTotal
+// })
+// console.log(this.OrdenSchema)
+
+
+
+// }
+
+// const exam = this.drinksPrice
+
+// drinks.findById(exam).then((what)=>{
+// Orden.aggregate([
+//   { $project:{ordenTotal:{$sum: [what.allBebidasPrice, this.tacosTotal]}}}
+//   ])
+// })
+
+//  console.log(found.allBebidasPrice)
+//  return  this.ordenTotal =  this.tacosTotal + bprice
+//   return drinkvar.allBebidasPrice
+
 
 // OrdenSchema.aggregate([
 //     {
@@ -89,38 +150,6 @@ OrdenSchema.methods.getTacoPrice = function () {
 //         ordenTotal: { $sum: [ "$drinksPrice", "$tacoTotal" ] }
 //       }
 //     }]);
-
-OrdenSchema.methods.addEverything = function () {
-  var Helper = require('path_to_the_module_where_the_method_check_is_defined_and_exported');
-
-  function verifyOTP(user) {
-      var position = user.position;
-      var operation = user.operation;
-      var useripp = user.userip;
-      Helper.check(position, operation, useripp);
-  };
-  
-  var query = {
-      // Your query here
-  };
-  
-  var projection = {
-       position: 1,
-       operation: 1,
-       userip: 1,
-       _id: 0
-  };
-  
-  User.findOne( query, projection, function(err, user) {
-      if(err) console.log("Error: " + JSON.stringify(err));
-      if(user) verifyOTP(user);
-  });
-};
-
-
-
-
-
 
 
 const Orden = mongoose.model("Orden", OrdenSchema);
@@ -130,3 +159,9 @@ module.exports = Orden;
 //    this.ordenTotal = this.drinksPrice.allBebidasPrice + this.tacosTotal ;
 //   return this.ordenTotal;
 // };
+//  Orden.findById(this._id).then((encuentro)=>{
+//   console.log(encuentro)
+//  }).catch((err) => {
+//   console.log(err);
+         
+// })

@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const  Orden = require("./Orden.js");
+const {Schema }= mongoose;
+const rb = require("../models");
+
 
 
 const drinksSchema = new Schema({
@@ -27,7 +30,7 @@ const drinksSchema = new Schema({
     type: Number,
     default: 0,
   },
-  allBebidasPrice: {
+  bbebidasPrice: {
     type: Number,
     default: 0,
   },
@@ -35,6 +38,8 @@ const drinksSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Orden",
     strictPopulate: false,
+
+    
   },
 });
 drinksSchema.methods.getAguasOnlyPrice = function () {
@@ -48,9 +53,25 @@ drinksSchema.methods.getAguasOnlyPrice = function () {
 drinksSchema.methods.addAllBebidasPrice = function () {
   let canBebidas = this.fanta + this.coca + this.sprite;
   let canBebidasPrice = canBebidas * 2;
-  this.allBebidasPrice = canBebidasPrice + this.aguasPrice;
-  return this.allBebidasPrice;
+  this.bbebidasPrice = canBebidasPrice + this.aguasPrice;
+  return this.bbebidasPrice;
 };
+
+drinksSchema.methods.jEverything = function () {
+  //  var ugly = this.tacosTotal
+
+    {
+    $lookup:
+    {
+       from: Orden;
+       localField : Orden.BebidasPrice;
+       foreignField: this.bbebidasPrice;
+       as: Orden.BebidasPrice
+    }
+  }
+
+  }
+
 
 const drinks = mongoose.model("drinks", drinksSchema);
 

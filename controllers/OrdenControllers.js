@@ -2,6 +2,11 @@
 // const jwt = require("jsonwebtoken");
 // const router = express.Router();
 const { Orden } = require("../models");
+
+
+const {drinks} = require("../models");
+
+
 const db = require("../models");
 
 
@@ -31,17 +36,18 @@ module.exports = {
      
       // db.Orden.find(req.query)
       db.Orden.find(req.query)
+      .populate({path: "BebidasPrice", select: "bbebidasPrice -_id" }, )
+
       
       
      
-      .populate({path: "drinksPrice", select: "allBebidasPrice -_id" }, )
     
 
       
       
        .then((foundOrden) => {
+        console.log(foundOrden)
         res.json(foundOrden)})
-     
        .catch((err) =>{
         console.log(err)
         res.status(422)
@@ -57,10 +63,13 @@ module.exports = {
      create: function(req, res){
       const orden = new Orden(req.body);
       orden.getTacoPrice();
+      orden.getPrice();
+    
       db.Orden.create(orden)
       .then((dbOrden) => {
           res.json(dbOrden); res.status(201);
-          console.log(dbOrden.drinksPrice)
+         
+    
 
         
         }).catch((err) => {
@@ -91,7 +100,7 @@ module.exports = {
 
         getOne: function(req, res) {
           db.Orden.findOne({ _id: req.params.id })
-          .populate("xOrden")
+          .populate({path: "drinksPrice", select: "allBebidasPrice -_id" }, )
           .then((foundOrden) => {
             res.json(foundOrden);
           })
@@ -123,6 +132,8 @@ module.exports = {
 
 
 };
+      // .populate({path: "drinksPrice", select: "allBebidasPrice -_id" }, )
+
                       ////////legacy code///////
                       // db.Orden.aggregate([
                       //   {
