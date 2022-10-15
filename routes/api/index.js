@@ -1,10 +1,9 @@
 const router = require("express").Router();
 const ordenRoutes = require("./orden");
-const sideOrderRoutes = require("./sideOrder");
 const authRoutes = require("./auth");
-const drinksRoutes = require("./drinks")
+const drinksRoutes = require("./drinksNdSides")
 
-router.use("/sideOrden", sideOrderRoutes);
+
 router.use("/login", authRoutes );
 router.use("/signup", authRoutes);
 router.use("/orden", ordenRoutes);

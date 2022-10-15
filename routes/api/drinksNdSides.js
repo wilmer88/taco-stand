@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const sideController = require("../../controllers/sideOrdenControllers");
+const drinksNdsidesController = require("../../controllers/DrinksNdsidesController")
 
 
 router.route("/")
-.get(sideController.SideOrders)
-  .post(sideController.createSideOrder)
+.get(drinksNdsidesController.getSides)
+  .post(drinksNdsidesController.createSidesOrder)
  
 
 // Matches with "/api/orden/:id"

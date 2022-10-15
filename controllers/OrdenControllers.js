@@ -4,7 +4,7 @@
 const { Orden } = require("../models");
 
 
-const {drinks} = require("../models");
+const {Sides} = require("../models");
 
 
 const db = require("../models");
@@ -36,15 +36,7 @@ module.exports = {
      
       // db.Orden.find(req.query)
       db.Orden.find(req.query)
-      .populate({path: "BebidasPrice", select: "bbebidasPrice -_id" }, )
-
-      
-      
-     
-    
-
-      
-      
+      .populate({path: "sides", select: "allSidesPrice -_id" }, )
        .then((foundOrden) => {
         console.log(foundOrden)
         res.json(foundOrden)})
@@ -63,28 +55,34 @@ module.exports = {
      create: function(req, res){
       const orden = new Orden(req.body);
       orden.getTacoPrice();
-      orden.getPrice();
-    
-      db.Orden.create(orden)
-      .then((dbOrden) => {
-          res.json(dbOrden); res.status(201);
-         
-    
+      const seedrinks = orden.sides;
 
-        
-        }).catch((err) => {
-          console.log(err);
-          res.json({
-            error: true,
-            data: null,
-            message: "failed to post order/orden data",
-          });
-        });
+      Sides.findById( seedrinks).then((resultado) =>{  
+       orden.ordenTotal = orden.tacosTotal + resultado.allSidesPrice
+       db.Orden.create(orden)
+       .then((dbOrden) => {
+        console.log("checking");
+        console.log(dbOrden)
+        res.json(dbOrden)
+         }).catch((err) => {
+           console.log(err);
+           res.json({
+             error: true,
+             data: null,
+             message: "failed to post order/orden data",
+           });
+         });
+      }).catch((err) => {
+              console.log(err);
+            });
       },
+
+
       remove: function(req, res) {
         db.Orden.findByIdAndDelete(req.params.id)
         
         .then((result) => {
+          console.log(result)
           res.json(result);
         })
         .catch((err) => {
