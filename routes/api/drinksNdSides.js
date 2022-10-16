@@ -4,7 +4,11 @@ const drinksNdsidesController = require("../../controllers/DrinksNdsidesControll
 
 router.route("/")
 .get(drinksNdsidesController.getSides)
-  .post(drinksNdsidesController.createSidesOrder)
+  .post(drinksNdsidesController.createSideOrder);
+  router.route("/:id")
+  .get(drinksNdsidesController.getOneSideOrder)
+  .put(drinksNdsidesController.updateSideOrder)
+  .delete(drinksNdsidesController.removeSideOrder);
  
 
 // Matches with "/api/orden/:id"

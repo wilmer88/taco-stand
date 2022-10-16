@@ -1,13 +1,15 @@
 // import axios from "axios";
-import Condimentos from "../components/Condimentos";
-import TacoField from "../components/tacoField";
-
+import Bebidas from "../components/Bebidas";
+import VerdurasField from "../components/Verduras";
+// import TacoField from "../components/tacoField";
 import API from "../utils/API"
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
-
+import TacoField from "./tacoField";
+// import Condimentos from "./Condimentos";
 // import { useNavigate } from "react-router-dom";
-const OrdenBox = () => {
+const OrdenBox = (props) => {
+  console.log(props)
   
   async function firstFunction(){
     handleClose()
@@ -17,22 +19,19 @@ const OrdenBox = () => {
    alert("Gracias por su orden!")
   
       };
-
-
   // const navigate = useNavigate()
-
       const [showModel, setshowModel] = useState("modal");
       const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
 
-  const [formObj, setFormObj] = useState({
-    nombreDeOrden: "",
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-  });
+      const [formObj, setFormObj] = useState({
+        nombreDeOrden: "",
+        azada: 0,
+        pollo: 0,
+        barbacoa: 0,
+        pastor: 0,
+        chorizo: 0,
+      });
 
   // function cebollaIncrement(){
   //   this.setState({ cebollaCount: this.state.cebollaCount + 1 });
@@ -64,32 +63,24 @@ API.saveOrden(formObj).then((response)=>{
         });
         };
                                                                                                                         
-
+  // window.location.href="http://localhost:3000/ClientLine" ;
  return (<>
          <form >
       
           <main className="box is-shadowless is-align-self-center">
           <section className="card">
 
-
  <article className="card-content">
  <aside className="m-3 content" >
-  <main className="columns" >
- 
 
-         <TacoField  style={{display: 'flex',}}  />
+  <TacoField />
+         <VerdurasField /> 
+             <Bebidas/>
 
-       
-
-            </main>
             </aside>
             </article>
 
 
-      < Condimentos
-      // cebollaCount= {this.cebollaCount}
-      // cebollaIncrement={this.cebollaIncrement}
-      />
       
       <aside id="modalll" className={`modal ${showModel}`}>
               <div className="modal-background"></div>

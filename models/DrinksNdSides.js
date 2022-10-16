@@ -82,8 +82,6 @@ sidesSchema.methods.addAllsides = function () {
   return this.allSidesPrice;
 };
 
-
-
 const Sides = mongoose.model("sides", sidesSchema);
 
 module.exports = Sides;

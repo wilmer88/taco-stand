@@ -1,4 +1,5 @@
 // import React, {useState } from "react";
+import Dropdownfield from "./DropdownField";
 
 
 
@@ -6,44 +7,21 @@
 const TacoField = (props) => {
     const numeros = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,];
 
+
+
     // function handleChangeI(e) {
     //     const {name, value} = e.target;
     //      setFormObj({...formObj, [name]: value})
     //    };
 
 
-// const handleSubmit= (e)=> {
-    //      e.preventDefault();
-    //  API.saveOrden(formObj).then((response)=>{
-    //    firstFunction()
-    //    setTimeout(() => {secondFunction()}, 1800);
-    //    setFormObj({
-    //      nombreDeOrden: "",
-    //      azada: 0,
-    //      pollo: 0,
-    //      barbacoa: 0,
-    //      pastor: 0,
-    //      chorizo: 0,
-    //      precios:0,
-    //      total:0,
-    //    })
-    //  }).catch((err) =>{ 
-    //            console.log(err)
-    //          });
-    //          };
-    // const [formObj, setFormObj] = useState({
-    //     nombreDeOrden: "",
-    //     azada: 0,
-    //     pollo: 0,
-    //     barbacoa: 0,
-    //     pastor: 0,
-    //     chorizo: 0,
-    //   });
-      
-    
-
  return (<>
-            <section className="field ml-3"> 
+           <figcaption>   
+      <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h5>
+      </figcaption>
+ <div className="is-align-content-center columns mt-3">
+
+            <section className="field"> 
             <label className="label">
             Nombre Para La Orden:
             </label>
@@ -56,14 +34,16 @@ const TacoField = (props) => {
               name="nombreDeOrden"
                 aria-label="iput for order name"
                 placeholder="Gonzalo"
-                // value={formObj.nombreDeOrden}
+                value={props.nombreDeOrden}
               />
             </div>
          </section>
-   
-     
 
-         <div className="ml-3 field">
+
+<Dropdownfield labelName= "Cuero" />
+
+  
+         <div className="ml-4 field">
         <label className="mr-6 label">
                 Azada
          </label>
@@ -158,7 +138,7 @@ const TacoField = (props) => {
          </div>
         </div>
 
-         
+        </div>
        </>);
   }
 export default TacoField;
