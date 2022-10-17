@@ -1,15 +1,12 @@
-// import axios from "axios";
 import Bebidas from "../components/Bebidas";
-import VerdurasField from "../components/Verduras";
-// import TacoField from "../components/tacoField";
+import TopingsBlock from "./TopingsBlock";
+import TacoBlock from "./TacosBlock";
 import API from "../utils/API"
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
-import TacoField from "./tacoField";
-// import Condimentos from "./Condimentos";
+
 // import { useNavigate } from "react-router-dom";
-const OrdenBox = (props) => {
-  console.log(props)
+const OrdenBox = () => {
   
   async function firstFunction(){
     handleClose()
@@ -19,9 +16,9 @@ const OrdenBox = (props) => {
    alert("Gracias por su orden!")
   
       };
-  // const navigate = useNavigate()
+
       const [showModel, setshowModel] = useState("modal");
-      const handleOpen = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
+      const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
 
       const [formObj, setFormObj] = useState({
@@ -33,10 +30,6 @@ const OrdenBox = (props) => {
         chorizo: 0,
       });
 
-  // function cebollaIncrement(){
-  //   this.setState({ cebollaCount: this.state.cebollaCount + 1 });
-
-  // };
 
   //   function handleChangeI(e) {
   //  const {name, value} = e.target;
@@ -73,9 +66,10 @@ API.saveOrden(formObj).then((response)=>{
  <article className="card-content">
  <aside className="m-3 content" >
 
-  <TacoField />
-         <VerdurasField /> 
-             <Bebidas/>
+         <TacoBlock/>
+         <Bebidas/>
+         <TopingsBlock /> 
+        
 
             </aside>
             </article>
@@ -106,7 +100,7 @@ API.saveOrden(formObj).then((response)=>{
           <footer className="card-footer">
                   <div className="card-footer-item">
                   <span>
-                  <button onClick={handleOpen} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
+                  <button onClick={openModal} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
                     <strong>Entregar</strong>
                   </button>
                     </span>

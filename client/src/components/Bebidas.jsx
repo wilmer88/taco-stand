@@ -7,6 +7,7 @@ const Bebidasfield = (props) => {
 
        return(
          <>
+         <hr></hr>
          <figcaption>   
     <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h5>
     </figcaption>
