@@ -1,93 +1,56 @@
+import  React, {useState} from "react";
 import ToppingField from "./ToppingField";
-import  React  from "react"
 
-class TopingsBlock extends React.Component {
-  state ={
-    cebollaCount: 0,
-    cilantroCups: 0,
-};
+const TopingsBlock = (topingName,topingCount,picture,sumar,restar) => {
+        const [topingData, setOrderData] = useState({
+            cebolla:0,
+            cilantro:0
+          });
+                    const cebollaIncrement = (event) =>{
+            event.preventDefault()
+            setOrderData({...topingData, cebolla: topingData.cebolla  + 1 })
+            };
+            const cebollaDecrement = (event) =>{
+              event.preventDefault()
+              if(topingData.cebolla >= 1){
+                setOrderData({...topingData, cebolla: topingData.cebolla  - 1 })
+              }
+              };
 
-cebollaIncrement = (e) =>{
-  e.preventDefault()
+      // const [topingData, setOrderData] = useState({
+      //       cebolla:0,
+      //       cilantro:0
+      //     });
+      //     const cebollaIncrement = (event) =>{
+      //       event.preventDefault()
+      //       setOrderData({...orderData, cebolla: orderData.cebolla  + 1 })
+      //       };
+      //       const cebollaDecrement = (event) =>{
+      //         event.preventDefault()
+      //         if(orderData.cebolla >= 1){
+      //           setOrderData({...orderData, cebolla: orderData.cebolla  - 1 })
+      //         }
+      //         };
+      //         const cilantroIncrement = (event) =>{
+      //           event.preventDefault()
+      //           setOrderData({...orderData, cilantro: orderData.cilantro  + 1 })
+      //           };
+      //           const cilantroDecrement = (event) =>{
+      //             event.preventDefault()
+      //             if(orderData.cilantro >= 1){
+      //               setOrderData({...orderData, cilantro: orderData.cilantro  - 1 })
+      //             }
+                 
+      //             };
 
 
-    this.setState({cebollaCount: this.state.cebollaCount + 1})
+
+
+return(<>
   
-
-  };
-
-cebollaDecrement = () =>{
- 
-  console.log("clicked minus -1 cebolla button");
-  this.setState({
-    topingCount: this.state.cebollaCount - 1
-  })
-};
-
-
-cilantroIncrement = () =>{
-  
-  console.log("clicked increment cebolla button");
-  this.setState({
-    topingCount: this.state.cilantroCups + 1
-  })
-};
-
-cilantroDecrement = () =>{
-
-console.log("clicked minus -1 cebolla button");
-this.setState({
-  topingCount: this.state.cilantroCups - 1
-})
-};
-
-
- render() {return(<>
-
-
- <ToppingField
-toppingName = "Cebolla"
-picture= "/images/onions.png"
- agregar= {this.cebollaIncrement }
- restar ={this.cebollaDecrement}
-topingCount = {this.state.cebollaCount}
-/> 
-
-<ToppingField
-toppingName = "Cillantro"
-picture= "/images/cilantro.png"
- cambia= {this.cilantroIncrement }
-restar ={this.cilantroDecrement}
-topingCount = {this.state.cilantroCups}
-/> 
-
-<ToppingField
-toppingName = "Pico"
-picture= "/images/pico.png"
- cambia= {this.cilantroIncrement }
-restar ={this.cilantroDecrement}
-topingCount = {this.state.cilantroCups}
-/> 
-
-<ToppingField
-toppingName = "Salsa Roja"
-picture= "/images/redSalsa.png"
- cambia= {this.cilantroIncrement }
-restar ={this.cilantroDecrement}
-topingCount = {this.state.cilantroCups}
-/> 
-
-<ToppingField
-toppingName = "Slasa Verde"
-picture= "/images/greenSalsa.png"
- cambia= {this.cilantroIncrement }
-restar ={this.cilantroDecrement}
-topingCount = {this.state.cilantroCups}
-/> 
-
-
-         
-       </>)}}
+       </>)
+       }
 export default TopingsBlock;
+
 
       

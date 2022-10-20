@@ -30,7 +30,7 @@ module.exports = {
      
       // db.Orden.find(req.query)
       db.Orden.find(req.query)
-      .populate({path: "sides", select: "allSidesPrice -_id" }, )
+     
        .then((foundOrden) => {
         console.log(foundOrden)
         res.json(foundOrden)})
@@ -43,32 +43,27 @@ module.exports = {
 //    }
 //  );
      },    
-     
-     
-     create: function(req, res){
+     create: function(req,res){
       const orden = new Orden(req.body);
-      orden.getTacoPrice();
-      const seedrinks = orden.sides;
-
-      Sides.findById( seedrinks).then((resultado) =>{  
-       orden.ordenTotal = orden.tacosTotal + resultado.allSidesPrice
-       db.Orden.create(orden)
-       .then((dbOrden) => {
-        console.log("checking");
+ 
+    db.Orden.create(orden)
+      .then((dbOrden) => {
         console.log(dbOrden)
-        res.json(dbOrden)
-         }).catch((err) => {
-           console.log(err);
-           res.json({
-             error: true,
-             data: null,
-             message: "failed to post order/orden data",
-           });
-         });
-      }).catch((err) => {
-              console.log(err);
-            });
-      },
+       res.status(201);
+       res.json(dbOrden);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({
+          error: true,
+          data: null,
+          message: "failed to post order/orden data",
+        });
+      });
+    },
+     
+     
+
 
 
       remove: function(req, res) {
@@ -91,7 +86,7 @@ module.exports = {
 
         getOne: function(req, res) {
           db.Orden.findOne({ _id: req.params.id })
-          .populate({path: "sides", select: "allBebidasPrice -_id" }, )
+    
           .then((foundOrden) => {
             res.json(foundOrden);
           })
@@ -121,4 +116,27 @@ module.exports = {
         
         }
 };
-     
+         //  create: function(req, res){
+    //   const orden = new Orden(req.body);
+    //   orden.getTacoPrice();
+    //   const seedrinks = orden.sides;
+
+    //   Sides.findById( seedrinks).then((resultado) =>{  
+    //    orden.ordenTotal = orden.tacosTotal + resultado.allSidesPrice
+    //    db.Orden.create(orden)
+    //    .then((dbOrden) => {
+    //     console.log("checking");
+    //     console.log(dbOrden)
+    //     res.json(dbOrden)
+    //      }).catch((err) => {
+    //        console.log(err);
+    //        res.json({
+    //          error: true,
+    //          data: null,
+    //          message: "failed to post order/orden data",
+    //        });
+    //      });
+    //   }).catch((err) => {
+    //           console.log(err);
+    //         });
+    //   },

@@ -32,10 +32,61 @@ const OrdenSchema = new Schema({
     type: Number,
     default: 0,
   },
-  sides: {
-    type: Schema.Types.ObjectId,
-    ref: "sides",
-    strictPopulate: false,
+  cebolla: {
+    type: Number,
+    default: 0,
+  },
+  cilantro: {
+    type: Number,
+    default: 0,
+  },
+  pico: {
+    type: Number,
+    default: 0,
+  },
+  redSalsa: {
+    type: Number,
+    default: 0,
+  },
+  greenSalsa: {
+    type: Number,
+    default: 0,
+  },
+
+  largeHorchata: {
+    type: Number,
+    default: 0,
+  },
+  smallHorchata: {
+    type: Number,
+    default: 0,
+  },
+
+  coca: {
+    type: Number,
+    default: 0,
+  },
+  sprite: {
+    type: Number,
+    default: 0,
+  },
+  fanta: {
+    type: Number,
+    default: 0,
+  },
+  allVerdurasPrice: {
+    type: Number,
+    default: 0,
+  },
+
+  aguasPrice: {
+    type: Number,
+    default: 0,
+  },
+
+  allSidesPrice: {
+    type: Number,
+    default: 0,
   },
   tacosTotal: {
     type: Number,
@@ -63,6 +114,25 @@ OrdenSchema.methods.getTacoPrice = function () {
   let cuantos = this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
   this.tacosTotal = cuantos * 3;
   return this.tacosTotal;
+};
+OrdenSchema.methods.verdurasTogether = function () {
+  let verdurasPrice = this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa 
+    this.allVerdurasPrice = verdurasPrice * .5
+  return this.allVerdurasPrice;
+};
+OrdenSchema.methods.getAguasOnlyPrice = function () {
+  let lH =  this.largeHorchata * 4;
+  let sH = this.smallHorchata * 2
+  this.aguasPrice = lH + sH
+    
+  return this.aguasPrice;
+};
+
+OrdenSchema.methods.addAllsides = function () {
+  let canBebidas = this.fanta + this.coca + this.sprite;
+  let cansides = canBebidas * 2;
+  this.allSidesPrice = cansides + this.aguasPrice + allVerdurasPrice;
+  return this.allSidesPrice;
 };
 
 const Orden = mongoose.model("Orden", OrdenSchema);

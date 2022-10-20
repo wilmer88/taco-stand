@@ -8,7 +8,7 @@ const OrdenHero = () => {
       Porfavor Ordene
       </div>
       <div className="subtitle">
-      Tacos
+      <img alt="taco" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-tacos-food-smashingstocks-glyph-smashing-stocks.png"/>
       </div>
 
     </div>

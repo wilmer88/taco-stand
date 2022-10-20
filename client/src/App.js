@@ -10,6 +10,9 @@ import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
+import TacoBlockContext from "./utils/TacoContext";
+
+
 
 function App(){
 
@@ -25,18 +28,28 @@ function App(){
   return(
     <>
     <Router>
+ 
+   
 <AuthContext.Provider value= {{jwt, setJwt}}>   
 <OrdenLevel/>
     <Routes> 
     <Route exact path="/signup" element={<SignUp/>}></Route>
     <Route exact path="/login" element={<ULog/>}></Route>
     <Route  exact path="/orden/:ordenId" element={<Editar/>}></Route>
+  
+
       <Route exact path="/ordens" element={<FinishedOrden/>}></Route>
-    <Route exact path="/orden" element={<OrdenPage/>}></Route>
+
+  
+
+    <Route exact path="/orden" element= {<TacoBlockContext.Provider value={TacoBlockContext}> <OrdenPage/> </TacoBlockContext.Provider>}></Route>
+
+
     <Route exact path="/" element={<StartPage/>}></Route>
     </Routes> 
     <Footer/>
     </AuthContext.Provider>
+ 
     </Router>
     </>
 

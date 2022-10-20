@@ -1,92 +1,206 @@
-import Bebidas from "../components/Bebidas";
-import TopingsBlock from "./TopingsBlock";
-import TacoBlock from "./TacosBlock";
-import API from "../utils/API"
-import React, {useState } from "react";
-import { Link } from "react-router-dom";
-
+import ToppingField from "./ToppingField";
+import NameField from "./NameField";
+import DropDownField from "./DropDownField";
+import API from "../utils/API";
+import React from "react";
+import { Link} from "react-router-dom";
+import {useState} from "react";
+// import TopingsBlock from "./TopingsBlock";
+// import TacoBlockContext from "../utils/TacoContext";
 // import { useNavigate } from "react-router-dom";
 const OrdenBox = () => {
-  
-  async function firstFunction(){
-    handleClose()
+
+  const [orderData, setOrderData] = useState({
+    nombreDeOrden:"",
+    azada:0,
+    pollo:0,
+    cebolla:0,
+    cilantro:0
+  });
+
+  const cebollaIncrement = (event) =>{
+    event.preventDefault();
+    setOrderData({...orderData, cebolla: orderData.cebolla  + 1 })
     };
 
+    const cebollaDecrement = (event) =>{
+      event.preventDefault()
+      if(orderData.cebolla >= 1){
+        setOrderData({...orderData, cebolla: orderData.cebolla  - 1 })
+      }
+      };
+
+  const  NameHandleChange = event => {
+    const {name, value} = event.target;
+    setOrderData({...orderData, [name]:value })
+   };
+
+   const  tacoHandleChange = (event) => {
+    const {name, value} = event.target;
+    setOrderData({...orderData, [name]: parseInt(value) })
+   };
+
+   async function resetState ()  {
+      setOrderData({
+        nombreDeOrden:"",
+        azada:0,
+        pollo:0,
+        cebolla:0,
+        cilantro:0
+
+      })
+    };
+
+    async function firstFunction(){
+      handleClose()
+    
+      };
+
     async function secondFunction(){
-   alert("Gracias por su orden!")
-  
+      alert("Gracias por su orden!")
+      // window.location.reload(false)
       };
 
       const [showModel, setshowModel] = useState("modal");
       const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
-      const handleClose = ()=>{setshowModel("modal")}
-
-      const [formObj, setFormObj] = useState({
-        nombreDeOrden: "",
-        azada: 0,
-        pollo: 0,
-        barbacoa: 0,
-        pastor: 0,
-        chorizo: 0,
-      });
-
-
-  //   function handleChangeI(e) {
-  //  const {name, value} = e.target;
-  //   setFormObj({...formObj, [name]: value})
-  // };
+      const handleClose = (e)=>{e.preventDefault(); setshowModel("modal")}
 
   const handleSubmit= (e)=> {
     e.preventDefault();
-API.saveOrden(formObj).then((response)=>{
+API.saveOrden(orderData).then((response)=>{
   firstFunction()
-  setTimeout(() => {secondFunction()}, 1800);
-  setFormObj({
-    nombreDeOrden: "",
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-    precios:0,
-    total:0,
-  })
-}).catch((err) =>{ 
-          console.log(err)
-        });
-        };
-                                                                                                                        
-  // window.location.href="http://localhost:3000/ClientLine" ;
- return (<>
-         <form >
-      
+  setTimeout(() => {secondFunction()}, 1500);
+  resetState()
+}).catch((err) =>{console.log(err)});};
+                                                                                                                    
+ return (<><form>
           <main className="box is-shadowless is-align-self-center">
           <section className="card">
 
- <article className="card-content">
- <aside className="m-3 content" >
+                <article className="card-content">
+                <aside className="m-3 content" >
+                <div className="container mt-3">
+                <figcaption>   
+                <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h5>
+                </figcaption>
 
-         <TacoBlock/>
-         <Bebidas/>
-         <TopingsBlock /> 
-        
+ <div className="is-align-content-center columns mt-3">
+    <NameField
+    name= "nombreDeOrden"
+    value= {orderData.nombreDeOrden}
+    onChange={NameHandleChange}
+    />
+
+    <DropDownField 
+    tagg = "Azada"
+    name = "azada"
+    value= {orderData.azada}
+    onChange= {tacoHandleChange}
+   
+    />
+  <DropDownField 
+    tagg = "Pollo"
+    name = "pollo"
+    value= {orderData.pollo}
+    onChange= {tacoHandleChange}
+    />
+      <DropDownField 
+    tagg = "Barbacoa"
+    />
+      <DropDownField 
+    tagg = "Pastor"
+    />
+      <DropDownField 
+    tagg = "Chorizo"
+    />
+</div>
+<hr></hr>
+
+    <figcaption>   
+    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h5>
+    </figcaption>
+    <div className="columns mt-3">
+
+    <DropDownField 
+    tagg = "Horchata Grande"
+    name = "azadaTacoData"
+    value= {orderData.azadaTacoData}
+    onChange= {tacoHandleChange}
+   
+    />
+  <DropDownField 
+   tagg= "Pequena Horchata"
+    name = "pollo"
+    value= {orderData.pollo}
+    onChange= {tacoHandleChange}
+    />
+      <DropDownField 
+    tagg = "Coca Cola"
+    />
+      <DropDownField 
+    tagg = "Sprite"
+    />
+      <DropDownField 
+    tagg = "Fanta"
+    />
+ 
+      </div>
+  </div>
+  <hr></hr>
+<div className="container mt-3">
+    <figcaption>   
+    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Porciones Extras</strong></h5>
+    </figcaption>
+
+    <ToppingField
+ topingName = "Cebolla"
+ subtitle= "Cebolla"
+ picture = "../images/onions.png"
+ name="cebolla"
+ value={orderData.cebolla}
+ topingCount = {orderData.cebolla}
+ sumar= {cebollaIncrement}
+ restar= {cebollaDecrement}
+ /> 
+
+ <ToppingField
+ topingName = "Cilantro"
+ subtitle= "Cilantro"
+ picture = "../images/cilantro.png"
+ topingCount = {orderData.cilantro}
+ sumar= {cebollaIncrement}
+ restar= {cebollaDecrement}
+ /> 
+            
+{/* <ToppingField
+ topingName = "Cebolla"
+ picture = "../images/onions.png"
+ topingCount = {orderData.cebolla}
+ sumar= {cebollaIncrement}
+ restar= {cebollaDecrement}
+ />  */}
+
+{/* <ToppingField
+ topingName = "Cilantro"
+ picture = "../images/cilantro.png"
+ topingCount = {orderData.cilantro}
+ sumar= {cilantroIncrement}
+ restar={cilantroDecrement}
+ />  */}
+  </div>   
 
             </aside>
             </article>
-
-
-      
-      <aside id="modalll" className={`modal ${showModel}`}>
+      <aside id="modalll" className={` ${showModel}`}>
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
                   <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "25px"}}> Nombre: {formObj.nombreDeOrden}</div>
-                  <div style={{fontSize: "25px"}}> Azada: {formObj.azada}</div>
-                  <div style={{fontSize: "25px"}}>Pollo: {formObj.pollo}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {formObj.barbacoa}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {formObj.chorizo}</div>
-                  <div style={{fontSize: "25px"}}>Pastor: {formObj.pastor}</div>
+                  <div style={{fontSize: "25px"}}> Nombre: {orderData.nombreDeOrden}</div>
+                  <div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div>
+                  <div style={{fontSize: "25px"}}>Cebolla: {orderData.cebolla}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {orderData.cilantro}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {orderData.pollo}</div>
                   <hr></hr>
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
@@ -100,7 +214,7 @@ API.saveOrden(formObj).then((response)=>{
           <footer className="card-footer">
                   <div className="card-footer-item">
                   <span>
-                  <button onClick={openModal} id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
+                  <button  id="modalButton" onClick={openModal} className="button is-medium is-success is-light" data-target="modal-js-example">
                     <strong>Entregar</strong>
                   </button>
                     </span>
@@ -115,11 +229,9 @@ API.saveOrden(formObj).then((response)=>{
                   </div>
             </footer>
   
-
   </section>
  </main>  
-</form>
-       </>);
+ </form> </>);
   }
 export default OrdenBox;
 
