@@ -45,6 +45,11 @@ module.exports = {
      },    
      create: function(req,res){
       const orden = new Orden(req.body);
+      orden.getTacoPrice()
+      orden.getAguasOnlyPrice()
+      orden.getCanDrinkPrice()
+     orden.getTopingPrice()
+      orden.addTotal()
  
     db.Orden.create(orden)
       .then((dbOrden) => {

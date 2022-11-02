@@ -1,7 +1,7 @@
 import axios from "axios";
 const clientApiCalls =
 {
-  getOrdens: function() {
+getOrdens: function() {
     return axios.get("/api/orden");
   },
   saveOrden: function(ordenData) {
@@ -30,7 +30,13 @@ const clientApiCalls =
   signup: function(userData) {
     return axios.post("/api/signup/", userData);
     },
- 
+    makeTacoPayment: function(token, addresses){
+      return axios.post("/api/payment/", token, addresses);
+         },
+         
+
+      
+
 };
 
 export default  clientApiCalls

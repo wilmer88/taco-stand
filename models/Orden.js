@@ -52,6 +52,10 @@ const OrdenSchema = new Schema({
     type: Number,
     default: 0,
   },
+  allVerdurasPrice:{
+    type: Number,
+    default: 0,
+  },
 
   largeHorchata: {
     type: Number,
@@ -74,17 +78,14 @@ const OrdenSchema = new Schema({
     type: Number,
     default: 0,
   },
-  allVerdurasPrice: {
-    type: Number,
-    default: 0,
-  },
+
 
   aguasPrice: {
     type: Number,
     default: 0,
   },
 
-  allSidesPrice: {
+  canDrinkPrice: {
     type: Number,
     default: 0,
   },
@@ -108,18 +109,30 @@ const OrdenSchema = new Schema({
     type: Date,
     default: Date.now
   },
-});
+  
+},
 
+{toJSON:{virtuals: true}},
+
+);
+
+OrdenSchema.virtual("testVirtual").get(function () {
+  let verdurasPrice = this.cebolla + this.cilantro 
+    
+  return  verdurasPrice * .5
+});
 OrdenSchema.methods.getTacoPrice = function () {
   let cuantos = this.azada + this.pollo + this.barbacoa + this.pastor + this.chorizo;
   this.tacosTotal = cuantos * 3;
   return this.tacosTotal;
 };
-OrdenSchema.methods.verdurasTogether = function () {
-  let verdurasPrice = this.cebolla + this.cilantro + this.pico + this.Rsalsa + this.Vsalsa 
-    this.allVerdurasPrice = verdurasPrice * .5
+
+OrdenSchema.methods.getTopingPrice = function () {
+  let cuantosTopings = this.cebolla + this.cilantro + this.pico + this.redSalsa + this.greenSalsa;
+  this.allVerdurasPrice = cuantosTopings * .5;
   return this.allVerdurasPrice;
 };
+
 OrdenSchema.methods.getAguasOnlyPrice = function () {
   let lH =  this.largeHorchata * 4;
   let sH = this.smallHorchata * 2
@@ -127,12 +140,14 @@ OrdenSchema.methods.getAguasOnlyPrice = function () {
     
   return this.aguasPrice;
 };
+OrdenSchema.methods.getCanDrinkPrice = function () {
+  this.canDrinkPrice = this.coca +this.sprite + this.fanta * 2
+  return this.canDrinkPrice;
+};
 
-OrdenSchema.methods.addAllsides = function () {
-  let canBebidas = this.fanta + this.coca + this.sprite;
-  let cansides = canBebidas * 2;
-  this.allSidesPrice = cansides + this.aguasPrice + allVerdurasPrice;
-  return this.allSidesPrice;
+OrdenSchema.methods.addTotal = function () {
+ this.ordenTotal = this.canDrinkPrice + this.tacosTotal + this.allVerdurasPrice + this.aguasPrice
+  return this.ordenTotal
 };
 
 const Orden = mongoose.model("Orden", OrdenSchema);

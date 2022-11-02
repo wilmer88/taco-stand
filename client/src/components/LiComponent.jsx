@@ -30,6 +30,12 @@ const liestilo = {
     
   }
 
+  function pagarOrden(id) {
+    console.log(id)
+    navigate(`/payment/${id}`)
+    
+  }
+
     return (<>
     <div className="columns is-mobile">
   <div className="column is-1"></div>
@@ -82,6 +88,8 @@ const liestilo = {
   <footer className="card-footer">
    <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
     <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
+    <div className="card-footer-item"> <button className="button  is-info" onClick={()=> pagarOrden(props._id)}>pagar/pay</button></div>
+
 
   </footer>
 </div>

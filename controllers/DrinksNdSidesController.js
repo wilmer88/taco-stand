@@ -12,8 +12,8 @@ module.exports = {
 
     createSideOrder: function(req,res){
         const sides = new Sides(req.body);
-        sides.getAguasOnlyPrice();
-        sides.addAllsides();
+
+
       db.Sides.create(sides )
         .then((dbSides) => {
          res.status(201);

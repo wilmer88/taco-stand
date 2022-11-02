@@ -11,6 +11,7 @@ import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
 import TacoBlockContext from "./utils/TacoContext";
+import Payment from "./pages/Payment/Payment";
 
 
 
@@ -33,6 +34,8 @@ function App(){
 <AuthContext.Provider value= {{jwt, setJwt}}>   
 <OrdenLevel/>
     <Routes> 
+    <Route exact path="/payment/:ordenId" element={<Payment/>}></Route>
+
     <Route exact path="/signup" element={<SignUp/>}></Route>
     <Route exact path="/login" element={<ULog/>}></Route>
     <Route  exact path="/orden/:ordenId" element={<Editar/>}></Route>

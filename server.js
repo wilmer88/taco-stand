@@ -1,13 +1,15 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-require("dotenv").config();
 const cors = require("cors");
+
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/taco-stand" ,
@@ -19,7 +21,7 @@ mongoose.connect(
   .catch((err) => console.log(err));
 
 
-app.use(express.urlencoded({ extended: true }));
+
 
 
 const PORT = process.env.PORT || 3001;
@@ -37,6 +39,8 @@ const path = require("path");
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
+
+  
 
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

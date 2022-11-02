@@ -14,8 +14,19 @@ const OrdenBox = () => {
     nombreDeOrden:"",
     azada:0,
     pollo:0,
+    barbacoa: 0,
+    pastor: 0,
+    chorizo: 0,
     cebolla:0,
-    cilantro:0
+    cilantro:0,
+    pico: 0,
+    redSalsa: 0,
+    greenSalsa: 0,
+    largeHorchata: 0,
+    smallHorchata: 0,
+    coca: 0,
+    sprite: 0,
+    fanta: 0,
   });
 
   const cebollaIncrement = (event) =>{
@@ -29,6 +40,18 @@ const OrdenBox = () => {
         setOrderData({...orderData, cebolla: orderData.cebolla  - 1 })
       }
       };
+
+      const cilantroIncrement = (event) =>{
+        event.preventDefault();
+        setOrderData({...orderData, cilantro: orderData.cilantro  + 1 })
+        };
+    
+        const cilantroDecrement = (event) =>{
+          event.preventDefault()
+          if(orderData.cilantro >= 1){
+            setOrderData({...orderData, cilantro: orderData.cilantro  - 1 })
+          }
+          };
 
   const  NameHandleChange = event => {
     const {name, value} = event.target;
@@ -45,8 +68,20 @@ const OrdenBox = () => {
         nombreDeOrden:"",
         azada:0,
         pollo:0,
+        barbacoa: 0,
+        pastor: 0,
+        chorizo: 0,
         cebolla:0,
-        cilantro:0
+        cilantro:0,
+        pico: 0,
+        redSalsa: 0,
+        greenSalsa: 0,
+        largeHorchata: 0,
+        smallHorchata: 0,
+        coca: 0,
+        sprite: 0,
+        fanta: 0,
+        allVerdurasPrice: 0,
 
       })
     };
@@ -123,15 +158,15 @@ API.saveOrden(orderData).then((response)=>{
 
     <DropDownField 
     tagg = "Horchata Grande"
-    name = "azadaTacoData"
-    value= {orderData.azadaTacoData}
+    name = "largeHorchata"
+    value= {orderData.largeHorchata}
     onChange= {tacoHandleChange}
    
     />
   <DropDownField 
    tagg= "Pequena Horchata"
-    name = "pollo"
-    value= {orderData.pollo}
+    name = "smallHorchata"
+    value= {orderData.smallHorchata}
     onChange= {tacoHandleChange}
     />
       <DropDownField 
@@ -168,8 +203,9 @@ API.saveOrden(orderData).then((response)=>{
  subtitle= "Cilantro"
  picture = "../images/cilantro.png"
  topingCount = {orderData.cilantro}
- sumar= {cebollaIncrement}
- restar= {cebollaDecrement}
+ value={orderData.cilantro}
+ sumar= {cilantroIncrement}
+ restar= {cilantroDecrement}
  /> 
             
 {/* <ToppingField
@@ -191,17 +227,28 @@ API.saveOrden(orderData).then((response)=>{
 
             </aside>
             </article>
-      <aside id="modalll" className={` ${showModel}`}>
+      <aside id="modalll" className={`${showModel}`}>
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
                   <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
                   <div style={{fontSize: "25px"}}> Nombre: {orderData.nombreDeOrden}</div>
                   <div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div>
+                  <div style={{fontSize: "25px"}}> Pollo: {orderData.pollo}</div>
+                  <div style={{fontSize: "25px"}}>Barbacoa: {orderData.barbacoa}</div>
+                  <div style={{fontSize: "25px"}}> Pastor: {orderData.pastor}</div>
+                  <div style={{fontSize: "25px"}}>Chorizo: {orderData.chorizo}</div>
                   <div style={{fontSize: "25px"}}>Cebolla: {orderData.cebolla}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {orderData.cilantro}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {orderData.pollo}</div>
-                  <hr></hr>
+                  <div style={{fontSize: "25px"}}> Cilantro: {orderData.cilantro}</div>
+                  <div style={{fontSize: "25px"}}> Pico De Gallo: {orderData.pico}</div>
+                  <div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>
+                  <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>
+                  <div style={{fontSize: "25px"}}> Horchata Grande: {orderData.largeHorchata}</div>
+                  <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div>
+                  <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div>
+                  <div style={{fontSize: "25px"}}> Sprite: {orderData.sprite}</div>
+                  <div style={{fontSize: "25px"}}> Fanta: {orderData.fanta}</div>
+
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
                 <br></br>
