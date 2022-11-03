@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const {Schema }= mongoose;
-const sidesSchema = new Schema({
+// const mongoose = require("mongoose");
+// const {Schema }= mongoose;
+// const sidesSchema = new Schema({
 
-});
+// });
 
 
-const Sides = mongoose.model("sides", sidesSchema);
+// const Sides = mongoose.model("sides", sidesSchema);
 
-module.exports = Sides;
+// module.exports = Sides;
