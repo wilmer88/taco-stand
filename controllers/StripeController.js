@@ -1,10 +1,10 @@
-const stripe = require("stripe")("sk_test_51LyjEmJGe32KkiAV9BF3i0rAUdWvbgnJ4zJbsynfA99dbPY9wszTOrYJmjCifDwazrs1JUA5dt5uMuymZbaxcVJC00uBXut8Cr");
 const uuid = require("uuid").v4;
-
+const dotenv = require("dotenv"); 
+dotenv.config();
+const Stripe = require("stripe")
+const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY)
 module.exports = {
-
-
-    payOrden: function(req,res){
+payOrden: function(req,res){
 
 const {token, paymentObj} = req.body
 const idempontecyKey = uuid()

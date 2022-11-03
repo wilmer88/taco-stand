@@ -1,14 +1,20 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const bodyParser = require('body-parser')
+
 const cors = require("cors");
+const morgan = require('morgan')
 
-
+const dotenv = require("dotenv"); 
+ dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.text())
+app.use(morgan('dev'))
+app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
@@ -23,17 +29,17 @@ mongoose.connect(
 
 
 
-
 const PORT = process.env.PORT || 3001;
+
 // const AuthoController = require("./controllers/authController");
 // const ordenControler = require("./controllers/OrdenControllers");
 // const userController = require("./controllers/UserController");
 // app.use(AuthoController);
 // app.use(userController);
 // app.use(ordenControler);
-app.use(routes);
 
 const path = require("path");
+
 
 
 if (process.env.NODE_ENV === "production") {

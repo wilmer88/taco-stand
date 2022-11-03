@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import StripCheckout from "react-stripe-checkout";
 
+
+const key = process.env.REACT_APP_STRIPE
 const Payment = () => {
 
   const { ordenId } = useParams();
@@ -22,10 +24,10 @@ const Payment = () => {
  
 const handleToken = token =>{
   const body = {token,paymentObj}
-  // const headers = {
-  //   "Content-Type": "application/json"
-  // }
-  return  API.makeTacoPayment(body).then(response =>{
+  const headers = {
+    "Content-Type": "application/json"
+  }
+  return  API.makeTacoPayment(body,headers).then(response =>{
     const {status} = response
     console.log(response)
     console.log(status)
@@ -45,7 +47,7 @@ const handleToken = token =>{
 
           <h5 className="title is-3">${numberInDollars}</h5>
           <StripCheckout className="has-text-centerd"
-          stripeKey="pk_test_51LyjEmJGe32KkiAVPHkqL73qTmYGd4W8LhwwLCw7y0YnHG1BpUdtyJXa8UBClg0VLzAPgjbW8ZPgRaGYw4SUr86Z00GJc7Q1S2"
+          stripeKey={key}
           token={handleToken}
           amount={paymentObj.ordenTotal * 100}
           name={paymentObj.nombreDeOrden}
