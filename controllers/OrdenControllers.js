@@ -45,12 +45,6 @@ module.exports = {
      },    
      create: function(req,res){
       const orden = new Orden(req.body);
-      orden.getTacoPrice()
-      orden.getAguasOnlyPrice()
-      orden.getCanDrinkPrice()
-     orden.getTopingPrice()
-      orden.addTotal()
- 
     db.Orden.create(orden)
       .then((dbOrden) => {
         console.log(dbOrden)
@@ -66,10 +60,6 @@ module.exports = {
         });
       });
     },
-     
-     
-
-
 
       remove: function(req, res) {
         db.Orden.findByIdAndDelete(req.params.id)
@@ -106,7 +96,7 @@ module.exports = {
         },
 
         updateOrden: function(req, res) {
-          db.Orden.findByIdAndUpdate(req.params.id, req.body, { new: true })
+         db.Orden.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
           .then((updatedOrder) => {
             res.json(updatedOrder);
           })

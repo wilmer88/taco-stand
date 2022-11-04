@@ -7,7 +7,7 @@ const FinishedOrden = () => {
   const [den, setDen] = useState([])
 useEffect(() => {
   API.getOrdens().then((response ) => {
-    //  console.log(response.data);
+     console.log(response.data);
       setDen(response.data) }
       )
       .catch((err) =>{ 

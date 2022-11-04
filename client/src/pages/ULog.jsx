@@ -48,10 +48,10 @@ const ULog = () => {
 
 <div className= "column is-three-quarters-mobile" >
   <div className='box'>
-  <label className="label has-text-centered" style={pxhi.fonte}>Log In</label>
+  <label className="label has-text-centered" style={pxhi.fonte}>Log In/ Iniciar Sesión</label>
      <form onSubmit={formSubmit}>
          
-     <label className="label has-text-centered">e-mail/User Name</label>
+     <label className="label has-text-centered">Nombre De Usario/ User Name</label>
   <input 
          onChange={(e) => setUserName(e.target.value)}
          name="userName"
@@ -61,7 +61,7 @@ const ULog = () => {
           placeholder="email or username"
       />
 
-  <label className="label has-text-centered">Password</label>
+  <label className="label has-text-centered">Contraseña/ Password</label>
       <input 
         onChange={(e) => setPassword(e.target.value)}
            name="password"

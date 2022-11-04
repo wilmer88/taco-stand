@@ -37,6 +37,11 @@ const liestilo = {
     
   }
 
+  let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual
+  let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual
+  let tacosTofix = props.tacosVirtual
+  let fixTopings = props.topingVirtual
+
     return (<>
         <div className="columns is-mobile ">
   <div className="column is-1"></div>
@@ -55,7 +60,6 @@ Nombre: {props.nombreDeOrden}
 
   <div className="table-container">
   <table className="table">
-   
    <tbody  >
    <tr >
  <th>Azada</th>
@@ -64,16 +68,57 @@ Nombre: {props.nombreDeOrden}
  <th>barbacoa</th>
  <th>chorizo</th>
 </tr>
-
 </tbody>
-
 <tbody>
 <tr>
- <td>{props.azada}</td>
+<td>{props.azada}</td>
  <td>{props.pollo}</td>
  <td>{props.pastor}</td>
  <td>{props.barbacoa}</td>
  <td>{props.chorizo}</td>
+</tr>  
+</tbody>
+</table>
+<table className="table">
+   <tbody  >
+   <tr >
+   <th>G/Large <br></br>Horchata</th>
+            <th>P/Small <br></br>Horchata</th>
+            <th>Coca</th>
+            <th>Sprite</th>
+            <th>Fanta</th>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td>{props.largeHorchata}</td>
+ <td>{props.smallHorchata}</td>
+ <td>{props.coca}</td>
+ <td>{props.sprite}</td>
+ <td>{props.fanta}</td>
+</tr>  
+</tbody>
+</table>
+<table className="table">
+   <tbody  >
+   <tr >
+   <th>Extra <br></br>Cebolla</th>
+            <th>Extra<br></br>Cilantro</th>
+            <th>Extra<br></br>Pico</th>
+
+            <th>Verde/Green<br></br>Salsa</th>
+
+            <th>Roja/red<br></br>Salsa</th>
+
+</tr>
+</tbody>
+<tbody>
+<tr>
+ <td>{props.cebolla}</td>
+ <td>{props.cilantro}</td>
+ <td>{props.pico}</td>
+ <td>{props.greenSalsa}</td>
+ <td>{props.redSalsa}</td>
 </tr>  
 </tbody>
 </table>
@@ -87,8 +132,13 @@ Nombre: {props.nombreDeOrden}
 
  
 
-    <label style={liestilo.atras} className="label">Tacos: <span>{props.total}</span> </label>
-  <label style={liestilo.atras} className="label">Precio Total:$<span>{props.precio}.00</span> </label>
+    <label style={liestilo.atras} className="label">Tacos: <span>{tacosTofix?.toFixed(2)}</span> </label>
+    <label style={liestilo.atras} className="label">Bebidas/drinks: <span>{aguasNsodas?.toFixed(2)}</span> </label>
+    <label style={liestilo.atras} className="label">Extra Porciones/Toppings: <span>{fixTopings?.toFixed(2)}</span> </label>
+
+
+  <label style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice}</span> </label>
+
 
     <time dateTime="2016-1-1">{props.tiempo}</time>
   </div>

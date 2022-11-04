@@ -5,9 +5,7 @@ const ToppingField = (props) => {
     return (<>
    <section className="field"> 
              <hr></hr>
-             <figcaption>   
-         <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>{props.toppingName}</strong></h5>
-         </figcaption>
+           
        <article className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
 
@@ -21,7 +19,7 @@ const ToppingField = (props) => {
                  <section className="card-body">
                  <button className="button is-rounded is-light ml-3" onClick={props.sumar}><strong style={{fontSize:"26px"}}>+</strong></button>
             <figcaption className="content m-1 mt-3 ml-3"> 
-            <h5><mark >{props.topingCount}</mark></h5>
+            <h5><mark>{props.topingCount}</mark></h5>
             </figcaption> 
             <button className="button is-info is-rounded ml-3" onClick={props.restar} ><strong style={{fontSize:"19px"}}>-</strong></button> 
          </section>

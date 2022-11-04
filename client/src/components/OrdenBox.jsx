@@ -53,13 +53,47 @@ const OrdenBox = () => {
             setOrderData({...orderData, cilantro: orderData.cilantro  - 1 })
           }
           };
+          const picoIncrement = (event) =>{
+            event.preventDefault();
+            setOrderData({...orderData, pico: orderData.pico  + 1 })
+            };
+        
+            const picoDecrement = (event) =>{
+              event.preventDefault()
+              if(orderData.pico >= 1){
+                setOrderData({...orderData, pico: orderData.pico  - 1 })
+              }
+              };
+        
+              const greenSalsaIncrement = (event) =>{
+                event.preventDefault();
+                setOrderData({...orderData, greenSalsa: orderData.greenSalsa  + 1 })
+                };
+            
+                const greenSalsaDecrement = (event) =>{
+                  event.preventDefault()
+                  if(orderData.greenSalsa >= 1){
+                    setOrderData({...orderData, greenSalsa: orderData.greenSalsa  - 1 })
+                  }
+                  };
+                  const redSalsaIncrement = (event) =>{
+                    event.preventDefault();
+                    setOrderData({...orderData, redSalsa: orderData.redSalsa  + 1 })
+                    };
+                
+                    const redSalsaDecrement = (event) =>{
+                      event.preventDefault()
+                      if(orderData.redSalsa >= 1){
+                        setOrderData({...orderData, redSalsa: orderData.redSalsa  - 1 })
+                      }
+                      };
 
   const  NameHandleChange = event => {
     const {name, value} = event.target;
     setOrderData({...orderData, [name]:value })
    };
 
-   const  tacoHandleChange = (event) => {
+   const  tacoNdrinksHandleChange = (event) => {
     const {name, value} = event.target;
     setOrderData({...orderData, [name]: parseInt(value) })
    };
@@ -104,7 +138,7 @@ const OrdenBox = () => {
     e.preventDefault();
 API.saveOrden(orderData).then((response)=>{
   firstFunction()
-  setTimeout(() => {secondFunction()}, 2000);
+  setTimeout(() => {secondFunction()}, 1500);
   resetState()
 
 }).catch((err) =>{console.log(err)});};
@@ -131,14 +165,14 @@ API.saveOrden(orderData).then((response)=>{
     tagg = "Azada"
     name = "azada"
     value= {orderData.azada}
-    onChange= {tacoHandleChange}
+    onChange= {tacoNdrinksHandleChange}
    
     />
   <DropDownField 
     tagg = "Pollo"
     name = "pollo"
     value= {orderData.pollo}
-    onChange= {tacoHandleChange}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Barbacoa"
@@ -161,23 +195,32 @@ API.saveOrden(orderData).then((response)=>{
     tagg = "Horchata Grande"
     name = "largeHorchata"
     value= {orderData.largeHorchata}
-    onChange= {tacoHandleChange}
+    onChange= {tacoNdrinksHandleChange}
    
     />
   <DropDownField 
    tagg= "Pequena Horchata"
     name = "smallHorchata"
     value= {orderData.smallHorchata}
-    onChange= {tacoHandleChange}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Coca Cola"
+    name = "coca"
+    value= {orderData.coca}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Sprite"
+    name = "sprite"
+    value= {orderData.sprite}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Fanta"
+    name = "fanta"
+    value= {orderData.fanta}
+    onChange= {tacoNdrinksHandleChange}
     />
  
       </div>
@@ -189,7 +232,6 @@ API.saveOrden(orderData).then((response)=>{
     </figcaption>
 
     <ToppingField
- topingName = "Cebolla"
  subtitle= "Cebolla"
  picture = "../images/onions.png"
  name="cebolla"
@@ -200,8 +242,8 @@ API.saveOrden(orderData).then((response)=>{
  /> 
 
  <ToppingField
- topingName = "Cilantro"
  subtitle= "Cilantro"
+ name="cilantro"
  picture = "../images/cilantro.png"
  topingCount = {orderData.cilantro}
  value={orderData.cilantro}
@@ -209,21 +251,35 @@ API.saveOrden(orderData).then((response)=>{
  restar= {cilantroDecrement}
  /> 
             
-{/* <ToppingField
- topingName = "Cebolla"
- picture = "../images/onions.png"
- topingCount = {orderData.cebolla}
- sumar= {cebollaIncrement}
- restar= {cebollaDecrement}
- />  */}
+<ToppingField
+ subtitle= "Pico"
+ name="pico"
+ picture = "../images/pico.png"
+ topingCount = {orderData.pico}
+ value={orderData.pico}
+ sumar= {picoIncrement}
+ restar= {picoDecrement}
+ /> 
 
-{/* <ToppingField
- topingName = "Cilantro"
- picture = "../images/cilantro.png"
- topingCount = {orderData.cilantro}
- sumar= {cilantroIncrement}
- restar={cilantroDecrement}
- />  */}
+<ToppingField
+ subtitle= "Green/Verde Salsa"
+ name="greenSalsa"
+ picture = "../images/greenSalsa.png"
+ topingCount = {orderData.greenSalsa}
+ value={orderData.greenSalsa}
+ sumar= {greenSalsaIncrement}
+ restar= {greenSalsaDecrement}
+ /> 
+
+<ToppingField
+ subtitle= "Red/Roja Salsa"
+ name="redSalsa"
+ picture = "../images/redSalsa.png"
+ topingCount = {orderData.redSalsa}
+ value={orderData.greenSalsa}
+ sumar= {redSalsaIncrement}
+ restar= {redSalsaDecrement}
+ /> 
   </div>   
 
             </aside>
@@ -232,8 +288,8 @@ API.saveOrden(orderData).then((response)=>{
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
-                  <div style={{fontSize: "35px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "25px"}}> Nombre: {orderData.nombreDeOrden}</div>
+                  <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
+                  <div style={{fontSize: "35px"}}> {orderData.nombreDeOrden}</div>
                   <div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div>
                   <div style={{fontSize: "25px"}}> Pollo: {orderData.pollo}</div>
                   <div style={{fontSize: "25px"}}>Barbacoa: {orderData.barbacoa}</div>
@@ -244,12 +300,14 @@ API.saveOrden(orderData).then((response)=>{
                   <div style={{fontSize: "25px"}}> Pico De Gallo: {orderData.pico}</div>
                   <div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>
                   <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>
+                  <div style={{fontSize: "30px", fontWeight: "bold"}}>Bebidas</div>
+            
                   <div style={{fontSize: "25px"}}> Horchata Grande: {orderData.largeHorchata}</div>
                   <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div>
                   <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div>
                   <div style={{fontSize: "25px"}}> Sprite: {orderData.sprite}</div>
                   <div style={{fontSize: "25px"}}> Fanta: {orderData.fanta}</div>
-
+                  <hr></hr>
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
                 <br></br>

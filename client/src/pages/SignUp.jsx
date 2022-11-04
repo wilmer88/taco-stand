@@ -49,7 +49,7 @@ const [password, setPassword] = useState("");
     <hr></hr>
         <br></br>
     <form onSubmit={formSubmit}>
-    <label className="label has-text-centered">e-mail/User Name</label>
+    <label className="label has-text-centered">Nombre De Usario/ User Name</label>
         <div className="field is-mobile" >
        
       <div className="control is-expanded">
@@ -64,7 +64,7 @@ const [password, setPassword] = useState("");
         <br></br>
         <br></br>
     
-        <label className="label has-text-centered">Password</label>
+        <label className="label has-text-centered">Contraseña/ Password</label>
         <input 
           onChange={(e) => setPassword(e.target.value)}
           name="password"
