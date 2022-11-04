@@ -7,9 +7,10 @@ import { Link} from "react-router-dom";
 import {useState} from "react";
 // import TopingsBlock from "./TopingsBlock";
 // import TacoBlockContext from "../utils/TacoContext";
-// import { useNavigate } from "react-router-dom";
-const OrdenBox = () => {
+import { useNavigate } from "react-router-dom";
 
+const OrdenBox = () => {
+  const navigate = useNavigate()
   const [orderData, setOrderData] = useState({
     nombreDeOrden:"",
     azada:0,
@@ -87,25 +88,25 @@ const OrdenBox = () => {
     };
 
     async function firstFunction(){
-      handleClose()
-    
+      handleClose();
+      alert("Gracias por su orden!");
       };
 
     async function secondFunction(){
-      alert("Gracias por su orden!")
-      // window.location.reload(false)
+      navigate("/")
       };
 
       const [showModel, setshowModel] = useState("modal");
       const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
-      const handleClose = (e)=>{e.preventDefault(); setshowModel("modal")}
+      const handleClose = ()=>{setshowModel("modal")}
 
   const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden(orderData).then((response)=>{
   firstFunction()
-  setTimeout(() => {secondFunction()}, 1500);
+  setTimeout(() => {secondFunction()}, 2000);
   resetState()
+
 }).catch((err) =>{console.log(err)});};
                                                                                                                     
  return (<><form>

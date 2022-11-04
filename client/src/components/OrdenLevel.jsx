@@ -1,6 +1,6 @@
-import "./OrdenHero/hero.css"
-
+import "./OrdenHero/hero.css";
 import { Link } from "react-router-dom";
+
 const estilo = {
  nombre: {
    background: "#e8eaf6",
@@ -18,13 +18,12 @@ const OrdenLevel = () => {
  
     return (
 
-  <div className="column is-12">  
-        <div className="container is-centered">
-        <nav  className="level">
+ 
+        <nav className="level  is-size-7 is-align-content-center" >
 <div className="level-item has-text-centered" style={estilo.nombre}>
 <Link to="/login"><label className="label">  Iniciar Sesión</label></Link>
  </div>
-        <div className="level-item has-text-centered is-hoverable" style={estilo.altura}>
+        <div className="level-item has-text-centered is-hoverable " style={estilo.altura}>
         <label className="label">
             Ordenar
             </label>
@@ -37,9 +36,9 @@ const OrdenLevel = () => {
         </div>
       </nav>
 
-        </div>
+      
 
-      </div>
+      
 
     );
   

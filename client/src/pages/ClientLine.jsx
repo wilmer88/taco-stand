@@ -15,29 +15,17 @@ useEffect(() => {
       });
 }, []);
 
-  return (
-  <>
- <div className='columns is-mobile'>
+  return ( <>
 
-<div className= "column is-three-quarters-mobile" >
 
-<div className="column is-narrow">
-
-<div className="container mobile is-centered">
+<div className="container is-align-self-auto is-size-7">
  {den.length ? (den.map( res =>(
               <Licomponent key= {res._id} {...res} />
             ))
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: You must be signed in to view this page</h1>)}
-           
-           
         </div>
-      </div>
-   </div>
 
- </div>
-  </>
-
-      )}
+  </> )}
 
 export default FinishedOrden;
 
