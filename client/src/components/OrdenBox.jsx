@@ -133,16 +133,21 @@ const OrdenBox = () => {
       const [showModel, setshowModel] = useState("modal");
       const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
-
   const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden(orderData).then((response)=>{
   firstFunction()
-  setTimeout(() => {secondFunction()}, 1500);
+  setTimeout(() => {secondFunction()}, 1000);
   resetState()
-
 }).catch((err) =>{console.log(err)});};
-                                                                                                                    
+
+// const tempData= orderData
+            
+// tempData.map(orderitem =>(
+//   <div style={{fontSize: "25px"}}> {orderitem.key}: {orderitem}</div>
+
+// ))
+
  return (<><form>
           <main className="box is-shadowless is-align-self-center">
           <section className="card">
@@ -183,6 +188,7 @@ API.saveOrden(orderData).then((response)=>{
       <DropDownField 
     tagg = "Chorizo"
     />
+    
 </div>
 <hr></hr>
 
@@ -288,6 +294,7 @@ API.saveOrden(orderData).then((response)=>{
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
+             
                   <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
                   <div style={{fontSize: "35px"}}> {orderData.nombreDeOrden}</div>
                   <div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div>
@@ -301,7 +308,6 @@ API.saveOrden(orderData).then((response)=>{
                   <div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>
                   <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>
                   <div style={{fontSize: "30px", fontWeight: "bold"}}>Bebidas</div>
-            
                   <div style={{fontSize: "25px"}}> Horchata Grande: {orderData.largeHorchata}</div>
                   <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div>
                   <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div>
