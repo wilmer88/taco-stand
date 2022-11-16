@@ -4,3 +4,25 @@
     border-radius: 50%;
     filter: grayscale(100%);
 }
+#ordenPageHero{
+    height: 50vh;
+    width: 100vw;
+    background-image: url("../../../public/images/tacos.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+background-size: 95%; 
+
+
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover; 
+    background-size: cover; */ 
+
+
+
+  
+
+
+
+}

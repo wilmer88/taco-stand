@@ -21,13 +21,15 @@ const OrdenLevel = () => {
  
         <nav className="level  is-size-7 is-align-content-center" >
 <div className="level-item has-text-centered" style={estilo.nombre}>
-<Link to="/login"><label className="label">  Iniciar Sesión</label></Link>
+<Link to="/login">    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span><label className="label">  Iniciar Sesión</label></Link>
  </div>
         <div className="level-item has-text-centered is-hoverable " style={estilo.altura}>
-        <label className="label">
+       
+      <Link to="/orden"> <label className="label">
             Ordenar
-            </label>
-      <Link to="/orden"><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
+            </label><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
         
         </div>
  
