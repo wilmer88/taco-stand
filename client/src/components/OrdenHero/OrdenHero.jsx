@@ -1,7 +1,7 @@
 const OrdenHero = () => {
   return (
     <>
-      <section  className="hero">
+      <section  className="hero mr-3 ml-3">
         <div   className="hero-body">
           <div id="ordenPageHero"  className="container">
             <div id="heroTS" className="subtitle has-text-left">

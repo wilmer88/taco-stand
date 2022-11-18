@@ -24,7 +24,7 @@ const OrdenLevel = () => {
 <Link to="/login">   
 
   
-   <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión</label>
+   <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In</label>
  
     </Link>
  </div>
