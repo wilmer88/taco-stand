@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+<font id="icofont" horiz-adv-x="1000" >
+<font-face font-family="IcoFont" font-weight="400" font-style="Regular" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="list" horiz-adv-x="1000" unicode="&#xef72;" d="M828 788h-656c-30 0-55-25-55-55v-766c0-30 25-55 55-55h656c30 0 55 25 55 55v766c0 30-25 55-55 55z m-188-90h158v-55h-158v55z m-441 0h159v-55h-159v55z m621-725h-640v587h640v-587z m-552 434h468c16 0 28 13 28 29s-12 28-28 28h-468c-15 0-28-13-28-28s13-29 28-29z m0-116h468c16 0 28 12 28 28s-12 28-28 28h-468c-15 0-28-13-28-28s13-28 28-28z m0-117h468c16 0 28 13 28 28s-12 28-28 28h-468c-15 0-28-12-28-28s13-28 28-28z m0-117h468c16 0 28 13 28 28s-12 29-28 29h-468c-15 0-28-13-28-29s13-28 28-28z" />
+<glyph glyph-name="login" horiz-adv-x="1000" unicode="&#xef7b;" d="M719 333c10 9 10 25 0 35l-285 294c-10 9-25 9-34 0l-57-59c-9-9-9-25 0-35l135-139h-364c-13 0-24-11-24-24v-99c0-14 11-25 24-25h374l-145-149c-9-10-9-26 0-35l57-59c9-9 24-9 34 0l285 295z m-137 333h206v-632h-206v-122h267c33 0 61 28 61 61v754c0 33-28 61-61 61h-267v-122z" />
+</font>
+</defs>
+</svg>

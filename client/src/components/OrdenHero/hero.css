@@ -1,28 +1,73 @@
 
-
 #santos{
     border-radius: 50%;
     filter: grayscale(100%);
 }
+
+
+
 #ordenPageHero{
-    height: 50vh;
-    width: 100vw;
-    background-image: url("../../../public/images/tacos.png");
+    
+
+    border-style: solid;
+    border-color:black;
+    /* height: 50vh;
+    width: 100vw; */
     background-repeat: no-repeat;
     background-position: center;
-
-
-background-size: 95%; 
-
-
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover; 
-    background-size: cover; */ 
+    box-shadow: 3px 2px lightgray;
 
 
 
+
+
+
+
+}
+
+#ordenPageHero::before{
+    content: "";
+    background-image: url("../../../public/images/tacosHD.jpg");
+
+    background-size:cover; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left:0;
+    opacity: .7;
+
+}
+
+#heroTS{
+    position: relative;
+    transform: rotate(5deg);
+    color: rgb(255, 255, 255);
+   font-size: 50px;
+   font-weight: 700;
+
+   text-align: center;
+   font-family: "didot";
+   margin-top: 50px;
+   text-shadow: 2px 2px red;
+}
+#heroTE{
+    position: relative;
+    transform: rotate(350deg);
+    color: rgb(255, 255, 255);
+   font-size: 50px;
+   font-weight: 700;
+ 
+   text-align: center;
+   font-family: "didot";
+   text-shadow: 2px 2px red;
+}
+#heroG{
+    position: relative;
+    text-shadow: 2px 2px black;
+    color: azure;
+   font-size: 25px;
+   font-weight: 700;
   
-
-
 
 }
