@@ -38,7 +38,7 @@ const OrdenLevel = () => {
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link to="/ordens">
-          <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera </label></Link>
+          <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </label></Link>
         </div>
       </nav>
 
