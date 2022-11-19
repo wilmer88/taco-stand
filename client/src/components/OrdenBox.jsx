@@ -294,25 +294,28 @@ API.saveOrden(orderData).then((response)=>{
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
-             
-                  <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta Bien Su Orden?</div>
-                  <div style={{fontSize: "35px"}}> {orderData.nombreDeOrden}</div>
-                  <div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div>
-                  <div style={{fontSize: "25px"}}> Pollo: {orderData.pollo}</div>
-                  <div style={{fontSize: "25px"}}>Barbacoa: {orderData.barbacoa}</div>
-                  <div style={{fontSize: "25px"}}> Pastor: {orderData.pastor}</div>
-                  <div style={{fontSize: "25px"}}>Chorizo: {orderData.chorizo}</div>
-                  <div style={{fontSize: "25px"}}>Cebolla: {orderData.cebolla}</div>
-                  <div style={{fontSize: "25px"}}> Cilantro: {orderData.cilantro}</div>
-                  <div style={{fontSize: "25px"}}> Pico De Gallo: {orderData.pico}</div>
-                  <div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>
-                  <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>
-                  <div style={{fontSize: "30px", fontWeight: "bold"}}>Bebidas</div>
-                  <div style={{fontSize: "25px"}}> Horchata Grande: {orderData.largeHorchata}</div>
-                  <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div>
-                  <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div>
-                  <div style={{fontSize: "25px"}}> Sprite: {orderData.sprite}</div>
-                  <div style={{fontSize: "25px"}}> Fanta: {orderData.fanta}</div>
+                <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta correcta la orden/Is your order correct? { orderData.nombreDeOrden !== "" && (<div style={{fontSize: "35px"}}> {orderData.nombreDeOrden}</div>)}</div><hr></hr>
+
+                
+                { orderData.azada !== 0 && (<div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div> )}
+                { orderData.pollo !== 0 && (<div style={{fontSize: "25px"}}> Pollo: {orderData.pollo}</div> )}
+                { orderData.barbacoa !== 0 && (<div style={{fontSize: "25px"}}>Barbacoa: {orderData.barbacoa}</div>)}
+                { orderData.pastor !== 0 && ( <div style={{fontSize: "25px"}}> Pastor: {orderData.pastor}</div>)}
+                { orderData.chorizo !== 0 && (     <div style={{fontSize: "25px"}}>Chorizo: {orderData.chorizo}</div>)}
+        
+
+                {orderData.largeHorchata !== 0 && (<div style={{fontSize: "25px"}}> Horchata/Large Grande: {orderData.largeHorchata}</div>)}      
+                {orderData.smallHorchata !== 0 && ( <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div> )  }
+                {orderData.coca !== 0 && ( <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div> )}
+                {orderData.sprite !== 0 && (<div style={{fontSize: "25px"}}> Sprite: {orderData.sprite}</div> )}
+                {orderData.fanta !== 0 && ( <div style={{fontSize: "25px"}}> Fanta: {orderData.fanta}</div> )}
+          
+
+                {orderData.cebolla !== 0 && ( <div style={{fontSize: "25px"}}>Cebolla: {orderData.cebolla}</div>)}
+                {orderData.cilantro !== 0 && ( <div style={{fontSize: "25px"}}>Cilantro: {orderData.cilantro}</div>)}
+                {orderData.pico !== 0 && (<div style={{fontSize: "25px"}}> Pico De Gallo: {orderData.pico}</div>)}
+                {orderData.redSalsa !== 0 && (<div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>)}
+                {orderData.greenSalsa !== 0 && ( <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>)}
                   <hr></hr>
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
