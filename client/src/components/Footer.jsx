@@ -1,23 +1,34 @@
-import { Link } from "react-router-dom";
+// import {useState} from "react"
+import { Link, NavLink} from "react-router-dom";
 const Footer = ()=> {
-  
-    return (
-      
-    <>
+  const linkState=  [
+    {name:"home", href:"/"},
+    {name:"find", href:"/ordens"},
+    {name:"ordenar", href:"/orden"},
+    {name:"Incribirse-Signup", href:"/signup"},
+  ] 
+    return (<>
       <hr></hr>
-    <div className='columns is-mobile mb-0'>
+    <div className='columns is-mobile  '>
     <div className="column is-one-fifth"></div>
 
 <div className= "column is-mobile" >
 
-<nav className="breadcrumb" aria-label="breadcrumbs">
+<nav className="tabs navbar is-fixed-bottom is-justify-content-center mt-0" aria-label="breadcrumbs" >
   <ul>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/ordens">Find</Link></li>
-    <li><Link to="/orden">Ordenar</Link></li>
-    <li><Link to="/signup">Inscribirse-Sign up</Link></li>
-    <li><Link to="/login">Iniciar Sesion-Log in</Link></li>
+    {linkState.map((item) =>(
+      <li key={item.name}> <NavLink
 
+      key={item.name}
+       to={item.href}
+       className={({isActive})=>{return " is-centered navbar-item " + (!isActive ? "navbar-item " : "navbar-item " ) }}
+      >
+        {item.name}
+      </NavLink>
+      </li>
+  
+      
+    ))}
   </ul>
 </nav>
 </div>
@@ -26,4 +37,3 @@ const Footer = ()=> {
     </> )
   }
   export default Footer;
-  
