@@ -15,6 +15,9 @@ const Footer = ()=> {
     <li><Link to="/">Home</Link></li>
     <li><Link to="/ordens">Find</Link></li>
     <li><Link to="/orden">Ordenar</Link></li>
+    <li><Link to="/signup">Inscribirse-Sign up</Link></li>
+    <li><Link to="/login">Iniciar Sesion-Log in</Link></li>
+
   </ul>
 </nav>
 </div>

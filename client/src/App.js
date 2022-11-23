@@ -13,12 +13,13 @@ import Footer from "./components/Footer";
 import TacoBlockContext from "./utils/TacoContext";
 import Payment from "./pages/Payment/Payment";
 import Alert from "./components/Alert/Alert";
+import alertContext from "./context/alertContext";
 
 function App() {
+  
   const [alert, setAlert] = useState({
     message:"",
-    type: "is-info"
-
+    type:"",
   })
 
   const [jwt, setJwt] = useState("");
@@ -31,10 +32,14 @@ function App() {
 
   return (
     <>
+
       <Router>
+
         <AuthContext.Provider value={{ jwt, setJwt }}>
+        <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
+        <Alert/>
+
           <OrdenLevel />
-          <Alert {...alert}/>
           <Routes>
             <Route exact path="/payment/:ordenId" element={<Payment />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
@@ -45,8 +50,12 @@ function App() {
             <Route exact path="/" element={<StartPage />}></Route>
           </Routes>
           <Footer />
+        </alertContext.Provider>
+
         </AuthContext.Provider>
       </Router>
+ 
+
     </>
   );
 }

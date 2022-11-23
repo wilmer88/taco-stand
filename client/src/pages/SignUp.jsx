@@ -1,6 +1,6 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState } from "react";
-// import axios from 'axios';
+
 import { useNavigate } from "react-router-dom";
 import API from '../utils/API';
 
@@ -49,7 +49,7 @@ const [password, setPassword] = useState("");
     <hr></hr>
         <br></br>
     <form onSubmit={formSubmit}>
-    <label className="label has-text-centered">Nombre De Usario/ User Name</label>
+    <label className="label has-text-centered">Correo Electronico/Email Adress</label>
         <div className="field is-mobile" >
        
       <div className="control is-expanded">
@@ -60,18 +60,19 @@ const [password, setPassword] = useState("");
         className="input" 
         value={userName}
         type="text"
-         placeholder="email or username"/>
+         placeholder="email"/>
         <br></br>
         <br></br>
+        <label className="label has-text-centered">Crea Contraseña/Create Password</label>
     
-        <label className="label has-text-centered">Contraseña/ Password</label>
+        <label className="label has-text-centered"></label>
         <input 
           onChange={(e) => setPassword(e.target.value)}
           name="password"
           className="input" 
           value={password}
         type="text" 
-        placeholder="password"/>
+        placeholder="Contraseña-password"/>
 
         <br></br>
         <br></br>

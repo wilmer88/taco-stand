@@ -7,7 +7,8 @@ const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 
 const liestilo = {
   atras: {
-    background: "lightyellow"
+    background: "lightyellow",
+    textAlign: "center"
   },
   letras: {
     font: {
@@ -37,10 +38,10 @@ const Editar = () => {
     setFormObj({ ...formObj, [name]: value })
   };
 
+
+
   function handleSubmit(e) {
     e.preventDefault(e);
-      formObj.total = parseInt(formObj.azada) +  parseInt(formObj.pollo) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) + parseInt(formObj.barbacoa);
-      formObj.precio = parseInt(formObj.total) * 3;
 
   setTimeout(() => {
      API.updateOrden(ordenId, {
@@ -54,8 +55,8 @@ const Editar = () => {
     coca: formObj.coca,
     sprite: formObj.sprite,
     fanta: formObj.sprite,
-    total: formObj.total,
-    precio: formObj.precio,
+
+  
   }).then((response) => {
     console.log(response.data)
     alert("su orden a sido guardada");
@@ -63,11 +64,16 @@ const Editar = () => {
     navigate("/")
     setFormObj({
       nombreDeOrden: "",
-      azada: "",
-      pollo: "",
-      barbacoa: "",
-      pastor: "",
-      chorizo: "",
+      azada: 0,
+      pollo: 0,
+      barbacoa: 0,
+      pastor: 0,
+      chorizo: 0,
+      largeHorchata: 0,
+      smallHorchata: 0,
+      coca: 0,
+      sprite: 0,
+      fanta: 0,
     })
 
   }).catch((err) => {
@@ -75,8 +81,12 @@ const Editar = () => {
     })}, 500);
   
   };
-  let drinksPrice = formObj.aguasVirtual + formObj.canDrinkVirtual;
-  let precioTotal = drinksPrice + formObj.topingVirtual + formObj.tacosVirtual
+  let addedtaco = parseInt(formObj.azada) + parseInt(formObj.pollo) + parseInt(formObj.barbacoa) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) ;
+  let tacoPrice = addedtaco *3
+  let aguaPrice = parseInt(formObj.largeHorchata) * 4 + parseInt(formObj.smallHorchata) * 2
+  let canDrinkTotal = parseInt(formObj.coca) + parseInt(formObj.sprite) + parseInt(formObj.fanta) * 2
+  let togetherTotal = canDrinkTotal + aguaPrice + tacoPrice
+
   return (
     <>
 <div className="columns is-mobile  is-size-7">
@@ -396,11 +406,8 @@ const Editar = () => {
         </tbody>
       </table>
       <br></br>
-      <label style={liestilo.atras} className="label">Tacos Total: $<span>{formObj.tacosVirtual?.toFixed(2)}</span> <br></br> 
-      Bebidas/drinks: $<span>{drinksPrice?.toFixed(2)}</span><br></br> 
-      Extra Porciones/Toppings: $<span>{formObj.topingVirtual?.toFixed(2)}</span>
-      </label>
-      <label style={liestilo.atras} className="label">Precio Total: $<span>{precioTotal?.toFixed(2)}</span> </label>
+
+      <label style={liestilo.atras } className="label">Precio Total: $<span>{togetherTotal?.toFixed(2)}</span> </label>
 
       <time dateTime="2016-1-1">{formObj.tiempo}</time>
      </div>

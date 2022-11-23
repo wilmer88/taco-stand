@@ -5,8 +5,6 @@ import API from "../utils/API";
 import React from "react";
 import { Link} from "react-router-dom";
 import {useState} from "react";
-// import TopingsBlock from "./TopingsBlock";
-// import TacoBlockContext from "../utils/TacoContext";
 import { useNavigate } from "react-router-dom";
 
 const OrdenBox = () => {
@@ -140,13 +138,6 @@ API.saveOrden(orderData).then((response)=>{
   setTimeout(() => {secondFunction()}, 1000);
   resetState()
 }).catch((err) =>{console.log(err)});};
-
-// const tempData= orderData
-            
-// tempData.map(orderitem =>(
-//   <div style={{fontSize: "25px"}}> {orderitem.key}: {orderitem}</div>
-
-// ))
 
  return (<><form>
           <main className="box is-shadowless is-align-self-center">
@@ -294,28 +285,30 @@ API.saveOrden(orderData).then((response)=>{
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
-                <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta correcta la orden/Is your order correct? { orderData.nombreDeOrden !== "" && (<div style={{fontSize: "35px"}}> {orderData.nombreDeOrden}</div>)}</div><hr></hr>
+                <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta correcta /Is this correct? 
+                { orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div> )}</div><hr></hr>
+
 
                 
-                { orderData.azada !== 0 && (<div style={{fontSize: "25px"}}> Azada: {orderData.azada}</div> )}
-                { orderData.pollo !== 0 && (<div style={{fontSize: "25px"}}> Pollo: {orderData.pollo}</div> )}
-                { orderData.barbacoa !== 0 && (<div style={{fontSize: "25px"}}>Barbacoa: {orderData.barbacoa}</div>)}
-                { orderData.pastor !== 0 && ( <div style={{fontSize: "25px"}}> Pastor: {orderData.pastor}</div>)}
-                { orderData.chorizo !== 0 && (     <div style={{fontSize: "25px"}}>Chorizo: {orderData.chorizo}</div>)}
+                { orderData.azada !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Azada: {orderData.azada}</div> )}
+                { orderData.pollo !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Pollo: {orderData.pollo}</div> )}
+                { orderData.barbacoa !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}>Barbacoa: {orderData.barbacoa}</div>)}
+                { orderData.pastor !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Pastor: {orderData.pastor}</div>)}
+                { orderData.chorizo !== 0 && (     <div style={{fontSize: "25px", textAlign:"left"}}>Chorizo: {orderData.chorizo}</div>)}
         
 
-                {orderData.largeHorchata !== 0 && (<div style={{fontSize: "25px"}}> Horchata/Large Grande: {orderData.largeHorchata}</div>)}      
-                {orderData.smallHorchata !== 0 && ( <div style={{fontSize: "25px"}}> Horchata PequeNa: {orderData.smallHorchata}</div> )  }
-                {orderData.coca !== 0 && ( <div style={{fontSize: "25px"}}> Coca Cola: {orderData.coca}</div> )}
-                {orderData.sprite !== 0 && (<div style={{fontSize: "25px"}}> Sprite: {orderData.sprite}</div> )}
-                {orderData.fanta !== 0 && ( <div style={{fontSize: "25px"}}> Fanta: {orderData.fanta}</div> )}
+                {orderData.largeHorchata !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Horchata/Large Grande: {orderData.largeHorchata}</div>)}      
+                {orderData.smallHorchata !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Horchata PequeNa: {orderData.smallHorchata}</div> )  }
+                {orderData.coca !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Coca Cola: {orderData.coca}</div> )}
+                {orderData.sprite !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Sprite: {orderData.sprite}</div> )}
+                {orderData.fanta !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Fanta: {orderData.fanta}</div> )}
           
 
-                {orderData.cebolla !== 0 && ( <div style={{fontSize: "25px"}}>Cebolla: {orderData.cebolla}</div>)}
-                {orderData.cilantro !== 0 && ( <div style={{fontSize: "25px"}}>Cilantro: {orderData.cilantro}</div>)}
-                {orderData.pico !== 0 && (<div style={{fontSize: "25px"}}> Pico De Gallo: {orderData.pico}</div>)}
-                {orderData.redSalsa !== 0 && (<div style={{fontSize: "25px"}}> Salsa Roja: {orderData.redSalsa}</div>)}
-                {orderData.greenSalsa !== 0 && ( <div style={{fontSize: "25px"}}> Salsa Verde: {orderData.greenSalsa}</div>)}
+                {orderData.cebolla !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}>Cebolla: {orderData.cebolla}</div>)}
+                {orderData.cilantro !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}>Cilantro: {orderData.cilantro}</div>)}
+                {orderData.pico !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Pico De Gallo: {orderData.pico}</div>)}
+                {orderData.redSalsa !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Salsa Roja: {orderData.redSalsa}</div>)}
+                {orderData.greenSalsa !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Salsa Verde: {orderData.greenSalsa}</div>)}
                   <hr></hr>
                   <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>

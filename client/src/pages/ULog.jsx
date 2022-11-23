@@ -3,6 +3,7 @@ import React, {useContext, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 // import axios from 'axios';
 import API from "../utils/API"
+import alertContext from '../context/alertContext';
 
 const ULog = () => {
 
@@ -13,7 +14,8 @@ const ULog = () => {
     }
   };
   const navigate = useNavigate()
-  const {setJwt} = useContext(AuthContext)
+  const {setJwt} = useContext(AuthContext);
+  const {setAlert} = useContext(alertContext);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
@@ -33,6 +35,8 @@ const ULog = () => {
          setPassword("")
         }).catch((err) => {
           console.log(err);
+          setAlert({message:"faild to to get waiting list",type:"is-danger"})
+
         });
 
     }
