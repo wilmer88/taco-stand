@@ -11,10 +11,9 @@ const Payment = () => {
   const [paymentObj, setPaymentObj] = useState({});
 
   useEffect(() => {
-    API.getOrden(ordenId).then((responses) => {
-      // console.log(response)
-      // console.log(response.data)
-      setPaymentObj(responses.data)
+    API.getOrden(ordenId).then((response) => {
+      console.log(response.data);
+      setPaymentObj(response.data);
      }).catch((err) =>{ 
       console.log(err)
     });
@@ -34,12 +33,13 @@ const handleToken = token =>{
   }).catch(error =>{console.log(error)})
 }
 
-  const numberInDollars = paymentObj.ordenTotal?.toFixed(2);
+  let ordenTotal = paymentObj.aguasVirtual + paymentObj.canDrinkVirtual + paymentObj.tacosVirtual + paymentObj.topingVirtual
+  const numberInDollars = ordenTotal?.toFixed(2);
 
     return (<>
       <div id='paymentPage'  className="container has-text-centered" >
           <h1 className="title is-3">Hola {paymentObj.nombreDeOrden}, </h1>
-          <h1 className="title is-3">El total de  orden</h1>
+          <h1 className="title is-3">Total/Total</h1>
           <h5 className="title is-3">${numberInDollars}</h5>
           <StripCheckout className="has-text-centerd"
           stripeKey={key}
