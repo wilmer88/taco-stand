@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import StripCheckout from "react-stripe-checkout";
 
-
 const key = process.env.REACT_APP_STRIPE
 const Payment = () => {
 
@@ -38,13 +37,9 @@ const handleToken = token =>{
   const numberInDollars = paymentObj.ordenTotal?.toFixed(2);
 
     return (<>
-    
-
       <div id='paymentPage'  className="container has-text-centered" >
-   
           <h1 className="title is-3">Hola {paymentObj.nombreDeOrden}, </h1>
           <h1 className="title is-3">El total de  orden</h1>
-
           <h5 className="title is-3">${numberInDollars}</h5>
           <StripCheckout className="has-text-centerd"
           stripeKey={key}
@@ -54,7 +49,6 @@ const handleToken = token =>{
           billingAddress
           shippingAddress>
             <button className="button is-danger is-light">Page Con Tarjeta</button>
-
           </StripCheckout>
    
       </div>
