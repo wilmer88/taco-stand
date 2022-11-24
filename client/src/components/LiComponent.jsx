@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import API from "../utils/API";
 
+
 const LiComponent =  (props) => {
 
 const liestilo = {
@@ -32,10 +33,12 @@ const liestilo = {
     
   };
 
-  let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual
-  let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual
-  let tacosTofix = props.tacosVirtual
-  let fixTopings = props.topingVirtual
+  let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual;
+  let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual;
+  let tacosTofix = props.tacosVirtual;
+  let fixTopings = props.topingVirtual;
+  let disableVar = false;
+  if(props.pagado === true){disableVar = true};
 
     return (<>
         <div className="columns is-mobile ">
@@ -79,7 +82,7 @@ Nombre: {props.nombreDeOrden}
    {props.smallHorchata !== 0 && (<th>P/Small <br></br>Horchata</th>)}
    {props.coca !== 0 && ( <th>Coca</th>)}
    {props.sprite !== 0 && (<th>Sprite</th>)}
-   {props.smallHorchata !== 0 && (<th>Fanta</th>)}
+   {props.fanta !== 0 && (<th>Fanta</th>)}
             
 </tr>
 </tbody>
@@ -131,7 +134,8 @@ Nombre: {props.nombreDeOrden}
 <footer className="card-footer">
  <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
   <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
-  <div className="card-footer-item"> <button className="button  is-info" onClick={()=> pagarOrden(props._id)}>pagar/pay</button></div>
+
+  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div>
 </footer>
 </div>
   </div>

@@ -1,5 +1,5 @@
-import API from "../../utils/API"
-import { useParams } from "react-router-dom";
+import API from "../../utils/API";
+import { useParams,useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import StripCheckout from "react-stripe-checkout";
 import alertContext from "../../context/alertContext";
@@ -10,6 +10,7 @@ const Payment = () => {
   const { ordenId } = useParams();
   const {setAlert} = useContext(alertContext);
   const [paymentObj, setPaymentObj] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
     API.getOrden(ordenId).then((response) => {
@@ -37,16 +38,14 @@ const handleToken = token =>{
   const numberInDollars = ordenTotal?.toFixed(2);
 
      const paidFieldUpdateFunction = ()=>{
-     
+      setTimeout(() => {navigate("/ordens")}, 3000);
       API.paidUpdate(ordenId, {pagado: true}).then((updatedfildObj) =>{
         console.log(updatedfildObj.data);
     setAlert({message:"Paid field was successfully updated!", type:"is-success"});
-    
       }).catch((err) => {
         setAlert({message:"faild to update paid field!", type:"is-danger"});
           console.log(err);
         });
-
      };
 
     return (<>
