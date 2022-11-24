@@ -40,8 +40,7 @@ const [password, setPassword] = useState("");
       });
   }
 
-  return (
-  <>
+  return (<>
   <div>
   <div className='columns is-mobile'>
 

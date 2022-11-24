@@ -1,8 +1,7 @@
 import React from 'react';
 
 const NameField = (props) => {
-    return (
-        <section className="field"> 
+    return (<section className="field"> 
         <label className="label">
         Nombre Para La Orden:
         </label>
@@ -15,11 +14,9 @@ const NameField = (props) => {
             name={props.name}
             value={props.value}
             onChange={props.onChange}
-
           />
         </div>
-     </section>
-    );
+     </section>)
 };
 
 export default NameField;

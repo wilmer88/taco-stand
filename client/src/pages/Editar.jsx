@@ -49,11 +49,14 @@ const Editar = () => {
     coca: formObj.coca,
     sprite: formObj.sprite,
     fanta: formObj.sprite,
+    cebolla:formObj.cebolla,
+    cilantro:formObj.cilantro,
+    pico:formObj.pico,
+    greenSalsa:formObj.greenSalsa,
+    redSalsa:formObj.redSalsa,
   }).then((response) => {
     setAlert({message:"Your order was successfully updated!", type:"is-success"});
     console.log(response.data);
-    alert("su orden a sido guardada");
-
     //debugger
     navigate("/");
     setFormObj({
@@ -78,14 +81,14 @@ const Editar = () => {
     setAlert({message:"faild to update order!", type:"is-danger"});
       console.log(err);
     })}, 500);
-  
   };
   let topingsTogether = parseInt(formObj.cebolla) + parseInt(formObj.cilantro) + parseInt(formObj.pico) + parseInt(formObj.greenSalsa) + parseInt(formObj.redSalsa);
   let topingPrice = topingsTogether * .5
   let addedtaco = parseInt(formObj.azada) + parseInt(formObj.pollo) + parseInt(formObj.barbacoa) + parseInt(formObj.pastor) + parseInt(formObj.chorizo) ;
-  let tacoPrice = addedtaco *3
-  let aguaPrice = parseInt(formObj.largeHorchata) * 4 + parseInt(formObj.smallHorchata) * 2
-  let canDrinkTotal = parseInt(formObj.coca) + parseInt(formObj.sprite) + parseInt(formObj.fanta) * 2
+  let tacoPrice = addedtaco *3;
+  let aguaPrice = parseInt(formObj.largeHorchata) * 4 + parseInt(formObj.smallHorchata) * 2;
+  let canDrinkTogether = parseInt(formObj.coca) + parseInt(formObj.sprite) + parseInt(formObj.fanta);
+  let canDrinkTotal= canDrinkTogether * 2;
   let togetherTotal = canDrinkTotal + aguaPrice + tacoPrice + topingPrice
   console.log(topingPrice)
 

@@ -5,8 +5,4 @@ router.route("/")
   .post(authController.login)
   // .post(authController.)
 
-
-
-
-
 module.exports = router;

@@ -8,6 +8,4 @@ router.route("/")
 router.route("/:id")
 .put(StripeController.updatePaidField);
 
- 
-
 module.exports = router;

@@ -50,8 +50,10 @@ const handleToken = token =>{
      };
 
     return (<>
-      <div id='paymentPage'  className="container has-text-centered" >
-          <h1 className="title is-3">Hola {paymentObj.nombreDeOrden}, </h1>
+         <div className="container">
+      <div id='paymentPage'  className="box has-text-centered mb-0" >
+   
+        <h1 className="title is-3">Hola {paymentObj.nombreDeOrden}, </h1>
           <h1 className="title is-3">Total/Total</h1>
           <h5 className="title is-3">${numberInDollars}</h5>
           <StripCheckout className="has-text-centerd"
@@ -61,18 +63,13 @@ const handleToken = token =>{
           name={paymentObj.nombreDeOrden}
           billingAddress
           shippingAddress>
-            <button className="button is-danger is-light">Page Con Tarjeta</button>
+            <button className="button is-danger is-light">Pagar/Pay</button>
           </StripCheckout>
-   
+        </div>
+          
       </div>
     </>);
 };
 export default Payment;
-//  async function handleToken(token, addresses){
 
-//   const response =  await API.makeTacoPayment({token, paymentObj});
-//   console.log(response)
-
-
-//   }
 

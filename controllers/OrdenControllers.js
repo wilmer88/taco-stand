@@ -108,27 +108,3 @@ module.exports = {
         
         }
 };
-         //  create: function(req, res){
-    //   const orden = new Orden(req.body);
-    //   orden.getTacoPrice();
-    //   const seedrinks = orden.sides;
-
-    //   Sides.findById( seedrinks).then((resultado) =>{  
-    //    orden.ordenTotal = orden.tacosTotal + resultado.allSidesPrice
-    //    db.Orden.create(orden)
-    //    .then((dbOrden) => {
-    //     console.log("checking");
-    //     console.log(dbOrden)
-    //     res.json(dbOrden)
-    //      }).catch((err) => {
-    //        console.log(err);
-    //        res.json({
-    //          error: true,
-    //          data: null,
-    //          message: "failed to post order/orden data",
-    //        });
-    //      });
-    //   }).catch((err) => {
-    //           console.log(err);
-    //         });
-    //   },

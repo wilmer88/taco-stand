@@ -11,7 +11,7 @@ import alertContext from "../context/alertContext";
 const OrdenBox = () => {
   const navigate = useNavigate();
   const {setAlert} = useContext(alertContext);
-         {/* -------------------Main order state  initialization---------------- */}
+
   const [orderData, setOrderData] = useState({
     nombreDeOrden:"",
     azada:0,
@@ -30,7 +30,7 @@ const OrdenBox = () => {
     sprite: 0,
     fanta: 0,
   });
-         {/* -------------------order components state handeling---------------- */}
+
   const cebollaIncrement = (event) =>{
     event.preventDefault();
     setOrderData({...orderData, cebolla: orderData.cebolla  + 1 })
@@ -98,7 +98,7 @@ const OrdenBox = () => {
     const {name, value} = event.target;
     setOrderData({...orderData, [name]: parseInt(value) })
    };
-         {/* -------------------resets order state function---------------- */}
+
    async function resetState ()  {
       setOrderData({
         nombreDeOrden:"",
@@ -121,14 +121,13 @@ const OrdenBox = () => {
       })
     };
 
-         {/* -------------------Modal logic---------------- */}
       const [showModel, setshowModel] = useState("modal");
       const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
-         {/* -------------------Main function handleSubmit call backend and creates order.. async function are to help with synchronicity---------------- */}
+
          async function firstFunction(){
           handleClose();
-          alert("Gracias por su orden!");
+          setAlert({message:"You successfully placed order!", type:"is-success"});
           };
     
         async function secondFunction(){
@@ -138,7 +137,6 @@ const OrdenBox = () => {
   const handleSubmit= (e)=> {
     e.preventDefault();
     API.saveOrden(orderData).then((response)=>{
-      setAlert({message:"You successfully placed order!", type:"is-success"});
       firstFunction()
       setTimeout(() => {secondFunction()}, 1000);
       resetState()
@@ -177,12 +175,21 @@ const OrdenBox = () => {
     />
       <DropDownField 
     tagg = "Barbacoa"
+    name = "barbacoa"
+    value= {orderData.barbacoa}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Pastor"
+    name = "pastor"
+    value= {orderData.pastor}
+    onChange= {tacoNdrinksHandleChange}
     />
       <DropDownField 
     tagg = "Chorizo"
+    name = "chorizo"
+    value= {orderData.chorizo}
+    onChange= {tacoNdrinksHandleChange}
     />
     
 </div>
@@ -198,7 +205,6 @@ const OrdenBox = () => {
     name = "largeHorchata"
     value= {orderData.largeHorchata}
     onChange= {tacoNdrinksHandleChange}
-   
     />
   <DropDownField 
    tagg= "Pequena Horchata"
@@ -290,7 +296,7 @@ const OrdenBox = () => {
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
-                      {/* -------------------conditional rendering orderData if not equal to 0---------------- */}
+
                 <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta correcta /Is this correct? 
                 { orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div> )}</div><hr></hr>
                 { orderData.azada !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Azada: {orderData.azada}</div> )}

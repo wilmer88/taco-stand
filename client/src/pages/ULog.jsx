@@ -12,19 +12,18 @@ const ULog = () => {
       background: "lightyellow"
     }
   };
-  const navigate = useNavigate()
-  const {setJwt} = useContext(AuthContext);
-  const {setAlert} = useContext(alertContext);
+    const navigate = useNavigate()
+    const {setJwt} = useContext(AuthContext);
+    const {setAlert} = useContext(alertContext);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const formSubmit = (e) => {
-      e.preventDefault();
-    
+      const formSubmit = (e) => {
+        e.preventDefault();
         // debugger
-    API.login(
+         API.login(
         { userName: userName,
-      password: password}
+        password: password}
         ).then((response) => {
         console.log(response.data)
         setJwt(response.data.data) 
@@ -35,10 +34,8 @@ const ULog = () => {
         }).catch((err) => {
           console.log(err);
           setAlert({message:"faild to to get waiting list",type:"is-danger"})
-
         });
-
-    }
+    };
       
     return (<>
       <div>
@@ -87,8 +84,6 @@ const ULog = () => {
   </div>
   </div>
 
-    </>)
-  }
-
+    </>);
+  };
   export default ULog;
-  

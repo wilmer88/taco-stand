@@ -6,36 +6,31 @@ const LiComponent =  (props) => {
 const liestilo = {
   atras: {
     background: "lightyellow"
-  },
-  letras: {
-     font: {
-
-     }
-    }
+  }
  };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function eliminar(id){
     console.log(id)
       API.deleteOrden(id).then((res) => {
- console.log(res.data)
-        navigate("/")
+ console.log(res.data);
+        navigate("/");
       }).catch((err) =>{ 
         console.log(err)
       });
   };
 
     function editarOrden(id) {
-    console.log(id)
-    navigate(`/orden/${id}`)
+    console.log(id);
+    navigate(`/orden/${id}`);
     
-  }
+  };
 
   function pagarOrden(id) {
-    console.log(id)
-    navigate(`/payment/${id}`)
+    console.log(id);
+    navigate(`/payment/${id}`);
     
-  }
+  };
 
   let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual
   let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual
@@ -74,7 +69,6 @@ Nombre: {props.nombreDeOrden}
 {props.pastor !== 0 && (<td>{props.pastor}</td>)}
 {props.chorizo !== 0 && (<td>{props.chorizo}</td>)}
 
-
 </tr>  
 </tbody>
 </table>
@@ -96,7 +90,6 @@ Nombre: {props.nombreDeOrden}
 {props.coca !== 0 && (<td>{props.coca}</td>)}
 {props.sprite !== 0 && (<td>{props.sprite}</td>)}
 {props.fanta !== 0 && (<td>{props.fanta}</td>)}
-
 
 </tr>  
 </tbody>
@@ -132,7 +125,6 @@ Nombre: {props.nombreDeOrden}
   <label style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </label>
   <label style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </label>
 
-
     <time dateTime="2016-1-1">{props.timeCreated}</time>
  
 </div>
@@ -146,10 +138,8 @@ Nombre: {props.nombreDeOrden}
   <div className="column is-1"></div>
   </div>
 
-
-
-    </>)
-  }
+    </>);
+  };
   
   export default LiComponent;
 

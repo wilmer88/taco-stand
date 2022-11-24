@@ -2,13 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require('body-parser')
-
 const cors = require("cors");
 const morgan = require('morgan')
-
 const dotenv = require("dotenv"); 
  dotenv.config();
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -26,11 +23,7 @@ mongoose.connect(
     }).then(() => console.log("MongoDB has been connected"))
   .catch((err) => console.log(err));
 
-
-
-
 const PORT = process.env.PORT || 3001;
-
 // const AuthoController = require("./controllers/authController");
 // const ordenControler = require("./controllers/OrdenControllers");
 // const userController = require("./controllers/UserController");
@@ -40,13 +33,9 @@ const PORT = process.env.PORT || 3001;
 
 const path = require("path");
 
-
-
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
-
-  
 
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
@@ -55,5 +44,3 @@ app.get("*", function (request, response) {
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
-
-

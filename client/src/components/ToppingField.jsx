@@ -1,11 +1,7 @@
-
 const ToppingField = (props) => {
-
-
     return (<>
    <section className="field"> 
              <hr></hr>
-           
        <article className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
 
@@ -26,9 +22,8 @@ const ToppingField = (props) => {
          </aside>
           </article>  
             </section>
-          </>
-          );
-     }
+          </>);
+     };
    export default ToppingField;
    
          

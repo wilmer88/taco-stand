@@ -3,23 +3,17 @@ import { Link } from "react-router-dom";
 const StartPage = ()=> {
  
     const liestilo = {
-        atras: {
-          // background: `url(${process.env.PUBLIC_URL + '/images/tacos.jpg'})`
-        },
+
         opaci: {
           backgroundColor: "rgba(255, 255, 255, .9)",
           color: "white"
         },
         fonte:{
-          fontSize: "27px",
-          // background: "lightyellow"
-        },
-       
-       }
+          fontSize: "27px"
+        }
+        };
   
-    return (
-    <>
-
+    return (<>
   <div className=' columns is-mobile'>
   <div className="column is-two-fifth"> </div>
   <div className= "mt-1 column is-three-quarters-mobile"  >
@@ -43,7 +37,6 @@ const StartPage = ()=> {
  
 </div>
 </div>
-  
 
   </div>
 

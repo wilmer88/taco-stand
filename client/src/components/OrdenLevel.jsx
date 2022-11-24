@@ -18,12 +18,10 @@ const OrdenLevel = () => {
  
     return (
 
- 
         <nav className="level  is-size-7 is-align-content-center" >
 <div className="level-item has-text-centered" style={estilo.nombre}>
 <Link to="/login">   
 
-  
    <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In</label>
  
     </Link>
@@ -41,13 +39,7 @@ const OrdenLevel = () => {
           <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </label></Link>
         </div>
       </nav>
-
-      
-
-      
-
     );
-  
 }
 
 export default OrdenLevel;

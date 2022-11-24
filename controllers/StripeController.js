@@ -45,37 +45,7 @@ updatePaidField: function(req, res){
               data: null,
               message: `failed to update order/orden document for ${req.params.id}`,
             });
-          });
-    
-
-}
- 
+          });}
 };
     
 
-        // const customer = stripe.customers.create({
-        //     email: req.body.email,
-        //     source: req.body.id,
-
-        // })
-
-        
-      
-        // const session = stripe.checkout.sessions.create({
-        //     payment_method_types: ['card'],
-        //     line_items: [{
-        //       price_data: {
-        //         product: '{{PRODUCT_ID}}',
-        //         unit_amount: 1500,
-        //         currency: 'usd',
-        //       },
-        //       quantity: 1,
-        //     }],
-        //     mode: 'payment',
-        //     success_url: 'https://example.com/success',
-        //     cancel_url: 'https://example.com/cancel',
-        //   });
-  
-        // const orderOfTacos = new Map([
-        //     [req._id, {priceInCents: req.orderTotal * 100}]
-        // ])

@@ -32,7 +32,6 @@ function App() {
 
   return (
     <>
-
       <Router>
 
         <AuthContext.Provider value={{ jwt, setJwt }}>
@@ -54,8 +53,6 @@ function App() {
 
         </AuthContext.Provider>
       </Router>
- 
-
     </>
   );
 }

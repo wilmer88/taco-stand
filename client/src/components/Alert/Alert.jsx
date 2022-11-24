@@ -7,7 +7,7 @@ const Alert = () => {
     if(message.length){
       setTimeout(()=>{
         setAlert({ message:"", type:"" })
-      }, 2500)
+      }, 2700)
     }
 
   },[message,setAlert])
@@ -19,8 +19,6 @@ const Alert = () => {
           <div className={`notification ${type || "is-info "} is-light`}>
           <button className="delete" onClick={()=>{setAlert({message:"", type:""})} }></button>
           {message} 
-   
- 
           </div>
         </div>
       )}
@@ -29,4 +27,3 @@ const Alert = () => {
 };
 
 export default Alert;
-// onClick={setAlert({message:"", type:""})}

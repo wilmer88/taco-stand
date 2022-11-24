@@ -1,4 +1,3 @@
-// import {useState} from "react"
 import { NavLink} from "react-router-dom";
 const Footer = ()=> {
   const linkState=  [
@@ -15,7 +14,7 @@ const Footer = ()=> {
 
 <div className= "column is-mobile" >
 
-<nav className="navbar tabs is-centered  is-fixed-bottom is-justify-content-center mb-1" aria-label="breadcrumbs" >
+<nav className="navbar tabs is-centered  is-fixed-bottom is-justify-content-center mb-1 mt-auto" aria-label="breadcrumbs" >
   <ul>
     {linkState.map((item) =>(
       <li key={item.name}> <NavLink
@@ -27,7 +26,6 @@ const Footer = ()=> {
         {item.name}
       </NavLink>
       </li>
-  
       
     ))}
   </ul>
