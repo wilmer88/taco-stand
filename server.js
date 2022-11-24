@@ -5,8 +5,10 @@ const bodyParser = require('body-parser')
 const cors = require("cors");
 const morgan = require('morgan')
 const dotenv = require("dotenv"); 
- dotenv.config();
+const path = require("path");
+ 
 const app = express();
+dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.text())
@@ -30,8 +32,6 @@ const PORT = process.env.PORT || 3001;
 // app.use(AuthoController);
 // app.use(userController);
 // app.use(ordenControler);
-
-const path = require("path");
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
