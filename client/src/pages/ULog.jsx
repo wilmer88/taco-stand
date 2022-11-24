@@ -1,7 +1,6 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
 import { useNavigate } from "react-router-dom";
-// import axios from 'axios';
 import API from "../utils/API"
 import alertContext from '../context/alertContext';
 
@@ -41,9 +40,7 @@ const ULog = () => {
 
     }
       
-    return (
-    <>
-  
+    return (<>
       <div>
         <br></br>
   <div className='columns is-mobile'>
@@ -90,8 +87,7 @@ const ULog = () => {
   </div>
   </div>
 
-    </>
-    )
+    </>)
   }
 
   export default ULog;

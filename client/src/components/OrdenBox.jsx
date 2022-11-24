@@ -4,11 +4,14 @@ import DropDownField from "./DropDownField";
 import API from "../utils/API";
 import React from "react";
 import { Link} from "react-router-dom";
-import {useState} from "react";
+import {useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
+import alertContext from "../context/alertContext";
 
 const OrdenBox = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {setAlert} = useContext(alertContext);
+         {/* -------------------Main order state  initialization---------------- */}
   const [orderData, setOrderData] = useState({
     nombreDeOrden:"",
     azada:0,
@@ -27,7 +30,7 @@ const OrdenBox = () => {
     sprite: 0,
     fanta: 0,
   });
-
+         {/* -------------------order components state handeling---------------- */}
   const cebollaIncrement = (event) =>{
     event.preventDefault();
     setOrderData({...orderData, cebolla: orderData.cebolla  + 1 })
@@ -95,7 +98,7 @@ const OrdenBox = () => {
     const {name, value} = event.target;
     setOrderData({...orderData, [name]: parseInt(value) })
    };
-
+         {/* -------------------resets order state function---------------- */}
    async function resetState ()  {
       setOrderData({
         nombreDeOrden:"",
@@ -115,25 +118,26 @@ const OrdenBox = () => {
         sprite: 0,
         fanta: 0,
         allVerdurasPrice: 0,
-
       })
     };
 
-    async function firstFunction(){
-      handleClose();
-      alert("Gracias por su orden!");
-      };
-
-    async function secondFunction(){
-      navigate("/")
-      };
-
+         {/* -------------------Modal logic---------------- */}
       const [showModel, setshowModel] = useState("modal");
       const openModal = (e)=>{e.preventDefault(); setshowModel("modal is-active")};
       const handleClose = ()=>{setshowModel("modal")}
+         {/* -------------------Main function handleSubmit call backend and creates order.. async function are to help with synchronicity---------------- */}
+         async function firstFunction(){
+          handleClose();
+          alert("Gracias por su orden!");
+          };
+    
+        async function secondFunction(){
+          navigate("/")
+          };
   const handleSubmit= (e)=> {
     e.preventDefault();
 API.saveOrden(orderData).then((response)=>{
+  setAlert({message:"You successfully placed order!", type:"is-success"});
   firstFunction()
   setTimeout(() => {secondFunction()}, 1000);
   resetState()
@@ -285,17 +289,14 @@ API.saveOrden(orderData).then((response)=>{
               <div className="modal-background"></div>
               <div className="modal-content ">
                 <div className="box is-mobile">
+                      {/* -------------------conditional rendering orderData if not equal to 0---------------- */}
                 <div style={{fontSize: "30px", fontWeight: "bold"}}>Esta correcta /Is this correct? 
                 { orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div> )}</div><hr></hr>
-
-
-                
                 { orderData.azada !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Azada: {orderData.azada}</div> )}
                 { orderData.pollo !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Pollo: {orderData.pollo}</div> )}
                 { orderData.barbacoa !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}>Barbacoa: {orderData.barbacoa}</div>)}
                 { orderData.pastor !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Pastor: {orderData.pastor}</div>)}
                 { orderData.chorizo !== 0 && (     <div style={{fontSize: "25px", textAlign:"left"}}>Chorizo: {orderData.chorizo}</div>)}
-        
 
                 {orderData.largeHorchata !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Horchata/Large Grande: {orderData.largeHorchata}</div>)}      
                 {orderData.smallHorchata !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Horchata PequeNa: {orderData.smallHorchata}</div> )  }
@@ -303,7 +304,6 @@ API.saveOrden(orderData).then((response)=>{
                 {orderData.sprite !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Sprite: {orderData.sprite}</div> )}
                 {orderData.fanta !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Fanta: {orderData.fanta}</div> )}
           
-
                 {orderData.cebolla !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}>Cebolla: {orderData.cebolla}</div>)}
                 {orderData.cilantro !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}>Cilantro: {orderData.cilantro}</div>)}
                 {orderData.pico !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Pico De Gallo: {orderData.pico}</div>)}

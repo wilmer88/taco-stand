@@ -1,11 +1,18 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState } from "react";
-
+import alertContext from '../context/alertContext';
 import { useNavigate } from "react-router-dom";
 import API from '../utils/API';
 
 const SignUp = () => {
-  const {setJwt}  = useContext(AuthContext)
+  const pxhi = {
+    fonte:{
+      fontSize: "27px",
+      background: "lightyellow"
+    }
+  };
+  const {setJwt}  = useContext(AuthContext);
+  const {setAlert} = useContext(alertContext);
 const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
 
@@ -18,6 +25,8 @@ const [password, setPassword] = useState("");
       userName: userName,
       password: password
     }).then((response) => {
+    setAlert({message:"You successfully signed up!", type:"is-success"});
+
       console.log(response.data)
       setJwt(response.data.data);
       setTimeout(() => {navigate("/ordens")
@@ -25,6 +34,8 @@ const [password, setPassword] = useState("");
        setUserName("")
        setPassword("")
       }).catch((err) => {
+    setAlert({message:"Faild to sign up!", type:"is-danger"});
+
         console.log(err);
       });
   }
@@ -44,7 +55,7 @@ const [password, setPassword] = useState("");
    
 
     <div className="mt-6 box">
-    <label className="label has-text-centered">Sign Up</label>
+    <label className="label has-text-centered" style={pxhi.fo}>Sign-Up/Inscribirse</label>
 
     <hr></hr>
         <br></br>

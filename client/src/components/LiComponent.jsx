@@ -109,8 +109,6 @@ Nombre: {props.nombreDeOrden}
    {props.pico !== 0 && (<th>Extra<br></br>Pico</th>)}
    {props.greenSalsa !== 0 && ( <th>Verde/Green<br></br>Salsa</th>)}
    {props.redSalsa !== 0 && (<th>Roja/red<br></br>Salsa</th>)}
-
-
 </tr>
 </tbody>
 <tbody>
@@ -120,7 +118,6 @@ Nombre: {props.nombreDeOrden}
 {props.pico !== 0 && (<td>{props.pico}</td>)}
 {props.greenSalsa !== 0 && (<td>{props.greenSalsa}</td>)}
 {props.redSalsa !== 0 && (<td>{props.redSalsa}</td>)}
-
 </tr>  
 </tbody>
 </table>
@@ -134,8 +131,7 @@ Nombre: {props.nombreDeOrden}
     <label style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </label>
   <label style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </label>
 
-
-    <time dateTime="2016-1-1">{props.tiempo}</time>
+    <time dateTime="2016-1-1">{props.timeCreated}</time>
  
 </div>
 <footer className="card-footer">

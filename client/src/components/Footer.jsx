@@ -1,11 +1,12 @@
 // import {useState} from "react"
-import { Link, NavLink} from "react-router-dom";
+import { NavLink} from "react-router-dom";
 const Footer = ()=> {
   const linkState=  [
-    {name:"home", href:"/"},
-    {name:"find", href:"/ordens"},
-    {name:"ordenar", href:"/orden"},
+    {name:"Home/Inicio", href:"/"},
+    {name:"Waiting list/Fila", href:"/ordens"},
+    {name:"Order/Ordenar", href:"/orden"},
     {name:"Incribirse-Signup", href:"/signup"},
+    {name:"Log-In/Iniciar-Sesion", href:"/login"}
   ] 
     return (<>
       <hr></hr>
@@ -14,14 +15,14 @@ const Footer = ()=> {
 
 <div className= "column is-mobile" >
 
-<nav className="tabs navbar is-fixed-bottom is-justify-content-center mt-0" aria-label="breadcrumbs" >
+<nav className="navbar tabs is-centered  is-fixed-bottom is-justify-content-center mb-1" aria-label="breadcrumbs" >
   <ul>
     {linkState.map((item) =>(
       <li key={item.name}> <NavLink
 
       key={item.name}
        to={item.href}
-       className={({isActive})=>{return " is-centered navbar-item " + (!isActive ? "navbar-item " : "navbar-item " ) }}
+       className={({isActive})=>{return "tabs is-centered navbar-item " + (!isActive ? "navbar-item " : "navbar-item " ) }}
       >
         {item.name}
       </NavLink>
