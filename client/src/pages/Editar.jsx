@@ -49,11 +49,10 @@ const Editar = () => {
     coca: formObj.coca,
     sprite: formObj.sprite,
     fanta: formObj.sprite,
-
   }).then((response) => {
+    setAlert({message:"Your order was successfully updated!", type:"is-success"});
     console.log(response.data);
     alert("su orden a sido guardada");
-    setAlert({message:"Your order was successfully updated!", type:"is-success"});
 
     //debugger
     navigate("/");

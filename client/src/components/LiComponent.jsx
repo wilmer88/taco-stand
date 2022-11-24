@@ -130,6 +130,8 @@ Nombre: {props.nombreDeOrden}
     <label style={liestilo.atras} className="label">Bebidas/drinks: $<span>{aguasNsodas?.toFixed(2)}</span> </label>
     <label style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </label>
   <label style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </label>
+  <label style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </label>
+
 
     <time dateTime="2016-1-1">{props.timeCreated}</time>
  

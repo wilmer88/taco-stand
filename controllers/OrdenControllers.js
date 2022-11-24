@@ -1,8 +1,5 @@
-// const express = require("express");
 const jwt = require("jsonwebtoken");
-// const router = express.Router();
 const { Orden } = require("../models");
-const {Sides} = require("../models");
 const db = require("../models");
 module.exports = {
       allOrdens: function(req, res) {

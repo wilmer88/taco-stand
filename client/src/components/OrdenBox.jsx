@@ -134,14 +134,15 @@ const OrdenBox = () => {
         async function secondFunction(){
           navigate("/")
           };
+
   const handleSubmit= (e)=> {
     e.preventDefault();
-API.saveOrden(orderData).then((response)=>{
-  setAlert({message:"You successfully placed order!", type:"is-success"});
-  firstFunction()
-  setTimeout(() => {secondFunction()}, 1000);
-  resetState()
-}).catch((err) =>{console.log(err)});};
+    API.saveOrden(orderData).then((response)=>{
+      setAlert({message:"You successfully placed order!", type:"is-success"});
+      firstFunction()
+      setTimeout(() => {secondFunction()}, 1000);
+      resetState()
+    }).catch((err) =>{console.log(err)});};
 
  return (<><form>
           <main className="box is-shadowless is-align-self-center">

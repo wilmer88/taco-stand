@@ -5,7 +5,8 @@ router.route("/")
  
   .post(StripeController.payOrden);
 
-// Matches with "/api/orden/:id"
+router.route("/:id")
+.put(StripeController.updatePaidField);
 
  
 

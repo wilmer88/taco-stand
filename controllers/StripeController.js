@@ -1,8 +1,10 @@
 const uuid = require("uuid").v4;
 const dotenv = require("dotenv"); 
 dotenv.config();
-const Stripe = require("stripe")
-const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY)
+const Stripe = require("stripe");
+const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY);
+const { Orden } = require("../models");
+const db = require("../models");
 module.exports = {
 payOrden: function(req,res){
 
@@ -29,9 +31,24 @@ return stripe.customers.create({
         res.status(200).json(results)
     }).catch(err=>{console.log(err)})
 
-})    
+})  },
 
-    } 
+updatePaidField: function(req, res){
+             db.Orden.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
+          .then((updatedOrder) => {
+            res.json(updatedOrder);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.json({
+              error: true,
+              data: null,
+              message: `failed to update order/orden document for ${req.params.id}`,
+            });
+          });
+    
+
+}
  
 };
     

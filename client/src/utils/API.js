@@ -33,6 +33,10 @@ getOrdens: function() {
     makeTacoPayment: function(token, addresses){
       return axios.post("/api/payment/", token, addresses);
          },
+        paidUpdate: function(id,paidData){
+          return axios.put("/api/payment/" + id, paidData)
+        }
+        
          
 
       
