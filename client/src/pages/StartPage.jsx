@@ -14,11 +14,14 @@ const StartPage = ()=> {
         };
   
     return (<>
-  <div className=' columns is-mobile'>
+  <div className='columns is-mobile '>
   <div className="column is-two-fifth"> </div>
-  <div className= "mt-1 column is-three-quarters-mobile"  >
-  <div className="mt-1 box" >
+  <div className= "mt-4 column is-three-quarters-mobile"  >
+ 
+  <div className="box" >
+   
   <h2> <label className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?</label></h2>
+
   <div className="ml-4  field">
   <br></br>
  <Link to="./orden"> <button className="button is-black is-outlined">Ordene Ya!/Order Now</button></Link> 
@@ -34,6 +37,9 @@ const StartPage = ()=> {
  <br></br>
  <br></br>
  <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/Sign Up</button></Link>
+
+
+
  
 </div>
 </div>

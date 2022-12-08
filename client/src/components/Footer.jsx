@@ -1,27 +1,37 @@
 import { NavLink} from "react-router-dom";
 const Footer = ()=> {
-  const linkState=  [
-    {name:"Home/Inicio", href:"/"},
-    {name:"Waiting list/Fila", href:"/ordens"},
-    {name:"Order/Ordenar", href:"/orden"},
-    {name:"Incribirse-Signup", href:"/signup"},
-    {name:"Log-In/Iniciar-Sesion", href:"/login"}
-  ] 
-    return (<>
-      <hr></hr>
-    <div className='columns is-mobile  '>
-    <div className="column is-one-fifth"></div>
 
-<div className= "column is-mobile" >
+    const linkState=  [
+      {name:"Home/Inicio", href:"/"},
+      {name:"Waiting list/Fila", href:"/ordens"},
+      {name:"Order/Ordenar", href:"/orden"},
+      {name:"Search/Buscar", href:"/search"},
+      {name:"Incribirse-Signup", href:"/signup"},
+      {name:"Log-In/Iniciar-Sesion", href:"/login"}
+    ] 
 
-<nav className="navbar tabs is-centered  is-fixed-bottom is-justify-content-center mb-1 mt-auto" aria-label="breadcrumbs" >
-  <ul>
+
+
+  
+
+    return (
+     
+  
+
+<>
+<div className="scrolling-wrapper" >
+
+
+<nav className="navbar tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs" style={{marginTop: "10px"}}  >
+  
+  <ul className="mb-4 ">
+
     {linkState.map((item) =>(
       <li key={item.name}> <NavLink
 
-      key={item.name}
+
        to={item.href}
-       className={({isActive})=>{return "tabs is-centered navbar-item " + (!isActive ? "navbar-item " : "navbar-item " ) }}
+       className={({isActive})=>{return "tabs is-centered navbar-item " + (isActive ? "navbar-item " : "navbar-item " ) }}
       >
         {item.name}
       </NavLink>
@@ -31,8 +41,15 @@ const Footer = ()=> {
   </ul>
 </nav>
 </div>
-<div className="column is-one-fifth"></div>
-    </div>
-    </> )
+
+
+</>
+
+
+
+
+
+
+)
   }
   export default Footer;

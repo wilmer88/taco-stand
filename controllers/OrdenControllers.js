@@ -76,6 +76,9 @@ module.exports = {
 
       },
 
+      
+
+
         getOne: function(req, res) {
           db.Orden.findOne({ _id: req.params.id })
     

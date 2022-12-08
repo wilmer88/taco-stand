@@ -27,7 +27,11 @@ getOrdens: function() {
          },
         paidUpdate: function(id,paidData){
           return axios.put("/api/payment/" + id, paidData)
-        }
+        },
+
+        apiSearch: function(nombreDeOrden){
+          return axios.get("/api/searcho/"+ nombreDeOrden)
+        },
 };
 
 export default  clientApiCalls

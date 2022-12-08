@@ -44,7 +44,7 @@ const ULog = () => {
 
 <div className="column is-two-fifth"></div>
 
-<div className= "column is-three-quarters-mobile" >
+<div className= "column is-three-quarters-mobile mt-6" >
   <div className='box'>
   <label className="label has-text-centered" style={pxhi.fonte}>Log In/ Iniciar Sesión</label>
      <form onSubmit={formSubmit}>

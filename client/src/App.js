@@ -14,6 +14,7 @@ import TacoBlockContext from "./utils/TacoContext";
 import Payment from "./pages/Payment/Payment";
 import Alert from "./components/Alert/Alert";
 import alertContext from "./context/alertContext";
+import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
             <Route exact path="/ordens" element={<FinishedOrden />}></Route>
             <Route exact path="/orden" element={<TacoBlockContext.Provider value={TacoBlockContext}>{" "}<OrdenPage />{" "}</TacoBlockContext.Provider>}></Route>
+            <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
           </Routes>
           <Footer />

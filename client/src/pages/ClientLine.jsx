@@ -21,7 +21,7 @@ useEffect(() => {
 }, [setAlert]);
 
   return ( <>
-<div className="container is-align-self-auto is-size-7">
+<div className="container is-align-self-auto is-size-7 mt-6">
  {den.length ? (den.map( res =>(
               <Licomponent key= {res._id} {...res} />
             ))
