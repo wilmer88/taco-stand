@@ -26,7 +26,7 @@ import API from "../../utils/API";
             e.preventDefault();
            
             API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>{
-               
+               console.log(searchFound.data)
            
                
 

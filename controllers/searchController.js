@@ -1,22 +1,12 @@
-
-
-const dbs = require("../models");
-const laCollection = dbs.Orden
-
-
+const {Orden} = require("../models");
+const db = require("../models");
 
 module.exports = {
 
-      
-      searchOrder: function(req, res) {
-      
-        laCollection.findO( {nombreDeOrden: req.params.nombreDeOrden} )
+      searchOrder: function(req, res) {   
+        db.Orden.findOne({nombreDeOrden:req.params.nombreDeOrden}).select({nombreDeOrden:1, _id: 0})
         .then((foundit) => {
-          console.log(req.params.nombreDeOrden)
           res.json(foundit)
-
-     
-    
         })
         .catch((err) => {
           console.log(err);
