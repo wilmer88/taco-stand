@@ -41,9 +41,9 @@ const liestilo = {
   if(props.pagado === true){disableVar = true};
 
     return (<>
-        <div className="columns is-mobile ">
+        <div className="columns is-mobile mb-6 ">
   <div className="column is-1"></div>
-  <div className="column is-narrow-mobile">
+  <div className="column is-narrow-mobile mb-6">
   <hr></hr>
   <div className="card is-flex-align-items  ">
 <header is-family-monospace="true" style={liestilo.atras} className="card-header">

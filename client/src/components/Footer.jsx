@@ -22,7 +22,7 @@ const Footer = ()=> {
 <div className="scrolling-wrapper" >
 
 
-<nav className="navbar tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs" style={{marginTop: "10px"}}  >
+<nav className="navbar tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs"   >
   
   <ul className="mb-4 ">
 
