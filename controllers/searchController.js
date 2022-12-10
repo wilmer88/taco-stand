@@ -1,4 +1,4 @@
-const express = require("express");
+
 const {Orden} = require("../models");
 
 
@@ -7,12 +7,14 @@ module.exports = {
       searchOrder: function(req, res) {   
        
        
-        Orden.find({nombreDeOrden: "felix"})
-
+        Orden.find({nombreDeOrden: req.params.keyword})
         .then((foundit) => {
-          console.log(req.params)
-       
-          res.json(foundit)
+
+          res.json(foundit);
+          console.log(req.params);
+
+        
+
         })
         .catch((err) => {
           console.log(err);

@@ -25,7 +25,7 @@ import API from "../../utils/API";
          const handleSubmit = (e) =>{
             e.preventDefault();
            
-            API.apiSearch({nombreDeOrden: searchedOrder.nombreDeOrden}).then((searchFound)=>{
+            API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>{
                console.log(searchFound.data)
            
                

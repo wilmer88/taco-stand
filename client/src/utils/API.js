@@ -30,7 +30,7 @@ getOrdens: function() {
         },
 
         apiSearch: function(nombreDeOrden){
-          return axios.get("/api/searcho", nombreDeOrden)
+          return axios.get("/api/searcho/" + nombreDeOrden)
         },
 };
 
