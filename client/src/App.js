@@ -16,7 +16,7 @@ import Alert from "./components/Alert/Alert";
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 
-function App() {
+const App = () => {
   
   const [alert, setAlert] = useState({
     message:"",

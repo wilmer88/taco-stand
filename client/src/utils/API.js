@@ -21,17 +21,16 @@ getOrdens: function() {
   },
   signup: function(userData) {
     return axios.post("/api/signup/", userData);
-    },
-    makeTacoPayment: function(token, addresses){
-      return axios.post("/api/payment/", token, addresses);
-         },
-        paidUpdate: function(id,paidData){
-          return axios.put("/api/payment/" + id, paidData)
-        },
-
-        apiSearch: function(nombreDeOrden){
-          return axios.get("/api/searcho/" + nombreDeOrden)
-        },
+  },
+  makeTacoPayment: function(token, addresses){
+    return axios.post("/api/payment/", token, addresses);
+  },
+  paidUpdate: function(id,paidData){
+    return axios.put("/api/payment/" + id, paidData)
+  },
+  apiSearch: function(nombreDeOrden){
+    return axios.get("/api/searcho/" + nombreDeOrden)
+  },
 };
 
 export default  clientApiCalls

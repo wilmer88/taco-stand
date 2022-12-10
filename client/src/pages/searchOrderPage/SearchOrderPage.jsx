@@ -55,7 +55,7 @@ import API from "../../utils/API";
       </button>
       </div>
       </div> 
-        </form>
+      </form>
 
       <section className="container has-text-centered" >
       {<div className="container is-align-self-auto is-size-7  mb-6">

@@ -1,14 +1,14 @@
 import { NavLink} from "react-router-dom";
+import {useState} from "react";
 const Footer = ()=> {
-
-    const linkState=  [
+    const [linkState]= useState([
       {name:"Home/Inicio", href:"/"},
       {name:"Waiting list/Fila", href:"/ordens"},
       {name:"Order/Ordenar", href:"/orden"},
       {name:"Search/Buscar", href:"/searcho"},
       {name:"Incribirse-Signup", href:"/signup"},
       {name:"Log-In/Iniciar-Sesion", href:"/login"}
-    ] 
+    ] )
     return (<>
 <div className="scrolling-wrapper" >
 
@@ -17,12 +17,13 @@ const Footer = ()=> {
   <ul className="mb-4 ">
 
     {linkState.map((item) =>(
-      <li key={item.name}> <NavLink
-     
+       
+       <li key={item.href}> 
+      <NavLink
        to={item.href}
-       className={({isActive})=>{return "tabs is-centered navbar-item " + (isActive? "is-active " : "is-active "  ) }}
+       className={({isActive})=>{return (isActive? "navbar-item " : "navbar-item ")}} 
       >
-        {item.name}
+         {item.name}
       </NavLink>
       </li>
       
@@ -30,8 +31,6 @@ const Footer = ()=> {
   </ul>
 </nav>
 </div>
-
-
 </>)
   }
   export default Footer;
