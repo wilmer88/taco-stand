@@ -9,29 +9,18 @@ const Footer = ()=> {
       {name:"Incribirse-Signup", href:"/signup"},
       {name:"Log-In/Iniciar-Sesion", href:"/login"}
     ] 
-
-
-
-  
-
-    return (
-     
-  
-
-<>
+    return (<>
 <div className="scrolling-wrapper" >
 
-
-<nav className="navbar tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs"   >
+<nav className="navbar is-mobile tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs"   >
   
   <ul className="mb-4 ">
 
     {linkState.map((item) =>(
       <li key={item.name}> <NavLink
-
-
+     
        to={item.href}
-       className={({isActive})=>{return "tabs is-centered navbar-item " + (isActive ? "navbar-item " : "navbar-item " ) }}
+       className={({isActive})=>{return "tabs is-centered navbar-item " + (isActive? "is-active " : "is-active "  ) }}
       >
         {item.name}
       </NavLink>
@@ -43,13 +32,6 @@ const Footer = ()=> {
 </div>
 
 
-</>
-
-
-
-
-
-
-)
+</>)
   }
   export default Footer;
