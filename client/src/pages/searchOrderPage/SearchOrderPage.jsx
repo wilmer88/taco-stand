@@ -25,7 +25,7 @@ import API from "../../utils/API";
          const handleSubmit = (e) =>{
             e.preventDefault();
            
-            API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>{
+            API.apiSearch({nombreDeOrden: searchedOrder.nombreDeOrden}).then((searchFound)=>{
                console.log(searchFound.data)
            
                
@@ -54,7 +54,6 @@ onChange={handelSearchChange}
 name="nombreDeOrden"
 className="input" 
 value= {searchedOrder.nombreDeOrden}
-type="text"
 placeholder="Nombre de orden/ Order Name"
 />
 

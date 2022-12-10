@@ -5,7 +5,7 @@ const Footer = ()=> {
       {name:"Home/Inicio", href:"/"},
       {name:"Waiting list/Fila", href:"/ordens"},
       {name:"Order/Ordenar", href:"/orden"},
-      {name:"Search/Buscar", href:"/search"},
+      {name:"Search/Buscar", href:"/searcho"},
       {name:"Incribirse-Signup", href:"/signup"},
       {name:"Log-In/Iniciar-Sesion", href:"/login"}
     ] 
