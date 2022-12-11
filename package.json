@@ -43,6 +43,8 @@
     "nyc": "^15.1.0",
     "path": "^0.12.7",
     "proxy-sinon-chai": "^0.0.1",
+    "react-router-dom": "^6.4.5",
+    "react-tabs": "^6.0.0",
     "sinon": "^13.0.2",
     "stripe": "^10.15.0",
     "superagent": "^8.0.0",

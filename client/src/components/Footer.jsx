@@ -1,67 +1,121 @@
-import { NavLink} from "react-router-dom";
-import {useState} from "react";
+import { NavLink } from "react-router-dom";
+import { React,useState } from "react";
+// import { Tab } from "react-tabs";
 
-const Footer = ()=> {
+// const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import "react-tabs/style/react-tabs.css";
+
+const Footer = () => {
+//   const pxhi = {
+//     fonte:{
+// isActive:"background: blue"
+//     }
+//   };
+//   const { index, setIndex } = useState(0);
+
+//   const setEstado0 = () =>{setIndex(0)}
+//   const setEstado1 = () =>{setIndex(1)}
+
+ 
+
+  // const linkState= [
+  //   { name: "Home/Inicio", href: "/", classe: `${index===0?'nav-item isActive':null}`, onklic: ()=>setIndex(0)},
+  //   { name: "Waiting list/Fila", href: "/ordens", classe: ` ${index===1?'nav-item active':null}`, onklic: ()=>setIndex(1) },
+  //   { name: "Order/Ordenar", href: "/orden", classe: ` ${index===2?'nav-item active':null}`, onklic: ()=>setIndex(2) },
+  //   { name: "Search/Buscar", href: "/searcho", classe: ` ${index===3?'nav-item active':null}`, onklic: ()=>setIndex(3) },
+  //   { name: "Incribirse-Signup", href: "/signup", classe: ` ${index===4?'nav-item active':null}`, onklic: ()=>setIndex(4) },
+  //   { name: "Log-In/Iniciar-Sesion", href: "/login", classe:` ${index===5?'nav-item active':null}`, onklic: ()=>setIndex(5) },
+  // ];
+  const linkState= [
+    { name: "Home/Inicio", href: "/", },
+    { name: "Waiting list/Fila", href: "/ordens"},
+    { name: "Order/Ordenar", href: "/orden"},
+    { name: "Search/Buscar", href: "/searcho"},
+    { name: "Incribirse-Signup", href: "/signup"},
+    { name: "Log-In/Iniciar-Sesion", href: "/login"},
+  ];
 
 
-  // const[toggleState,setToggleState] = useState(1)
-    const [linkState]= useState([
-            {name:"Home/Inicio", href:"/"},
-      {name:"Waiting list/Fila", href:"/ordens"},
-      {name:"Order/Ordenar", href:"/orden"},
-      {name:"Search/Buscar", href:"/searcho"},
-      {name:"Incribirse-Signup", href:"/signup"},
-      {name:"Log-In/Iniciar-Sesion", href:"/login"}
-          
-      // {name:"Home/Inicio", href:"/", liclass: "is-active tablinks", id:"home"},
-      // {name:"Waiting list/Fila", href:"/ordens", liclass: "tablinks",  id:"fila"},
-      // {name:"Order/Ordenar", href:"/orden",  liclass: "tablinks",  id:"ordenar"},
-      // {name:"Search/Buscar", href:"/searcho",  liclass: "",  id:"buscar"},
-      // {name:"Incribirse-Signup", href:"/signup",  liclass: "",  id:"inscribir"},
-      // {name:"Log-In/Iniciar-Sesion", href:"/login",  liclass: "",  id:"ineiciar"}
+
+
+  return (
+    <>
+     
+
+      <div className="scrolling-wrapper">
+        <nav
+          className="navbar is-mobile tabs is-centered  is-fixed-bottom  "
+          aria-label="breadcrumbs"
+        >
+          <ul className="nav nav-tabs mb-4 ">
+            {linkState.map((item) => (
+              <li toggle="tab" className="nav-item" key={item.name}>
+                <NavLink
+                  to={item.href}
+                  className={({ isActive }) => {
+                    return "is-toggle " + !isActive
+                      ? "navbar-item nav-link " 
+                      : "nav-link nav-item active is-active tabs-boxed-link-hover-background-color ";
+                  }}
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </>
+  );
+};
+export default Footer;
+ {/* <div className="scrolling-wrapper">
+        <nav
+          className="Tabs is-centered  is-fixed-bottom  "
+          aria-label="breadcrumbs"
+        >
+
+          <ul className="tabsList mb-4 " style={pxhi.fonte}>
+            
     
-      //  {name:"Home/Inicio", href:"/", liclass: "is-active tablinks", id:"home", clikk: (event)=>toggleTab(event) },
-      // {name:"Waiting list/Fila", href:"/ordens", liclass: "tablinks",  id:"fila", clikk: (event)=>toggleTab(event)  },
-      // {name:"Order/Ordenar", href:"/orden",  liclass: "tablinks",  id:"ordenar", clikk: (event)=>toggleTab(event)  },
-      // {name:"Search/Buscar", href:"/searcho",  liclass: "",  id:"buscar", clikk: (event)=>toggleTab(event) },
-      // {name:"Incribirse-Signup", href:"/signup",  liclass: "",  id:"inscribir", clikk: (event)=>toggleTab(event) },
-      // {name:"Log-In/Iniciar-Sesion", href:"/login",  liclass: "",  id:"ineiciar", clikk: (event)=>toggleTab(event) }
-    ] );
-    // let toggleTab = (event,litab) =>{
-      
-    //   for(let i = 0; i < linkState.length; i++){
-    //   setLinkState( NavLink[i].className = NavLink.className.replace(" is-active",""))
-        
-    //   }
+          <li
+             
+              className={`${index===0?'tabHead ':null}`}
+     
+              onClick={()=>setEstado0}
+                key={linkState.name}        
+              >
+               
+                  home
+              
+              </li>
 
-    // }
+              <li
+             
+              className={`${index===1?'tabHead isActive':null}`}
 
-
-    return (<>
-<div className="scrolling-wrapper" >
-
-
-<nav className="navbar is-mobile tabs is-centered  is-fixed-bottom  " aria-label="breadcrumbs"   >
-  
-  <ul className="mb-4 ">
-
+     
+              onClick={()=>setEstado1}
+                key={linkState.name}        
+              >
+                <NavLink
+                to={"/"} 
+                
    
-       
-  {linkState.map((item) =>(
-       
-       <li key={item.name}> 
-      <NavLink
-       to={item.href}
-       className={({isActive})=>{return  "is-toggle " + !isActive ? "navbar-item  " : "is-active tabs-boxed-link-hover-background-color "}}
-      > 
-         {item.name}
-      </NavLink>
-      </li>
-      
-    ))}
-  </ul>
-</nav>
-</div>
-</>)
-  }
-  export default Footer;
+                >
+                  LogIn
+                </NavLink>
+              </li>
+          
+          </ul>
+          <div className="tabContant" hidden={index !== 0}></div>
+          <div className="tabContant" hidden={index !== 1}></div>
+          <div className="tabContant" hidden={index !== 2}></div>
+          <div className="tabContant" hidden={index !== 4}></div>
+          <div className="tabContant" hidden={index !== 5}></div>
+
+
+         
+        </nav>
+      </div> */}

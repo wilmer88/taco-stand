@@ -1,3 +1,4 @@
+// import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import AuthContext from "./context/AuthContext";
@@ -10,6 +11,7 @@ import Editar from "./pages/Editar";
 import ULog from "./pages/ULog";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
+// import Footer from "./components/footer/Footer";
 import TacoBlockContext from "./utils/TacoContext";
 import Payment from "./pages/Payment/Payment";
 import Alert from "./components/Alert/Alert";
