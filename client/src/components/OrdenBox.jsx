@@ -236,7 +236,7 @@ const OrdenBox = () => {
   <hr></hr>
 <div className="container mt-3">
     <figcaption>   
-    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Porciones Extras</strong></h5>
+    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Condimentos</strong></h5>
     </figcaption>
 
     <ToppingField
