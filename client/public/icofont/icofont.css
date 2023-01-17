@@ -33,14 +33,24 @@ url("./fonts/icofont.woff") format("woff");
   -webkit-font-smoothing: antialiased;
 }
 
-.icofont-list:before
+.icofont-home:before
 {
-  content: "\ef72";
+  content: "\ef47";
 }
 
 .icofont-login:before
 {
   content: "\ef7b";
+}
+
+.icofont-list:before
+{
+  content: "\ef72";
+}
+
+.icofont-search-job:before
+{
+  content: "\ed15";
 }
 
 .icofont-xs
