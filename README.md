@@ -1,10 +1,8 @@
 ### pitch
-How would you like?
-No more wasted time waiting in line or missed  information when placing an order over the phone. No more poluting noise when screaming thru foodtruck window ordering over a busy street or plaza.
-how would you like?
-When taking lunch and without waiting in line, pre order your meal for quick and easy pick up.
-For that this passion project/application was created, built to help the food truck industry, caters and restaurant businessess by smoothening and automate the ordering process for both customer and client without holding back production or making an expensive investment
-
+Leave in the past waiting in line waisting time, missed information when placing an order, polluting noise when ordering thru a phone, a food truck window on a busy street or a noisy restaurant.
+Would it be helpfull when taking lunch to pre order your meal for a quick and easy pick up?
+For that this app was created, built to help the food truck industry, caters and restaurant businessess by smoothening and automate the ordering process for both customer and client without holding back production or making an expensive investment
+ 
 ### taco-Stand
 MERN Stack, Api driven, mobile responsive cloud based (SaaS) for food service trucks or restaurant businessess. The aplication helps customers and buisness owner save time by allowing the customer to place a order at the business location or pre ordering at customer home or current location, helping businessess by not slowing down and/or stoping any order preparation process and by not needing to have someone there when a order is being placed. 
 On a submited order the app calculates the amount due saves the order details to a database and instantly places the the order to be seen by the business. The App informs amount due and place in line if the signed in to the app athorization; Using athorization authentication process. allows users to create, edit, view all, and delete orders.

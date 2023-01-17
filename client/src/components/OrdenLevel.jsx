@@ -14,33 +14,37 @@ const estilo = {
  }
 }
 
-const OrdenLevel = () => {
- 
-    return (
+const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-content-center" >
 
-        <nav className="level  is-size-7 is-align-content-center" >
-<div className="level-item has-text-centered" style={estilo.nombre}>
-<Link to="/login">   
+        <div className="level-item has-text-centered" style={estilo.nombre}>
+        <Link to="/login">   
+        <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In</label>
+        </Link>
+        </div>
 
-   <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In</label>
- 
-    </Link>
- </div>
         <div className="level-item has-text-centered is-hoverable " style={estilo.altura}>
-       
-      <Link to="/orden"> <label className="label">
+
+        <Link to="/login">   
+        <label className="label"><i className="icofont-server"></i>Home/ Casa</label>
+        </Link>
+
+        <Link to="/orden"> <label className="label">
             Ordenar
-            </label><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/> </Link> 
+         </label><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/>
+         </Link> 
+
+            <Link to="/login">   
+            <label className="label"><i className="icofont-ui-home"></i>Buscar/ Search</label>
+            </Link>
         
         </div>
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link to="/ordens">
-          <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </label></Link>
+        <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </label></Link>
         </div>
-      </nav>
-    );
-}
+
+      </nav>);}
 
 export default OrdenLevel;
 

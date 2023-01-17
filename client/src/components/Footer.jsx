@@ -5,6 +5,15 @@ import { React,useState } from "react";
 // const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import "react-tabs/style/react-tabs.css";
+const footerStyling= {
+  fontweightTooSkiny: {
+    fontWeight: "600"
+  },
+  // bottomMarginFooter: {
+  //   marginBottom: "60px"
+
+  // }
+}
 
 const Footer = () => {
 //   const pxhi = {
@@ -39,18 +48,17 @@ const Footer = () => {
 
 
 
-  return (
-    <>
-     
+  return (<>
+  {/* style={footerStyling.bottomMarginFooter} */}
 
-      <div className="scrolling-wrapper">
+      <div className="scrolling-wrapper" >
         <nav
           className="navbar is-mobile tabs is-centered  is-fixed-bottom  "
           aria-label="breadcrumbs"
         >
           <ul className="nav nav-tabs mb-4 ">
             {linkState.map((item) => (
-              <li toggle="tab" className="nav-item" key={item.name}>
+              <li toggle="tab" className="nav-item" key={item.name} style={footerStyling.fontweightTooSkiny}>
                 <NavLink
                   to={item.href}
                   className={({ isActive }) => {
