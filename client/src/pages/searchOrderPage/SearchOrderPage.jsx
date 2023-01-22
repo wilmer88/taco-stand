@@ -19,18 +19,33 @@ import API from "../../utils/API";
            result: []
           });
           
-         const handelSearchChange = event => {
+         const handelSearchChange = event => 
+         {
             const { value} = event.target;
             setSearchOreder({nombreDeOrden: value});
          };
 
-         const handleSubmit = (e) =>{
-            e.preventDefault();
-            API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>{
+         const handleSubmit = (e) =>
+         {
+            if(searchedOrder.nombreDeOrden !== "")
+            {
+               e.preventDefault();                               
+               API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>
+               {
+               console.log(searchFound.data)
                setSearchresult(searchFound.data)
-            }).catch((err) =>{
-               console.log(err)
-               }); };
+           
+               }).catch((err) =>
+               {
+                 console.log(err)
+               });
+            };
+         } ;
+
+
+
+            
+   
 
         return (<>
          
@@ -57,14 +72,17 @@ import API from "../../utils/API";
       </div> 
       </form>
 
-      <section className="container has-text-centered" >
-      {<div className="container is-align-self-auto is-size-7  mb-6">
-      {searchResult.length ? (searchResult.map( res =>(
+      <section className="container has-text-centeredcontainer is-align-self-auto is-size-7  mb-6" >
+  <div className="list">
+
+      { searchResult.length? (searchResult.map( res =>(
+         
          <Licomponent key= {res._id} {...res} />
       ))
       ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: search by name <hr></hr>msg: busque por nombre</h1>
       )}
-      </div>}
+  
+      </div>
       </section>  
          </>)
 }
