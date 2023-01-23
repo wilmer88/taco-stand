@@ -2,13 +2,14 @@
 // import React, {useContext, useState} from 'react';
 // import { useNavigate } from "react-router-dom";
 // import API from "../utils/API"
-// import alertContext from '../context/alertContext';
+import alertContext from '../../context/alertContext';
 import Licomponent from "../../components/LiComponent";
 
-import {useState} from "react";
+import {useState, useContext} from "react";
 import API from "../../utils/API";
 
     const SearchOrderPage = ()=> {
+      const {setAlert} = useContext(alertContext); 
  
         const pxhi = { backNfont:{ fontSize: "25px", background: "lightyellow" }};
          const [searchedOrder, setSearchOreder] = useState({
@@ -32,15 +33,24 @@ import API from "../../utils/API";
                e.preventDefault();                               
                API.apiSearch(searchedOrder.nombreDeOrden).then((searchFound)=>
                {
-               console.log(searchFound.data)
-               setSearchresult(searchFound.data)
+                 
+                  if(searchFound.data.length === 0 ){
+                     setSearchresult([])
+                     
+                     setAlert({message:"Faild to find order with given name.", type:"is-warning"});
+                                    
+                  }else{
+                     setAlert({message:"Found searched order", type:"is-success"});
+                     setSearchresult(searchFound.data);
+                     
+                  }
            
                }).catch((err) =>
                {
                  console.log(err)
                });
-            };
-         } ;
+            }          
+         };
 
 
 

@@ -7,7 +7,7 @@ const Alert = () => {
     if(message.length){
       setTimeout(()=>{
         setAlert({ message:"", type:"" })
-      }, 2700)
+      }, 8500)
     }
 
   },[message,setAlert])
@@ -15,7 +15,7 @@ const Alert = () => {
   return (
     <>
       {message  && (
-        <div className="container">
+        <div className="container has-text-centered">
           <div className={`notification ${type || "is-info "} is-light`}>
           <button className="delete" onClick={()=>{setAlert({message:"", type:""})} }></button>
           {message} 
