@@ -2,7 +2,7 @@ const uuid = require("uuid").v4;
 const dotenv = require("dotenv"); 
 dotenv.config();
 const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY);
+const stripe = Stripe(process.env.REACT_APP_STRIPE);
 const { Orden } = require("../models");
 const db = require("../models");
 module.exports = {
