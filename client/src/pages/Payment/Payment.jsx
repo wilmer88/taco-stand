@@ -48,6 +48,10 @@ const handleToken = token =>{
         });
      };
 
+     const alertContinue = () =>{
+      alert("please continue after next prompt error")
+     };
+
     return (<>
          <div className="container">
       <div id='paymentPage'  className="box has-text-centered mb-0" >
@@ -62,7 +66,7 @@ const handleToken = token =>{
           name={paymentObj.nombreDeOrden}
           billingAddress
           shippingAddress>
-            <button className="button is-danger is-light">Pagar/Pay</button>
+            <button  className="button is-danger is-light" onClick={alertContinue}>Pagar/Pay</button>
           </StripCheckout>
         </div>
           
