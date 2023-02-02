@@ -22,3 +22,20 @@ Working React Stripe checkout payment option, Visual Studio Code, MongoDB Atlas 
 ![screenshot](/client/public/images/alloredens.png)
 ![screenshot](/client/public/images/edit.png)
 
+### Documentation
+- Deleted unused code in client/public/manifest.json file to solve console error 'error while trying to use the following icon from the manifest' referring to favicon.ico in icons array. 
+```
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+
+ ```
+
+
