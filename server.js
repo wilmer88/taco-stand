@@ -26,12 +26,7 @@ mongoose.connect(
   .catch((err) => console.log(err));
 
 const PORT = process.env.PORT || 3001;
-// const AuthoController = require("./controllers/authController");
-// const ordenControler = require("./controllers/OrdenControllers");
-// const userController = require("./controllers/UserController");
-// app.use(AuthoController);
-// app.use(userController);
-// app.use(ordenControler);
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -44,3 +39,9 @@ app.get("*", function (request, response) {
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+// const AuthoController = require("./controllers/authController");
+// const ordenControler = require("./controllers/OrdenControllers");
+// const userController = require("./controllers/UserController");
+// app.use(AuthoController);
+// app.use(userController);
+// app.use(ordenControler);
