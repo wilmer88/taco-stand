@@ -1,7 +1,4 @@
-// import AuthContext from '../context/AuthContext';
-// import React, {useContext, useState} from 'react';
-// import { useNavigate } from "react-router-dom";
-// import API from "../utils/API"
+import "./SearchOrderPage.css";
 import alertContext from '../../context/alertContext';
 import Licomponent from "../../components/LiComponent";
 
@@ -10,11 +7,11 @@ import API from "../../utils/API";
 
     const SearchOrderPage = ()=> {
       const {setAlert} = useContext(alertContext); 
- 
-        const pxhi = { backNfont:{ fontSize: "25px", background: "lightyellow" }};
-         const [searchedOrder, setSearchOreder] = useState({
-            nombreDeOrden: ""
-          });
+        
+      const [searchedOrder, setSearchOreder] = useState({
+        nombreDeOrden: ""
+      });
+
 
           const [searchResult, setSearchresult] = useState({
            result: []
@@ -53,16 +50,12 @@ import API from "../../utils/API";
          };
 
 
-
-            
-   
-
         return (<>
          
          <form>
-      <div className="column is-mobile is-three-fifths is-offset-one-fifth .is-narrow-desktop" style={pxhi.fonte} > 
+      <div className="column is-mobile is-three-fifths is-offset-one-fifth .is-narrow-desktop" > 
       <div className='box' >
-         <label className="label has-text-centered"style={pxhi.backNfont}  >Search/ Buscar</label>
+         <label id='searchPageLabel' className="label has-text-centered" >Search/ Buscar</label>
       <input 
       onChange={handelSearchChange}
       name="nombreDeOrden"
@@ -82,14 +75,14 @@ import API from "../../utils/API";
       </div> 
       </form>
 
-      <section className="container has-text-centeredcontainer is-align-self-auto is-size-7  mb-6" >
-  <div className="list">
+      <section  className="container has-text-centeredcontainer is-align-self-auto is-size-7  mb-6" >
+  <div  className="list">
 
       { searchResult.length? (searchResult.map( res =>(
          
          <Licomponent key= {res._id} {...res} />
       ))
-      ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: search by name <hr></hr>msg: busque por nombre</h1>
+      ): (<h1 id="searchPageLabel"  >msg: search by name <hr></hr>msg: busque por nombre</h1>
       )}
   
       </div>

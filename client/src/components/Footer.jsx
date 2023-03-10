@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { React,useState } from "react";
+import { React } from "react";
 // import { Tab } from "react-tabs";
 
 // const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -78,52 +78,3 @@ const Footer = () => {
   );
 };
 export default Footer;
- {/* <div className="scrolling-wrapper">
-        <nav
-          className="Tabs is-centered  is-fixed-bottom  "
-          aria-label="breadcrumbs"
-        >
-
-          <ul className="tabsList mb-4 " style={pxhi.fonte}>
-            
-    
-          <li
-             
-              className={`${index===0?'tabHead ':null}`}
-     
-              onClick={()=>setEstado0}
-                key={linkState.name}        
-              >
-               
-                  home
-              
-              </li>
-
-              <li
-             
-              className={`${index===1?'tabHead isActive':null}`}
-
-     
-              onClick={()=>setEstado1}
-                key={linkState.name}        
-              >
-                <NavLink
-                to={"/"} 
-                
-   
-                >
-                  LogIn
-                </NavLink>
-              </li>
-          
-          </ul>
-          <div className="tabContant" hidden={index !== 0}></div>
-          <div className="tabContant" hidden={index !== 1}></div>
-          <div className="tabContant" hidden={index !== 2}></div>
-          <div className="tabContant" hidden={index !== 4}></div>
-          <div className="tabContant" hidden={index !== 5}></div>
-
-
-         
-        </nav>
-      </div> */}

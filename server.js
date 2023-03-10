@@ -15,6 +15,7 @@ app.use(bodyParser.text())
 app.use(morgan('dev'))
 app.use(routes);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + './client/public'));
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/taco-stand" ,
