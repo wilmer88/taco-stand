@@ -25,7 +25,7 @@ useEffect(() => {
  {den.length ? (den.map( res =>(
               <Licomponent key= {res.nombreDeOrden} {...res} />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>You have no orders</h1>
             )}
         </div>
 
