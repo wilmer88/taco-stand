@@ -38,11 +38,14 @@ const Footer = () => {
   // ];
   const linkState= [
     { name: "Home/Inicio", href: "/", },
+    { name: "My orders", href: "/myorders"},
+
     { name: "Waiting list/Fila", href: "/ordens"},
     { name: "Order/Ordenar", href: "/orden"},
     { name: "Search/Buscar", href: "/searcho"},
-    { name: "Incribirse-Signup", href: "/signup"},
     { name: "Log-In/Iniciar-Sesion", href: "/login"},
+    { name: "Sign-up/Incribirse", href: "/signup"},
+
   ];
 
 

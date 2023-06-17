@@ -24,16 +24,20 @@ const ULog = () => {
          API.login(
         { userName: userName,
         password: password}
-        ).then((response) => {
+        )
+
+        .then((response) => {
+      
         console.log(response.data)
         setJwt(response.data.data) 
-        setTimeout(() => {navigate("/ordens")
+        setTimeout(() => {
+          navigate("/myorders")
         alert("welcome, you are loged in")}, 1500);
          setUserName("")
          setPassword("")
         }).catch((err) => {
           console.log(err);
-          setAlert({message:"faild to to get waiting list",type:"is-danger"})
+          setAlert({message:"failed to login in",type:"is-danger"})
         });
     };
       
@@ -70,11 +74,13 @@ const ULog = () => {
       /> 
        <br></br>
        <br></br>
-     <button className="button is-info"
-      type="submit"
-      >
-      log In
-      </button>
+       <button 
+          type="submit"
+          value="Submit"
+          onClick={formSubmit}
+        className="button is-info">
+         Login
+        </button>
 
     </form>
     </div>

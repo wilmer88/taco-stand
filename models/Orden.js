@@ -4,7 +4,7 @@ const {Schema} = mongoose;
 const OrdenSchema = new Schema({
   clienteId: {
     type: Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
     strictPopulate: false,
   },
   nombreDeOrden: {

@@ -54,7 +54,7 @@ const [password, setPassword] = useState("");
    
 
     <div className="mt-6 box">
-    <label className="label has-text-centered" style={pxhi.fo}>Sign-Up/Inscribirse</label>
+    <label className="label has-text-centered" style={pxhi.fonte}>Sign-Up/Inscribirse</label>
 
     <hr></hr>
         <br></br>

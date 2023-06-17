@@ -7,7 +7,7 @@ const Alert = () => {
     if(message.length){
       setTimeout(()=>{
         setAlert({ message:"", type:"" })
-      }, 8500)
+      }, 9500)
     }
 
   },[message,setAlert])

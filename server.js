@@ -16,9 +16,10 @@ app.use(morgan('dev'))
 app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
+const PORT = process.env.PORT || 3001;
 
-mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/taco-stand" ,
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -26,7 +27,16 @@ mongoose.connect(
     }).then(() => console.log("MongoDB has been connected"))
   .catch((err) => console.log(err));
 
-const PORT = process.env.PORT || 3001;
+   const connection = mongoose.connection;
+   connection.on("connected", ()=> {
+    console.log("mongoose conected")
+   });
+
+   connection.on("error", (err)=> {
+    console.log("mongoose conection error", err)
+   });
+
+
 
 
 if (process.env.NODE_ENV === "production") {

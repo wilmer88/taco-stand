@@ -1,7 +1,6 @@
 import "./SearchOrderPage.css";
 import alertContext from '../../context/alertContext';
 import Licomponent from "../../components/LiComponent";
-
 import {useState, useContext} from "react";
 import API from "../../utils/API";
 
@@ -11,7 +10,6 @@ import API from "../../utils/API";
       const [searchedOrder, setSearchOreder] = useState({
         nombreDeOrden: ""
       });
-
 
           const [searchResult, setSearchresult] = useState({
            result: []
@@ -38,8 +36,7 @@ import API from "../../utils/API";
                                     
                   }else{
                      setAlert({message:"Found searched order", type:"is-success"});
-                     setSearchresult(searchFound.data);
-                     
+                     setSearchresult(searchFound.data);                   
                   }
            
                }).catch((err) =>

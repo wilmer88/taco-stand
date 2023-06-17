@@ -8,6 +8,9 @@ router.route("/:id")
   .get(ordenController.getOne)
   .put(ordenController.updateOrden)
   .delete(ordenController.remove);
+
+
+
   router.route("/")
   .get(ordenController.allOrdens)
   .post(ordenController.create);

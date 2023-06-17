@@ -68,3 +68,8 @@
   
 
 }
+
+.levelHover :hover {
+    cursor: pointer !important;
+    
+}
