@@ -20,7 +20,7 @@ const StartPage = ()=> {
  
   <div className="box" >
    
-  <h2> <label className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?/What Do You Want To DO?</label></h2>
+  <h2 className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?/What Do You Want To DO?</h2>
 
   <div className="ml-4  field">
   <br></br>

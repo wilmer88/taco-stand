@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { React } from "react";
+import { React, useContext } from "react";
+import AuthContext from '../context/AuthContext';
 // import { Tab } from "react-tabs";
 
 // const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -16,6 +17,9 @@ const footerStyling= {
 }
 
 const Footer = () => {
+ const user = useContext(AuthContext);
+ let userparam = user.userName;
+ console.log(userparam)
 //   const pxhi = {
 //     fonte:{
 // isActive:"background: blue"
@@ -38,7 +42,7 @@ const Footer = () => {
   // ];
   const linkState= [
     { name: "Home/Inicio", href: "/", },
-    { name: "My orders", href: "/myorders"},
+    { name: "My orders", href: "/myorders/"+ userparam},
 
     { name: "Waiting list/Fila", href: "/ordens"},
     { name: "Order/Ordenar", href: "/orden"},

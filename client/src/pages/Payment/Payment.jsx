@@ -1,5 +1,5 @@
 import API from "../../utils/API";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import StripCheckout from "react-stripe-checkout";
 import alertContext from "../../context/alertContext";
@@ -10,7 +10,7 @@ const Payment = () => {
   const { ordenId } = useParams();
   const {setAlert} = useContext(alertContext);
   const [paymentObj, setPaymentObj] = useState({});
-  const navigate = useNavigate()
+  const navigate =  useNavigate()
 
   useEffect(() => {
     API.getOrden(ordenId).then((response) => {

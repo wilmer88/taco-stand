@@ -12,11 +12,11 @@ module.exports = {
   db.User.findOne({ userName: userName })
     .then((founduser) => {
       if (founduser) {
-        // console.log(founduser);
+        console.log(founduser);
         bcrypt
           .compare(password, founduser.password)
           .then(function (resultado) {
-            // console.log(resultado);
+            console.log(resultado);
             if (resultado) {
               const token = jwt.sign(
                 {
@@ -28,6 +28,7 @@ module.exports = {
               );
               res.status(200).json({
                 error: false,
+                userName: founduser.userName,
                 data: token,
                 message: "succesfully logged in",
               });

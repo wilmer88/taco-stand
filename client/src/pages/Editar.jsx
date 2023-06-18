@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import OrdenHero from "../components/OrdenHero/OrdenHero";
 import API from "../utils/API";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import alertContext from "../context/alertContext";
 
@@ -18,7 +18,7 @@ const Editar = () => {
   const {setAlert} = useContext(alertContext);
   const [formObj, setFormObj] = useState({});
   const { ordenId } = useParams();
-  const navigate = useNavigate();
+  const navigate =  useNavigate();
  
   useEffect(() => {
     API.getOrden(ordenId).then((response) => {

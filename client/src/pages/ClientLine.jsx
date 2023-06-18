@@ -18,7 +18,7 @@ useEffect(() => {
         console.log(err)
         setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
       });
-}, [setAlert]);
+}, [setAlert])
 
   return ( <>
 <div className="container is-align-self-auto is-size-7 mt-6">

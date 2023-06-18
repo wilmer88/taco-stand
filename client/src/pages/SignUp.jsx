@@ -54,12 +54,12 @@ const [password, setPassword] = useState("");
    
 
     <div className="mt-6 box">
-    <label className="label has-text-centered" style={pxhi.fonte}>Sign-Up/Inscribirse</label>
+    <h3 className="label has-text-centered" style={pxhi.fonte}>Sign-Up/Inscribirse</h3>
 
     <hr></hr>
         <br></br>
     <form onSubmit={formSubmit}>
-    <label className="label has-text-centered">Correo Electronico/Email Adress</label>
+    <h3 className="label has-text-centered">Correo Electronico/Email Adress</h3>
         <div className="field is-mobile" >
        
       <div className="control is-expanded">
@@ -73,9 +73,9 @@ const [password, setPassword] = useState("");
          placeholder="email"/>
         <br></br>
         <br></br>
-        <label className="label has-text-centered">Crea Contraseña/Create Password</label>
+        <h3 className="label has-text-centered">Crea Contraseña/Create Password</h3>
     
-        <label className="label has-text-centered"></label>
+        <h3 className="label has-text-centered"></h3>
         <input 
           onChange={(e) => setPassword(e.target.value)}
           name="password"

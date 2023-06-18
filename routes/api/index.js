@@ -11,8 +11,8 @@ router.use("/payment", stripeRoutes);
 router.use("/login", authRoutes );
 router.use("/signup", userRoutes );
 router.use("/orden", ordenRoutes);
+router.use("/myorders", userRoutes);
 router.use("/searcho", searchRoutes);
-router.use("/myorders", ordenRoutes);
 
 
 

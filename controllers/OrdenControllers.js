@@ -1,8 +1,10 @@
 const jwt = require("jsonwebtoken");
-const { Orden } = require("../models");
+const { Orden, User } = require("../models");
 const db = require("../models");
 module.exports = {
+
       allOrdens: function(req, res) {
+        
         console.log(req.headers);
  if (!req.headers.authorization) {
    return res.status(401).json({
@@ -41,12 +43,36 @@ module.exports = {
  );
      },    
      create: function(req,res){
-      const orden = new Orden(req.body);
-    db.Orden.create(orden)
+      const orden = new Orden(req.body)
+
+    Orden.create(orden)
       .then((dbOrden) => {
+        
         console.log(dbOrden)
        res.status(201);
        res.json(dbOrden);
+       
+
+       User.findOne({userName: dbOrden.nombreDeOrden})
+       .then((foundOrden) => {
+        
+         console.log(foundOrden);
+         console.log("found user for adding orders to it");
+
+         User.updateOne({_id: foundOrden._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
+         .then((updatedOrder) => {
+          console.log(updatedOrder);
+          console.log("success with pushing orders to user");         })
+         .catch((err) => {
+           console.log(err);
+         });
+         
+   
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+
       })
       .catch((err) => {
         console.log(err);

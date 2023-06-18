@@ -7,13 +7,15 @@ import { Link} from "react-router-dom";
 import {useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
+import AuthContext from "../context/AuthContext";
 
 const OrdenBox = () => {
   const navigate = useNavigate();
   const {setAlert} = useContext(alertContext);
+  const user = useContext(AuthContext);
 
   const [orderData, setOrderData] = useState({
-    nombreDeOrden:"",
+    nombreDeOrden:"" || user.userName,
     azada:0,
     pollo:0,
     barbacoa: 0,
@@ -101,7 +103,7 @@ const OrdenBox = () => {
 
    async function resetState ()  {
       setOrderData({
-        nombreDeOrden:"",
+        nombreDeOrden: "",
         azada:0,
         pollo:0,
         barbacoa: 0,

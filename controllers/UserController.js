@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../models");
+const {User} = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -16,7 +16,7 @@ signup: function(req, res) {
           .hash(req.body.password, 10)
           .then((hashedPassword) => {
             console.log(hashedPassword);
-            db.User.create({
+            User.create({
               userName: userName,
               password: hashedPassword,
             })
@@ -52,5 +52,24 @@ signup: function(req, res) {
             });
           });
       }
-  }
+  },
+  
+  getUser: function(req, res) {
+
+    User.findOne({userName: req.params.keyword})
+    .then((foundOrden) => {
+      res.json(foundOrden);
+      console.log(foundOrden);
+
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({
+        error: true,
+        data: null,
+        message: `failed to retrive order/orden document for ${req.params.id}`,
+      });
+    });
+  },
+  
 }

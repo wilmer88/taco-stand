@@ -1,6 +1,6 @@
 import AuthContext from '../context/AuthContext';
 import React, {useContext, useState} from 'react';
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import API from "../utils/API"
 import alertContext from '../context/alertContext';
 
@@ -12,11 +12,12 @@ const ULog = () => {
       background: "lightyellow"
     }
   };
-    const navigate = useNavigate()
-    const {setJwt} = useContext(AuthContext);
+    const  vigate = useNavigate()
+
     const {setAlert} = useContext(alertContext);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const user = useContext(AuthContext);
 
       const formSubmit = (e) => {
         e.preventDefault();
@@ -29,9 +30,11 @@ const ULog = () => {
         .then((response) => {
       
         console.log(response.data)
-        setJwt(response.data.data) 
+
+        user.setJwt(response.data.data) 
+        user.setUserName(response.data.userName)
         setTimeout(() => {
-          navigate("/myorders")
+          vigate("/orden")
         alert("welcome, you are loged in")}, 1500);
          setUserName("")
          setPassword("")
@@ -50,10 +53,10 @@ const ULog = () => {
 
 <div className= "column is-three-quarters-mobile mt-6" >
   <div className='box'>
-  <label className="label has-text-centered" style={pxhi.fonte}>Log In/ Iniciar Sesión</label>
+  <h3 className="label has-text-centered" style={pxhi.fonte}>Log In/ Iniciar Sesión</h3>
      <form onSubmit={formSubmit}>
          
-     <label className="label has-text-centered">Nombre De Usario/ User Name</label>
+     <h3 className="label has-text-centered">Nombre De Usario/ User Name</h3>
   <input 
          onChange={(e) => setUserName(e.target.value)}
          name="userName"
@@ -61,9 +64,10 @@ const ULog = () => {
          value={userName}
          type="text"
           placeholder="email or username"
+          autoComplete="nope"
       />
 
-  <label className="label has-text-centered">Contraseña/ Password</label>
+  <h3 className="label has-text-centered">Contraseña/ Password</h3>
       <input 
         onChange={(e) => setPassword(e.target.value)}
            name="password"
@@ -71,6 +75,7 @@ const ULog = () => {
            value={password}
          type="text" 
          placeholder="password"
+         autoComplete="nope"
       /> 
        <br></br>
        <br></br>

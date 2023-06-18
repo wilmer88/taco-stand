@@ -9,10 +9,22 @@ const UserSchema = new Schema({
     trim: true,
     required: "user Name is Required",
   },
+  phoneNum: {
+    type: String,
+    // unique: true,
+    trim: true,
+    // required: "phone number is Required",
+  },
+  orders: [{
+    type: Schema.Types.ObjectId,
+    // unique: true,
+    trim: true,
+    // required: "phone number is Required",
+  }],
+  
   password: {
     type: String,
-    trim: true,
-    required: "password is Required",
+    ref: "Orden",
   }
 
 });

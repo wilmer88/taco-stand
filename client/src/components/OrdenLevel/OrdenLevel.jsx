@@ -20,30 +20,30 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
 
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/login">   
-        <label className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In</label>
+       <h3 className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In </h3>
         </Link>
         </div>
 
         <div className="level-item has-text-centered is-hoverable " style={estilo.altura}>
 
         <Link className="levelHover" to="/">   
-        <label className="label"><i className="icofont-home "></i>Home/ Casa</label>
+        <h3 className="label"><i className="icofont-home "></i>Home/ Casa</h3>
         </Link>
 
-        <Link className="levelHover" to="/orden"> <label className="label">
+        <Link className="levelHover" to="/orden"> <h3 className="label">
             Ordenar
-         </label><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/>
+         </h3><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/>
          </Link> 
 
             <Link className="levelHover" to="/searcho">   
-            <label className="label">Buscar/ Search <i className="icofont-search-job"></i></label>
+            <h3 className="label">Buscar/ Search <i className="icofont-search-job"></i></h3>
             </Link>
         
         </div>
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/ordens">
-        <label className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </label></Link>
+        <h3 className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </h3></Link>
         </div>
 
       </nav>);}

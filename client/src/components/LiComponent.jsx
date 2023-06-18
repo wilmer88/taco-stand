@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import API from "../utils/API";
 
 
@@ -9,7 +9,7 @@ const liestilo = {
     background: "lightyellow"
   }
  };
-  const navigate = useNavigate();
+  const navigate =  useNavigate();
 
   function eliminar(id){
     console.log(id)

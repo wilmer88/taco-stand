@@ -27,6 +27,7 @@ const App = () => {
   })
 
   const [jwt, setJwt] = useState("");
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     if (jwt) {
@@ -38,23 +39,28 @@ const App = () => {
     <>
       <Router>
 
-        <AuthContext.Provider value={{ jwt, setJwt }}>
+        <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <Alert/>
 
           <OrdenLevel />
           <Routes>
+          <Route exact path="/myorders/:userName" element={<MyOrders />}></Route>
+          <Route exact path="/myorders" element={<MyOrders />}></Route>
+
+
             <Route exact path="/payment/:ordenId" element={<Payment />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
-            <Route exact path="/myorders" element={<MyOrders />}></Route>
             <Route exact path="/ordens" element={<FinishedOrden />}></Route>
             <Route exact path="/orden" element={<TacoBlockContext.Provider value={TacoBlockContext}>{" "}<OrdenPage />{" "}</TacoBlockContext.Provider>}></Route>
             <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
+
           </Routes>
           <Footer />
+
         </alertContext.Provider>
 
         </AuthContext.Provider>
