@@ -1,4 +1,5 @@
-import UserComponent from "../../components/userComponent/UserComponent";
+// import UserComponent from "../../components/userComponent/UserComponent";
+import Licomponent from "../../components/LiComponent";
 // import axios from "axios";
 import React, {useContext,useEffect, useState} from "react";
 import alertContext from "../../context/alertContext";
@@ -26,7 +27,7 @@ if(user.userName){
         setSearchResult({});
       }else{
         console.log(response.data)
-        setSearchResult(response.data);
+        setSearchResult(response.data.orders);
         setAlert({message:"retrived all orders", type:"is-success"});
       }
     }
@@ -43,10 +44,11 @@ if(user.userName){
 <div className="container is-align-self-auto is-size-7 mt-6">
 <div  className="list">
 
-{ searchResult? 
-              <UserComponent userName= {searchResult.userName} {...searchResult} />
-: (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>You have no orders</h1>
-        )}
+{searchResult.length ? (searchResult.map( res =>(
+              <Licomponent key= {res._id} {...res} />
+            ))
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
+            )}
           
         </div>
         </div>

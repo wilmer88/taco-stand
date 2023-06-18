@@ -31,6 +31,7 @@ signup: function(req, res) {
                 res.status(200).json({
                   error: false,
                   data: token,
+                  userName:newUser.userName,
                   message: "succesfully signed up",
                 });
               })
@@ -57,6 +58,7 @@ signup: function(req, res) {
   getUser: function(req, res) {
 
     User.findOne({userName: req.params.keyword})
+    .populate("orders")
     .then((foundOrden) => {
       res.json(foundOrden);
       console.log(foundOrden);

@@ -15,6 +15,8 @@ const SignUp = () => {
   const {setAlert} = useContext(alertContext);
 const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
+const user = useContext(AuthContext);
+
 
   const navigate = useNavigate()
 
@@ -27,8 +29,10 @@ const [password, setPassword] = useState("");
     }).then((response) => {
     setAlert({message:"You successfully signed up!", type:"is-success"});
 
-      console.log(response.data)
+      console.log(response.data);
       setJwt(response.data.data);
+      user.setUserName(response.data.userName);
+
       setTimeout(() => {navigate("/ordens")
       alert("welcome you are signd up")}, 1500);
        setUserName("")
@@ -75,7 +79,7 @@ const [password, setPassword] = useState("");
         <br></br>
         <h3 className="label has-text-centered">Crea Contraseña/Create Password</h3>
     
-        <h3 className="label has-text-centered"></h3>
+        {/* <h3 className="label has-text-centered"></h3> */}
         <input 
           onChange={(e) => setPassword(e.target.value)}
           name="password"

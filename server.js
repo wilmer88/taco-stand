@@ -36,9 +36,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     console.log("mongoose conection error", err)
    });
 
-
-
-
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }

@@ -17,6 +17,7 @@ const UserSchema = new Schema({
   },
   orders: [{
     type: Schema.Types.ObjectId,
+    ref: "Orden",
     // unique: true,
     trim: true,
     // required: "phone number is Required",
@@ -24,7 +25,8 @@ const UserSchema = new Schema({
   
   password: {
     type: String,
-    ref: "Orden",
+    required: "user Name is Required",
+    trim:true
   }
 
 });

@@ -54,16 +54,23 @@ module.exports = {
        
 
        User.findOne({userName: dbOrden.nombreDeOrden})
-       .then((foundOrden) => {
+       .then((founUser) => {
         
-         console.log(foundOrden);
+         console.log(founUser);
          console.log("found user for adding orders to it");
 
-         User.updateOne({_id: foundOrden._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
+         User.updateOne({_id: founUser._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
          .then((updatedOrder) => {
           console.log(updatedOrder);
-          console.log("success with pushing orders to user");         })
-         .catch((err) => {
+          console.log("success with pushing orders to user"); 
+          Orden.updateOne({_id: dbOrden._id},{ $push: {user: founUser._id}}, { new: true }) 
+          .then((updatedOrder) => {
+           console.log(updatedOrder);
+           console.log("success with pushing user to order"); })
+          .catch((err) => {
+            console.log(err);
+          });
+        }).catch((err) => {
            console.log(err);
          });
          
@@ -108,8 +115,8 @@ module.exports = {
         getOne: function(req, res) {
           db.Orden.findOne({ _id: req.params.id })
     
-          .then((foundOrden) => {
-            res.json(foundOrden);
+          .then((founUser) => {
+            res.json(founUser);
           })
           .catch((err) => {
             console.log(err);
