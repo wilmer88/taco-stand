@@ -7,7 +7,6 @@ import AuthContext from '../../context/AuthContext';
 import API from "../../utils/API"
 import { useParams } from "react-router-dom";
 
-
 const MyOrders = () => {
 
   const { userName } = useParams();
@@ -15,7 +14,6 @@ const MyOrders = () => {
   const [searchResult, setSearchResult] = useState({});
   const {setAlert} = useContext(alertContext)
   // const {setUserName} = useContext(AuthContext);
-
 
   useEffect(() => {
 if(user.userName){
@@ -33,12 +31,13 @@ if(user.userName){
     }
       ).catch((err) =>{ 
           console.log(err)
-          setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
+          setAlert({message:"Failed to to get waiting list/ usario debe iniciar sesion", type:"is-danger"})
         });
+}else
+{
+  setAlert({message:"Usario Debe Iniciar Sesion - User Must Signin", type:"is-danger"})
 }
-
   }, [setAlert])
-
 
   return ( <>
 <div className="container is-align-self-auto is-size-7 mt-6">
@@ -47,14 +46,11 @@ if(user.userName){
 {searchResult.length ? (searchResult.map( res =>(
               <Licomponent key= {res._id} {...res} />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
-            )}
-          
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>Login to View Page/ Iniciar Sesion para ver</h1>
+            )}      
         </div>
         </div>
-
-  </>
-   )}
+  </> ) }
 
 export default MyOrders;
 

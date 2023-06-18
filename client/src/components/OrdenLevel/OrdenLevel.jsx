@@ -20,7 +20,7 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
 
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/login">   
-       <h3 className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/Log In </h3>
+       <h3 className="label"><i className="icofont-login icofont-2x"></i>Iniciar Sesión/ Log In </h3>
         </Link>
         </div>
 
@@ -43,7 +43,7 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/ordens">
-        <h3 className="label"><i className="icofont-list icofont-2x"></i>Lista De Espera/Waiting list </h3></Link>
+        <h3 className="label"><i className="icofont-list icofont-2x"></i>Lista de Espera/ Waiting list </h3></Link>
         </div>
 
       </nav>);}

@@ -58,12 +58,12 @@ const user = useContext(AuthContext);
    
 
     <div className="mt-6 box">
-    <h3 className="label has-text-centered" style={pxhi.fonte}>Sign-Up/Inscribirse</h3>
+    <h3 className="label has-text-centered" style={pxhi.fonte}>Signup/ Inscribirse</h3>
 
     <hr></hr>
         <br></br>
     <form onSubmit={formSubmit}>
-    <h3 className="label has-text-centered">Correo Electronico/Email Adress</h3>
+    <h3 className="label has-text-centered">Correo Electronico, Telefono o Nombre/ Email, Phone# or User Name </h3>
         <div className="field is-mobile" >
        
       <div className="control is-expanded">
@@ -74,10 +74,10 @@ const user = useContext(AuthContext);
         className="input" 
         value={userName}
         type="text"
-         placeholder="email"/>
+         placeholder="me@gmail.com/ 7063314343/ daddypop"/>
         <br></br>
         <br></br>
-        <h3 className="label has-text-centered">Crea Contraseña/Create Password</h3>
+        <h3 className="label has-text-centered">Crea Contraseña/ Create Password</h3>
     
         {/* <h3 className="label has-text-centered"></h3> */}
         <input 
@@ -86,7 +86,7 @@ const user = useContext(AuthContext);
           className="input" 
           value={password}
         type="text" 
-        placeholder="Contraseña-password"/>
+        placeholder="Contraseña-Password"/>
 
         <br></br>
         <br></br>
@@ -94,7 +94,7 @@ const user = useContext(AuthContext);
           type="submit"
           value="Submit"
         className="button is-info">
-         Sign Up
+         Signup/ Inscribirte
         </button>
       </div>
     

@@ -42,13 +42,13 @@ const Footer = () => {
   // ];
   const linkState= [
     { name: "Home/Inicio", href: "/", },
-    { name: "My orders", href: "/myorders/"+ userparam},
+    { name: "My Orders/ Mi Ordenes", href: "/myorders/"+ userparam},
 
-    { name: "Waiting list/Fila", href: "/ordens"},
-    { name: "Order/Ordenar", href: "/orden"},
-    { name: "Search/Buscar", href: "/searcho"},
-    { name: "Log-In/Iniciar-Sesion", href: "/login"},
-    { name: "Sign-up/Incribirse", href: "/signup"},
+    { name: "Waiting List/ La Fila", href: "/ordens"},
+    { name: "Order/ Ordenar", href: "/orden"},
+    { name: "Search/ Buscar", href: "/searcho"},
+    { name: "Log-In/ Iniciar-Sesion", href: "/login"},
+    { name: "Sign-up/ Incribirse", href: "/signup"},
 
   ];
 

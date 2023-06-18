@@ -56,22 +56,45 @@ signup: function(req, res) {
   },
   
   getUser: function(req, res) {
-
-    User.findOne({userName: req.params.keyword})
-    .populate("orders")
-    .then((foundOrden) => {
-      res.json(foundOrden);
-      console.log(foundOrden);
-
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({
+    console.log(req.headers);
+    if (!req.headers.authorization) {
+      return res.status(401).json({
         error: true,
         data: null,
-        message: `failed to retrive order/orden document for ${req.params.id}`,
+        message: "unauthorized user",
       });
-    });
-  },
-  
+    }
+    jwt.verify(
+      req.headers.authorization,
+      process.env.SECRET,
+      (err, decoded) => {
+        if (err) {
+          console.log(err);
+          res.status(401).json({
+            error: true,
+            data: null,
+            message: "bad credentials",
+          });
+        } else {
+          console.log(decoded);
+         // db.Orden.find(req.query)
+         User.findOne({userName: req.params.keyword})
+         .populate("orders")
+         .then((foundOrden) => {
+           res.json(foundOrden);
+           console.log(foundOrden);
+         })
+         .catch((err) => {
+           console.log(err);
+           res.json({
+             error: true,
+             data: null,
+             message: `failed to retrive order/orden document for ${req.params.id}`,
+           });
+         });
+
+       };
+      }
+    );
+  }, 
 }
