@@ -3,8 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import StripCheckout from "react-stripe-checkout";
 import alertContext from "../../context/alertContext";
+// import * as dotenv from "dotenv";
+// const configPath = "./path/to/.env"
 
-const key = "pk_live_51LyjEmJGe32KkiAVvMzRyy6YI8R81eBojkxtLcTDFNsyW6U9CNK06ag9PtPJuMHI0mxvdK3WdWl2pqqzotivblEu00Pct4gQWr"
+const key = process.env.REACT_APP_NOT_SECRET_CODE
+console.log(key)
 const Payment = () => {
 
   const { ordenId } = useParams();
@@ -49,7 +52,7 @@ const handleToken = token =>{
      };
 
      const alertContinue = () =>{
-      alert("please continue after next prompt error")
+      alert("your are now using stripe a third party payment service")
      };
 
     return (<>

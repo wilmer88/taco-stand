@@ -4,11 +4,11 @@ const routes = require("./routes");
 const bodyParser = require('body-parser')
 const cors = require("cors");
 const morgan = require('morgan')
-const dotenv = require("dotenv"); 
+require("dotenv").config()
 const path = require("path");
  
 const app = express();
-dotenv.config();
+// dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.text())
