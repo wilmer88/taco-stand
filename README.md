@@ -1,5 +1,6 @@
 * `wilmer88.github.io/blast-porfolio`
 ### pitch
+       // debugger
 Leave in the past waiting in line waisting time, missed information when placing an order, polluting noise when ordering thru a phone, a food truck window on a busy street or a noisy restaurant.
 Would it be helpfull when taking lunch to pre order your meal for a quick and easy pick up?
 For that this app was created, built to help the food truck industry, caters and restaurant businessess by smoothening and automate the ordering process for both customer and client without holding back production or making an expensive investment

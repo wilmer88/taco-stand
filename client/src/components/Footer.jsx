@@ -19,7 +19,7 @@ const footerStyling= {
 const Footer = () => {
  const user = useContext(AuthContext);
  let userparam = user.userName;
- console.log(userparam)
+
 //   const pxhi = {
 //     fonte:{
 // isActive:"background: blue"

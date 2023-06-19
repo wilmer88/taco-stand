@@ -1,10 +1,13 @@
 const uuid = require("uuid").v4;
 const dotenv = require("dotenv"); 
+const configPath = "../.env";
+const configVariables = dotenv.config(configPath);
+const key = configVariables.REACT_APP_STRIPE
 dotenv.config();
 const Stripe = require("stripe");
-const stripe = Stripe(process.env.REACT_APP_STRIPE);
+const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY);
 const { Orden } = require("../models");
-const db = require("../models");
+console.log(key);
 module.exports = {
 payOrden: function(req,res){
 
@@ -34,7 +37,7 @@ return stripe.customers.create({
 })  },
 
 updatePaidField: function(req, res){
-             db.Orden.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
+             Orden.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
           .then((updatedOrder) => {
             res.json(updatedOrder);
           })

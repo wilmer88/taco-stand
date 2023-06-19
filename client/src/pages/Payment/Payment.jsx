@@ -4,7 +4,7 @@ import React, { useEffect, useState, useContext } from "react";
 import StripCheckout from "react-stripe-checkout";
 import alertContext from "../../context/alertContext";
 
-const key = process.env.REACT_APP_STRIPE
+const key = "pk_live_51LyjEmJGe32KkiAVvMzRyy6YI8R81eBojkxtLcTDFNsyW6U9CNK06ag9PtPJuMHI0mxvdK3WdWl2pqqzotivblEu00Pct4gQWr"
 const Payment = () => {
 
   const { ordenId } = useParams();

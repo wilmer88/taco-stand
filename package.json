@@ -27,6 +27,8 @@
   "homepage": "https://github.com/wilmer88/taco-stand#readme",
   "dependencies": {
     "@icon/icofont": "^1.0.1-alpha.1",
+    "@stripe/react-stripe-js": "^2.1.1",
+    "@stripe/stripe-js": "^1.54.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.2",
     "chai-http": "^4.3.0",
@@ -47,6 +49,7 @@
     "path": "^0.12.7",
     "proxy-sinon-chai": "^0.0.1",
     "react-router-dom": "^6.4.5",
+    "react-stripe-checkout": "^2.6.3",
     "react-tabs": "^6.0.0",
     "sinon": "^13.0.2",
     "stripe": "^10.15.0",
