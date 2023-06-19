@@ -7,7 +7,7 @@ import alertContext from "../../context/alertContext";
 // const configPath = "./path/to/.env"
 
 const key = process.env.REACT_APP_NOT_SECRET_CODE
-console.log(key)
+
 const Payment = () => {
 
   const { ordenId } = useParams();
