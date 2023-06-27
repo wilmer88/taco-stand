@@ -2,11 +2,11 @@ const router = require("express").Router();
 const ordenRoutes = require("./orden");
 const authRoutes = require("./auth");
 const userRoutes = require("./user");
-
 const searchRoutes = require("./search");
 const stripeRoutes = require("./payment");
+const adminDash = require("./admin");
 
-
+router.use("/adminDash", adminDash);
 router.use("/payment", stripeRoutes);
 router.use("/login", authRoutes );
 router.use("/signup", userRoutes );

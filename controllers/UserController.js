@@ -6,12 +6,14 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
 signup: function(req, res) { 
-      const { userName, password } = req.body;
+
+      const { userName, password, admin } = req.body;
       if (!userName.trim() || !password.trim()) {
        return res.status(400);
       } else {
         console.log(userName);
         console.log(password);
+  
         bcrypt
           .hash(req.body.password, 10)
           .then((hashedPassword) => {
@@ -19,12 +21,14 @@ signup: function(req, res) {
             User.create({
               userName: userName,
               password: hashedPassword,
+              admin: admin,
             })
               .then((newUser) => {
                 const token = jwt.sign(
                   {
                     userName: newUser.userName,
                     password: newUser.password,
+                    admin: newUser.admin,
                   },
                   process.env.SECRET
                 );

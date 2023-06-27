@@ -9,23 +9,23 @@ const liestilo = {
     background: "lightyellow"
   }
  };
-  const navigate =  useNavigate();
+  // const navigate =  useNavigate();
 
-  function eliminar(id){
-    console.log(id)
-      API.deleteOrden(id).then((res) => {
- console.log(res.data);
-        navigate("/");
-      }).catch((err) =>{ 
-        console.log(err)
-      });
-  };
+//   function eliminar(id){
+//     console.log(id)
+//       API.deleteOrden(id).then((res) => {
+//  console.log(res.data);
+//         navigate("/");
+//       }).catch((err) =>{ 
+//         console.log(err)
+//       });
+//   };
 
-    function editarOrden(id) {
-    console.log(id);
-    // navigate(`/orden/${id}`);
+  //   function editarOrden(id) {
+  //   console.log(id);
+  //   // navigate(`/orden/${id}`);
     
-  };
+  // };
 
   // function pagarOrden(id) {
   //   console.log(id);
@@ -49,7 +49,7 @@ const liestilo = {
 <header is-family-monospace="true" style={liestilo.atras} className="card-header">
   <div  className="card-header-title is-family-monospace is-size-4">
     {/* change data */}
-Nombre: {props.userName}
+Nombre: {props.nombreDeOrden}
 
  </div>
 </header>
@@ -72,8 +72,8 @@ Nombre: {props.userName}
  
 </div>
 <footer className="card-footer">
- <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
-  <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
+ {/* <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
+  <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div> */}
 
   {/* <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div> */}
 </footer>

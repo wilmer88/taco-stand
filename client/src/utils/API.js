@@ -1,10 +1,16 @@
 import axios from "axios";
 const clientApiCalls =
 {
-getOrdens: function() {
+  findUser: function(userName) {
+    return axios.get("/api/myorders/"+ userName);
+  },
+  adminOrdens: function() {
+    return axios.get("/api/adminDash");
+  },
+allOrdens: function() {
     return axios.get("/api/orden");
   },
-  saveOrden: function(ordenData) {
+  create: function(ordenData) {
     return axios.post("/api/orden", ordenData);
   },
   getOrden: function(id) {
@@ -22,9 +28,6 @@ getOrdens: function() {
   },
   signup: function(userData) {
     return axios.post("/api/signup", userData);
-  },
-  findUser: function(userName) {
-    return axios.get("/api/myorders/"+ userName);
   },
   makeTacoPayment: function(token, addresses){
     return axios.post("/api/payment/", token, addresses);

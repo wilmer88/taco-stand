@@ -14,7 +14,7 @@ const MyOrders = () => {
 
   useEffect(() => {
 
-  if(!user.userName || userName)
+  if(!user.userName || !userName)
   {
     setAlert({message:"User Must Login - Usario Debe Iniciar Sesion", type:"is-danger"}, 5000);
   } 

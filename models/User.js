@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  admin: {
+    type: Boolean,
+    default: false,
+  },
     userName: {
     type: String,
     // unique: true,

@@ -26,10 +26,7 @@ module.exports = {
        });
      } else {
        console.log(decoded);
-     
-      // db.Orden.find(req.query)
       db.Orden.find(req.query)
-     
        .then((foundOrden) => {
         console.log(foundOrden)
         res.json(foundOrden)})
@@ -90,6 +87,8 @@ module.exports = {
         });
       });
     },
+
+    /////////Remove Order/////////////
 
       remove: function(req, res) {
         db.Orden.findByIdAndDelete(req.params.id)

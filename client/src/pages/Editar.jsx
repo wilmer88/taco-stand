@@ -10,21 +10,29 @@ const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 const liestilo = {
   atras: {
     background: "lightyellow",
-    textAlign: "center"
+    textAlign: "center",
+  
+  },
+  editpadding: {
+    padding: "10 px",
   }
 };
 
 const Editar = () => {
   const {setAlert} = useContext(alertContext);
   const [formObj, setFormObj] = useState({});
+  const [editName, setEditName] = useState({});
+
   const { ordenId } = useParams();
   const navigate =  useNavigate();
  
   useEffect(() => {
     API.getOrden(ordenId).then((response) => {
-      // console.log(response)
       console.log(response.data);
+      console.log(response.data.nombreDeOrden);
+
        setFormObj(response.data);
+       setEditName(response.data.nombreDeOrden)
      }).catch((err) =>{ 
       console.log(err);
     });
@@ -58,7 +66,7 @@ const Editar = () => {
     setAlert({message:"Your order was successfully updated!", type:"is-success"});
     console.log(response.data);
     //debugger
-    navigate("/");
+    navigate("/myorders/"+ editName);
     setFormObj({
       nombreDeOrden: "",
       azada: 0,
@@ -90,16 +98,16 @@ const Editar = () => {
   let canDrinkTogether = parseInt(formObj.coca) + parseInt(formObj.sprite) + parseInt(formObj.fanta);
   let canDrinkTotal= canDrinkTogether * 2;
   let togetherTotal = canDrinkTotal + aguaPrice + tacoPrice + topingPrice
-  console.log(topingPrice)
+  // console.log(topingPrice)
 
   return (<>
-<div className="columns is-mobile  is-size-7">
+<div  className="columns is-mobile  is-size-7" style={liestilo.editpadding}>
   <div className="column is-1"></div>
   
 <div className="column is-narrow-mobile">
 <OrdenHero/>
 <div className="container mobile is-centered">
-  <form onSubmit={handleSubmit}>
+  <form id="editform" onSubmit={handleSubmit}>
 
 <div className="card">
 
@@ -113,7 +121,7 @@ const Editar = () => {
   <div className="card-content">
   <div className="content">
                 <figcaption>   
-                <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h5>
+                <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h3>
                 </figcaption>
       <table>
         <tbody>
@@ -211,7 +219,7 @@ const Editar = () => {
       </table>
 {/* -------------------drinks table---------------- */}
 <figcaption>   
-                <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h5>
+                <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h3>
                 </figcaption>
       <table>
         <tbody>
@@ -309,7 +317,7 @@ const Editar = () => {
       </table>
 {/* -------------------topingstable---------------- */}
 <figcaption>   
-                <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Extra </strong></h5>
+                <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Extra </strong></h3>
                 </figcaption>
       <table>
         <tbody>
@@ -408,19 +416,26 @@ const Editar = () => {
       </table>
       <br></br>
   
-      <label style={liestilo.atras } className="label">Precio Total: $<span>{togetherTotal?.toFixed(2)}</span> </label>
-     <div style={{textAlign: "center"}}><time  dateTime="2016-1-1" >{formObj.timeCreated}</time></div> 
+      <h2 style={liestilo.atras } className="label" htmlFor="editform"><strong>Precio Total: $<span>{togetherTotal?.toFixed(2)}</span></strong> </h2>
+     <h4 style={{textAlign: "center"}}><time  dateTime="2016-1-1" >Created: {formObj.timeCreated}</time></h4> 
 
      </div>
      </div>
   <footer className="card-footer">
-    <div className="card-footer-item"> <button className="button is-danger is-light" type="submit" value="Submit">guardar </button></div>
+    <div className="card-footer-item"> <button className="button is-danger is-light" type="submit" value="Submit"><strong>Save/ Guardar </strong> </button></div>
     {/* <div className="card-footer-item"> <button class="button is-success is-light" onClick={()=> deleteOrder(props._id)}>editar</button></div> */}
   </footer>
+  <br></br>
+ 
 </div>
+<br></br>
 </form>
 </div>
+<br></br>
+
 </div>
+<br></br>
+
 <div className="column is-1"></div>
 </div>
     </> );

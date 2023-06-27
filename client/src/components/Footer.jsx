@@ -8,8 +8,12 @@ import AuthContext from '../context/AuthContext';
 // import "react-tabs/style/react-tabs.css";
 const footerStyling= {
   fontweightTooSkiny: {
-    fontWeight: "600"
+    fontWeight: "600",
+
   },
+  footerpadding:{
+    padding: "10px"
+  }
   // bottomMarginFooter: {
   //   marginBottom: "60px"
 
@@ -18,7 +22,9 @@ const footerStyling= {
 
 const Footer = () => {
  const user = useContext(AuthContext);
+ 
  let userparam = user.userName;
+
 
 //   const pxhi = {
 //     fonte:{
@@ -58,7 +64,7 @@ const Footer = () => {
   return (<>
   {/* style={footerStyling.bottomMarginFooter} */}
 
-      <div className="scrolling-wrapper" >
+      <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
         <nav
           className="navbar is-mobile tabs is-centered  is-fixed-bottom  "
           aria-label="breadcrumbs"

@@ -1,29 +1,53 @@
-import Licomponent from "../components/LiComponent";
-// import axios from "axios";
-import React, {useContext,useEffect, useState} from "react";
+import UserComponent from "../components/userComponent/UserComponent";
+import React, {useContext,useEffect, useState, useRef} from "react";
 import alertContext from "../context/alertContext";
+import API from "../utils/API";
+import {io} from "socket.io-client";
 
-import API from "../utils/API"
-const FinishedOrden = () => {
-  const {setAlert} = useContext(alertContext)
+const ClientLine = () => {
+  const socket= io.connect("http://localhost:8800");
+  const [orden, setAllOrdens] = useState([]);
+  const {setAlert} = useContext(alertContext);
+  const[onlineOrdens,setOnlineOrdens] = useState([]);
+  
+   const sendOrder = () => {
+    socket.emit("sendOrder", (onlineOrdens)=>{
 
-  const [den, setDen] = useState([])
+    })
+
+   };
+  // useEffect(()=>{
+  //   socket.current.emit("", orden._id);
+  //   socket.current.on("orden", (ordens)=>{
+  //     setOnlineOrdens(ordens);
+  //     console.log(onlineOrdens);
+  //   })
+  // }, [orden]);
+
 useEffect(() => {
-  API.getOrdens().then((response ) => {
+
+
+  API.allOrdens().then((response ) => {
+    setAllOrdens(response.data);
+
+
      console.log(response.data);
-      setDen(response.data);
+     console.log(orden);
+
       setAlert({message:"retrived all orders", type:"is-success"});
     })
       .catch((err) =>{ 
         console.log(err)
         setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
       });
-}, [setAlert])
+}, [setAlert]);
+
+
 
   return ( <>
 <div className="container is-align-self-auto is-size-7 mt-6">
- {den.length ? (den.map( res =>(
-              <Licomponent key= {res._id} {...res} />
+ {orden.length ? (orden.map( res =>(
+              <UserComponent key= {res._id} {...res} />
             ))
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
             )}
@@ -31,5 +55,5 @@ useEffect(() => {
 
   </> )}
 
-export default FinishedOrden;
+export default ClientLine;
 

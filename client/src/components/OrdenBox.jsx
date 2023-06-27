@@ -4,12 +4,29 @@ import DropDownField from "./DropDownField";
 import API from "../utils/API";
 import React from "react";
 import { Link} from "react-router-dom";
-import {useState, useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
+import {io} from "socket.io-client";
+
 
 const OrdenBox = () => {
+
+  const socket= io.connect("http://localhost:3001");
+
+  const sendOrder = () => {
+    socket.emit("sendOrden", {orden:"food"});
+  };
+
+    useEffect(()=>{
+
+    socket.current.on("receiveOrden", (data)=>{
+      alert(data.orden)
+      // setOnlineOrdens(ordens);
+      // console.log(onlineOrdens);
+    })
+  }, [socket]);
   const navigate = useNavigate();
   const {setAlert} = useContext(alertContext);
   const user = useContext(AuthContext);
@@ -138,7 +155,8 @@ const OrdenBox = () => {
 
   const handleSubmit= (e)=> {
     e.preventDefault();
-    API.saveOrden(orderData).then((response)=>{
+    API.create(orderData).then((response)=>{
+      
       firstFunction()
       setTimeout(() => {secondFunction()}, 1000);
       resetState()

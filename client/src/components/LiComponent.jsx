@@ -41,6 +41,7 @@ const liestilo = {
   if(props.pagado === true){disableVar = true};
 
     return (<>
+    
         <div className="columns is-mobile mb-6 ">
   <div className="column is-1"></div>
   <div className="column is-narrow-mobile mb-6">
@@ -121,13 +122,13 @@ Nombre: {props.nombreDeOrden}
   </div>
 
     <br></br>
-
-    <label style={liestilo.atras} className="label">Tacos: <span>{tacosTofix?.toFixed(2)}</span> </label>
-    <label style={liestilo.atras} className="label">Bebidas/drinks: $<span>{aguasNsodas?.toFixed(2)}</span> </label>
-    <label style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </label>
-  <label style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </label>
-  <label style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </label>
-
+      <form id="liOrder">
+    <div htmlFor="liOrder" style={liestilo.atras} className="label" >Tacos: <span>{tacosTofix?.toFixed(2)}</span> </div>
+    <div htmlFor="liOrder" style={liestilo.atras} className="label">Bebidas/drinks: $<span>{aguasNsodas?.toFixed(2)}</span> </div>
+    <div htmlFor="liOrder" style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </div>
+  <div htmlFor="liOrder" style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </div>
+  <div htmlFor="liOrder" style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </div>
+  </form>
     <time dateTime="2016-1-1">{props.timeCreated}</time>
  
 </div>
@@ -141,6 +142,7 @@ Nombre: {props.nombreDeOrden}
   </div>
   <div className="column is-1"></div>
   </div>
+
 
     </>);
   };

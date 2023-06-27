@@ -32,7 +32,9 @@ const ULog = () => {
         user.setJwt(response.data.data) 
         user.setUserName(response.data.userName)
         setTimeout(() => {
-          vigate("/orden")
+          // vigate("/myorders/"+response.data.userName)
+          vigate("/ordens")
+
         alert("welcome, you are loged in")}, 1500);
          setUserName("")
          setPassword("")
