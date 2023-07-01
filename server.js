@@ -10,13 +10,18 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.text())
+app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(morgan('dev'))
 app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
 const PORT = process.env.PORT || 3001;
+
+
+
+
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
@@ -47,6 +52,11 @@ app.get("*", function (request, response) {
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+
+
+
+// let activeOrders = [];
+
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
@@ -57,17 +67,22 @@ const io = require("socket.io")(server, {
 });
 
 
-let activeOrders = []
 
-io.on("connection", (socket)=>{
-  console.log("socket io connected to server");
-  socket.on("connection", (socket)=>{
-    console.log(`User Connected:${socket.id}`);
-    socket.on("sendOrden",(data)=>{
-      console.log(data);
-    })
-    // socket.emit("sendOrden",)
-  })
+    io.on("connection",(socket)=>{
+      console.log(`socket io connected`);
+
+      socket.on("resiveAllOrdens", (arg)=> {
+      console.log(`this is your socket io data ${arg}`);
+
+      })
+    });
+
+    server.listen(8800);
+
+
+
+  //   // socket.emit("sendOrden",)
+  // })
   // socket.on("create", (newOrdenId)=> {
   //   if(!activeOrders.some((orden)=> orden.id === newOrdenId))
   //   {
@@ -81,15 +96,9 @@ io.on("connection", (socket)=>{
   //   io.emit("orden", activeOrders)
   // })
 
-  socket.on("disconnect", ()=>{
-    activeOrders = activeOrders.filter((orden)=> orden.socketId !== socket.id);
-    console.log("ordens disconnected", activeOrders)
-    io.emit("allOrdens", activeOrders);
 
-  })
-})
 
-server.listen(8800);
+
 
 // const AuthoController = require("./controllers/authController");
 // const ordenControler = require("./controllers/OrdenControllers");

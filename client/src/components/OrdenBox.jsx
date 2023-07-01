@@ -13,20 +13,19 @@ import {io} from "socket.io-client";
 
 const OrdenBox = () => {
 
-  const socket= io.connect("http://localhost:3001");
+  const socket= io.connect("http://localhost:8800");
 
-  const sendOrder = () => {
-    socket.emit("sendOrden", {orden:"food"});
-  };
 
-    useEffect(()=>{
 
-    socket.current.on("receiveOrden", (data)=>{
-      alert(data.orden)
-      // setOnlineOrdens(ordens);
-      // console.log(onlineOrdens);
-    })
-  }, [socket]);
+    // useEffect(()=>{
+
+
+    // socket.current.on("receiveOrden", (data)=>{
+    //   alert(data.orden)
+    //   // setOnlineOrdens(ordens);
+       
+    // })
+  // }, [socket]);
   const navigate = useNavigate();
   const {setAlert} = useContext(alertContext);
   const user = useContext(AuthContext);
@@ -49,6 +48,10 @@ const OrdenBox = () => {
     sprite: 0,
     fanta: 0,
   });
+
+  const sendSocketOrder = () => {
+    socket.emit("sendOrden", {orderData});
+  };
 
   const cebollaIncrement = (event) =>{
     event.preventDefault();
@@ -156,6 +159,8 @@ const OrdenBox = () => {
   const handleSubmit= (e)=> {
     e.preventDefault();
     API.create(orderData).then((response)=>{
+      console.log(response);
+      sendSocketOrder();
       
       firstFunction()
       setTimeout(() => {secondFunction()}, 1000);
