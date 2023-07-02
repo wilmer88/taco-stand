@@ -27,7 +27,7 @@ const ULog = () => {
         password: password}
         )
         .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
 
         user.setJwt(response.data.data) 
         user.setUserName(response.data.userName)

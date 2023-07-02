@@ -40,42 +40,43 @@ module.exports = {
  );
      },    
      create: function(req,res){
+      
       const orden = new Orden(req.body)
 
     Orden.create(orden)
       .then((dbOrden) => {
         
-        console.log(dbOrden)
+        // console.log(dbOrden)
        res.status(201);
        res.json(dbOrden);
        
 
-       User.findOne({userName: dbOrden.nombreDeOrden})
-       .then((founUser) => {
+      //  User.findOne({userName: dbOrden.nombreDeOrden})
+      //  .then((founUser) => {
         
-         console.log(founUser);
-         console.log("found user for adding orders to it");
+      //    console.log(founUser);
+      //    console.log("found user for adding orders to it");
 
-         User.updateOne({_id: founUser._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
-         .then((updatedOrder) => {
-          console.log(updatedOrder);
-          console.log("success with pushing orders to user"); 
-          Orden.updateOne({_id: dbOrden._id},{ $push: {user: founUser._id}}, { new: true }) 
-          .then((updatedOrder) => {
-           console.log(updatedOrder);
-           console.log("success with pushing user to order"); })
-          .catch((err) => {
-            console.log(err);
-          });
-        }).catch((err) => {
-           console.log(err);
-         });
+      //    User.updateOne({_id: founUser._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
+      //    .then((updatedOrder) => {
+      //     console.log(updatedOrder);
+      //     console.log("success with pushing orders to user"); 
+      //     Orden.updateOne({_id: dbOrden._id},{ $push: {user: founUser._id}}, { new: true }) 
+      //     .then((updatedOrder) => {
+      //      console.log(updatedOrder);
+      //      console.log("success with pushing user to order"); })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      //   }).catch((err) => {
+      //      console.log(err);
+      //    });
          
    
-       })
-       .catch((err) => {
-         console.log(err);
-       });
+      //  })
+      //  .catch((err) => {
+      //    console.log(err);
+      //  });
 
       })
       .catch((err) => {

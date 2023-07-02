@@ -4,28 +4,17 @@ import DropDownField from "./DropDownField";
 import API from "../utils/API";
 import React from "react";
 import { Link} from "react-router-dom";
-import {useState, useContext, useEffect} from "react";
+import {useState, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import {io} from "socket.io-client";
+const socket= io.connect("http://localhost:8800");
+
 
 
 const OrdenBox = () => {
 
-  const socket= io.connect("http://localhost:8800");
-
-
-
-    // useEffect(()=>{
-
-
-    // socket.current.on("receiveOrden", (data)=>{
-    //   alert(data.orden)
-    //   // setOnlineOrdens(ordens);
-       
-    // })
-  // }, [socket]);
   const navigate = useNavigate();
   const {setAlert} = useContext(alertContext);
   const user = useContext(AuthContext);
@@ -49,9 +38,10 @@ const OrdenBox = () => {
     fanta: 0,
   });
 
-  const sendSocketOrder = () => {
-    socket.emit("sendOrden", {orderData});
-  };
+
+  // const sendSocketOrder = (orderData) => {
+  //   socket.emit("resiveOrders", {orderData});
+  // };
 
   const cebollaIncrement = (event) =>{
     event.preventDefault();
@@ -149,21 +139,27 @@ const OrdenBox = () => {
 
          async function firstFunction(){
           handleClose();
-          setAlert({message:"You successfully placed order!", type:"is-success"});
           };
     
         async function secondFunction(){
+          alert("thanks for your order/ Gracias por su orden!");
           navigate("/")
           };
 
+       
   const handleSubmit= (e)=> {
     e.preventDefault();
+    // socket.on("resiveOrders", ()=>{
+    // })
     API.create(orderData).then((response)=>{
-      console.log(response);
-      sendSocketOrder();
-      
-      firstFunction()
-      setTimeout(() => {secondFunction()}, 1000);
+      socket.emit("rs", response.data);
+
+    console.log(response)
+   
+      setAlert({message:"You successfully placed order!", type:"is-success"});
+      // console.log(response);   
+      firstFunction();
+      setTimeout(() => { secondFunction()}, 2000);
       resetState()
     }).catch((err) =>{console.log(err)});};
 
@@ -342,10 +338,10 @@ const OrdenBox = () => {
                 {orderData.redSalsa !== 0 && (<div style={{fontSize: "25px", textAlign:"left"}}> Salsa Roja: {orderData.redSalsa}</div>)}
                 {orderData.greenSalsa !== 0 && ( <div style={{fontSize: "25px", textAlign:"left"}}> Salsa Verde: {orderData.greenSalsa}</div>)}
                   <hr></hr>
-                  <button onClick={handleClose} type="button "  className="button is-medium is-dark" >Cancelar</button>
+                  <button onClick={handleClose} type="button"  className="button is-medium is-dark" >Cancelar</button>
                 <br></br>
                 <br></br>
-                <button style={{fontSize: "25px"}} type="button " onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+                <button style={{fontSize: "25px"}} type="button" onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
                 </div>
               </div>
               <button onClick={handleClose}  type="button" className="modal-close is-large" aria-label="close"></button>
