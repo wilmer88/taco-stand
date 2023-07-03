@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import API from "../../utils/API";
+// import { useNavigate } from "react-router-dom";
+// import API from "../../utils/API";
 
 
 const UserComponent =  (props) => {
