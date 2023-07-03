@@ -10,19 +10,23 @@ const StartPage = ()=> {
         },
         fonte:{
           fontSize: "27px"
+        },
+        starterPadding:{
+          padding:"15px"
         }
         };
   
     return (<>
-  <div className='columns is-mobile '>
+  <div className='columns is-mobile'style={liestilo.starterPadding}>
   <div className="column is-two-fifth"> </div>
-  <div className= "mt-4 column is-three-quarters-mobile"  >
- 
-  <div className="box" >
-   
+  <div className= "mt-4 column is-full-mobile"  >
+  <div className="container">
+  <div className="box"  >
+
   <h2 className="label has-text-centered" style={liestilo.fonte}>Que Quieres Hacer?/What Do You Want To DO?</h2>
 
-  <div className="ml-4  field">
+  <div className="ml-3  field">
+    
   <br></br>
  <Link to="./orden"> <button className="button is-black is-outlined">Ordene Ya!/Order Now</button></Link> 
  <br></br>
@@ -38,9 +42,7 @@ const StartPage = ()=> {
  <br></br>
  <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/Sign Up</button></Link>
 
-
-
- 
+</div>
 </div>
 </div>
 

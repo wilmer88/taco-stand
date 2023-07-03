@@ -6,9 +6,9 @@ const DropDownField = (props) => {
 
     return (<>
 <div className="ml-3 field">
-< h6 className="mr-6 label">
+< label className="mr-6 label">
      {props.tagg} 
-</h6>
+</label>
 
 <div className="mr-6  select ">
 <select

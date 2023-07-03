@@ -19,6 +19,7 @@ const ClientLine = () => {
      API.allOrdens().then((response ) => {
       setAllOrdens(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});
+ 
       }).catch((err) =>{ 
           console.log(err)
           setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
@@ -27,15 +28,19 @@ const ClientLine = () => {
 
 useEffect(() => {
   socket.on("myOrders",(arg)=>{
-// console.log(arg);
+console.log("new order list");
     // socket.disconnect();
  API.allOrdens().then((response ) => {
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
+    // return socket.disconnect();
+
   }).catch((err) =>{ 
       console.log(err)
       setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
     });
+    // return socket.disconnect();
+
       });
 }, [setAlert]);
 

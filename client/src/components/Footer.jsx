@@ -12,7 +12,7 @@ const footerStyling= {
 
   },
   footerpadding:{
-    padding: "10px"
+    padding: "25px"
   }
   // bottomMarginFooter: {
   //   marginBottom: "60px"

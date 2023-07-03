@@ -10,6 +10,10 @@ const ULog = () => {
     fonte:{
       fontSize: "27px",
       background: "lightyellow"
+    },
+
+    logpad:{
+      padding:"20px"
     }
   };
     const  vigate = useNavigate()
@@ -45,13 +49,13 @@ const ULog = () => {
     };
       
     return (<>
-      <div>
+      <div style={pxhi.logpad}>
         <br></br>
-  <div className='columns is-mobile'>
+  <div className='columns is-mobile' >
 
 <div className="column is-two-fifth"></div>
 
-<div className= "column is-three-quarters-mobile mt-6" >
+<div className= "column is-full-mobile mt-6" >
   <div className='box'>
   <h3 className="label has-text-centered" style={pxhi.fonte}>Log In/ Iniciar Sesión</h3>
      <form onSubmit={formSubmit}>

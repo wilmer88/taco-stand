@@ -76,6 +76,10 @@ const OrdenSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  preparada: {
+    type: Boolean,
+    default: false,
+  },
   pagado: {
     type: Boolean,
     default: false,
@@ -111,8 +115,6 @@ OrdenSchema.virtual("canDrinkVirtual").get(function () {
   let candrinkPrice = canDrinks * 2
   return candrinkPrice;
 });
-
-
 
 const Orden = mongoose.model("Orden", OrdenSchema);
 module.exports = Orden;

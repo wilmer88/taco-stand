@@ -6,7 +6,7 @@ const OrdenPage = () => {
     return (<>
         <OrdenHero/>
  <footer className="footer is-fixed-bottom">
- <div className="content has-text-centered">
+ <div className="content is-full has-text-centered">
 <OrdenBox/>
  </div>
           <div className="content has-text-centered">         

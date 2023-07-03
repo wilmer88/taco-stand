@@ -47,6 +47,7 @@
    font-family: "didot";
    margin-top: 50px;
    text-shadow: 2px 2px red;
+
 }
 #heroTE{
     position: relative;
@@ -58,6 +59,8 @@
    text-align: center;
    font-family: "didot";
    text-shadow: 2px 2px red;
+   margin-bottom: 30px;
+
 }
 #heroG{
     position: relative;

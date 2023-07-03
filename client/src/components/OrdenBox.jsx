@@ -165,14 +165,14 @@ const OrdenBox = () => {
   };
 
  return (<><form>
-          <main className="box is-shadowless is-align-self-center">
+          <main className="box is-mobile is-shadowless is-align-self-center">
           <section className="card">
 
                 <article className="card-content">
                 <aside className="m-3 content" >
                 <div className="container mt-3">
                 <figcaption>   
-                <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h5>
+                <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Tacos</strong></h3>
                 </figcaption>
 
  <div className="is-align-content-center columns mt-3">
@@ -218,7 +218,7 @@ const OrdenBox = () => {
 <hr></hr>
 
     <figcaption>   
-    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h5>
+    <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Bebidas</strong></h3>
     </figcaption>
     <div className="columns mt-3">
 
@@ -258,7 +258,7 @@ const OrdenBox = () => {
   <hr></hr>
 <div className="container mt-3">
     <figcaption>   
-    <h5 style={{textAlign: "center", background: "lightyellow"}} > <strong>Condimentos</strong></h5>
+    <h3 style={{textAlign: "center", background: "lightyellow"}} > <strong>Condimentos</strong></h3>
     </figcaption>
 
     <ToppingField

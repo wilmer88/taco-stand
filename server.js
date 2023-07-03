@@ -21,6 +21,9 @@ app.use(express.static(__dirname + './client/public'));
 
 const PORT = process.env.PORT || 3001;
 
+const port = process.env.PORT || 8800;
+
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     {
       useNewUrlParser: true,
@@ -60,7 +63,7 @@ const io = new Server(server, {
   }
 });
     io.on("connection",(socket)=>{
-      console.log(`socket io connected id: ${socket.id}`);
+      console.log(`socket io server connected id: ${socket.id}`);
       // socket.on("myOrders",(arg)=>{
       //   socket.emit("mySocketOrders", arg);
       //   console.log(arg)
@@ -84,7 +87,7 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
-server.listen(8800);
+server.listen(port);
 
       // socket.join("join_room",(data)=>{
       //   socket.join(data);

@@ -50,7 +50,7 @@ const App = () => {
           <Route exact path="/myorders" element={<MyOrders />}></Route>
 
           <Route exact path="/adminDash" element={<AdminDash />}></Route>
-          {/* <Route exact path="/adminSignup" element={<AdminSignUp />}></Route> */}
+          <Route exact path="/adminSignup" element={<AdminSignUp />}></Route>
 
           <Route exact path="/myorders/:userName" element={<MyOrders />}></Route>
             <Route exact path="/payment/:ordenId" element={<Payment />}></Route>

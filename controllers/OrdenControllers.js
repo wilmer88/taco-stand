@@ -26,6 +26,7 @@ module.exports = {
 //        });
 //      } else {
 //        console.log(decoded);
+
       db.Orden.find(req.query)
        .then((foundOrden) => {
         console.log(foundOrden)
@@ -35,10 +36,13 @@ module.exports = {
         res.status(422)
        .json(err)
        });
+
 //           }
 //    }
 //  );
-     },    
+
+     },  
+
      create: function(req,res){
       
       const orden = new Orden(req.body)
