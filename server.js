@@ -60,14 +60,26 @@ const io = new Server(server, {
   }
 });
     io.on("connection",(socket)=>{
-      // console.log(`socket io connected id: ${socket.id}`);
+      console.log(`socket io connected id: ${socket.id}`);
+      // socket.on("myOrders",(arg)=>{
+      //   socket.emit("mySocketOrders", arg);
+      //   console.log(arg)
+      // });
+
       socket.on("rs",(arg)=>{
-        socket.emit("rs", arg);
-      });
-      socket.on("myOrders",(arg)=>{
-        socket.emit("myOrders", arg);
+        console.log("rs data bellow")
         console.log(arg)
+        socket.broadcast.emit("myOrders", {message: "working"});
       });
+      
+      // socket.on("myOrders", (arg)=> {
+      //   console.log("myOrder socket data bellow")
+      //   console.log(arg);
+    
+      // })
+
+     
+
       socket.on("disconnect",()=> {
         console.log(`user disconnected`,socket.id)
       });

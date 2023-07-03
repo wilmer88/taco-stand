@@ -139,29 +139,30 @@ const OrdenBox = () => {
 
          async function firstFunction(){
           handleClose();
+          alert("thanks for your order/ Gracias por su orden!");
           };
     
         async function secondFunction(){
-          alert("thanks for your order/ Gracias por su orden!");
+         
           navigate("/")
           };
 
        
   const handleSubmit= (e)=> {
     e.preventDefault();
-    // socket.on("resiveOrders", ()=>{
-    // })
     API.create(orderData).then((response)=>{
-      socket.emit("rs", response.data);
-
-    console.log(response)
-   
+      firstFunction();
+    // console.log(response)
+    setTimeout(() => { secondFunction()}, 2000);
       setAlert({message:"You successfully placed order!", type:"is-success"});
       // console.log(response);   
-      firstFunction();
-      setTimeout(() => { secondFunction()}, 2000);
       resetState()
-    }).catch((err) =>{console.log(err)});};
+      API.allOrdens().then((response)=>{
+        // console.log(response.data)
+        socket.emit("rs", response.data);
+      })
+    }).catch((err) =>{console.log(err)})
+  };
 
  return (<><form>
           <main className="box is-shadowless is-align-self-center">

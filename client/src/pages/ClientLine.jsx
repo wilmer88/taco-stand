@@ -3,40 +3,40 @@ import React, {useContext,useEffect, useState, } from "react";
 import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
+const socket= io("http://localhost:8800");
+
 
 const ClientLine = () => {
-const socket= io("http://localhost:8800");
-  const [orden, setAllOrdens] = useState([]);
+
   const {setAlert} = useContext(alertContext);
+  const [orden, setAllOrdens] = useState([]);
+
+
+
+    useEffect(() => {
+    // console.log(arg);
+        // socket.disconnect();
+     API.allOrdens().then((response ) => {
+      setAllOrdens(response.data);
+        setAlert({message:"retrived all orders", type:"is-success"});
+      }).catch((err) =>{ 
+          console.log(err)
+          setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
+        });
+    }, [setAlert]);
 
 useEffect(() => {
-
-  API.allOrdens().then((response ) => {
-
-    setAllOrdens(response.data)
-
-      setAlert({message:"retrived all orders", type:"is-success"});
-      
-    
-       
-        socket.emit("myOrders",orden);
-        socket.on("myOrders",(arg)=>{
-          console.log(arg)
-
-        })
-    
-
-
-      
-    }).catch((err) =>{ 
-        console.log(err)
-        setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
+  socket.on("myOrders",(arg)=>{
+// console.log(arg);
+    // socket.disconnect();
+ API.allOrdens().then((response ) => {
+  setAllOrdens(response.data);
+    setAlert({message:"client created order", type:"is-success"},);
+  }).catch((err) =>{ 
+      console.log(err)
+      setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
+    });
       });
-
-      return () =>{
-        socket.disconnect()
-      }
-      
 }, [setAlert]);
 
   return ( <>
