@@ -87,7 +87,7 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
-server.listen(PORT);
+server.listen(process.env.PORT || 8800);
 
       // socket.join("join_room",(data)=>{
       //   socket.join(data);
