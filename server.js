@@ -58,7 +58,7 @@ app.listen(PORT, () => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "*" || "https://taco-stand.herokuapp.com/ ",
     methods: [ "GET", "POST"]
   }
 });
