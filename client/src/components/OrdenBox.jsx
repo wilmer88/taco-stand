@@ -10,7 +10,7 @@ import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import {io} from "socket.io-client";
 const IS_PROD = process.env.NODE_ENV === "production";
-const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:8800";
+const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 
 // const socket= io.connect("https://taco-stand.herokuapp.com/");

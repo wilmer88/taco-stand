@@ -19,8 +19,8 @@ app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
-const PORT = process.env.PORT || 3001;
-const PORT1 = process.env.PORT || 8800;
+// const PORT = process.env.PORT || 8080;
+const PORT1 = process.env.PORT || 3001;
 
 
 
@@ -73,9 +73,9 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`server running on port ${PORT}`);
+// });
 server.listen(PORT1);
 
 
