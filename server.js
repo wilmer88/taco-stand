@@ -22,6 +22,8 @@ app.use(express.static(__dirname + './client/public'));
 const PORT = process.env.PORT || 3001;
 const PORT1 = process.env.PORT || 8800;
 
+
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     {
       useNewUrlParser: true,
@@ -49,13 +51,10 @@ app.get("*", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
-});
 
 // let activeOrders = [];
-
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000" || "https://taco-stand.herokuapp.com/ ",
@@ -75,4 +74,10 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
 server.listen(PORT1);
+
+
+
