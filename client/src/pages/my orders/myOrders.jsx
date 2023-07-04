@@ -38,7 +38,7 @@ const MyOrders = () => {
 
         };
 
- },[setAlert]);
+ });
 
   return (<>
   

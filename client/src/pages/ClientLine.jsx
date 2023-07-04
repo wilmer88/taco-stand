@@ -3,7 +3,7 @@ import React, {useContext,useEffect, useState, } from "react";
 import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
-const socket= io("http://localhost:8800");
+const socket= io.connect("http://localhost:8800");
 
 
 const ClientLine = () => {
@@ -15,10 +15,11 @@ const ClientLine = () => {
 
     useEffect(() => {
     // console.log(arg);
-        // socket.disconnect();
+ 
      API.allOrdens().then((response ) => {
       setAllOrdens(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});
+        socket.disconnect();
  
       }).catch((err) =>{ 
           console.log(err)
@@ -33,7 +34,8 @@ console.log("new order list");
  API.allOrdens().then((response ) => {
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
-    // return socket.disconnect();
+    socket.disconnect();
+
 
   }).catch((err) =>{ 
       console.log(err)
@@ -56,4 +58,3 @@ console.log("new order list");
   </> )}
 
 export default ClientLine;
-

@@ -371,5 +371,3 @@ const OrdenBox = () => {
  </form> </>);
   }
 export default OrdenBox;
-
-      
