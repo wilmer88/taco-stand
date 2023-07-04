@@ -1,5 +1,4 @@
 const express = require("express");
-// import express from "express";
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require('body-parser')
@@ -19,11 +18,10 @@ app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
-// const PORT = process.env.PORT || 8080;
+
 const PORT1 = process.env.PORT || 3001;
 
-
-
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     {
       useNewUrlParser: true,
@@ -40,6 +38,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
    connection.on("error", (err)=> {
     console.log("mongoose conection error", err)
    });
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname,"client","build")));
@@ -62,13 +61,23 @@ const io = new Server(server, {
 });
     io.on("connection",(socket)=>{
       console.log(`socket io connected id: ${socket.id}`);
+      // socket.on("myOrders",(arg)=>{
+      //   socket.emit("mySocketOrders", arg);
+      //   console.log(arg)
+      // });
+
       socket.on("rs",(arg)=>{
-        socket.emit("rs", arg);
-      });
-      socket.on("myOrders",(arg)=>{
-        socket.emit("myOrders", arg);
+        console.log("rs data bellow")
         console.log(arg)
+        socket.broadcast.emit("myOrders", {message: "working"});
       });
+      
+      socket.on("myOrders", (arg)=> {
+        console.log("myOrder socket data bellow")
+        console.log(arg);
+    
+      })
+
       socket.on("disconnect",()=> {
         console.log(`user disconnected`,socket.id)
       });

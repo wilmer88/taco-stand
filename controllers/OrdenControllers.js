@@ -27,7 +27,7 @@ module.exports = {
 //      } else {
 //        console.log(decoded);
 
-      db.Orden.find(req.query)
+      Orden.find(req.query).sort({_id: -1})
        .then((foundOrden) => {
         console.log(foundOrden)
         res.json(foundOrden)})
