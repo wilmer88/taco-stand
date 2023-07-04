@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
 const PORT = process.env.PORT || 3001;
+const PORT1 = process.env.PORT || 8800;
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
     {
@@ -74,4 +75,4 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
-server.listen(8800);
+server.listen(PORT1);

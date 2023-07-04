@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import {io} from "socket.io-client";
-const socket= io.connect("http://localhost:8800");
+const socket= io.connect("http://localhost:8800" || "https://taco-stand.herokuapp.com/");
 
 
 
