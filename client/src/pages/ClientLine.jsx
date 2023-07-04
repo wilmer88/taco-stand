@@ -3,7 +3,7 @@ import React, {useContext,useEffect, useState, } from "react";
 import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
-const socket= io.connect("http://localhost:8800" || "https://taco-stand.herokuapp.com/");
+const socket= io.connect("https://taco-stand.herokuapp.com/");
 
 
 const ClientLine = () => {
