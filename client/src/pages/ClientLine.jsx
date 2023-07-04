@@ -8,13 +8,10 @@ const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:88
 const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 
-
 const ClientLine = () => {
 
   const {setAlert} = useContext(alertContext);
   const [orden, setAllOrdens] = useState([]);
-
-
 
     useEffect(() => {
     // console.log(arg);

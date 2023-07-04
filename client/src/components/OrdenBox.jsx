@@ -15,8 +15,6 @@ const socket = io(URL);
 
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 
-
-
 const OrdenBox = () => {
 
   const navigate = useNavigate();

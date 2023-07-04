@@ -51,7 +51,6 @@ app.get("*", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-
 // let activeOrders = [];
 const server = http.createServer(app);
 
