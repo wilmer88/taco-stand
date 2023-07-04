@@ -42,8 +42,10 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/public"));
   }
 
+  app.use(express.static(path.join(__dirname,"client","build")));
+
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  response.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, () => {
@@ -55,12 +57,12 @@ app.listen(PORT, () => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: [ "GET", "POST"]
   }
 });
     io.on("connection",(socket)=>{
-      // console.log(`socket io connected id: ${socket.id}`);
+      console.log(`socket io connected id: ${socket.id}`);
       socket.on("rs",(arg)=>{
         socket.emit("rs", arg);
       });
