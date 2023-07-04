@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
    });
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/public"));
+  app.use(express.static(path.join(__dirname,"client","build")));
   }
 
   app.use(express.static(path.join(__dirname,"client","build")));
