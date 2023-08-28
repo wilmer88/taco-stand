@@ -12,14 +12,14 @@ import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders"
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
-
-import TacoBlockContext from "./utils/TacoContext";
+// import TacoBlockContext from "./utils/TacoContext";
 import Payment from "./pages/Payment/Payment";
 import Alert from "./components/Alert/Alert";
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import AdminDash from "./pages/admin/AdminDash";
 import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
+import Pp from "./components/Pp/Pp"
 
 const App = () => {
   
@@ -58,7 +58,13 @@ const App = () => {
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
             <Route exact path="/ordens" element={<ClientLine />}></Route>
-            <Route exact path="/orden" element={<TacoBlockContext.Provider value={TacoBlockContext}>{" "}<OrdenPage />{" "}</TacoBlockContext.Provider>}></Route>
+ <Route path="/orden" element={
+ <Pp jwt ={jwt}>
+ <OrdenPage />
+ </Pp>
+ }>
+  
+ </Route>
             <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
 

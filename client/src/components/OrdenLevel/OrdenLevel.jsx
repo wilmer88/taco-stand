@@ -32,7 +32,7 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
 
         <Link className="levelHover" to="/orden"> <h3 className="label">
             Ordenar
-         </h3><img id="santos" src={"/images/mi_santos.jpg" }alt="" style={{ height: "65px" } }/>
+         </h3><img id="santos" src={"/images/mezquitesLogo.png" }alt="" style={{ height: "65px" } }/>
          </Link> 
 
             <Link className="levelHover" to="/searcho">   
