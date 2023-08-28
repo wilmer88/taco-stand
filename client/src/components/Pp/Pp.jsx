@@ -1,8 +1,10 @@
 import alertContext from "../../context/alertContext";
-import React, {useContext, Navigate } from "react";
+import React, {useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 
 const Pp = ({ jwt, children }) => {
+  
   
 const {setAlert} = useContext(alertContext);
     if (!jwt) {
