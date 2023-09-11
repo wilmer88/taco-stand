@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {User} = require("../models");
+const {User, Orden} = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -13,6 +13,7 @@ signup: function(req, res) {
       } else {
         console.log(userName);
         console.log(password);
+        console.log(admin);
   
         bcrypt
           .hash(req.body.password, 10)
@@ -101,4 +102,5 @@ signup: function(req, res) {
       }
     );
   }, 
+
 }

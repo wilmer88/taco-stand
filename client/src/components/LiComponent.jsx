@@ -1,5 +1,7 @@
 import {  useNavigate } from "react-router-dom";
 import API from "../utils/API";
+// import React, {alertContext, useContext} from "../../context/alertContext";
+
 
 
 const LiComponent =  (props) => {
@@ -9,7 +11,9 @@ const liestilo = {
     background: "lightyellow"
   }
  };
+
   const navigate =  useNavigate();
+  // const {setAlert} = useContext(alertContext);
 
   function eliminar(id){
     console.log(id)
@@ -33,12 +37,32 @@ const liestilo = {
     
   };
 
+function changeToPaid(id) {
+    API.apiChangeToPaid(id, {pagado: true}).then((updatedResource) => {
+      console.log(updatedResource.data);
+    }).catch((err) => {
+      console.log(err);
+    })
+};
+
+function changeToPrepared(id) {
+  API.apiChangeToPaid(id, {preparada: true}).then((updatedResource) => {
+    console.log(updatedResource.data);
+    navigate("/ordens");
+
+  }).catch((err) => {
+    console.log(err);
+  })
+}
+
   let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual;
   let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual;
   let tacosTofix = props.tacosVirtual;
   let fixTopings = props.topingVirtual;
   let disableVar = false;
+  let prepareVar = false;
   if(props.pagado === true){disableVar = true};
+  if(props.preparada === true){prepareVar = true};
 
     return (<>
     
@@ -77,7 +101,7 @@ Nombre: {props.nombreDeOrden}
 </tbody>
 </table>
 <table className="table">
-   <tbody  >
+   <tbody>
    <tr >
    {props.largeHorchata !== 0 && (<th>G/Large <br></br>Horchata</th>)}
    {props.smallHorchata !== 0 && (<th>P/Small <br></br>Horchata</th>)}
@@ -128,6 +152,8 @@ Nombre: {props.nombreDeOrden}
     <div htmlFor="liOrder" style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </div>
   <div htmlFor="liOrder" style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </div>
   <div htmlFor="liOrder" style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </div>
+  <div htmlFor="liOrder" style={liestilo.atras} className="label">Prepared: {String(props.preparada)} </div>
+
   </form>
     <time dateTime="2016-1-1">{props.timeCreated}</time>
  
@@ -135,8 +161,18 @@ Nombre: {props.nombreDeOrden}
 <footer className="card-footer">
  <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
   <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
+  {props.pagado === false ? (
 
-  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div>
+  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> changeToPaid(props._id)} disabled={disableVar}>cashpay</button></div>,
+   <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div> 
+
+  ):
+  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>Order is paid</button></div> 
+
+}
+  {/* <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> changeToPaid(props._id)} disabled={disableVar}>cashpay</button></div> */}
+  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> changeToPrepared(props._id)} disabled={prepareVar} >Prepared</button></div>
+  {/* <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div> */}
 </footer>
 </div>
   </div>

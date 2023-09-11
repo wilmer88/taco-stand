@@ -13,6 +13,7 @@ router.use("/signup", userRoutes );
 router.use("/orden", ordenRoutes);
 router.use("/myorders", userRoutes);
 router.use("/searcho", searchRoutes);
+router.use("/unprepared", adminDash)
 
 
 

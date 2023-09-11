@@ -50,10 +50,10 @@ const Footer = () => {
     { name: "Home/Inicio", href: "/", },
     { name: "My Orders/ Mi Ordenes", href: "/myorders/"+ userparam},
 
-    { name: "Waiting List/ La Fila", href: "/ordens"},
+    { name: "All orders", href: "/ordens"},
     { name: "Order/ Ordenar", href: "/orden"},
     { name: "Search/ Buscar", href: "/searcho"},
-    { name: "Log-In/ Iniciar-Sesion", href: "/login"},
+    { name: "Unprepared", href: "/unprepared"},
     { name: "Sign-up/ Incribirse", href: "/signup"},
 
   ];
@@ -61,8 +61,14 @@ const Footer = () => {
 
 
 
-  return (<>
-  {/* style={footerStyling.bottomMarginFooter} */}
+  return (
+
+  
+<>
+
+
+
+  
 
       <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
         <nav

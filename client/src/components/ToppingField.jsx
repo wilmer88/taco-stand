@@ -1,7 +1,9 @@
+import React from 'react';
 const ToppingField = (props) => {
+  
     return (<>
-   <section className="field"> 
-             <hr></hr>
+   
+             
        <article className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
 
@@ -21,9 +23,7 @@ const ToppingField = (props) => {
          </section>
          </aside>
           </article>  
-            </section>
-          </>);
-     };
+          </>); };
    export default ToppingField;
    
          

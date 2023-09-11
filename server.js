@@ -18,7 +18,6 @@ app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
-
 const PORT1 = process.env.PORT || 3001;
 
 mongoose.set("strictQuery", false);

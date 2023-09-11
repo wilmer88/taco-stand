@@ -12,6 +12,32 @@ const OrdenSchema = new Schema({
     trim: true,
     required: "nombrDeOrden is required"
   },
+  phoneNumber:{
+    type: String,
+    trim: true
+  },
+  tableNumber:{
+    type: String,
+    trim: true
+  },
+
+
+ combo: [
+  {
+ 
+    comboNumber: Number,
+    choiceNumber: Number,
+    supreme:Boolean,
+    choice1:String,
+    choice2:String,
+    choice3:String,
+  },
+],
+  phoneNumber: {
+    type: String,
+    trim: true,
+    required: "nombrDeOrden is required"
+  },
   azada: {
     type: Number,
     default: 0,

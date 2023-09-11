@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import OrdenLevel from "./components/OrdenLevel/OrdenLevel";
 import ClientLine from "./pages/ClientLine";
 import OrdenPage from "./pages/OrdenPage";
+import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import Editar from "./pages/Editar";
 import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders"
@@ -19,7 +20,8 @@ import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import AdminDash from "./pages/admin/AdminDash";
 import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
-import Pp from "./components/Pp/Pp"
+import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
+// import Pp from "./components/Pp/Pp"
 
 const App = () => {
   
@@ -47,7 +49,14 @@ const App = () => {
 
           <OrdenLevel />
           <Routes>
+          <Route exact path="/ordens" element={<ClientLine />}></Route>
+
           <Route exact path="/myorders" element={<MyOrders />}></Route>
+          <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>
+          <Route exact path="/allOrders" element={<AllOrdersPage />}></Route>
+
+
+
 
           <Route exact path="/adminDash" element={<AdminDash />}></Route>
           <Route exact path="/adminSignup" element={<AdminSignUp />}></Route>
@@ -57,19 +66,16 @@ const App = () => {
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
-            <Route exact path="/ordens" element={<ClientLine />}></Route>
- <Route path="/orden" element={
- <Pp jwt ={jwt}>
- <OrdenPage />
- </Pp>
- }>
-  
- </Route>
+            <Route path="/orden" element={<OrdenPage />}></Route>
             <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
 
           </Routes>
-          <Footer />
+          {jwt !== "" ? (
+             <Footer />
+
+): null }
+
 
         </alertContext.Provider>
 

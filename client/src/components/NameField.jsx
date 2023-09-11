@@ -1,16 +1,17 @@
 import React from 'react';
 
 const NameField = (props) => {
-    return (<section className="field"> 
-        <label className="label">
-        Nombre Para La Orden:
-        </label>
+    return (
+    <section className="ml-6 field"> 
+        <h6 className="mr-6 label">
+       <strong>{props.nameOfInputField}</strong> 
+        </h6>
         <div className="is-mobile">
           <input
           className="input is-medium is-rounded"
             type="text"
             aria-label="iput for order name"
-            placeholder="Gonzalo"
+            placeholder={props.placeholder}
             name={props.name}
             value={props.value}
             onChange={props.onChange}

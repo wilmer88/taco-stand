@@ -5,20 +5,22 @@ import { useNavigate } from "react-router-dom";
 import API from '../utils/API';
 
 const SignUp = () => {
+//styling for form
   const pxhi = {
     fonte:{
       fontSize: "27px",
       background: "lightyellow"
     }
   };
-  const {setJwt}  = useContext(AuthContext);
-  const {setAlert} = useContext(alertContext);
-const [userName, setUserName] = useState("");
-const [password, setPassword] = useState("");
-const user = useContext(AuthContext);
-
 
   const navigate = useNavigate()
+
+  const {setJwt}  = useContext(AuthContext);
+  const {setAlert} = useContext(alertContext);
+  const user = useContext(AuthContext);
+
+const [userName, setUserName] = useState("");
+const [password, setPassword] = useState("");
 
   function formSubmit (e){
     e.preventDefault();
@@ -39,7 +41,6 @@ const user = useContext(AuthContext);
        setPassword("")
       }).catch((err) => {
     setAlert({message:"Faild to sign up!", type:"is-danger"});
-
         console.log(err);
       });
   }

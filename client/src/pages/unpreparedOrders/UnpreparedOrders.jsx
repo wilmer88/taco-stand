@@ -1,15 +1,15 @@
 // import UserComponent from "../components/userComponent/UserComponent";
 import React, {useContext,useEffect, useState, } from "react";
-import alertContext from "../context/alertContext";
-import API from "../utils/API";
+import alertContext from "../../context/alertContext";
+import API from "../../utils/API";
 import {io} from "socket.io-client";
-import LiComponent from "../components/LiComponent";
+import LiComponent from "../../components/LiComponent";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 
-const ClientLine = () => {
+const UnpreparedOrders = () => {
 
   const {setAlert} = useContext(alertContext);
   const [orden, setAllOrdens] = useState([]);
@@ -17,7 +17,7 @@ const ClientLine = () => {
   useEffect(() => {
     // console.log(arg);
         // socket.disconnect();
-     API.allOrdens().then((response ) => {
+     API.apiUnprepared({preparada:false}).then((response ) => {
       setAllOrdens(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});
  
@@ -31,7 +31,7 @@ useEffect(() => {
   socket.on("myOrders",(arg)=>{
 console.log("new order list");
     // socket.disconnect();
- API.allOrdens().then((response ) => {
+ API.apiUnprepared({preparada:false}).then((response ) => {
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
     // return socket.disconnect();
@@ -56,4 +56,4 @@ console.log("new order list");
 
   </> )}
 
-export default ClientLine;
+export default UnpreparedOrders;

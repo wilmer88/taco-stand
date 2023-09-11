@@ -42,12 +42,55 @@ module.exports = {
        //           }
 //    }
 //  );
-
-     }, 
+ }, 
      
      
 
-    /////////Remove Order/////////////
+    /////////change paid boolean/////////////
+    
+  changeOrderToPaid: function(req,res){
+      Orden.findByIdAndUpdate(req.params.id, req.body, { new: true}).then((updatedOrden) => {
+           res.json(updatedOrden);
+      }).catch((err) => {
+            console.log(err);
+            res.json({
+                  error:true,
+                  data: null,
+                  message: `faild to update paid field for order id ${req.params.id}`
+            });
+      });
+    },
+
+
+
+    ////// All Unprepared orders///////
+    getUnpreparedOrders: function(req, res) {   
+       
+       
+      Orden.find({preparada: false})
+      .then((foundit) => {
+
+        res.json(foundit);
+        console.log(req.params);
+
+      
+
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({
+          error: true,
+          data: null,
+          message: `failed to retrive order/orden document for ${req.params.id}`
+        });
+      });
+    },
+
+
+
+
+
+
 
 
       

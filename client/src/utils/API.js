@@ -38,6 +38,15 @@ allOrdens: function() {
   apiSearch: function(nombreDeOrden){
     return axios.get("/api/searcho/" + nombreDeOrden)
   },
+  apiChangeToPaid: function(id, paidBoolean){
+    return axios.put("/api/payment/" + id, paidBoolean)
+
+  },
+
+  apiUnprepared: function(preparadaBoolean){
+    return axios.get("/api/unprepared/" + preparadaBoolean)
+
+  }
 };
 
 export default  clientApiCalls

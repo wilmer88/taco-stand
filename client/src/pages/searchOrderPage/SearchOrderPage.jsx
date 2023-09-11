@@ -52,7 +52,7 @@ import API from "../../utils/API";
          <form>
       <div className="column is-mobile is-three-fifths is-offset-one-fifth .is-narrow-desktop" > 
       <div className='box' >
-         <label id='searchPageLabel' className="label has-text-centered" >Search/ Buscar</label>
+         <h3 id='searchPageLabel' className="label has-text-centered" >Search/ Buscar</h3>
       <input 
       onChange={handelSearchChange}
       name="nombreDeOrden"
