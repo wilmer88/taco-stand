@@ -21,9 +21,19 @@ import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import AdminDash from "./pages/admin/AdminDash";
 import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
+import ComboContext from "./context/ComboContext";
 // import Pp from "./components/Pp/Pp"
 
 const App = () => {
+  const [myCombo, setMyCombo]= useState({
+    comboId: 0,
+    comboPrice: "",
+    supreme: false,
+    choice1: "",
+    choice2: "",
+    choice3: "",
+    key: "",
+  })
   
   const [alert, setAlert] = useState({
     message:"",
@@ -45,6 +55,7 @@ const App = () => {
 
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
+        <ComboContext.Provider value={{...myCombo,setMyCombo:setMyCombo}}>
         <Alert/>
 
           <OrdenLevel />
@@ -76,7 +87,7 @@ const App = () => {
 
 ): null }
 
-
+</ComboContext.Provider>
         </alertContext.Provider>
 
         </AuthContext.Provider>

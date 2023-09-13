@@ -16,9 +16,9 @@ const ComboDropdown = (props) => {
  value={props.comboChoiceValue}
   onChange={props.comboChoiceOnChange}
   >
-  {comboChoices.map((nume) => (
+  {comboChoices.map((nume, index) => (
     <option
-     key={nume} 
+     key={index} 
      value={nume}>
       {nume}
     </option>

@@ -2,15 +2,16 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import API from "../utils/API";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ComboDropdown from "./comboDropdown/ComboDropdown";
+// import ComboDropdown from "./comboDropdown/ComboDropdown";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import { io } from "socket.io-client";
-// import ComboContainer from "../containers/ComboContainer";
+import ComboContainer from "../containers/ComboContainer";
+import ComboContext from "../context/ComboContext";
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
@@ -18,8 +19,15 @@ const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 const OrdenBox = () => {
 
+  useEffect(() => {
+
+    }, [ComboContainer]);
+
+
+  const combo = useContext(ComboContext);
 
   async function resetState() {
+   
     setOrderData({
       nombreDeOrden: "",
       phoneNumber:"",
@@ -31,7 +39,8 @@ const OrdenBox = () => {
         choice1:"",
         choice2:"",
         choice3:"",
-        key: orderCombo.length + 1,
+        key:"",
+     
       },
       azada: 0,
       pollo: 0,
@@ -53,12 +62,12 @@ const OrdenBox = () => {
 
   const user = useContext(AuthContext);
 
-  const [orderCombo , setOrderCombo] = useState([]);
+
 
   const [orderData, setOrderData] = useState({
 
     nombreDeOrden: "" || user.userName,
-    combo: orderCombo,
+    combo: [],
     azada: 0,
     pollo: 0,
     barbacoa: 0,
@@ -75,19 +84,10 @@ const OrdenBox = () => {
     sprite: 0,
     fanta: 0,
   });
-  // const sendSocketOrder = (orderData) => {
-  //   socket.emit("resiveOrders", {orderData});
-  // };
-  let combo ={
-    comboId: orderCombo.length + 1,
-    choicePrice: 0,
-    supreme: false,
-    choice1: "",
-    choice2: "",
-    key: orderCombo.length + 1,
-  }
+
+
   const [showModel, setshowModel] = useState("modal");
-  const openModal = (e) => {e.preventDefault();orderCombo.push(combo);  setOrderCombo(orderCombo); console.log(orderData.combo); setshowModel("modal is-active"); };
+  const openModal = (e) => {e.preventDefault();  console.log(orderData.combo); setshowModel("modal is-active"); };
   const handleClose = () => { setshowModel("modal") };
   
   const navigate = useNavigate();
@@ -188,45 +188,8 @@ const OrdenBox = () => {
     const { name, value } = event.target;
     setOrderData({ ...orderData, [name]: parseInt(value) })
   };
-  
-  const choiceHandleChange = event => {
 
 
-    const { value } = event.target;
-
-   combo.choicePrice= parseInt(value);
-    console.log(combo.choicePrice);
-    console.log(combo);
-  };
-
-
-
-  // const comboHandleChange = ((event) =>{
-  //   const index = event.target.comboId;
-  //   const newArr = orderCombo.slice();
-  //   newArr[index]= event.target
-  //   return newArr
-  // })
-
-  const addCombo= e =>{
-    e.preventDefault();
-    setOrderCombo(s=>{
-      // const lastId = s[s.length - 1].id;
-      return [
-        ...s, 
-       {
-          comboId: orderCombo.length + 1,
-          choicePrice: 0,
-          supreme: false,
-          choice1: "",
-          choice2: "",
-          key: orderCombo.length + 1,
-   
-        }
-      ]
-    })
-
-  }
 
   return (<><form>
     <main className="box is-mobile is-shadowless is-align-self-center">
@@ -260,116 +223,10 @@ const OrdenBox = () => {
                 />
               </div>
               
-              <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
-                <h3 style={{ marginBottom: "10px" }}> <strong>Combos</strong></h3>
-                <div> <h6 style={{ marginBottom: 0 }}>CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
-                <h6 style={{ marginBottom: 0 }}>   ADD SUPREME FOR 2.50</h6>
-                <p style={{ marginBottom: 0 }}>All combos are served with rice and beans.</p>
-                <h5 style={{ marginBottom: 0 }}>Choice</h5>
-              </figcaption>
+<ComboContainer/>
 
 
-              <ul > 
-              <div style={{ textAlign: "center", background: "tan" }}>
-            <label className="radio">
-              <input
-               type="radio"
-               name="choicePrice"
-                value= {9}
-      
-              onChange={choiceHandleChange} />
-              CHOOSE(2)9.25
-            </label>
-            <label className="radio">
-              <input 
-              type="radio"
-               name="choicePrice"
-               value= {10}
-           
-               onChange={choiceHandleChange}
-                />
-              CHOOSE (3) 10.25
-            </label>
-          </div>
 
-          <div className="is-align-content-center columns mt-3">
-
-            <ComboDropdown
-              choiceNumber="Choice #1"
-              onChange={tacoNdrinksHandleChange}/>
-
-            <ComboDropdown
-              choiceNumber="Choice #2"
-              onChange={tacoNdrinksHandleChange}/>
-
-               <ComboDropdown
-              choiceNumber="Choice #3"
-              onChange={tacoNdrinksHandleChange}/>
-
-            <button className="button is-success is-normal" onClick={addCombo} style={{ alignContent: "center", marginLeft: "5px", marginTop: "24px" }}>+</button>
-          </div>
-
-              </ul>
-
-    
-    
-              
-
-              {/* {
-                orderCombo.map(()=>{
-                  return(
-            
-            
-<ul >
-<div style={{ textAlign: "center", background: "tan" }}>
-                    <label className="radio">
-                      <input
-                       type="radio"
-                       name="choicePrice"
-                        value= {9}
-                        checked= {orderCombo === 9}
-                      onChange={choiceHandleChange} />
-                      CHOOSE(2)9.25
-                    </label>
-                    <label className="radio">
-                      <input type="radio"
-                       name="choiceNumber"
-                       value= {10}
-                       checked= {orderCombo === 10}
-                       onChange={choiceHandleChange}
-                        />
-                      CHOOSE (3) 10.25
-                    </label>
-                  </div>
-    
-                  <div className="is-align-content-center columns mt-3">
-    
-                    <ComboDropdown
-                      choiceNumber="Choice #1"
-                      onChange={tacoNdrinksHandleChange}/>
-    
-                    <ComboDropdown
-                      choiceNumber="Choice #2"
-                      onChange={tacoNdrinksHandleChange}/>
-    
-                       <ComboDropdown
-                      choiceNumber="Choice #3"
-                      onChange={tacoNdrinksHandleChange}/>
-    
-                    <button className="button is-success is-normal" onClick={addCombo} style={{ alignContent: "center", marginLeft: "5px", marginTop: "24px" }}>+</button>
-                  </div>
-</ul>
-
-            
-              
-                    
-                  )
-                })
-              } */}
-
-               
-               
-            
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "5px" }} > <strong>Tacos</strong></h3>
               </figcaption>
@@ -514,7 +371,7 @@ const OrdenBox = () => {
 
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
                 {orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div>)}</div><hr></hr>
-                {orderData.combo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Combo#: {orderData.combo.map((orderdata) =>[orderdata.comboNumber])}</div>)}
+                {orderData.combo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Combo#: {orderData.combo.map((orderdata) =>[orderdata.comboId])}</div>)}
 
 
               {orderData.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderData.azada}</div>)}
