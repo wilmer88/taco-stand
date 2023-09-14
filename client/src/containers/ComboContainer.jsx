@@ -4,25 +4,61 @@ import ComboContext from "../context/ComboContext";
 
 import Radio from '../components/radio/Radio';
 
+
 const ComboContainer = () => {
 
 
 
-  const { setMyCombo, comboPrice } = useContext(ComboContext);
-
-  const [orderComboArray, setOrderCombo] = useState([]);
-
+  const {setChoice1,setChoice2, choice1,choice2} = useContext(ComboContext);
+  const {comboPrice} = useContext(ComboContext);
 
 
 
 
+  const [orderComboArray, setOrderCombo] = useState([
+    {
+      
+      comboId:1,
+     comboPrice:"",
+      supreme: false,
+      choice1:"",
+      choice2:"",
+      key: 1,
+    
+  }
+  ]);
 
 
-  // const combo1Holder = (event) => {
-  //   event.preventDefault();
-  //   combo.setChoice1(event.target.value);
-  //   console.log(combo.choice1)
-  // };
+  const [comboObject, setComboObject] = useState(
+    {
+      
+      comboId:orderComboArray.length+1,
+     comboPrice:"",
+      supreme: false,
+      choice1:"",
+      choice2:"",
+      key: orderComboArray.length+1,
+    
+  }
+
+  )
+
+
+  const handelChoice1 = (e) => {
+    e.preventDefault();
+
+    const choiceOne = e.target.value;
+    setChoice1({choice1: choiceOne});
+    setComboObject(comboObject)
+    console.log(choice1)
+  };
+  const handelChoice2 = (e) => {
+    e.preventDefault();
+
+      const choicetwo = e.target.value;
+      setChoice2({choice2: choicetwo})
+      console.log(choice2)
+    };
   // const choice2Handeler = (event) => {
   //   const { name, value } = event.target;
   //   combo.setChoice2({ ...combo.choice2, [name]: value })
@@ -33,24 +69,30 @@ const ComboContainer = () => {
   // };
 
   const addCombo = e => {
+    console.log(comboPrice)
     e.preventDefault();
 
 
     setOrderCombo(s => {
 
       return [
-        ...s,
-        {
-          comboId: orderComboArray.length + 1,
-          choicePrice: "9",
-          supreme: false,
-          choice1: "",
-          choice2: "",
-          key: orderComboArray.length + 1,
-        }
-
+       ...s, 
+       {
+      
+        comboId:orderComboArray.length+1,
+       comboPrice:"",
+        supreme: false,
+        choice1:"",
+        choice2:"",
+        key: orderComboArray.length+1,
+      
+    }
       ]
     })
+    
+
+
+    console.log(orderComboArray)
 
 
   }
@@ -63,50 +105,55 @@ const ComboContainer = () => {
       <div> <h6 style={{ marginBottom: 0 }}>CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
       <h6 style={{ marginBottom: 0 }}>   ADD SUPREME FOR 2.50</h6>
       <p style={{ marginBottom: 0 }}>All combos are served with rice and beans.</p>  
-        <button className="button is-success is-normal" onClick={addCombo} style={{ alignContent: "center", marginLeft: "5px", marginTop: "7px" }}>+</button>
+      
 
     </figcaption>
 
 
   
       {
-        orderComboArray.map((singleCombo,key) => {
+        orderComboArray.map((oneCombo,key) => {
           return (
      
-            <ul key={key} >
-                  <Radio
-     
-
-           
-          
-                
-     />
+            <ul key={key}>
+                  <Radio/>
      
               <div className="is-align-content-center columns mt-3">
 
                 <ComboDropdown
-                  nameOfInputField="choiceOne"
+                choiceName="Choice#1"
                   placeholder="Tamal"
-                  name="choiceOne"
-                  // value={combo.choice1}
-                  // onChange={combo1Holder}
+                  name="choice1"
+               
+
+                  
+            
+                  onChange={handelChoice1}
                 />
 
                 <ComboDropdown
-                  nameOfInputField="choice2"
+                  choiceName="Choice#2"
                   placeholder="Chicken Chalupa"
                   name="choice2"
-                  // value={combo.choice2}
-                  // onChange={combo1Holder}
+              
+                  onChange={handelChoice2}
                 />
 
                 <ComboDropdown
-                  nameOfInputField="choice3"
+                   choiceName="Choice#3"
                   placeholder="beefTaco"
                   name="phoneNumber"
                   // value={combo.choice3}
                   // onChange={choice3Handeler}
                 />
+                {
+              orderComboArray.length -1 === key && orderComboArray.length < 10 &&
+                <button className="button is-success is-small" onClick={addCombo} style={{ alignContent: "center", marginLeft: "5px", marginTop: "23px" }}>+</button>
+                }
+                {
+                  orderComboArray.length> 1 &&
+                  <button className="button is-danger is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "23px" }}>Remove</button>
+                }
 
               </div>
             </ul>

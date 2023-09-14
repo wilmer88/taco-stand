@@ -8,17 +8,17 @@ const ComboDropdown = (props) => {
 
 <div className="ml-1 field">
 < h6 className="mr-1 label">
-{props.choiceNumber}
+{props.choiceName}
 </h6>
 <div className="mr-1  select ">
 <select
-  name={props.comboChoiceName}
- value={props.comboChoiceValue}
-  onChange={props.comboChoiceOnChange}
+  name={props.name}
+ value={props.value}
+  onChange={props.onChange}
   >
-  {comboChoices.map((nume, index) => (
+  {comboChoices.map((nume) => (
     <option
-     key={index} 
+key={nume}
      value={nume}>
       {nume}
     </option>

@@ -3,10 +3,15 @@ import ComboContext from "../../context/ComboContext";
 
 const Radio = (props) => {
   const [radioState, setRadioState]= useState("");
-  const {setMyCombo} = useContext(ComboContext);
+
+  const {setMyComboPrice,comboPrice} = useContext(ComboContext);
   const handleprice = (e) => {
-    setMyCombo({comboPrice:e.target.value})
+
+
+
     setRadioState(e.target.value);
+    setMyComboPrice({comboPrice: e.target.value});
+    console.log(comboPrice)
   };
 
 

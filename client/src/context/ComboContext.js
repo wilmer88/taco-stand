@@ -10,6 +10,15 @@ const ComboContext = React.createContext({
     key:"",
      
      setMyCombo: ()=>{},
+     setChoice1: ()=>{},
+     setChoice2: ()=>{},
+
+     
+
+
+     
+
+  
 })
 
 export default ComboContext
