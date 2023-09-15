@@ -2,7 +2,7 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import API from "../utils/API";
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 // import ComboDropdown from "./comboDropdown/ComboDropdown";
 import { useState, useContext } from "react";
@@ -11,20 +11,16 @@ import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import { io } from "socket.io-client";
 import ComboContainer from "../containers/ComboContainer";
-import ComboContext from "../context/ComboContext";
+// import ComboContext from "../context/ComboContext";
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
+
 const OrdenBox = () => {
 
-  useEffect(() => {
-
-    }, [ComboContainer]);
-
-
-  const combo = useContext(ComboContext);
+  // const combo = useContext(ComboContext);
 
   async function resetState() {
    
@@ -190,7 +186,6 @@ const OrdenBox = () => {
   };
 
 
-
   return (<><form>
     <main className="box is-mobile is-shadowless is-align-self-center">
       <section className="card">
@@ -228,7 +223,7 @@ const OrdenBox = () => {
 
 
               <figcaption>
-                <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "5px" }} > <strong>Tacos</strong></h3>
+                <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
               </figcaption>
 
               <div className="is-align-content-center columns mt-3">

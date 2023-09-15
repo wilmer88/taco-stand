@@ -25,14 +25,19 @@ import ComboContext from "./context/ComboContext";
 // import Pp from "./components/Pp/Pp"
 
 const App = () => {
-  const [comboPrice, setMyComboPrice]= useState("");
-  const [choice1, setChoice1]= useState("");
-  const [choice2, setChoice2]= useState("");
+
+   const [combo, setCombo]= useState({
+    comboId: 0,
+    comboPrice: "",
+    supreme: false,
+    choice1: "",
+    choice2: "",
+    choice3: "",
+    key:"",
+
+   })
 
 
-
-
-  
   const [alert, setAlert] = useState({
     message:"",
     type:"",
@@ -54,7 +59,7 @@ const App = () => {
 
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
-        <ComboContext.Provider value={{choice1,setChoice1,choice2,setChoice2,comboPrice,setMyComboPrice}}>
+        <ComboContext.Provider value={{...combo,setCombo:setCombo}}>
         <Alert/>
 
           <OrdenLevel />
