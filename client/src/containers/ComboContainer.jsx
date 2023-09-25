@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import ComboDropdown from '../components/comboDropdown/ComboDropdown';
 import ComboContext from "../context/ComboContext";
+// import Radio from "../components/radio/Radio";
+
 
 const ComboContainer = () => {
-
-  const combo = useContext(ComboContext)
+  const combo = useContext(ComboContext);
 
   const [inputFields, setInput] = useState(
     [{
@@ -17,8 +18,8 @@ const ComboContainer = () => {
     }]
   );
 
-
   const handleFormChange = (index, event) => {
+
     let data = [...inputFields]
     data[index][event.target.name] = event.target.value;
     setInput(data);
@@ -29,12 +30,12 @@ const ComboContainer = () => {
     event.preventDefault();
 
     let newfield = {
-      comboId: 1,
+      comboId: inputFields.length +1,
       comboPrice: "",
       supreme: false,
       choice1: "",
       choice2: "",
-      key: 1,
+      key: inputFields.length +1,
     }
     setInput([...inputFields, newfield]);
     combo.setCombo(inputFields);
@@ -58,80 +59,89 @@ const ComboContainer = () => {
       inputFields.map((input, index) => {
         return (
 
-          <div key={index}>
-            <div style={{ textAlign: "center", background: "tan" }}>
-              <label>
-                <input
-                id="price1"
-                  type="radio"
-                  name={"comboPrice"}
-                  onChange={event => handleFormChange(index, event)}
-                  value={"9" && input.comboPrice }
-                  checked={input.comboPrice === "9"}
-                  key={index}
+<form>
+
+          <div  key={index}>
+        
+
+
+ 
+
+
+<div className="control" style={{ textAlign: "center", background: "tan" }}>
+  <label className="radio">
+    <input
+      type="radio"
+      name={"comboPrice"}
+
+      onChange={event =>{ handleFormChange(index, event)}}
+      value={"9"}
+    />
+    CHOOSE(2)9.25
+    </label>
+
+    <label className="radio">
+
+    <input type="radio" style={{ marginLeft: "50px" }}
+      name={"comboPrice"}
+
+      onChange={event =>{handleFormChange(index, event) }}
+      value={"10"}
                 />
-                CHOOSE(2)9.25
+    CHOOSE (3) 10.25
+  </label>
 
-              </label>
+</div>
 
-
-              <label>
-                <input type="radio" style={{ marginLeft: "50px" }}
-                id="price2"
-                  name={"comboPrice"}
-                  onChange={event => handleFormChange(index, event)}
-                  value={"10"}
-                  checked={input.comboPrice === "9"}
-
-                />
-                CHOOSE (3) 10.25
-              </label>
-
-            </div>
-
-            <div className="is-align-content-center columns mt-3">
-
-              <ComboDropdown
-                choiceName="Choice1"
-                placeholder="Tamal"
-                name="choice1"
-                onChange={event => handleFormChange(index, event)}
-                value={input.choice1}
-
-              />
-
-              <ComboDropdown
-                choiceName="Choice#2"
-                placeholder="Chicken Chalupa"
-                name="choice2"
-                onChange={event => handleFormChange(index, event)}
-                value={input.choice2}
-
-              />
-              {
-                input.comboPrice === "10" &&
-                <ComboDropdown
-                  choiceName="Choice#3"
-                  placeholder="beefTaco"
-                  name="choice3"
-                // value={combo.choice3}
-                // onChange={choice3Handeler}
-                />
-              }
+<div className="is-align-content-center columns mt-3">
+  <ComboDropdown
+    choiceName="Choice1"
+    placeholder="Tamal"
+    name="choice1"
+    onChange={event => handleFormChange(index, event)}
+    value={input.choice1}
 
 
-              {
-                inputFields.length > 1 &&
-                <button className="button is-danger is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "23px" }}>Remove</button>
-              }
+  />
 
-              {
-                inputFields.length - 1 === index && inputFields.length < 10 &&
-                <button className="button is-success is-small" onClick={addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "30px" }}>+</button>
-              }
+  <ComboDropdown
+    choiceName="Choice#2"
+    placeholder="Chicken Chalupa"
+    name="choice2"
+    onChange={event => handleFormChange(index, event)}
+    value={input.choice2}
 
-            </div>
+  />
+  {
+    input.comboPrice === "10" &&
+    <ComboDropdown
+      choiceName="Choice#3"
+      placeholder="beefTaco"
+      name="choice3"
+    // value={combo.choice3}
+    // onChange={choice3Handeler}
+    />
+  }
+
+
+  {
+    inputFields.length > 1 &&
+    <button className="button is-danger is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "23px" }}>Remove</button>
+  }
+
+  {
+    inputFields.length - 1 === index && inputFields.length < 10 &&
+    <button className="button is-success is-small" onClick={addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "30px" }}>+</button>
+  }
+
+</div>
+
+
+
           </div>
+
+</form>
+         
         )
       })
     }

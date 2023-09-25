@@ -186,7 +186,7 @@ const OrdenBox = () => {
   };
 
 
-  return (<><form>
+  return (<>
     <main className="box is-mobile is-shadowless is-align-self-center">
       <section className="card">
 
@@ -416,6 +416,6 @@ const OrdenBox = () => {
 
       </section>
     </main>
-  </form> </>);
+   </>);
 }
 export default OrdenBox;
