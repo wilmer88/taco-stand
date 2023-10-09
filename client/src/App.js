@@ -26,16 +26,15 @@ import ComboContext from "./context/ComboContext";
 
 const App = () => {
 
-   const [combo, setCombo]= useState({
-    comboId: 0,
-    comboPrice: "",
+   const [combo, setCombo]= useState([
+{    comboId: 1,
+    comboPrice: "0",
     supreme: false,
     choice1: "",
     choice2: "",
-    choice3: "",
-    key:"",
-
-   })
+    key: 1,
+  }
+   ])
 
 
   const [alert, setAlert] = useState({

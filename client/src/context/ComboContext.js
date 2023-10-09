@@ -1,21 +1,19 @@
 import  React from "react";
 
-const ComboContext = React.createContext(
-
- 
- {
-        comboId: 0,
-        comboPrice: "",
+const comboContext = React.createContext(
+    
+    
+    {
+        comboId: 1,
+        comboPrice: "0",
         supreme: false,
         choice1: "",
         choice2: "",
-        choice3: "",
-        key:"",
-
-        setCombo(){}
-}
+        key: 1,
+        setCombo: ()=>{}
+      }
     
     )
 
 
-export default ComboContext
+export default comboContext;

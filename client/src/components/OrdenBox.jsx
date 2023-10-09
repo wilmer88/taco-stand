@@ -11,7 +11,7 @@ import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
 import { io } from "socket.io-client";
 import ComboContainer from "../containers/ComboContainer";
-// import ComboContext from "../context/ComboContext";
+import ComboContext from "../context/ComboContext";
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
@@ -20,15 +20,14 @@ const socket = io(URL);
 
 const OrdenBox = () => {
 
-  // const combo = useContext(ComboContext);
+ const comboContext1 = useContext(ComboContext);
 
-  async function resetState() {
-   
-    setOrderData({
+  async function resetState() {setOrderData({
       nombreDeOrden: "",
       phoneNumber:"",
       tableNumber:"",
-      combos:{
+      combo: [
+              {
         choicePrice:0,
         comboId:0,
         supreme: false,
@@ -37,7 +36,10 @@ const OrdenBox = () => {
         choice3:"",
         key:"",
      
-      },
+      }
+
+      ],
+
       azada: 0,
       pollo: 0,
       barbacoa: 0,
@@ -63,7 +65,7 @@ const OrdenBox = () => {
   const [orderData, setOrderData] = useState({
 
     nombreDeOrden: "" || user.userName,
-    combo: [],
+    comboContext1,
     azada: 0,
     pollo: 0,
     barbacoa: 0,
@@ -83,7 +85,7 @@ const OrdenBox = () => {
 
 
   const [showModel, setshowModel] = useState("modal");
-  const openModal = (e) => {e.preventDefault();  console.log(orderData.combo); setshowModel("modal is-active"); };
+  const openModal = (e) => {e.preventDefault(); setshowModel("modal is-active")};
   const handleClose = () => { setshowModel("modal") };
   
   const navigate = useNavigate();
@@ -210,7 +212,7 @@ const OrdenBox = () => {
                   onChange={phoneHandleChange}
                 />
                    <NameField
-                  nameOfInputField="Table#"
+                  nameOfInputField={<> <strong>Table# </strong>( optional) </>}
                   placeholder="14"
                   name="nombreDeOrden"
                   value={orderData.nombreDeOrden}
@@ -366,7 +368,7 @@ const OrdenBox = () => {
 
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
                 {orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div>)}</div><hr></hr>
-                {orderData.combo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Combo#: {orderData.combo.map((orderdata) =>[orderdata.comboId])}</div>)}
+                {orderData.combo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Combo#{orderData.comboContext1.comboId}: {orderData.comboContext1.choice1}</div>)}
 
 
               {orderData.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderData.azada}</div>)}

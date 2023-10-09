@@ -1,16 +1,20 @@
 import { useContext, useState } from "react";
 import ComboDropdown from '../components/comboDropdown/ComboDropdown';
 import ComboContext from "../context/ComboContext";
+import alertContext from "../context/alertContext";
+import Alert from "../components/Alert/Alert";
+
 // import Radio from "../components/radio/Radio";
 
 
 const ComboContainer = () => {
-  const combo = useContext(ComboContext);
+let {combo, setCombo}= useContext(ComboContext);
+  const { setAlert } = useContext(alertContext);
 
   const [inputFields, setInput] = useState(
     [{
       comboId: 1,
-      comboPrice: "",
+      comboPrice: "0",
       supreme: false,
       choice1: "",
       choice2: "",
@@ -18,29 +22,71 @@ const ComboContainer = () => {
     }]
   );
 
-  const handleFormChange = (index, event) => {
+  const removeCombo = (index) => {
+    const listOfCombos = [...inputFields];
 
+    if (listOfCombos.length > 1) {
+      listOfCombos.splice(index, 1);
+      setInput(listOfCombos)
+    }
+    else
+
+      if (listOfCombos.length === 1) {
+        listOfCombos[0].comboPrice = "0"
+        setInput(listOfCombos)
+      }
+  }
+
+  const handleSupremeChange = (index, event) => {
+
+    let data = [...inputFields]
+    data[index][event.target.supreme] = event.currentTarget;
+
+    if (data[index][event.target.name] === false) {
+      console.log("was1" + data[index][event.target.name])
+      data[index][event.target.name] = true
+      console.log("now1:" + data[index][event.target.name])
+    }
+    else if (data[index][event.target.name] === true) {
+      console.log("was2:" + data[index][event.target.name])
+      data[index][event.target.name] = false
+      console.log("now2:" + data[index][event.target.name])
+    }
+    setInput(data);
+    console.log(inputFields)
+
+  }
+
+  const handleFormChange = (index, event) => {
     let data = [...inputFields]
     data[index][event.target.name] = event.target.value;
     setInput(data);
-    console.log(inputFields)
+    setCombo(combo= [...inputFields]);
+    console.log(combo)
+
+
+ 
+    
   };
 
   const addFields = (event) => {
     event.preventDefault();
 
     let newfield = {
-      comboId: inputFields.length +1,
-      comboPrice: "",
+      comboId: inputFields.length + 1,
+      comboPrice: "0",
       supreme: false,
       choice1: "",
       choice2: "",
-      key: inputFields.length +1,
+      key: inputFields.length + 1,
     }
     setInput([...inputFields, newfield]);
-    combo.setCombo(inputFields);
-    console.log(combo)
+  
+
+    setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
+
   }
+
 
 
   return (<>
@@ -50,98 +96,136 @@ const ComboContainer = () => {
       <div> <h6 style={{ marginBottom: 0 }}>CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
       <h6 style={{ marginBottom: 0 }}>   ADD SUPREME FOR 2.50</h6>
       <p style={{ marginBottom: 0 }}>All combos are served with rice and beans.</p>
-
-
     </figcaption>
+
 
 
     {
       inputFields.map((input, index) => {
         return (
 
-<form>
-
-          <div  key={index}>
-        
 
 
- 
+          <div className="container" key={index}>
+            <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
+
+              <div className="control" style={{ textAlign: "center", background: "tan" }}>
+
+                {
+
+                  inputFields.length - 1 === index &&
+                  <Alert />
+
+                }
+                <label className="radio">
+                  <input
+                    type="radio"
+                    name={"comboPrice"}
+                    onChange={event => { handleFormChange(index, event) }}
+                    value={"9"}
+                    checked={input.comboPrice === "9"}
+                  />
+                  <strong>CHOOSE(2)9.25</strong>
+                </label>
+
+                <label className="radio">
+                  <input type="radio" style={{ marginLeft: "50px" }}
+                    name={"comboPrice"}
+                    onChange={event => { handleFormChange(index, event) }}
+                    value={"10"}
+                    checked={input.comboPrice === "10"}
+                  />
+                  <strong>CHOOSE (3) 10.25</strong>
+                </label>
 
 
-<div className="control" style={{ textAlign: "center", background: "tan" }}>
-  <label className="radio">
-    <input
-      type="radio"
-      name={"comboPrice"}
+              </div>
 
-      onChange={event =>{ handleFormChange(index, event)}}
-      value={"9"}
-    />
-    CHOOSE(2)9.25
-    </label>
-
-    <label className="radio">
-
-    <input type="radio" style={{ marginLeft: "50px" }}
-      name={"comboPrice"}
-
-      onChange={event =>{handleFormChange(index, event) }}
-      value={"10"}
-                />
-    CHOOSE (3) 10.25
-  </label>
-
-</div>
-
-<div className="is-align-content-center columns mt-3">
-  <ComboDropdown
-    choiceName="Choice1"
-    placeholder="Tamal"
-    name="choice1"
-    onChange={event => handleFormChange(index, event)}
-    value={input.choice1}
+              {
 
 
-  />
+                input.comboPrice !== "0" &&
 
-  <ComboDropdown
-    choiceName="Choice#2"
-    placeholder="Chicken Chalupa"
-    name="choice2"
-    onChange={event => handleFormChange(index, event)}
-    value={input.choice2}
+                <div className="container">
+                  <div className="topping">
+                    <input
+                      type="checkbox"
+                      name="supreme"
+                      onChange={event => handleSupremeChange(index, event)}
+                      value={""}
 
-  />
-  {
-    input.comboPrice === "10" &&
-    <ComboDropdown
-      choiceName="Choice#3"
-      placeholder="beefTaco"
-      name="choice3"
-    // value={combo.choice3}
-    // onChange={choice3Handeler}
-    />
-  }
+                    />
+                    <strong>Make Supreme</strong>
+
+                  </div>
+                  <div className="is-align-content-center columns mt-0">
+                    <div className="container">
+                      <ComboDropdown
+                        choiceName="Choice #1"
+                        placeholder="Tamal"
+                        name="choice1"
+                        onChange={event => handleFormChange(index, event)}
+                        value={input.choice1}
+                      />
+
+                      <ComboDropdown
+                        choiceName="Choice #2"
+                        placeholder="Chicken Chalupa"
+                        name="choice2"
+                        onChange={event => handleFormChange(index, event)}
+                        value={input.choice2}
+                      />
+                      {
+                        input.comboPrice === "10" &&
+                        <ComboDropdown
+                          choiceName="Choice #3"
+                          placeholder="beefTaco"
+                          name="choice3"
+                        // value={combo.choice3}
+                        // onChange={choice3Handeler}
+                        />
+                      }
 
 
-  {
-    inputFields.length > 1 &&
-    <button className="button is-danger is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "23px" }}>Remove</button>
-  }
-
-  {
-    inputFields.length - 1 === index && inputFields.length < 10 &&
-    <button className="button is-success is-small" onClick={addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "30px" }}>+</button>
-  }
-
-</div>
+                    </div>
 
 
 
+
+
+                  </div>
+
+
+
+                </div>
+
+
+              }
+              {
+                input.comboPrice !== "0" &&
+                // inputFields.length > 1 &&
+                <button type="button" className="button is-danger is-small" onClick={() => { removeCombo(index) }}
+                  style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px" }}>Remove Combo</button>
+              }
+
+              {
+                input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 4 &&
+                <>
+
+                  <button type="submit" className="button is-success is-small" onClick={addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button>
+
+                </>
+
+              }
+
+
+
+            </form>
+            <hr></hr>
           </div>
 
-</form>
-         
+
+
         )
       })
     }

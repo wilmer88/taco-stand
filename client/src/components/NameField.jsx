@@ -4,8 +4,8 @@ const NameField = (props) => {
     return (
     <section className="ml-6 field"> 
         <h6 className="mr-6 label">
-       <strong>{props.nameOfInputField}</strong> 
-        </h6>
+       {props.nameOfInputField }
+       </h6>
         <div className="is-mobile">
           <input
           className="input is-medium is-rounded"
