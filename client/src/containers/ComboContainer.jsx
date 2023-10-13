@@ -8,7 +8,11 @@ import Alert from "../components/Alert/Alert";
 
 
 const ComboContainer = () => {
-let {combo, setCombo}= useContext(ComboContext);
+const {setCombo}= useContext(ComboContext);
+let {combo}= useContext(ComboContext);
+
+
+
   const { setAlert } = useContext(alertContext);
 
   const [inputFields, setInput] = useState(
@@ -53,7 +57,14 @@ let {combo, setCombo}= useContext(ComboContext);
       console.log("now2:" + data[index][event.target.name])
     }
     setInput(data);
-    console.log(inputFields)
+    combo=inputFields
+    setCombo([combo]);
+    console.log(combo)
+  
+    // setCombo(inputFields);
+    
+    // console.log(combo)
+
 
   }
 
@@ -61,8 +72,9 @@ let {combo, setCombo}= useContext(ComboContext);
     let data = [...inputFields]
     data[index][event.target.name] = event.target.value;
     setInput(data);
-    setCombo(combo= [...inputFields]);
-    console.log(combo)
+    combo=inputFields
+    setCombo([combo]);
+    // console.log(combo)
 
 
  
@@ -81,11 +93,13 @@ let {combo, setCombo}= useContext(ComboContext);
       key: inputFields.length + 1,
     }
     setInput([...inputFields, newfield]);
-  
-
+    
+    setCombo(inputFields);
+    // setCombo(combo = inputFields);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   }
+
 
 
 

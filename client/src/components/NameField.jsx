@@ -13,7 +13,7 @@ const NameField = (props) => {
             aria-label="iput for order name"
             placeholder={props.placeholder}
             name={props.name}
-            value={props.value}
+            // value={props.value}
             onChange={props.onChange}
           />
         </div>

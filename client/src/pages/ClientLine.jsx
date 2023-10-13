@@ -14,18 +14,18 @@ const ClientLine = () => {
   const {setAlert} = useContext(alertContext);
   const [orden, setAllOrdens] = useState([]);
 
-  useEffect(() => {
-    // console.log(arg);
-        // socket.disconnect();
-     API.allOrdens().then((response ) => {
-      setAllOrdens(response.data);
-        setAlert({message:"retrived all orders", type:"is-success"});
+  // useEffect(() => {
+  //   // console.log(arg);
+  //       // socket.disconnect();
+  //    API.allOrdens().then((response ) => {
+  //     setAllOrdens(response.data);
+  //       setAlert({message:"retrived all orders", type:"is-success"});
  
-      }).catch((err) =>{ 
-          console.log(err)
-          setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
-        });
-    }, [setAlert]);
+  //     }).catch((err) =>{ 
+  //         console.log(err)
+  //         setAlert({message:"faild to to get waiting list/ usario debe iniciar sesion/ user must be signed in", type:"is-danger"})
+  //       });
+  //   }, [setAlert]);
 
 useEffect(() => {
   socket.on("myOrders",(arg)=>{

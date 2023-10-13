@@ -80,7 +80,7 @@ const App = () => {
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
-            <Route path="/orden" element={<OrdenPage />}></Route>
+            <Route path="/orden" exact element={<OrdenPage />}></Route>
             <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
 

@@ -2,10 +2,10 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import API from "../utils/API";
-// import React, { useEffect } from "react";
+// import React, { } from "react";
 import { Link } from "react-router-dom";
 // import ComboDropdown from "./comboDropdown/ComboDropdown";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import alertContext from "../context/alertContext";
 import AuthContext from "../context/AuthContext";
@@ -19,8 +19,75 @@ const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 
 const OrdenBox = () => {
+  const user = useContext(AuthContext);
 
- const comboContext1 = useContext(ComboContext);
+let combo = useContext(ComboContext);
+let comboT=combo[0]
+
+const [combo1, setCombo1]= useState([]);
+
+const [orderData, setOrderData] = useState({
+
+  nombreDeOrden: "" || user.userName,
+  combo:combo1,
+  azada: 0,
+  pollo: 0,
+  barbacoa: 0,
+  pastor: 0,
+  chorizo: 0,
+  cebolla: 0,
+  cilantro: 0,
+  pico: 0,
+  redSalsa: 0,
+  greenSalsa: 0,
+  largeHorchata: 0,
+  smallHorchata: 0,
+  coca: 0,
+  sprite: 0,
+  fanta: 0,
+});
+let ordenObj = {
+
+  nombreDeOrden: orderData.nombreDeOrden|| "" || user.userName,
+  combo:combo1,
+  azada: orderData.azada||0,
+  pollo:  orderData.pollo||0,
+  barbacoa:  orderData.barbacoa||0,
+  pastor: orderData.pastor||0,
+  chorizo:  orderData.chorizo||0,
+  cebolla:  orderData.cebolla||0,
+  cilantro:  orderData.cilantro||0,
+  pico:  orderData.pico||0,
+  redSalsa:  orderData.redSalsa||0,
+  greenSalsa:  orderData.greenSalsa||0,
+  largeHorchata:  orderData.largeHorchata||0,
+  smallHorchata:  orderData.smallHorchata||0,
+  coca: orderData.coca||0,
+  sprite: orderData.sprite||0,
+  fanta:  orderData.fanta||0,
+};
+
+
+  useEffect(()=>{
+  setCombo1(comboT);
+  setOrderData([ordenObj])
+
+
+  console.log(comboT)
+
+//   console.log(combo1)
+//   console.log(combo)
+
+//  console.log(combo1)
+
+ 
+//  console.log(ordenObj.combo)
+
+//  console.log(ordenObj.nombreDeOrden)
+console.log(orderData)
+
+ },[combo])
+
 
   async function resetState() {setOrderData({
       nombreDeOrden: "",
@@ -58,34 +125,15 @@ const OrdenBox = () => {
       allVerdurasPrice: 0,
     })};
 
-  const user = useContext(AuthContext);
-
-
-
-  const [orderData, setOrderData] = useState({
-
-    nombreDeOrden: "" || user.userName,
-    comboContext1,
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-    cebolla: 0,
-    cilantro: 0,
-    pico: 0,
-    redSalsa: 0,
-    greenSalsa: 0,
-    largeHorchata: 0,
-    smallHorchata: 0,
-    coca: 0,
-    sprite: 0,
-    fanta: 0,
-  });
-
-
   const [showModel, setshowModel] = useState("modal");
-  const openModal = (e) => {e.preventDefault(); setshowModel("modal is-active")};
+  const openModal = (e) => {
+    e.preventDefault();
+
+    if(orderData[0].nombreDeOrden==""){alert("must have name for order!")};
+    if(orderData[0].nombreDeOrden !== "" && orderData.combo.length !== 0){ setOrderData(ordenObj);  setshowModel("modal is-active");};
+
+    console.log(orderData);
+  };
   const handleClose = () => { setshowModel("modal") };
   
   const navigate = useNavigate();
@@ -220,7 +268,7 @@ const OrdenBox = () => {
                 />
               </div>
               
-<ComboContainer/>
+<ComboContainer />
 
 
 
@@ -312,8 +360,8 @@ const OrdenBox = () => {
                 subtitle="Cebolla"
                 picture="../images/onions.png"
                 name="cebolla"
-                value={orderData.cebolla}
-                topingCount={orderData.cebolla}
+                // value={orderData.cebolla}
+                // topingCount={orderData.cebolla}
                 sumar={cebollaIncrement}
                 restar={cebollaDecrement}
               />
@@ -322,8 +370,8 @@ const OrdenBox = () => {
                 subtitle="Cilantro"
                 name="cilantro"
                 picture="../images/cilantro.png"
-                topingCount={orderData.cilantro}
-                value={orderData.cilantro}
+                // topingCount={orderData.cilantro}
+                // value={orderData.cilantro}
                 sumar={cilantroIncrement}
                 restar={cilantroDecrement}
               />
@@ -332,8 +380,8 @@ const OrdenBox = () => {
                 subtitle="Pico"
                 name="pico"
                 picture="../images/pico.png"
-                topingCount={orderData.pico}
-                value={orderData.pico}
+                // topingCount={orderData.pico}
+                // value={orderData.pico}
                 sumar={picoIncrement}
                 restar={picoDecrement}
               />
@@ -342,8 +390,8 @@ const OrdenBox = () => {
                 subtitle="Green/Verde Salsa"
                 name="greenSalsa"
                 picture="../images/greenSalsa.png"
-                topingCount={orderData.greenSalsa}
-                value={orderData.greenSalsa}
+                // topingCount={orderData.greenSalsa}
+                // value={orderData.greenSalsa}
                 sumar={greenSalsaIncrement}
                 restar={greenSalsaDecrement}
               />
@@ -352,8 +400,8 @@ const OrdenBox = () => {
                 subtitle="Red/Roja Salsa"
                 name="redSalsa"
                 picture="../images/redSalsa.png"
-                topingCount={orderData.redSalsa}
-                value={orderData.greenSalsa}
+                // topingCount={orderData.redSalsa}
+                // value={orderData.greenSalsa}
                 sumar={redSalsaIncrement}
                 restar={redSalsaDecrement}
               />
@@ -368,7 +416,9 @@ const OrdenBox = () => {
 
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
                 {orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div>)}</div><hr></hr>
-                {orderData.combo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Combo#{orderData.comboContext1.comboId}: {orderData.comboContext1.choice1}</div>)}
+
+
+                {orderData.combo !== 0  && (orderData.combo?.map((ordermap) =>  <div key={ordermap.comboId} style={{ fontSize: "25px", textAlign: "left" }}>Combo#{ [  ordermap.comboId]}: {[ordermap.choice1]}, {[ordermap.choice2]},{[ordermap.supreme]}  <hr></hr> </div> ) )} 
 
 
               {orderData.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderData.azada}</div>)}
