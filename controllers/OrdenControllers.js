@@ -46,11 +46,13 @@ module.exports = {
      create: function(req,res){
       
       const orden = new Orden(req.body)
+      console.log(orden)
+
 
     Orden.create(orden)
       .then((dbOrden) => {
         
-        // console.log(dbOrden)
+        console.log(dbOrden)
        res.status(201);
        res.json(dbOrden);
        

@@ -58,17 +58,11 @@ const Footer = () => {
 
   ];
 
-
-
-
   return (
 
   
 <>
 
-
-
-  
 
       <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
         <nav

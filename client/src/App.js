@@ -22,9 +22,37 @@ import AdminDash from "./pages/admin/AdminDash";
 import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
+import OrderContext from "./context/orderDataContext";
 // import Pp from "./components/Pp/Pp"
 
 const App = () => {
+
+  const [orderDataContext, setOrderDataContext]= useState({
+    user:"",
+    nombreDeOrden: "",
+    phoneNumber:"",
+    tableNumber:"",
+    combo:[],
+    azada: 0,
+    pollo: 0,
+    barbacoa: 0,
+    pastor: 0,
+    chorizo: 0,
+    cebolla: 0,
+    cilantro: 0,
+    pico: 0,
+    redSalsa: 0,
+    greenSalsa: 0,
+    largeHorchata: 0,
+    smallHorchata: 0,
+    coca: 0,
+    sprite: 0,
+    fanta: 0,
+    cancelar:false,
+    preparada: false,
+    pagado:false,
+    
+  })
 
    const [combo, setCombo]= useState([
 {    comboId: 1,
@@ -59,6 +87,8 @@ const App = () => {
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{...combo,setCombo:setCombo}}>
+          <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
+
         <Alert/>
 
           <OrdenLevel />
@@ -68,9 +98,6 @@ const App = () => {
           <Route exact path="/myorders" element={<MyOrders />}></Route>
           <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>
           <Route exact path="/allOrders" element={<AllOrdersPage />}></Route>
-
-
-
 
           <Route exact path="/adminDash" element={<AdminDash />}></Route>
           <Route exact path="/adminSignup" element={<AdminSignUp />}></Route>
@@ -89,6 +116,8 @@ const App = () => {
              <Footer />
 
 ): null }
+          </OrderContext.Provider>
+
 
 </ComboContext.Provider>
         </alertContext.Provider>

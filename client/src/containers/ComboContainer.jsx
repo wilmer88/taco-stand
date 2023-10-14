@@ -59,7 +59,7 @@ let {combo}= useContext(ComboContext);
     setInput(data);
     combo=inputFields
     setCombo([combo]);
-    console.log(combo)
+    // console.log(combo)
   
     // setCombo(inputFields);
     

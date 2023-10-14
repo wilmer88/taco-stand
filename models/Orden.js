@@ -10,7 +10,7 @@ const OrdenSchema = new Schema({
   nombreDeOrden: {
     type: String,
     trim: true,
-    required: "nombrDeOrden is required"
+
   },
   phoneNumber:{
     type: String,
@@ -25,19 +25,15 @@ const OrdenSchema = new Schema({
  combo: [
   {
  
-    comboNumber: Number,
-    choiceNumber: Number,
+    comboId: Number,
+    comboPrice: String,
     supreme:Boolean,
     choice1:String,
     choice2:String,
     choice3:String,
   },
 ],
-  phoneNumber: {
-    type: String,
-    trim: true,
-    required: "nombrDeOrden is required"
-  },
+
   azada: {
     type: Number,
     default: 0,
