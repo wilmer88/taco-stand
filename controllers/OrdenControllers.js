@@ -3,45 +3,7 @@ const { Orden, User } = require("../models");
 const db = require("../models");
 module.exports = {
 
-      allOrdens: function(req, res) {
-        
-        // console.log(req.headers);
-//  if (!req.headers.authorization) {
-//    return res.status(401).json({
-//      error: true,
-//      data: null,
-//      message: "unauthorized user",
-//    });
-//  }
-//  jwt.verify(
-//    req.headers.authorization,
-//    process.env.SECRET,
-//    (err, decoded) => {
-//      if (err) {
-//        console.log(err);
-//        res.status(401).json({
-//          error: true,
-//          data: null,
-//          message: "bad credentials",
-//        });
-//      } else {
-//        console.log(decoded);
 
-      Orden.find(req.query).sort({_id: -1})
-       .then((foundOrden) => {
-        console.log(foundOrden)
-        res.json(foundOrden)})
-       .catch((err) =>{
-        console.log(err)
-        res.status(422)
-       .json(err)
-       });
-
-//           }
-//    }
-//  );
-
-     },  
 
      create: function(req,res){
       
@@ -50,39 +12,40 @@ module.exports = {
 
 
     Orden.create(orden)
+    
       .then((dbOrden) => {
         
-        console.log(dbOrden)
+        // console.log(dbOrden)
        res.status(201);
        res.json(dbOrden);
        
 
-       User.findOne({userName: dbOrden.nombreDeOrden})
-       .then((founUser) => {
+      //  User.findOne({userName: dbOrden.nombreDeOrden})
+      //  .then((founUser) => {
         
-         console.log(founUser);
-         console.log("found user for adding orders to it");
+      //    console.log(founUser);
+      //    console.log("found user for adding orders to it");
 
-         User.updateOne({_id: founUser._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
-         .then((updatedOrder) => {
-          console.log(updatedOrder);
-          console.log("success with pushing orders to user"); 
-          Orden.updateOne({_id: dbOrden._id},{ $push: {user: founUser._id}}, { new: true }) 
-          .then((updatedOrder) => {
-           console.log(updatedOrder);
-           console.log("success with pushing user to order"); })
-          .catch((err) => {
-            console.log(err);
-          });
-        }).catch((err) => {
-           console.log(err);
-         });
+      //    User.updateOne({_id: founUser._id},{ $push: {orders: dbOrden._id}}, { new: true }) 
+      //    .then((updatedOrder) => {
+      //     console.log(updatedOrder);
+      //     console.log("success with pushing orders to user"); 
+      //     Orden.updateOne({_id: dbOrden._id},{ $push: {user: founUser._id}}, { new: true }) 
+      //     .then((updatedOrder) => {
+      //      console.log(updatedOrder);
+      //      console.log("success with pushing user to order"); })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      //   }).catch((err) => {
+      //      console.log(err);
+      //    });
          
    
-       })
-       .catch((err) => {
-         console.log(err);
-       });
+      //  })
+      //  .catch((err) => {
+      //    console.log(err);
+      //  });
 
       })
       .catch((err) => {
@@ -150,3 +113,43 @@ module.exports = {
         
         }
 };
+
+//       allOrdens: function(req, res) {
+        
+//         // console.log(req.headers);
+// //  if (!req.headers.authorization) {
+// //    return res.status(401).json({
+// //      error: true,
+// //      data: null,
+// //      message: "unauthorized user",
+// //    });
+// //  }
+// //  jwt.verify(
+// //    req.headers.authorization,
+// //    process.env.SECRET,
+// //    (err, decoded) => {
+// //      if (err) {
+// //        console.log(err);
+// //        res.status(401).json({
+// //          error: true,
+// //          data: null,
+// //          message: "bad credentials",
+// //        });
+// //      } else {
+// //        console.log(decoded);
+
+//       Orden.find(req.query).sort({_id: -1})
+//        .then((foundOrden) => {
+//         console.log(foundOrden)
+//         res.json(foundOrden)})
+//        .catch((err) =>{
+//         console.log(err)
+//         res.status(422)
+//        .json(err)
+//        });
+
+// //           }
+// //    }
+// //  );
+
+//      },  

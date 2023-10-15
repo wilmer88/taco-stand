@@ -4,20 +4,62 @@ import { useContext } from "react";
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import OrderContext from "../../context/orderDataContext";
 import ComboContext from "../../context/ComboContext";
+import {io} from "socket.io-client";
+const IS_PROD = process.env.NODE_ENV === "production";
+const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
+const socket = io(URL);
+// import {inspect} from "util";
 
 
 const OrderModel = ()=>{
+  let combo = useContext(ComboContext);
+
+  let orderDataLet = useContext(OrderContext);
+  
+
+
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-    let combo = useContext(ComboContext);
     const [comboHolder, setComboHolder]= useState([])
+    const finalOrder= {
+      nombreDeOrden:  orderDataLet.nombreDeOrden,
+      phoneNumber:"",
+      tableNumber:"",
+      combo:orderDataLet.combo,
+      azada:orderDataLet.azada,
+      pollo: 0,
+      barbacoa: 0,
+      pastor: 0,
+      chorizo: 0,
+      cebolla: 0,
+      cilantro: 0,
+      pico: 0,
+      redSalsa: 0,
+      greenSalsa: 0,
+      largeHorchata: 0,
+      smallHorchata: 0,
+      coca: 0,
+      sprite: 0,
+      fanta: 0,
+      cancelar:false,
+      preparada: false,
+      pagado:false,
+    };
+
+    // console.log();
+
+    
+    // console.log(orderDataLet);
   async function secondFunction() {navigate("/")};
   
   const openModal = (e) => {
     e.preventDefault();
-    setComboHolder(combo[0])
+    setComboHolder(combo[0] || []);
+
+
     // console.log(combo[0])
     setshowModel("modal is-active");
     // setCombo1(comboT);
@@ -26,8 +68,14 @@ const OrderModel = ()=>{
     // console.log(orderHolder);
     // if(orderData.nombreDeOrden===""|| orderData.combo.comboPrice !== 0 || orderData[0].combo.choice1 !== ""){alert("must fill required fields")};
     // if( combo.choice1 !== ""){ setOrderData(ordenObj);  setshowModel("modal is-active");};
-
+    // console.log(finalOrder);
   };
+
+
+  
+  // console.log(finalOrder);
+
+  
 
   const handleClose = () => { setshowModel("modal") };
 
@@ -37,22 +85,30 @@ const OrderModel = ()=>{
   };
 
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+   
+
+  
     // setOrderData([ordenObj]);
     // console.log(orderData)
-    API.create([]).then((response) => {
+
+    API.create(finalOrder).then((response) => {
+      socket.emit("rs", response.data);
       firstFunction();
       // console.log(response)
       setTimeout(() => { secondFunction() }, 2000);
       setAlert({ message: "You successfully placed order!", type: "is-success" });
       // console.log(response);   
       // resetState()
-      API.allOrdens().then((response) => {
-        // console.log(response.data)
-        // socket.emit("rs", response.data);
-      })
-    }).catch((err) => { console.log(err) })
+      // API.allOrdens().then((response) => {
+      //   // console.log(response.data)
+      //   // socket.emit("rs", response.data);
+      // });
+    })
+    .catch((err) => { console.log(err) })
   };
 
   // async function resetState() {setOrderDataContext({
@@ -90,6 +146,8 @@ const OrderModel = ()=>{
   //   allVerdurasPrice: 0,
   // })};
 
+
+
     return(<>
 
 <aside id="modalll" className={`${showModel}`}>
@@ -98,10 +156,10 @@ const OrderModel = ()=>{
             <div className="box is-mobile">
 
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
-                {/* {orderData.nombreDeOrden !== 0 && (<div >{orderData.nombreDeOrden}</div>)} */}
+                {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-                  {comboHolder !== 0 && ( comboHolder.map((comboParam)=>(<div key={comboParam.comboId}>{comboParam.comboId}</div>))     )}
-              {/* {orderData.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderData.azada}</div>)} */}
+                 {comboHolder.length > 1 ?   ( comboHolder.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> }
+              {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}
               {/* {orderData.pastor !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pastor: {orderData.pastor}</div>)} */}

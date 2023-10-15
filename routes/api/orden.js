@@ -2,7 +2,7 @@ const router = require("express").Router();
 const ordenController = require("../../controllers/OrdenControllers");
 // Matches with "/api/ordens"
 router.route("/")
-.get(ordenController.allOrdens)
+// .get(ordenController.allOrdens)
 .post(ordenController.create);
 
 

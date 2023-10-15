@@ -24,8 +24,6 @@ const OrderContext = React.createContext({
         cancelar:false,
         preparada: false,
         pagado:false,
-        
-      
 
     setOrderDataContext: ()=>{},
 

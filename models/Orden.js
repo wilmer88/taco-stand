@@ -6,6 +6,8 @@ const OrdenSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
     strictPopulate: false,
+
+
   },
   nombreDeOrden: {
     type: String,
@@ -22,17 +24,7 @@ const OrdenSchema = new Schema({
   },
 
 
- combo: [
-  {
- 
-    comboId: Number,
-    comboPrice: String,
-    supreme:Boolean,
-    choice1:String,
-    choice2:String,
-    choice3:String,
-  },
-],
+ combo: [],
 
   azada: {
     type: Number,

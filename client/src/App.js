@@ -5,7 +5,7 @@ import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
 import OrdenLevel from "./components/OrdenLevel/OrdenLevel";
-import ClientLine from "./pages/ClientLine";
+import Kitchen  from "./pages/kitchen";
 import OrdenPage from "./pages/OrdenPage";
 import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import Editar from "./pages/Editar";
@@ -93,7 +93,7 @@ const App = () => {
 
           <OrdenLevel />
           <Routes>
-          <Route exact path="/ordens" element={<ClientLine />}></Route>
+          <Route exact path="/kitchen" element={<Kitchen />}></Route>
 
           <Route exact path="/myorders" element={<MyOrders />}></Route>
           <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>

@@ -69,10 +69,10 @@ const io = new Server(server, {
       socket.on("rs",(arg)=>{
         console.log("rs data bellow")
         console.log(arg)
-        socket.broadcast.emit("myOrders", {message: "working"});
+        socket.broadcast.emit("mykitchenOrders", {message: "working"});
       });
       
-      socket.on("myOrders", (arg)=> {
+      socket.on("mykitchenOrders", (arg)=> {
         console.log("myOrder socket data bellow")
         console.log(arg);
     

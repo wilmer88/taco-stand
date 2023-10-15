@@ -7,8 +7,8 @@ const clientApiCalls =
   adminOrdens: function() {
     return axios.get("/api/adminDash");
   },
-allOrdens: function() {
-    return axios.get("/api/orden");
+kitchenOrders: function() {
+    return axios.get("/api/kitchen/");
   },
   create: function(ordenData) {
     return axios.post("/api/orden", ordenData);

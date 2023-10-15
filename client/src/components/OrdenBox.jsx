@@ -23,7 +23,7 @@ let combo = useContext(ComboContext);
 let comboT=combo[0];
 const  setAllOrderDataFunction = ()=>{
   setOrderDataContext(orderContextLet)
-  console.log(orderContextLet);
+  // console.log(orderContextLet);
 };
 
   const cebollaIncrement = (event) => {

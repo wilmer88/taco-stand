@@ -5,6 +5,8 @@ const userRoutes = require("./user");
 const searchRoutes = require("./search");
 const stripeRoutes = require("./payment");
 const adminDash = require("./admin");
+const kitchen = require("./kitchen");
+
 
 router.use("/adminDash", adminDash);
 router.use("/payment", stripeRoutes);
@@ -13,7 +15,10 @@ router.use("/signup", userRoutes );
 router.use("/orden", ordenRoutes);
 router.use("/myorders", userRoutes);
 router.use("/searcho", searchRoutes);
-router.use("/unprepared", adminDash)
+router.use("/unprepared", adminDash);
+router.use("/kitchen", kitchen);
+
+
 
 
 
