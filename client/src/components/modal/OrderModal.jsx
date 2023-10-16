@@ -44,6 +44,7 @@ const OrderModel = ()=>{
       preparada: false,
       pagado:false,
     };
+    console.log(finalOrder)
 
   async function secondFunction() {navigate("/")};
   

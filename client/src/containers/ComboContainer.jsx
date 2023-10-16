@@ -55,7 +55,7 @@ let combo= useContext(ComboContext);
     }
     setInput(data);
     setCombo([data]);
-    console.log(combo)
+    // console.log(combo)
   
     // setCombo(inputFields);
     
@@ -72,7 +72,7 @@ let combo= useContext(ComboContext);
     // combo=inputFields
     setCombo([inputFields]); 
     // console.log(inputFields)  
-        console.log(combo)
+        // console.log(combo)
 
   };
 
