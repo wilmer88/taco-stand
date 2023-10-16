@@ -18,7 +18,7 @@ app.use(routes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + './client/public'));
 
-const PORT1 = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
@@ -85,7 +85,7 @@ const io = new Server(server, {
 // app.listen(PORT, () => {
 //   console.log(`server running on port ${PORT}`);
 // });
-server.listen(PORT1);
+server.listen(PORT);
 
 
 

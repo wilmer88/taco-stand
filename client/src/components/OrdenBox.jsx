@@ -2,7 +2,7 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
-import {  useContext, useEffect} from "react";
+import { useState, useContext, useEffect} from "react";
 // import alertContext from "../context/alertContext";
 // import AuthContext from "../context/AuthContext";
 // import { io } from "socket.io-client";
@@ -16,14 +16,25 @@ import OrderContext from "../context/orderDataContext";
 
 const OrdenBox = () => {
   // const user = useContext(AuthContext);
-  let orderContextLet = useContext(OrderContext);
+  const orderContextLet = useContext(OrderContext);
   const {setOrderDataContext}= useContext(OrderContext);
-  // console.log(orderContextLet);
 let combo = useContext(ComboContext);
-let comboT=combo[0];
-const  setAllOrderDataFunction = ()=>{
-  setOrderDataContext(orderContextLet)
-  // console.log(orderContextLet);
+// console.log(orderContextLet);
+const[ comboHolder, setComboHolder]= useState([])
+// console.log(combo[0]);
+
+const doOrder = (e)=> {
+  setComboHolder([combo[0]]);
+  setOrderDataContext(comboHolder);
+
+};
+// console.log(orderContextLet);
+
+
+const NameHandleChange = event => {
+  event.preventDefault()
+  const { name, value } = event.target;
+  setOrderDataContext({ ...orderContextLet, [name]: value })
 };
 
   const cebollaIncrement = (event) => {
@@ -99,16 +110,12 @@ const  setAllOrderDataFunction = ()=>{
     setOrderDataContext({ ...orderContextLet, [name]: parseInt(value) })
   };
 
-  const NameHandleChange = event => {
-    const { name, value } = event.target;
-    setOrderDataContext({ ...orderContextLet, [name]: value })
-  };
+  // useEffect((e)=>{
 
-  useEffect(()=>{
-    // console.log(comboT);
-    orderContextLet.combo=comboT
-    setAllOrderDataFunction()
-  },[comboT,orderContextLet.nombreDeOrden]);
+  //   // console.log(comboT);
+  //   doOrder()
+    
+  // },[orderContextLet.nombreDeOrden, combo[0]]);
 
   return (<>
     <main className="box is-mobile is-shadowless is-align-self-center">

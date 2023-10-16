@@ -4,15 +4,12 @@ import ComboContext from "../context/ComboContext";
 import alertContext from "../context/alertContext";
 import Alert from "../components/Alert/Alert";
 
-// import Radio from "../components/radio/Radio";
+const ComboContainer = (props) => {
 
-
-const ComboContainer = () => {
 const {setCombo}= useContext(ComboContext);
-let {combo}= useContext(ComboContext);
-
-
-
+let combo= useContext(ComboContext);
+    // console.log(combo)
+    
   const { setAlert } = useContext(alertContext);
 
   const [inputFields, setInput] = useState(
@@ -57,9 +54,8 @@ let {combo}= useContext(ComboContext);
       console.log("now2:" + data[index][event.target.name])
     }
     setInput(data);
-    combo=inputFields
-    setCombo([combo]);
-    // console.log(combo)
+    setCombo([data]);
+    console.log(combo)
   
     // setCombo(inputFields);
     
@@ -71,14 +67,13 @@ let {combo}= useContext(ComboContext);
   const handleFormChange = (index, event) => {
     let data = [...inputFields]
     data[index][event.target.name] = event.target.value;
-    setInput(data);
-    combo=inputFields
-    setCombo([combo]);
-    // console.log(combo)
+    // console.log(data)
+    setInput([...data]);
+    // combo=inputFields
+    setCombo([inputFields]); 
+    // console.log(inputFields)  
+        console.log(combo)
 
-
- 
-    
   };
 
   const addFields = (event) => {
@@ -94,14 +89,13 @@ let {combo}= useContext(ComboContext);
     }
     setInput([...inputFields, newfield]);
     
-    setCombo(inputFields);
+    setCombo(...inputFields,newfield);
+    console.log(combo)
+
     // setCombo(combo = inputFields);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   }
-
-
-
 
   return (<>
 
@@ -112,13 +106,9 @@ let {combo}= useContext(ComboContext);
       <p style={{ marginBottom: 0 }}>All combos are served with rice and beans.</p>
     </figcaption>
 
-
-
     {
       inputFields.map((input, index) => {
         return (
-
-
 
           <div className="container" key={index}>
             <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
@@ -135,7 +125,9 @@ let {combo}= useContext(ComboContext);
                   <input
                     type="radio"
                     name={"comboPrice"}
-                    onChange={event => { handleFormChange(index, event) }}
+                    // onChange={event => handleSupremeChange(index, event)}
+
+                    onChange={event => {  handleFormChange(index, event) }}
                     value={"9"}
                     checked={input.comboPrice === "9"}
                   />

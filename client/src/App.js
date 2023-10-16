@@ -27,42 +27,16 @@ import OrderContext from "./context/orderDataContext";
 
 const App = () => {
 
-  const [orderDataContext, setOrderDataContext]= useState({
-    user:"",
-    nombreDeOrden: "",
-    phoneNumber:"",
-    tableNumber:"",
-    combo:[],
-    azada: 0,
-    pollo: 0,
-    barbacoa: 0,
-    pastor: 0,
-    chorizo: 0,
-    cebolla: 0,
-    cilantro: 0,
-    pico: 0,
-    redSalsa: 0,
-    greenSalsa: 0,
-    largeHorchata: 0,
-    smallHorchata: 0,
-    coca: 0,
-    sprite: 0,
-    fanta: 0,
-    cancelar:false,
-    preparada: false,
-    pagado:false,
-    
-  })
+  const [orderDataContext, setOrderDataContext]= useState({})
 
-   const [combo, setCombo]= useState([
-{    comboId: 1,
+   const [combo, setCombo]= useState([{
+    comboId: 1,
     comboPrice: "0",
     supreme: false,
     choice1: "",
     choice2: "",
     key: 1,
-  }
-   ])
+  }])
 
 
   const [alert, setAlert] = useState({

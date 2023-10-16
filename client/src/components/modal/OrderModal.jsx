@@ -10,15 +10,11 @@ import {io} from "socket.io-client";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
-// import {inspect} from "util";
-
 
 const OrderModel = ()=>{
   let combo = useContext(ComboContext);
 
   let orderDataLet = useContext(OrderContext);
-  
-
 
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
@@ -49,17 +45,11 @@ const OrderModel = ()=>{
       pagado:false,
     };
 
-    // console.log();
-
-    
-    // console.log(orderDataLet);
   async function secondFunction() {navigate("/")};
   
   const openModal = (e) => {
     e.preventDefault();
     setComboHolder(combo[0] || []);
-
-
     // console.log(combo[0])
     setshowModel("modal is-active");
     // setCombo1(comboT);
@@ -71,12 +61,6 @@ const OrderModel = ()=>{
     // console.log(finalOrder);
   };
 
-
-  
-  // console.log(finalOrder);
-
-  
-
   const handleClose = () => { setshowModel("modal") };
 
   async function firstFunction() {
@@ -84,16 +68,9 @@ const OrderModel = ()=>{
     alert("thanks for your order/ Gracias por su orden!");
   };
 
-
-
+  // console.log(orderDataLet)
   const handleSubmit = (e) => {
     e.preventDefault();
-
-   
-
-  
-    // setOrderData([ordenObj]);
-    // console.log(orderData)
 
     API.create(finalOrder).then((response) => {
       socket.emit("rs", response.data);
@@ -145,9 +122,6 @@ const OrderModel = ()=>{
   //   fanta: 0,
   //   allVerdurasPrice: 0,
   // })};
-
-
-
     return(<>
 
 <aside id="modalll" className={`${showModel}`}>
