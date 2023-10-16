@@ -1,6 +1,6 @@
 import { useState} from "react";
 import API from "../../utils/API";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,20 +12,27 @@ const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:30
 const socket = io(URL);
 
 const OrderModel = ()=>{
+  const orderDataLet= useContext( OrderContext);
+
   let combo = useContext(ComboContext);
 
-  let orderDataLet = useContext(OrderContext);
+
 
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-    const [comboHolder, setComboHolder]= useState([])
+    const [comboHolder, setComboHolder]= useState([]);
+    const [lastFinalOrder,setLastFinalOrder]= useState({});
+    const[nameOfOrder, setNameOfOrder]= useState("");
+
+    const[azadaOrder, setAzadaOrder]= useState("");
+
     const finalOrder= {
-      nombreDeOrden:  orderDataLet.nombreDeOrden,
+      nombreDeOrden: nameOfOrder,
       phoneNumber:"",
       tableNumber:"",
-      combo:orderDataLet.combo,
-      azada:orderDataLet.azada,
+      combo:comboHolder,
+      azada:azadaOrder,
       pollo: 0,
       barbacoa: 0,
       pastor: 0,
@@ -44,15 +51,20 @@ const OrderModel = ()=>{
       preparada: false,
       pagado:false,
     };
-    console.log(finalOrder)
+    // console.log(finalOrder);
+
+    // console.log(lastFinalOrder);
+    // console.log(combo);
+
 
   async function secondFunction() {navigate("/")};
   
-  const openModal = (e) => {
-    e.preventDefault();
-    setComboHolder(combo[0] || []);
-    // console.log(combo[0])
-    setshowModel("modal is-active");
+  const openModal = () => {
+
+    console.log(finalOrder);
+    console.log(comboHolder);
+    console.log(lastFinalOrder);
+     setshowModel("modal is-active");
     // setCombo1(comboT);
     // setOrderData(ordenObj);   
     // console.log(ordenObj);
@@ -71,9 +83,8 @@ const OrderModel = ()=>{
 
   // console.log(orderDataLet)
   const handleSubmit = (e) => {
-    e.preventDefault();
 
-    API.create(finalOrder).then((response) => {
+    API.create(lastFinalOrder).then((response) => {
       socket.emit("rs", response.data);
       firstFunction();
       // console.log(response)
@@ -123,6 +134,26 @@ const OrderModel = ()=>{
   //   fanta: 0,
   //   allVerdurasPrice: 0,
   // })};
+
+
+  useEffect(()=>{
+    setComboHolder(combo[0]);
+  
+    setNameOfOrder(orderDataLet.nombreDeOrden);
+    setAzadaOrder(orderDataLet.azada);
+    // comboHolder.map(comboMap=> setComboHolder(comboMap));
+
+    // setComboHolder(combo[0].value);
+    setLastFinalOrder(finalOrder);
+
+    console.log(comboHolder);
+
+    // console.log(combo);
+    console.log(orderDataLet);
+
+    // doOrder()
+    
+  },[orderDataLet,combo, comboHolder, ]);
     return(<>
 
 <aside id="modalll" className={`${showModel}`}>

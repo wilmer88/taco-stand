@@ -3,31 +3,24 @@ import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
 import { useState, useContext, useEffect} from "react";
-// import alertContext from "../context/alertContext";
-// import AuthContext from "../context/AuthContext";
-// import { io } from "socket.io-client";
 import ComboContainer from "../containers/ComboContainer";
-import ComboContext from "../context/ComboContext";
 import OrderContext from "../context/orderDataContext";
-// const IS_PROD = process.env.NODE_ENV === "production";
-// const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
-// const socket = io(URL);
-// const socket= io.connect("https://taco-stand.herokuapp.com/");
+
 
 const OrdenBox = () => {
   // const user = useContext(AuthContext);
-  const orderContextLet = useContext(OrderContext);
   const {setOrderDataContext}= useContext(OrderContext);
-let combo = useContext(ComboContext);
+  const orderContextLet = useContext(OrderContext);
 // console.log(orderContextLet);
-const[ comboHolder, setComboHolder]= useState([])
 // console.log(combo[0]);
 
-const finalOrder= {
-  nombreDeOrden:  orderContextLet.nombreDeOrden,
+const [boxOrder, setBoxOrder]= useState({});
+
+const boxholder ={
+  nombreDeOrden: orderContextLet.nombreDeOrden,
   phoneNumber:"",
   tableNumber:"",
-  combo:comboHolder,
+  combo:[],
   azada:orderContextLet.azada,
   pollo: 0,
   barbacoa: 0,
@@ -48,31 +41,16 @@ const finalOrder= {
   pagado:false,
 };
 
-const doOrder = (event)=> {
-  // event.preventDefault();
-  setComboHolder(combo[0]);
-  setOrderDataContext(finalOrder);
-// console.log("runing");
-
-// console.log(orderContextLet);
-// console.log(comboHolder);
-
-};
-// console.log(orderContextLet);
-
 
 const NameHandleChange = event => {
-  // event.preventDefault();
-  doOrder()
-// console.log(orderContextLet);
-
+  event.preventDefault();
   const { name, value } = event.target;
-  setOrderDataContext({ ...orderContextLet, [name]: value })
+  setBoxOrder({ ...boxholder, [name]: value });
 };
 
   const cebollaIncrement = (event) => {
     event.preventDefault();
-    setOrderDataContext({ ...orderContextLet, cebolla: orderContextLet.cebolla + 1 })
+    setOrderDataContext({ ...orderContextLet, cebolla: orderContextLet.cebolla + 1 });
   };
 
   const cebollaDecrement = (event) => {
@@ -95,7 +73,8 @@ const NameHandleChange = event => {
   };
   const picoIncrement = (event) => {
     event.preventDefault();
-    setOrderDataContext({ ...orderContextLet, pico: orderContextLet.pico + 1 })
+    setOrderDataContext({ ...orderContextLet, pico: orderContextLet.pico + 1 });
+
   };
 
   const picoDecrement = (event) => {
@@ -143,12 +122,16 @@ const NameHandleChange = event => {
     setOrderDataContext({ ...orderContextLet, [name]: parseInt(value) })
   };
 
-  useEffect((e)=>{
+  useEffect(()=>{
+
+    setOrderDataContext(boxOrder);
 
     // console.log(comboT);
-    doOrder()
+    // console.log(orderContextLet);
+
+    // doOrder()
     
-  },[ combo[0]]);
+  },[boxOrder]);
 
   return (<>
     <main className="box is-mobile is-shadowless is-align-self-center">
@@ -163,7 +146,7 @@ const NameHandleChange = event => {
                   nameOfInputField="Name:"
                   placeholder="Ashley"
                   name="nombreDeOrden"
-                  value={orderContextLet.nombreDeOrden}
+                  value={boxOrder.nombreDeOrden}
                   onChange={NameHandleChange}
                 />
                 <NameField
@@ -191,7 +174,7 @@ const NameHandleChange = event => {
                 <DropDownField
                   tagg="Azada"
                   name="azada"
-                  value={orderContextLet.azada}
+                  value={boxOrder.azada}
                   onChange={tacoNdrinksHandleChange}
                 />
                 <DropDownField
