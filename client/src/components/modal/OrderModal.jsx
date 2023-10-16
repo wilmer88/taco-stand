@@ -15,52 +15,67 @@ const socket = io(URL);
 
 const OrderModel = ()=>{
   let combo = useContext(ComboContext);
-  // console.log(combo)
-  // let modelcombo= combo[0]
 
   let orderDataLet = useContext(OrderContext);
-  const {setOrderDataContext}= useContext(OrderContext);
-  console.log(orderDataLet)
-  // console.log(ordernameholder)
-  // const ordernameholder = orderDataLet.nombreDeOrden
-
   
+
+
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-    // const [comboHolder, setComboHolder]= useState([]);
-    const [finalOrder, setFinalOrder]= useState({})
-  orderDataLet.combo=combo[0]
-  async function secondFunction() {navigate("/")};
+    const [comboHolder, setComboHolder]= useState([])
+    const finalOrder= {
+      nombreDeOrden:  orderDataLet.nombreDeOrden,
+      phoneNumber:"",
+      tableNumber:"",
+      combo:orderDataLet.combo,
+      azada:orderDataLet.azada,
+      pollo: 0,
+      barbacoa: 0,
+      pastor: 0,
+      chorizo: 0,
+      cebolla: 0,
+      cilantro: 0,
+      pico: 0,
+      redSalsa: 0,
+      greenSalsa: 0,
+      largeHorchata: 0,
+      smallHorchata: 0,
+      coca: 0,
+      sprite: 0,
+      fanta: 0,
+      cancelar:false,
+      preparada: false,
+      pagado:false,
+    };
 
-  function stringify(obj) {
-    let cache = [];
-    let str = JSON.stringify(obj, function(key, value) {
-      if (typeof value === "object" && value !== null) {
-        if (cache.indexOf(value) !== -1) {
-          // Circular reference found, discard key
-          return;
-        }
-        // Store value in our collection
-        cache.push(value);
-      }
-      return value;
-    });
-    cache = null; // reset the cache
-    return str;
-  }
+    // console.log();
+
+    
+    // console.log(orderDataLet);
+  async function secondFunction() {navigate("/")};
   
   const openModal = (e) => {
     e.preventDefault();
-    // setOrdernameholder(orderDataLet.nombreDeOrden);
-    // console.log(comboHolder)
-    setOrderDataContext(orderDataLet);
-    setFinalOrder(stringify(orderDataLet))
-console.log(orderDataLet);
+    setComboHolder(combo[0] || []);
 
+
+    // console.log(combo[0])
     setshowModel("modal is-active");
-
+    // setCombo1(comboT);
+    // setOrderData(ordenObj);   
+    // console.log(ordenObj);
+    // console.log(orderHolder);
+    // if(orderData.nombreDeOrden===""|| orderData.combo.comboPrice !== 0 || orderData[0].combo.choice1 !== ""){alert("must fill required fields")};
+    // if( combo.choice1 !== ""){ setOrderData(ordenObj);  setshowModel("modal is-active");};
+    // console.log(finalOrder);
   };
+
+
+  
+  // console.log(finalOrder);
+
+  
 
   const handleClose = () => { setshowModel("modal") };
 
@@ -69,11 +84,16 @@ console.log(orderDataLet);
     alert("thanks for your order/ Gracias por su orden!");
   };
 
-  // console.log(stringify(orderDataLet))
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(stringify(orderDataLet))
+
+   
+
+  
+    // setOrderData([ordenObj]);
+    // console.log(orderData)
 
     API.create(finalOrder).then((response) => {
       socket.emit("rs", response.data);
@@ -138,7 +158,7 @@ console.log(orderDataLet);
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
                 {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-                 {/* {comboHolder.length > 1 ?   ( comboHolder.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> } */}
+                 {comboHolder.length > 1 ?   ( comboHolder.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> }
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}

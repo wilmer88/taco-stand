@@ -1,5 +1,4 @@
 * `wilmer88.github.io/blast-porfolio`
-
 ### pitch
        // debugger
 Leave in the past waiting in line waisting time, missed information when placing an order, polluting noise when ordering thru a phone, a food truck window on a busy street or a noisy restaurant.
@@ -39,6 +38,5 @@ Working React Stripe checkout payment option, Visual Studio Code, MongoDB Atlas 
     }
 
  ```
- DEVELOPED WITH Gateway GWTN141-10BL 14.1" 16GB 512GB SSD Core™ i5-1135G7 2.4GHz Win10H, Blue
 
 

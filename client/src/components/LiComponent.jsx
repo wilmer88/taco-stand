@@ -80,15 +80,6 @@ Nombre: {props.nombreDeOrden}
 <div className="card-content is-mobile ">
   <div className="table-container">
   <table className="table" >
-  <tbody >
-   <tr >
-    {/* <th > {props.combo !== 0 ?   ( props.combo.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.supreme.value}</div>))     ):<div ></div> } </th> */}
-    {props.pollo !== 0 && (<th>Pollo</th>)}
-    {props.barbacoa !== 0 && (<th>Barbacoa</th>)}
-    {props.pastor !== 0 && (<th>Pastor</th>)}
-    {props.chorizo !== 0 && (<th>Chorizo</th>)}
-</tr>
-</tbody>
    <tbody >
    <tr >
     {props.azada !== 0 && (<th >Azada</th>)}
@@ -189,7 +180,7 @@ Nombre: {props.nombreDeOrden}
   </div>
 
 
-    </>)
+    </>);
   };
   
   export default LiComponent;
