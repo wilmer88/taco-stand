@@ -25,7 +25,19 @@ const OrdenSchema = new Schema({
 
 
  combo: [],
-
+ dips: [],
+ nachos: [],
+ aLaCarte:[],
+ dinner:[],
+ fajitas:[],
+ steak:[],
+ chicken:[],
+ seaFood:[],
+ burritos:[],
+ quesadilla:[],
+ soup_N_salads:[],
+ vegetarian:[],
+ dessert:[],
   azada: {
     type: Number,
     default: 0,

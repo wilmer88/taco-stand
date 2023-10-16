@@ -31,10 +31,10 @@ const StartPage = ()=> {
  <Link to="./orden"> <button className="button is-black is-outlined">Ordene Ya!/Order Now</button></Link> 
  <br></br>
  <br></br>
- <Link to="./ordens"><button className="button is-black is-outlined">Cancelar Orden/Cancel Order</button></Link>
+ <Link to="./kitchen"><button className="button is-black is-outlined">Cancelar Orden/Cancel Order</button></Link>
  <br></br>
  <br></br>
- <Link to="./ordens"><button className="button is-black is-outlined">Ver Ordenes/See Orders</button></Link>
+ <Link to="./kitchen"><button className="button is-black is-outlined">Ver Ordenes/See Orders</button></Link>
  <br></br>
  <br></br>
  <Link to="./login"><button className="button is-black is-outlined"> Iniciar Sesion/Log In</button></Link>

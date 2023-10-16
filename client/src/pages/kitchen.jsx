@@ -3,7 +3,7 @@ import React, {useContext,useEffect, useState, } from "react";
 import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
-// import LiComponent from "../components/LiComponent";
+import LiComponent from "../components/LiComponent";
 import KitchenComponent from "../components/kitchenComponent/KitchenComponent";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
@@ -56,6 +56,16 @@ console.log("new order list");
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
             )}
         </div>
+
+        <div className="container is-align-self-auto is-size-7 mt-6">
+ {kitchenOrders.length ? (kitchenOrders.map( res =>(
+              <LiComponent key= {res._id} {...res} />
+            ))
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
+            )}
+        </div>
+        
+
 
   </> )}
 

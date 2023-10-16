@@ -2,12 +2,14 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
-import {  useContext, useEffect} from "react";
+// import {  useContext, useEffect} from "react";
+import {  useContext} from "react";
+
 // import alertContext from "../context/alertContext";
 // import AuthContext from "../context/AuthContext";
 // import { io } from "socket.io-client";
 import ComboContainer from "../containers/ComboContainer";
-import ComboContext from "../context/ComboContext";
+// import ComboContext from "../context/ComboContext";
 import OrderContext from "../context/orderDataContext";
 // const IS_PROD = process.env.NODE_ENV === "production";
 // const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
@@ -16,15 +18,15 @@ import OrderContext from "../context/orderDataContext";
 
 const OrdenBox = () => {
   // const user = useContext(AuthContext);
-  let orderContextLet = useContext(OrderContext);
+  const orderContextLet = useContext(OrderContext);
   const {setOrderDataContext}= useContext(OrderContext);
   // console.log(orderContextLet);
-let combo = useContext(ComboContext);
-let comboT=combo[0];
-const  setAllOrderDataFunction = ()=>{
-  setOrderDataContext(orderContextLet)
-  // console.log(orderContextLet);
-};
+// let combo = useContext(ComboContext);
+// let comboT=combo[0];
+// const  setAllOrderDataFunction = ()=>{
+//   setOrderDataContext(orderContextLet)
+//   // console.log(orderContextLet);
+// };
 
   const cebollaIncrement = (event) => {
     event.preventDefault();
@@ -104,11 +106,11 @@ const  setAllOrderDataFunction = ()=>{
     setOrderDataContext({ ...orderContextLet, [name]: value })
   };
 
-  useEffect(()=>{
-    // console.log(comboT);
-    orderContextLet.combo=comboT
-    setAllOrderDataFunction()
-  },[comboT,orderContextLet.nombreDeOrden]);
+  // useEffect(()=>{
+  //   // console.log(comboT);
+  //   orderContextLet.combo=comboT
+  //   setAllOrderDataFunction()
+  // },[comboT,orderContextLet.nombreDeOrden]);
 
   return (<>
     <main className="box is-mobile is-shadowless is-align-self-center">

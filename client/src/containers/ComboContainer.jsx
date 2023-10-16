@@ -8,12 +8,12 @@ import Alert from "../components/Alert/Alert";
 
 
 const ComboContainer = () => {
-const {setCombo}= useContext(ComboContext);
-let {combo}= useContext(ComboContext);
-
-
-
   const { setAlert } = useContext(alertContext);
+
+const {setCombo}= useContext(ComboContext);
+// let combo= useContext(ComboContext);
+// let comboHolder= [combo]
+    // console.log(combo)
 
   const [inputFields, setInput] = useState(
     [{
@@ -25,6 +25,7 @@ let {combo}= useContext(ComboContext);
       key: 1,
     }]
   );
+  
 
   const removeCombo = (index) => {
     const listOfCombos = [...inputFields];
@@ -57,9 +58,17 @@ let {combo}= useContext(ComboContext);
       console.log("now2:" + data[index][event.target.name])
     }
     setInput(data);
-    combo=inputFields
-    setCombo([combo]);
+    // comboHolder= inputFields;
+
     // console.log(combo)
+
+    // combo=inputFields
+    // combo.push(inputFields);
+    setCombo([inputFields]);
+
+    // console.log(combo);
+    // console.log(comboHolder);
+
   
     // setCombo(inputFields);
     
@@ -71,10 +80,17 @@ let {combo}= useContext(ComboContext);
   const handleFormChange = (index, event) => {
     let data = [...inputFields]
     data[index][event.target.name] = event.target.value;
+    // console.log(data);
+
     setInput(data);
-    combo=inputFields
-    setCombo([combo]);
-    // console.log(combo)
+    // comboHolder= inputFields;
+    // console.log(comboHolder);
+    setCombo([inputFields]);
+
+
+    // comboHolder=[inputFields]
+    // setCombo(inputFields);
+    // console.log(combo);
 
 
  
@@ -94,7 +110,7 @@ let {combo}= useContext(ComboContext);
     }
     setInput([...inputFields, newfield]);
     
-    setCombo(inputFields);
+    setCombo([...inputFields, newfield]);
     // setCombo(combo = inputFields);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
@@ -247,4 +263,3 @@ let {combo}= useContext(ComboContext);
 };
 
 export default ComboContainer;
-
