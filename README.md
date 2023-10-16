@@ -39,7 +39,6 @@ Working React Stripe checkout payment option, Visual Studio Code, MongoDB Atlas 
     }
 
  ```
-
  DEVELOPED WITH Gateway GWTN141-10BL 14.1" 16GB 512GB SSD Core™ i5-1135G7 2.4GHz Win10H, Blue
 
 
