@@ -12,27 +12,20 @@ const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:30
 const socket = io(URL);
 
 const OrderModel = ()=>{
+
   const orderDataLet= useContext( OrderContext);
-
-  let combo = useContext(ComboContext);
-
-
-
+  const combo = useContext(ComboContext);
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-    const [comboHolder, setComboHolder]= useState([]);
-    const [lastFinalOrder,setLastFinalOrder]= useState({});
-    const[nameOfOrder, setNameOfOrder]= useState("");
 
-    const[azadaOrder, setAzadaOrder]= useState("");
 
-    const finalOrder= {
-      nombreDeOrden: nameOfOrder,
+    const finalOrderHolder= {
+      nombreDeOrden: orderDataLet.nombreDeOrden,
       phoneNumber:"",
       tableNumber:"",
-      combo:comboHolder,
-      azada:azadaOrder,
+      combo:combo.combo,
+      azada: orderDataLet.azada,
       pollo: 0,
       barbacoa: 0,
       pastor: 0,
@@ -51,19 +44,17 @@ const OrderModel = ()=>{
       preparada: false,
       pagado:false,
     };
-    // console.log(finalOrder);
 
-    // console.log(lastFinalOrder);
-    // console.log(combo);
 
 
   async function secondFunction() {navigate("/")};
   
   const openModal = () => {
+    console.log(finalOrderHolder);
+  
 
-    console.log(finalOrder);
-    console.log(comboHolder);
-    console.log(lastFinalOrder);
+
+
      setshowModel("modal is-active");
     // setCombo1(comboT);
     // setOrderData(ordenObj);   
@@ -84,7 +75,7 @@ const OrderModel = ()=>{
   // console.log(orderDataLet)
   const handleSubmit = (e) => {
 
-    API.create(lastFinalOrder).then((response) => {
+    API.create(finalOrderHolder).then((response) => {
       socket.emit("rs", response.data);
       firstFunction();
       // console.log(response)
@@ -134,26 +125,23 @@ const OrderModel = ()=>{
   //   fanta: 0,
   //   allVerdurasPrice: 0,
   // })};
+  // console.log(finalOrderHolder);
+  // console.log(combo);
 
+  // useEffect(()=>{
 
-  useEffect(()=>{
-    setComboHolder(combo[0]);
-  
-    setNameOfOrder(orderDataLet.nombreDeOrden);
-    setAzadaOrder(orderDataLet.azada);
-    // comboHolder.map(comboMap=> setComboHolder(comboMap));
-
-    // setComboHolder(combo[0].value);
-    setLastFinalOrder(finalOrder);
-
-    console.log(comboHolder);
-
-    // console.log(combo);
-    console.log(orderDataLet);
-
-    // doOrder()
+  //   // setComboHolder((prev)=> prev + combo[0]);
+  //   // console.log(comboHolder);
+  //   // // comboHolder.map(comboMap=> setComboHolder(comboMap));
+  //   // // setComboHolder(combo[0].value);
+  //   // // setLastFinalOrder(finalOrder);
+  //   // // console.log(comboHolder);
+  //   // console.log(combo);
+  //   // console.log(orderDataLet);
+  //   // console.log(finalOrder)
     
-  },[orderDataLet,combo, comboHolder, ]);
+  // },[combo,orderDataLet]);
+  // console.log(combo)
     return(<>
 
 <aside id="modalll" className={`${showModel}`}>
@@ -164,7 +152,7 @@ const OrderModel = ()=>{
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
                 {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-                 {comboHolder.length > 1 ?   ( comboHolder.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> }
+                 {finalOrderHolder.combo > 1 ?   ( finalOrderHolder.combo.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> }
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}

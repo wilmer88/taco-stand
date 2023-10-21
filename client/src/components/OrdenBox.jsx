@@ -14,38 +14,14 @@ const OrdenBox = () => {
 // console.log(orderContextLet);
 // console.log(combo[0]);
 
-const [boxOrder, setBoxOrder]= useState({});
 
-const boxholder ={
-  nombreDeOrden: orderContextLet.nombreDeOrden,
-  phoneNumber:"",
-  tableNumber:"",
-  combo:[],
-  azada:orderContextLet.azada,
-  pollo: 0,
-  barbacoa: 0,
-  pastor: 0,
-  chorizo: 0,
-  cebolla: 0,
-  cilantro: 0,
-  pico: 0,
-  redSalsa: 0,
-  greenSalsa: 0,
-  largeHorchata: 0,
-  smallHorchata: 0,
-  coca: 0,
-  sprite: 0,
-  fanta: 0,
-  cancelar:false,
-  preparada: false,
-  pagado:false,
-};
 
 
 const NameHandleChange = event => {
   event.preventDefault();
   const { name, value } = event.target;
-  setBoxOrder({ ...boxholder, [name]: value });
+  setOrderDataContext({ ...orderContextLet, [name]: value });
+
 };
 
   const cebollaIncrement = (event) => {
@@ -122,16 +98,16 @@ const NameHandleChange = event => {
     setOrderDataContext({ ...orderContextLet, [name]: parseInt(value) })
   };
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    setOrderDataContext(boxOrder);
+  //   setOrderDataContext(boxOrder);
 
-    // console.log(comboT);
-    // console.log(orderContextLet);
+  //   // console.log(comboT);
+  //   // console.log(orderContextLet);
 
-    // doOrder()
+  //   // doOrder()
     
-  },[boxOrder]);
+  // },[boxOrder]);
 
   return (<>
     <main className="box is-mobile is-shadowless is-align-self-center">
@@ -146,7 +122,7 @@ const NameHandleChange = event => {
                   nameOfInputField="Name:"
                   placeholder="Ashley"
                   name="nombreDeOrden"
-                  value={boxOrder.nombreDeOrden}
+                  value={orderContextLet.nombreDeOrden}
                   onChange={NameHandleChange}
                 />
                 <NameField
@@ -174,7 +150,7 @@ const NameHandleChange = event => {
                 <DropDownField
                   tagg="Azada"
                   name="azada"
-                  value={boxOrder.azada}
+                  value={orderContextLet.azada}
                   onChange={tacoNdrinksHandleChange}
                 />
                 <DropDownField

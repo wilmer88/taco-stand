@@ -77,13 +77,15 @@ const App = () => {
     }
   }, [jwt]);
 
+  
+
   return (
     <>
       <Router>
 
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
-        <ComboContext.Provider value={{...combo,setCombo:setCombo}}>
+        <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
 
         <Alert/>
