@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
-import ComboDropdown from '../components/comboDropdown/ComboDropdown';
-import ComboContext from "../context/ComboContext";
-import alertContext from "../context/alertContext";
-import Alert from "../components/Alert/Alert";
+import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
+import ComboContext from "../../context/ComboContext";
+import alertContext from "../../context/alertContext";
+import Alert from "../../components/Alert/Alert";
 
 const ComboContainer = () => {
 
 const {setCombo}= useContext(ComboContext);
 let combo= useContext(ComboContext);
-    console.log(combo);
+    // console.log(combo);
     
   const { setAlert } = useContext(alertContext);
 
@@ -35,8 +35,8 @@ let combo= useContext(ComboContext);
       if (listOfCombos.length === 1) {
         listOfCombos[0].comboPrice = "0";
         setInput(listOfCombos);
-      }
-  }
+      };
+  };
 
   const handleSupremeChange = (index, event) => {
 
@@ -44,40 +44,25 @@ let combo= useContext(ComboContext);
     data[index][event.target.supreme] = event.currentTarget.value;
 
     if (data[index][event.target.name] === false) {
-      console.log("was1" + data[index][event.target.name]);
+      // console.log("was1" + data[index][event.target.name]);
       data[index][event.target.name] = true;
-      console.log("now1:" + data[index][event.target.name]);
+      // console.log("now1:" + data[index][event.target.name]);
       setInput(data);
-    // setCombo(combo.combo);
     }
     else if (data[index][event.target.name] === true) {
-      console.log("was2:" + data[index][event.target.name]);
+      // console.log("was2:" + data[index][event.target.name]);
       data[index][event.target.name] = false;
-      console.log("now2:" + data[index][event.target.name]);
+      // console.log("now2:" + data[index][event.target.name]);
       setInput(data);
-      // setCombo(combo.combo);
-    }
+    };
 
-    // console.log(combo)
-  
-    // setCombo(inputFields);
-    
-    // console.log(combo)
-
-
-  }
+  };
 
   const handleFormChange = (index, event) => {
     let data = [...inputFields];
     data[index][event.target.name] = event.target.value;
-    // console.log(data)
     setInput([...data]);
     setCombo([...data]); 
-
-    // combo=inputFields
-    // setCombo([inputFields]); 
-    // console.log(inputFields)  
-        // console.log(combo)
 
   };
 
@@ -95,9 +80,7 @@ let combo= useContext(ComboContext);
     setInput([...inputFields, newfield]);
     
     setCombo([...combo.combo, newfield]);
-    console.log(combo);
-
-    // setCombo(combo = inputFields);
+    // console.log(combo);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   };

@@ -1,6 +1,6 @@
 import "./SearchOrderPage.css";
 import alertContext from '../../context/alertContext';
-import Licomponent from "../../components/LiComponent";
+import Licomponent from "../../components/AdminComponent";
 import {useState, useContext} from "react";
 import API from "../../utils/API";
 

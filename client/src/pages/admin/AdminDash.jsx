@@ -1,4 +1,4 @@
-import Licomponent from "../../components/LiComponent";
+import Licomponent from "../../components/AdminComponent";
 import React, {useContext,useEffect, useState} from "react";
 import alertContext from "../../context/alertContext";
 import API from "../../utils/API";

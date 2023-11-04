@@ -3,6 +3,7 @@ import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
 import KitchenComponent from "../../components/kitchenComponent/KitchenComponent";
+import LiComponent from "../../components/AdminComponent";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
@@ -15,11 +16,18 @@ const Kitchen = () => {
 
     useEffect(() => {
     // console.log(arg);
+
+
  
      API.allOrdens().then((response ) => {
+      console.log(response.data);
+
+      console.log(response.data)
       setAllOrdens(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});
         socket.disconnect();
+
+
  
       }).catch((err) =>{ 
           console.log(err)
@@ -32,6 +40,8 @@ useEffect(() => {
 console.log("new order list");
     // socket.disconnect();
  API.allOrdens().then((response ) => {
+  console.log(response.data);
+
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
     socket.disconnect();
@@ -49,7 +59,7 @@ console.log("new order list");
   return ( <>
 <div className="container is-align-self-auto is-size-7 mt-6">
  {orden.length ? (orden.map( res =>(
-              <KitchenComponent key= {res._id} {...res} />
+              <LiComponent key= {res._id} {...res} />
             ))
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
             )}

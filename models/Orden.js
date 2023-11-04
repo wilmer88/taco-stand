@@ -129,6 +129,13 @@ OrdenSchema.virtual("canDrinkVirtual").get(function () {
   let candrinkPrice = canDrinks * 2
   return candrinkPrice;
 });
+OrdenSchema.virtual("comboVirtual").get(function () {
+  let camboCalculatedVirtual = 0;
+
+  this.combo.forEach((conbo)=>{ camboCalculatedVirtual += +conbo.comboPrice})
+ 
+  return camboCalculatedVirtual;
+});
 
 const Orden = mongoose.model("Orden", OrdenSchema);
 module.exports = Orden;

@@ -26,7 +26,7 @@ const liestilo = {
   };
 
     function editarOrden(id) {
-    console.log(id);
+    // console.log(id);
     navigate(`/orden/${id}`);
     
   };
@@ -54,9 +54,12 @@ function changeToPrepared(id) {
     console.log(err);
   })
 }
+let comboTofix =props.comboVirtual;
+// console.log(comboTofix);
+
 
   let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual;
-  let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual;
+  let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual+ props.comboVirtual;
   let tacosTofix = props.tacosVirtual;
   let fixTopings = props.topingVirtual;
   let disableVar = false;
@@ -82,11 +85,13 @@ Nombre: {props.nombreDeOrden}
   <table className="table" >
    <tbody >
    <tr >
+
     {props.azada !== 0 && (<th >Azada</th>)}
     {props.pollo !== 0 && (<th>Pollo</th>)}
     {props.barbacoa !== 0 && (<th>Barbacoa</th>)}
     {props.pastor !== 0 && (<th>Pastor</th>)}
     {props.chorizo !== 0 && (<th>Chorizo</th>)}
+
 </tr>
 </tbody>
 <tbody  >
@@ -96,6 +101,8 @@ Nombre: {props.nombreDeOrden}
 {props.barbacoa !== 0 && (<td>{props.barbacoa}</td>)}
 {props.pastor !== 0 && (<td>{props.pastor}</td>)}
 {props.chorizo !== 0 && (<td>{props.chorizo}</td>)}
+
+
 
 </tr>  
 </tbody>
@@ -143,10 +150,35 @@ Nombre: {props.nombreDeOrden}
 </tbody>
 </table>
 
+<table className="table" >
+   <tbody >
+    
+   <tr >
+
+
+    {props.combo !== 0 && (<th >Combos</th>)}
+
+</tr>
+</tbody>
+<tbody  >
+<tr  >
+
+{props.combo !== 0 ?   ( props.combo.map((comboParam)=>(<td key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</td>))     ):<td>no combo</td> }
+
+
+
+</tr>  
+</tbody>
+</table>
+
   </div>
 
     <br></br>
       <form id="liOrder">
+      {/* <div htmlFor="liOrder" style={liestilo.atras} className="label" >Combo total: <span>{comboTofix?.toFixed(2)}</span> </div> */}
+      <div htmlFor="liOrder" style={liestilo.atras} className="label" >Combo total: <span>{comboTofix}</span> </div>
+
+
     <div htmlFor="liOrder" style={liestilo.atras} className="label" >Tacos: <span>{tacosTofix?.toFixed(2)}</span> </div>
     <div htmlFor="liOrder" style={liestilo.atras} className="label">Bebidas/drinks: $<span>{aguasNsodas?.toFixed(2)}</span> </div>
     <div htmlFor="liOrder" style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </div>

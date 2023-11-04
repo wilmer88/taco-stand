@@ -58,6 +58,8 @@ Nombre: {props.nombreDeOrden}
   <table className="table" >
    <tbody >
    <tr >
+   {/* {props.combos !== 0 && (<th >Combos</th>)} */}
+
     {props.azada !== 0 && (<th >Azada</th>)}
     {props.pollo !== 0 && (<th>Pollo</th>)}
     {props.barbacoa !== 0 && (<th>Barbacoa</th>)}
@@ -67,6 +69,8 @@ Nombre: {props.nombreDeOrden}
 </tbody>
 <tbody  >
 <tr  >
+{/* {props.combo !== 0 && (props.combo.combo.map((kitchencomboOrder)=>(<td>{kitchencomboOrder}</td>)))} */}
+
 {props.azada !== 0 && (<td>{props.azada}</td>)}
 {props.pollo !== 0 && (<td>{props.pollo}</td>)}
 {props.barbacoa !== 0 && (<td>{props.barbacoa}</td>)}

@@ -24,7 +24,7 @@ const OrderModel = ()=>{
       nombreDeOrden: orderDataLet.nombreDeOrden,
       phoneNumber:"",
       tableNumber:"",
-      combo:combo.combo,
+      combo:[...combo.combo],
       azada: orderDataLet.azada,
       pollo: 0,
       barbacoa: 0,
@@ -44,13 +44,16 @@ const OrderModel = ()=>{
       preparada: false,
       pagado:false,
     };
+    // console.log(finalOrderHolder);
+    // console.log(combo.combo);
+
 
 
 
   async function secondFunction() {navigate("/")};
   
   const openModal = () => {
-    console.log(finalOrderHolder);
+    // console.log(finalOrderHolder.combo);
   
 
 
@@ -149,10 +152,10 @@ const OrderModel = ()=>{
           <div className="modal-content ">
             <div className="box is-mobile">
 
-              <div style={{ fontSize: "30px", fontWeight: "bold" }}>Esta correcta /Is this correct?
+              <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
                 {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-                 {finalOrderHolder.combo > 1 ?   ( finalOrderHolder.combo.map((comboParam)=>(<div key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div ></div> }
+                 {combo.combo !== 0 ?   ( combo.combo.map((comboParam)=>(<div key={comboParam.comboId}  style={{ fontSize: "25px", textAlign: "left" }}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div >no combo</div> }
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}
@@ -171,10 +174,10 @@ const OrderModel = ()=>{
               {/* {orderData.redSalsa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Salsa Roja: {orderData.redSalsa}</div>)} */}
               {/* {orderData.greenSalsa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Salsa Verde: {orderData.greenSalsa}</div>)} */}
               <hr></hr>
-              <button onClick={handleClose} type="button" className="button is-medium is-dark" >Cancelar</button>
+              <button onClick={handleClose} type="button" className="button is-medium is-dark" >Update Order</button>
               <br></br>
               <br></br>
-              <button style={{ fontSize: "25px" }} type="button" onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Continuar</strong></button>
+              <button style={{ fontSize: "25px" }} type="button" onClick={handleSubmit} className="button is-medium  is-primary is-light"><strong>Place Order</strong></button>
             </div>
           </div>
           <button onClick={handleClose} type="button" className="modal-close is-large" aria-label="close"></button>
@@ -184,7 +187,7 @@ const OrderModel = ()=>{
           <div className="card-footer-item">
             <span>
               <button id="modalButton" onClick={openModal} className="button is-medium is-success is-light" data-target="modal-js-example">
-                <strong>Entregar</strong>
+                <strong>Checkout</strong>
               </button>
             </span>
           </div>

@@ -2,8 +2,9 @@ import ToppingField from "./ToppingField";
 import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
+import DipsContainer from "../containers/dips/dipsContainer";
 import { useState, useContext, useEffect} from "react";
-import ComboContainer from "../containers/ComboContainer";
+import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
 
 
@@ -140,6 +141,7 @@ const NameHandleChange = event => {
                   onChange={tableHandleChange}
                 />
               </div>   
+              <DipsContainer/>
 <ComboContainer />
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
