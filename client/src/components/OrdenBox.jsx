@@ -9,6 +9,7 @@ import OrderContext from "../context/orderDataContext";
 
 
 const OrdenBox = () => {
+
   // const user = useContext(AuthContext);
   const {setOrderDataContext}= useContext(OrderContext);
   const orderContextLet = useContext(OrderContext);
@@ -142,7 +143,7 @@ const NameHandleChange = event => {
                 />
               </div>   
               <DipsContainer/>
-<ComboContainer />
+<ComboContainer/>
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
               </figcaption>

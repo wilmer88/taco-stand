@@ -130,11 +130,15 @@ OrdenSchema.virtual("canDrinkVirtual").get(function () {
   return candrinkPrice;
 });
 OrdenSchema.virtual("comboVirtual").get(function () {
-  let camboCalculatedVirtual = 0;
+  if(combo){
+    let camboCalculatedVirtual = 0;
 
-  this.combo.forEach((conbo)=>{ camboCalculatedVirtual += +conbo.comboPrice})
- 
-  return camboCalculatedVirtual;
+    this.combo.forEach((conbo)=>{ camboCalculatedVirtual += +conbo.comboPrice})
+   
+    return camboCalculatedVirtual;
+
+  }
+
 });
 
 const Orden = mongoose.model("Orden", OrdenSchema);

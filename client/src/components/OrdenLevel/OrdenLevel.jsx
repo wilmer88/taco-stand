@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const estilo = {
  nombre: {
-   background: "#98aaff",
+   background: "#e8eaf6",
 
  },
 
