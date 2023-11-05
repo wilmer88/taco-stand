@@ -3,27 +3,25 @@ import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
 import DipsContainer from "../containers/dips/dipsContainer";
-import { useState, useContext, useEffect} from "react";
+import {useContext} from "react";
+// import { useState, useContext, useEffect} from "react";
+
 import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
 
 
 const OrdenBox = () => {
-
+  console.count("i rerenderd in ordenBox");
   // const user = useContext(AuthContext);
   const {setOrderDataContext}= useContext(OrderContext);
   const orderContextLet = useContext(OrderContext);
 // console.log(orderContextLet);
 // console.log(combo[0]);
 
-
-
-
 const NameHandleChange = event => {
   event.preventDefault();
   const { name, value } = event.target;
   setOrderDataContext({ ...orderContextLet, [name]: value });
-
 };
 
   const cebollaIncrement = (event) => {

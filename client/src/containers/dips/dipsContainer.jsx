@@ -1,90 +1,80 @@
-import { useContext, useState } from "react";
-
-// import alertContext from "../../context/alertContext";
-// import Alert from "../../components/Alert/Alert";
+import { useState } from "react";
 import DipComponent from "../../components/dipComponent/DipComponent";
 
-const DipsContainer = (props) => {
+const DipsContainer = () => {
 
-    const [dipShow, setDipShow]= useState("false");
-const openDipHandelerPropFunction= ()=>{
-    console.log("working");
-    setDipShow("true");
-}
+    console.count("i rerenderd in dipsContainer");
+    // let cheeseDipHolder=0;
 
-  
-    const [dipCounter, setDipCounter]= useState(0);
 
-    const handleDipIncrement = (event) => {
-       setDipCounter( dipCounter + 1);
-       
+    const [dipShow, setDipShow]= useState(0);
+    const[dipCounterLetVar, setDipCounterLetVar]=useState(0);
+
+    const openDipHandelerPropFunction= ()=>{
+    setDipShow(1);
+
     };
 
-    const handleDipDecrement = (event)=>{
-        event.preventDefault();
-        if(dipCounter <= 0){
-            dipCounter --
-        }
+    const closeDipContainer= ()=>{
+        setDipShow(0);
     };
 
- 
+const handleDipIncrement=(event)=> {
+    event.preventDefault()
+        console.log("i work");
+        // console.log(dipCounter);
+        // cheeseDipHolder ++
 
+       setDipCounterLetVar(dipCounterLetVar + 1);
+               console.log(dipCounterLetVar);
+
+    };
+
+    // const handleDipDecrement = (event)=>{
+    //     event.preventDefault();
+    //     if(dipCounter <= 0){
+    //         dipCounter= dipCounter-1;
+    //     }
+    
     return (<>
 
         <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
             <h3 style={{ marginBottom: "10px" }}> <strong>Dips</strong></h3>
         </figcaption>
-
-
-
                     <div className="container" >
                         <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
 
-                            <div className="control" style={{ textAlign: "center", background: "tan" }}>
+                            <div  style={{ textAlign: "center", background: "tan" }}>
 
-                                <label className="checkbox">
-                                    <div className="dips">
+                                    <div className="checkbox">
                                         <input
                                             type="checkbox"
-                                            name={"normalCheeseDip"}
-                                            onClick={()=>openDipHandelerPropFunction()  }
-                                      
+                                            onChange={()=>{openDipHandelerPropFunction()}  }
+                                            checked={dipShow===1}
 
                                         />
-                                        <strong>ADD DIPS</strong>
-
+                                        <strong>View DIPS</strong>
                                     </div>
 
-                                </label>
-                                <label className="checkbox">
+                                <div className="checkbox">
                                     <input type="checkbox" style={{ marginLeft: "50px" }}
-                                        name={"closeDips"}
-                          
+                                        onChange={()=>closeDipContainer()}
+                                        checked={dipShow===0}
                                     />
-                                    <strong>REMOVE ALL DIPS </strong>
-                                </label>
-
+                                    <strong>MINIMIZE </strong>
+                                </div>
 
                             </div>
 
-
-
-
-
-
-                            {       
-
-dipShow === "true" &&
+                            {dipShow === 1 &&
 
 
 <>
-
-
 <section className="columns is-vcentered "  >
 <div className="column has-text-centered is-3">
+
     <div className="container">
-    <div className="box" style={{ width:"90%" ,alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>  </div>
+    <div className="box" style={{ width:"90%" ,alignContent: "center",  marginTop: "15px", marginBottom: "2px", }} >
 
     <div> ($4.75 ea): <mark>0</mark></div>
 </div>
@@ -212,65 +202,40 @@ dipShow === "true" &&
 
 
 
-
-
-
-
 <section className="columns is-centered " >
 
-<DipComponent/>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={()=> handleDipDecrement()}
+
+/>
 
 <div className="column has-text-centered is-3">
     <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    
-</div>
+<div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} ></div>
 <div>  (large)</div>
 <div>  Cheese Dip</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
+ <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
 <button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
 </div>
-</section>
-                        
+</div>
 
-     </>
-             } 
-                        </form>
-                        <hr></hr>
-                    </div>
+</section>
+   
+   </>
+
+   } 
+
+</form>
+
+
+ </div>
+ <hr></hr>
+
         
     </>)
 };
 
 export default DipsContainer;
-
-
-{/* <div className="box"  style={{alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-<div>0</div>
-</div>
-<div>  (large)</div>
-<div>  Cheese Dip</div>
-<button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-
-
-
-
-    <div className="box" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>0</div>
-   </div>
-<div>  (large)</div>
-<div>  Cheese Dip</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-  
-
-    
-<div className="box" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-<div>0</div>
-</div>
-<div>(large)</div>
-<div>  Cheese Dip</div>
-<button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button>  */}

@@ -3,6 +3,8 @@ import API from "../../utils/API";
 
 
 const KitchenComponent =  (props) => {
+  console.count("i rerenderd in kitchenComponent");
+
 
 const liestilo = {
   atras: {
