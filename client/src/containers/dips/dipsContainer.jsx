@@ -4,7 +4,6 @@ import DipComponent from "../../components/dipComponent/DipComponent";
 const DipsContainer = () => {
 
     console.count("i rerenderd in dipsContainer");
-    // let cheeseDipHolder=0;
 
 
     const [dipShow, setDipShow]= useState(0);
@@ -22,8 +21,6 @@ const DipsContainer = () => {
 const handleDipIncrement=(event)=> {
     event.preventDefault()
         console.log("i work");
-        // console.log(dipCounter);
-        // cheeseDipHolder ++
 
        setDipCounterLetVar(dipCounterLetVar + 1);
                console.log(dipCounterLetVar);
@@ -44,27 +41,7 @@ const handleDipIncrement=(event)=> {
                     <div className="container" >
                         <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
 
-                            <div  style={{ textAlign: "center", background: "tan" }}>
-
-                                    <div className="checkbox">
-                                        <input
-                                            type="checkbox"
-                                            onChange={()=>{openDipHandelerPropFunction()}  }
-                                            checked={dipShow===1}
-
-                                        />
-                                        <strong>View DIPS</strong>
-                                    </div>
-
-                                <div className="checkbox">
-                                    <input type="checkbox" style={{ marginLeft: "50px" }}
-                                        onChange={()=>closeDipContainer()}
-                                        checked={dipShow===0}
-                                    />
-                                    <strong>MINIMIZE </strong>
-                                </div>
-
-                            </div>
+           
 
                             {dipShow === 1 &&
 
@@ -148,8 +125,6 @@ const handleDipIncrement=(event)=> {
     </div>
 </div>
 
-
-
 <div className="column has-text-centered is-3">
     <div className="container">
     <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
@@ -227,6 +202,27 @@ handleDipIncrementPropFunction = {handleDipIncrement}
    </>
 
    } 
+    <div  style={{ textAlign: "center", background: "tan" }}>
+
+<div className="checkbox">
+    <input
+        type="checkbox"
+        onChange={()=>{openDipHandelerPropFunction()}  }
+        checked={dipShow===1}
+
+    />
+    <strong>View Dips Option</strong>
+</div>
+
+<div className="checkbox">
+<input type="checkbox" style={{ marginLeft: "50px" }}
+    onChange={()=>closeDipContainer()}
+    checked={dipShow===0}
+/>
+<strong>Minimize Dips options</strong>
+</div>
+
+</div>
 
 </form>
 
