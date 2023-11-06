@@ -6,12 +6,12 @@
 #ordenPageHero{
 
     border-style: solid;
-   
+    background-repeat: no-repeat;
     /* height: 50vh;
     width: 100vw; */
     background-repeat: no-repeat;
     background-position: center;
-    background-size:100%; 
+    background-size:cover; 
     object-fit: cover;
    
 }
@@ -19,9 +19,9 @@
 #ordenPageHero::before{
     content: "";
     background-image: url("../../../public/images/tacosHD.jpg");
-    background-size:100%; 
+    background-size:cover; 
     object-fit: cover;
-  
+    background-repeat: no-repeat;
     position: absolute;
     top: 0;
     right: 0;
