@@ -3,8 +3,9 @@ import React, {useContext,useEffect, useState, } from "react";
 import alertContext from "../context/alertContext";
 import API from "../utils/API";
 import {io} from "socket.io-client";
-import LiComponent from "../components/AdminComponent";
-import KitchenComponent from "../components/kitchenComponent/KitchenComponent";
+// import LiComponent from "../components/AdminComponent";
+// import KitchenComponent from "../components/kitchenComponent/KitchenComponent";
+import UserComponent from "../components/userComponent/UserComponent";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
@@ -21,6 +22,7 @@ const Kitchen = () => {
     // console.log(arg);
         // socket.disconnect();
      API.kitchenOrders().then((response ) => {
+      // console.log(response.data);
       setAllOrdens(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});
  
@@ -35,6 +37,8 @@ useEffect(() => {
 console.log("new order list");
     // socket.disconnect();
  API.kitchenOrders().then((response ) => {
+  console.log(response.data);
+
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
     // return socket.disconnect();
@@ -51,7 +55,7 @@ console.log("new order list");
   return ( <>
 <div className="container is-align-self-auto is-size-7 mt-6">
  {kitchenOrders.length ? (kitchenOrders.map( res =>(
-              <LiComponent key= {res._id} {...res} />
+              <UserComponent key= {res._id} {...res} />
             ))
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
             )}

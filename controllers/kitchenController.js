@@ -32,7 +32,7 @@ module.exports = {
 //      } else {
 //        console.log(decoded);
 
-  Orden.find().sort({_id: -1})
+  Orden.find()
    .then((foundOrden) => {
     console.log(foundOrden)
     res.json(foundOrden)})
@@ -47,6 +47,45 @@ module.exports = {
 //  );
 
  },  
+
+
+//  allKitchenOrdens: function(req, res) {
+        
+//   // console.log(req.headers);
+// //  if (!req.headers.authorization) {
+// //    return res.status(401).json({
+// //      error: true,
+// //      data: null,
+// //      message: "unauthorized user",
+// //    });
+// //  }
+// //  jwt.verify(
+// //    req.headers.authorization,
+// //    process.env.SECRET,
+// //    (err, decoded) => {
+// //      if (err) {
+// //        console.log(err);
+// //        res.status(401).json({
+// //          error: true,
+// //          data: null,
+// //          message: "bad credentials",
+// //        });
+// //      } else {
+// //        console.log(decoded);
+
+// Orden.find(req.query).sort({_id: -1})
+//  .then((foundOrden) => {
+//   console.log(foundOrden)
+//   res.json(foundOrden)})
+//  .catch((err) =>{
+//   console.log(err)
+//   res.status(422)
+//  .json(err)
+//  });
+
+// //           }
+// //    }
+// //  );
 
 
   // login: function (req, res) {

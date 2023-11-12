@@ -156,14 +156,14 @@ Nombre: {props.nombreDeOrden}
    <tr >
 
 
-    {props.combo !== 0 && (<th >Combos</th>)}
+    {props.combo >= 1 && (<th >Combos</th>)}
 
 </tr>
 </tbody>
 <tbody  >
 <tr  >
 
-{props.combo !== 0 ?   ( props.combo.map((comboParam)=>(<td key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</td>))     ):<td>no combo</td> }
+{props.combo >= 1 ?   ( props.combo.map((comboParam)=>(<td key={comboParam.comboId}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</td>))     ):<td></td> }
 
 
 

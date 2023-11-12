@@ -17,7 +17,7 @@ let combo= useContext(ComboContext);
       comboId: 1,
       comboPrice: "0",
       supreme: false,
-      choice1: "",
+      choice1: "nocombo created",
       choice2: "",
       key: 1,
     }]
@@ -28,13 +28,17 @@ let combo= useContext(ComboContext);
 
     if (listOfCombos.length > 1) {
       listOfCombos.splice(index, 1);
+      inputFields.splice(index,1)
       setInput(listOfCombos);
-    }
-    else
+      setCombo(listOfCombos);
+;    }
+    
 
       if (listOfCombos.length === 1) {
         listOfCombos[0].comboPrice = "0";
         setInput(listOfCombos);
+      setCombo(listOfCombos);
+
       };
   };
 
@@ -181,8 +185,8 @@ let combo= useContext(ComboContext);
                           choiceName="Choice #3"
                           placeholder="beefTaco"
                           name="choice3"
-                        // value={combo.choice3}
-                        // onChange={choice3Handeler}
+                        value={combo.choice3}
+                      onChange={event =>{handleFormChange(index, event);comboSeter(); }}
                         />
                       }
 

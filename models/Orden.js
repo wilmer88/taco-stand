@@ -25,6 +25,7 @@ const OrdenSchema = new Schema({
 
 
  combo: [],
+ dips:[],
 
   azada: {
     type: Number,
@@ -98,6 +99,10 @@ const OrdenSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  deliverdOrder: {
+    type: Boolean,
+    default: false,
+  },
   timeCreated: {
     type: Date,
     default: Date.now
@@ -130,7 +135,7 @@ OrdenSchema.virtual("canDrinkVirtual").get(function () {
   return candrinkPrice;
 });
 OrdenSchema.virtual("comboVirtual").get(function () {
-  if(combo){
+  if(this.combo.length !== 0){
     let camboCalculatedVirtual = 0;
 
     this.combo.forEach((conbo)=>{ camboCalculatedVirtual += +conbo.comboPrice})

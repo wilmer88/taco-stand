@@ -3,6 +3,7 @@ import NameField from "./NameField";
 import DropDownField from "./DropDownField";
 import OrderModel from "./modal/OrderModal";
 import DipsContainer from "../containers/dips/dipsContainer";
+import NachosContainer from "../containers/nachos/nachosContainer";
 import {useContext} from "react";
 // import { useState, useContext, useEffect} from "react";
 
@@ -142,6 +143,7 @@ const NameHandleChange = event => {
               </div>   
               <DipsContainer/>
 <ComboContainer/>
+<NachosContainer/>
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
               </figcaption>

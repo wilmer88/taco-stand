@@ -1,6 +1,8 @@
-import "../OrdenHero/hero.css";
+import "../../components/OrdenHero/hero.css";
 import "./ordenLevel.css"
 import { Link } from "react-router-dom";
+import { useContext, useState,useEffect } from "react";
+import comboContext from "../../context/ComboContext";
 
 const estilo = {
  nombre: {
@@ -11,14 +13,31 @@ const estilo = {
  cambio: {
    borderRadius: "50%"
  },
- altura: {
 
-
- }
 
 }
 
-const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-content-center" >
+const OrdenLevel = () => { 
+  const levelOrder = useContext(comboContext);
+  const [levelComboCounter , setLevelCombo]= useState(0);
+  // let levelComboCounter 
+
+
+  useEffect(()=>{
+    if(levelOrder.combo[0].comboPrice === "0"){
+      // console.log(levelOrder.combo.length);
+      setLevelCombo(levelOrder.combo.length -1)
+      // levelComboCounter = levelOrder.combo.length
+    }
+    if(levelOrder.combo[0].comboPrice !== "0"){
+      console.log(levelOrder.combo.length);
+      setLevelCombo(levelOrder.combo.length)
+      // levelComboCounter = levelOrder.combo.length
+    }
+
+  }, [levelOrder, levelComboCounter])
+
+  return ( <nav className="level  is-size-7 is-align-content-center" >
 
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/login">   
@@ -33,7 +52,7 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
         </Link>
 
         <Link className="levelHover" to="/orden"> <h3 className="label">
-            Order Now
+            Click Me to Order
          </h3><img id="santos" src={"/images/mezquitesLogo.png" }alt="" style={{ height: "65px" } }/>
          </Link> 
 
@@ -45,7 +64,7 @@ const OrdenLevel = () => { return ( <nav className="level  is-size-7 is-align-co
  
         <div className="level-item has-text-centered" style={estilo.nombre}>
         <Link className="levelHover" to="/kitchen">
-        <h3 className="label" style={estilo.altura}><i className="icofont-list icofont-2x"></i>kitchen/ Waiting list </h3></Link>
+        <h3 className="label"  style={estilo.altura}><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
         </div>
 
       </nav>);}

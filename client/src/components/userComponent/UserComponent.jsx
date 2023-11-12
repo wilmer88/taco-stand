@@ -39,6 +39,11 @@ const liestilo = {
   // let fixTopings = props.topingVirtual;
   // let disableVar = false;
   // if(props.pagado === true){disableVar = true};
+  let prepearedUserComponent 
+  if(props.preparada === false){
+    prepearedUserComponent = "No"
+
+  }
 
     return (<>
         <div className="columns is-mobile mb-6 ">
@@ -55,6 +60,8 @@ Nombre: {props.nombreDeOrden}
 </header>
 <div className="card-content is-mobile ">
   <div className="table-container">
+  <div htmlFor="liOrder" style={liestilo.atras} className="label">Ready: {String(prepearedUserComponent)} </div>
+
   
 
 

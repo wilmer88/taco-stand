@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
-import OrdenLevel from "./components/OrdenLevel/OrdenLevel";
+import OrdenLevel from "./containers/navLever/OrdenLevel";
 import Kitchen  from "./pages/kitchen";
 import OrdenPage from "./pages/OrdenPage";
 import AllOrdersPage from "./pages/allOrders/AllOrdersPage";

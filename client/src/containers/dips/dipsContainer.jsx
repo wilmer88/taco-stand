@@ -27,16 +27,23 @@ const handleDipIncrement=(event)=> {
 
     };
 
-    // const handleDipDecrement = (event)=>{
-    //     event.preventDefault();
-    //     if(dipCounter <= 0){
-    //         dipCounter= dipCounter-1;
-    //     }
+    const handleDipDecrement = (event)=>{
+        event.preventDefault();
+
+        if(dipCounterLetVar >= 1){
+
+        setDipCounterLetVar(dipCounterLetVar - 1);
+        }}
     
     return (<>
 
         <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
             <h3 style={{ marginBottom: "10px" }}> <strong>Dips</strong></h3>
+            <div>      <h6 style={{ marginBottom: 0 }}>Mezquites Dip: </h6>   <p style={{ marginBottom: 0 }}> Beef or chicken with cheese dip and pico de gallo</p></div>
+            <div>      <h6 style={{ marginBottom: 0 }}>Tejano Dip: </h6>   <p style={{ marginBottom: 0 }}> Steak, grilled chicken, shrimp and cheesedip</p></div>
+
+         
+
         </figcaption>
                     <div className="container" >
                         <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
@@ -48,130 +55,86 @@ const handleDipIncrement=(event)=> {
 
 <>
 <section className="columns is-vcentered "  >
-<div className="column has-text-centered is-3">
 
-    <div className="container">
-    <div className="box" style={{ width:"90%" ,alignContent: "center",  marginTop: "15px", marginBottom: "2px", }} >
-
-    <div> ($4.75 ea): <mark>0</mark></div>
-</div>
-<div>  (Normal)</div>
-<div>  Cheese Dip</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(Normal) Cheese Dip (4.75 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(Large) Cheese Dip ($10.00 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>  (Normal)</div>
-<div> Guacamole Dip</div>
-    <div> ($4.75 ea)</div>
-</div>
 
-    <button className="button is-rounded is-light ml-3 mr-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-      {/* <mark>   <strong style={{fontSize:"20px"}}>0</strong> </mark>      */}
-      <mark>  0 </mark>     
-
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(Normal) Gucamole Dip (4.75 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-     <mark>0</mark>
-</div>
-<div>  </div>
-<div > (Normal) Guaca Mix ($4.75 ea)</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-    
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
-
-
-
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>  (Normal)</div>
-<div>Sour Cream</div>
-<div>  <mark>0</mark>:($4.75 ea)</div> 
-</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
-
-
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(large) Gucamole Dip (9.25 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 </section>
+
+
+
 <section className="columns is-centered "  >
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>0</div>
-</div>
-<div>  (Large $8.75 ea)</div>
-<div>  Cheese Dip</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>  (large)</div>
-<div>  Guacamole Dip</div>
-<mark>0</mark>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(Normal) Guaca Mix (7.50 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
-<div>  ($11.75 ea)</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="(Large) Guaca Mix (11.75 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="Sour Cream ($1.50 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>  ($11.75 ea)</div>
-
-    <div>      <mark>  0 </mark>     
-</div>
-</div>
-<div>  (large)</div>
-<div> Guaca Mix</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="Pico De Gallo (2.25 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-    <div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-    <div>    <mark>  0 </mark>        
-</div>
-    $8.75 ea
-</div>
-<div>  (Normal)</div>
-<div>Pico De Gallo</div>
-    <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-    </div>
-</div>
+
 
 </section>
 
@@ -181,21 +144,38 @@ const handleDipIncrement=(event)=> {
 
 <DipComponent 
 dipCounterprop={dipCounterLetVar}
+dipName="Chorizo Dip (6.50 ea)"
 // onClick = {handleDipIncrement()}
 handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={()=> handleDipDecrement()}
-
+handleDipDecrementProp ={handleDipDecrement}
 />
 
-<div className="column has-text-centered is-3">
-    <div className="container">
-<div className="box" style={{  alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} ></div>
-<div>  (large)</div>
-<div>  Cheese Dip</div>
- <button className="button is-rounded is-light ml-3" ><strong style={{fontSize:"26px"}}>+</strong></button>
-<button className="button is-info is-rounded ml-3" ><strong style={{fontSize:"19px"}}>-</strong></button> 
-</div>
-</div>
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="Bean Dip (5.25 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
+
+
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="El Mezquites Dip (6.75 ea) "
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
+
+
+
+<DipComponent 
+dipCounterprop={dipCounterLetVar}
+dipName="Tejano Dip (8.25 ea)"
+// onClick = {handleDipIncrement()}
+handleDipIncrementPropFunction = {handleDipIncrement}
+handleDipDecrementProp ={handleDipDecrement}
+/>
 
 </section>
    

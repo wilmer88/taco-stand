@@ -15,6 +15,7 @@ const OrderModel = ()=>{
 
   const orderDataLet= useContext( OrderContext);
   const combo = useContext(ComboContext);
+  const [combomodal, setCombomoadal]= useState([])
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
@@ -24,7 +25,7 @@ const OrderModel = ()=>{
       nombreDeOrden: orderDataLet.nombreDeOrden,
       phoneNumber:"",
       tableNumber:"",
-      combo:[...combo.combo],
+      combo:combomodal,
       azada: orderDataLet.azada,
       pollo: 0,
       barbacoa: 0,
@@ -46,6 +47,8 @@ const OrderModel = ()=>{
     };
     // console.log(finalOrderHolder);
     // console.log(combo.combo);
+    // console.log(finalOrderHolder.combo);
+
 
 
 
@@ -53,6 +56,7 @@ const OrderModel = ()=>{
   async function secondFunction() {navigate("/")};
   
   const openModal = () => {
+    setCombomoadal(combo.combo)
     // console.log(finalOrderHolder.combo);
   
 
@@ -70,18 +74,20 @@ const OrderModel = ()=>{
 
   const handleClose = () => { setshowModel("modal") };
 
-  async function firstFunction() {
+  async function firstFunction(e) {
+    console.log(finalOrderHolder)
     handleClose();
     alert("thanks for your order/ Gracias por su orden!");
   };
 
   // console.log(orderDataLet)
   const handleSubmit = (e) => {
+    
 
     API.create(finalOrderHolder).then((response) => {
       socket.emit("rs", response.data);
       firstFunction();
-      // console.log(response)
+      console.log(response);
       setTimeout(() => { secondFunction() }, 2000);
       setAlert({ message: "You successfully placed order!", type: "is-success" });
       // console.log(response);   
@@ -144,8 +150,11 @@ const OrderModel = ()=>{
   //   // console.log(finalOrder)
     
   // },[combo,orderDataLet]);
-  // console.log(combo)
+  // console.log(combo.combo.length);
+    // console.log(finalOrderHolder.combo);
+
     return(<>
+  
 
 <aside id="modalll" className={`${showModel}`}>
           <div className="modal-background"></div>
@@ -155,7 +164,10 @@ const OrderModel = ()=>{
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
                 {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-                 {combo.combo !== 0 ?   ( combo.combo.map((comboParam)=>(<div key={comboParam.comboId}  style={{ fontSize: "25px", textAlign: "left" }}>combo#{comboParam.comboId}: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):<div >no combo</div> }
+                 {combo.combo[0].comboPrice !== "0" ?   ( combo.combo.map((comboParam )=>(<div key={comboParam.comboId } style={{ fontSize: "25px", textAlign: "left" }}>combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))     ):
+                  <div >no Combos</div>  
+                  //  {if(combpPrice.value !== "0"){}}
+                   }
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}
