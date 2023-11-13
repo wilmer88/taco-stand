@@ -26,17 +26,17 @@ const Editar = () => {
   const { ordenId } = useParams();
   const navigate =  useNavigate();
  
-  useEffect(() => {
-    API.getOrden(ordenId).then((response) => {
-      console.log(response.data);
-      console.log(response.data.nombreDeOrden);
+  // useEffect(() => {
+  //   API.getOrden(ordenId).then((response) => {
+  //     console.log(response.data);
+  //     console.log(response.data.nombreDeOrden);
 
-       setFormObj(response.data);
-       setEditName(response.data.nombreDeOrden)
-     }).catch((err) =>{ 
-      console.log(err);
-    });
-   }, [ordenId]);
+  //      setFormObj(response.data);
+  //      setEditName(response.data.nombreDeOrden)
+  //    }).catch((err) =>{ 
+  //     console.log(err);
+  //   });
+  //  }, [ordenId]);
 
   function handleChangeI(e) {
     const { name, value } = e.target;
@@ -99,6 +99,7 @@ const Editar = () => {
   let canDrinkTotal= canDrinkTogether * 2;
   let togetherTotal = canDrinkTotal + aguaPrice + tacoPrice + topingPrice
   // console.log(topingPrice)
+  console.count("i rerenderd in ordenBox");
 
   return (<>
 <div  className="columns is-mobile  is-size-7" style={liestilo.editpadding}>

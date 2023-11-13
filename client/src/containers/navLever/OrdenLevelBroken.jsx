@@ -1,11 +1,20 @@
 import "../../components/OrdenHero/hero.css";
-import "./ordenLevel.css";
-// import { Text, View } from 'react-native';
+import "./ordenLevel.css"
 import { Link } from "react-router-dom";
 import { useContext, useState,useEffect, } from "react";
 import comboContext from "../../context/ComboContext";
-// import { HashLink } from "react-router-hash-link";
-// import { NavigationContainer } from '@react-navigation/native';
+import { HashLink } from "react-router-hash-link";
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const footerStyling= {
+    fontweightTooSkiny: {
+      fontWeight: "600",
+  
+    },
+    footerpadding:{
+      padding: "25px"
+    }
+  
+  }
 
 const estilo = {
 
@@ -27,6 +36,12 @@ const estilo = {
 const OrdenLevel = () => { 
 
   console.count("i rerenderd in ordenBox");
+
+  const linkStateW= [
+    { name: "Home/Inicio", href: "#codimentsSection", },
+
+
+  ];
   const [navmodal, setNavmodal]= useState("modal");
 
   const levelOrder = useContext(comboContext);
@@ -61,7 +76,7 @@ const OrdenLevel = () => {
 
   return (<>
     
-    <div className="container" style={{height:"100%"}} >
+    <div className="container"  >
           <nav className="navbar is-fixed-top level   is-size-7 is-align-content-center" >
    
 
@@ -94,20 +109,9 @@ const OrdenLevel = () => {
        <Link className="levelHover" to="/kitchen">
        <h3 className="label"  style={estilo.altura}><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
        </div>
-     </nav>
-     <hr></hr>
-    </div>
 
 
-
-
-
-
-
-
-
-
-    <aside id="navLevelmodal" className={`${navmodal}`} >
+<aside id="navLevelmodal" className={`${navmodal}`}>
 <div className="columns">
 <div className="column is-full">
 <div className="modal-background"></div>
@@ -119,12 +123,49 @@ const OrdenLevel = () => {
      </div>
 </div>
 </div>
-
 </aside>
+     </nav>
+     
+
+
+     <hr></hr>
+
+
+    </div>
+    <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
+        <nav
+          className="navbar is-mobile tabs is-centered  is-fixed-bottom  "
+          aria-label="breadcrumbs"
+        >
+          <ul className="nav nav-tabs mb-4 ">
+            {linkStateW.map((item) => (
+              <li toggle="tab" className="nav-item" key={item.name} style={footerStyling.fontweightTooSkiny}>
+                <HashLink
+                  to={item.href}
+                  className={({ isActive }) => {
+                    return "is-toggle " + !isActive
+                      ? "navbar-item nav-link " 
+                      : "nav-link nav-item active is-active tabs-boxed-link-hover-background-color ";
+                  }}
+                >
+                 <p>{item.name}</p> 
+                </HashLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+
+
+
+
+
+
+
 
 
   
 </>);}
 
 export default OrdenLevel;
-

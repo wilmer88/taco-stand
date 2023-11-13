@@ -18,7 +18,7 @@ Working React Stripe checkout payment option, Visual Studio Code, MongoDB Atlas 
  
 [this is the link to the page](https://taco-stand.herokuapp.com/)
 ![screenshot](/client/public/images/casa.png)
-![screenshot](/client/public/images/ordenar.png)
+![screenshot](/client/public/images/ordenar.webp)
 ![screenshot](/client/public/images/auth.png)
 ![screenshot](/client/public/images/alloredens.png)
 ![screenshot](/client/public/images/edit.png)

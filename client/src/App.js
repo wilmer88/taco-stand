@@ -1,4 +1,3 @@
-// import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import AuthContext from "./context/AuthContext";
@@ -13,7 +12,6 @@ import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders"
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
-// import TacoBlockContext from "./utils/TacoContext";
 import Payment from "./pages/Payment/Payment";
 import Alert from "./components/Alert/Alert";
 import alertContext from "./context/alertContext";
@@ -23,7 +21,6 @@ import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import OrderContext from "./context/orderDataContext";
-// import Pp from "./components/Pp/Pp"
 
 const App = () => {
 
@@ -90,7 +87,7 @@ const App = () => {
 
         <Alert/>
 
-          <OrdenLevel />
+          <OrdenLevel style={{marginTop:"10px"}} />
           <Routes>
           <Route exact path="/kitchen" element={<Kitchen />}></Route>
 

@@ -9,6 +9,9 @@ import {useContext} from "react";
 
 import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
+// import { HashLink } from "react-router-hash-link";
+// import { Link } from "react-router-dom";
+
 
 
 const OrdenBox = () => {
@@ -111,8 +114,9 @@ const NameHandleChange = event => {
   // },[boxOrder]);
 
   return (<>
+
     <main className="box is-mobile is-shadowless is-align-self-center">
-      <section className="card">
+      <section className="card" >
 
         <article className="card-content">
           <aside className="m-3 content" >
@@ -143,7 +147,7 @@ const NameHandleChange = event => {
               </div>   
               <DipsContainer/>
 <ComboContainer/>
-<NachosContainer/>
+<NachosContainer id="NachosSection"/>
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
               </figcaption>
@@ -187,7 +191,7 @@ const NameHandleChange = event => {
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Bebidas</strong></h3>
               </figcaption>
-              <div className="columns mt-3">
+              <section id="codimentsSection" className="columns mt-3">
 
                 <DropDownField
                   tagg="Horchata Grande"
@@ -220,17 +224,17 @@ const NameHandleChange = event => {
                   onChange={tacoNdrinksHandleChange}
                 />
 
-              </div>
+              </section>
             </div>
             <hr></hr>
-            <div className="container mt-3">
-              <figcaption>
+            <div  className="container mt-3">
+              <figcaption  >
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Condimentos</strong></h3>
               </figcaption>
 
               <ToppingField
                 subtitle="Cebolla"
-                picture="../images/onions.png"
+                picture="../images/onions_1.webp"
                 name="cebolla"
                 value={orderContextLet.cebolla}
                 topingCount={orderContextLet.cebolla}
@@ -241,9 +245,9 @@ const NameHandleChange = event => {
               <ToppingField
                 subtitle="Cilantro"
                 name="cilantro"
-                picture="../images/cilantro.png"
+                picture="../images/cilantro.webp"
                 // topingCount={orderData.cilantro}
-                // value={orderData.cilantro}
+                value={orderContextLet.cilantro}
                 sumar={cilantroIncrement}
                 restar={cilantroDecrement}
               />
@@ -251,7 +255,7 @@ const NameHandleChange = event => {
               <ToppingField
                 subtitle="Pico"
                 name="pico"
-                picture="../images/pico.png"
+                picture="../images/pico.webp"
                 topingCount={orderContextLet.pico}
                 value={orderContextLet.pico}
                 sumar={picoIncrement}
@@ -261,7 +265,7 @@ const NameHandleChange = event => {
               <ToppingField
                 subtitle="Green/Verde Salsa"
                 name="greenSalsa"
-                picture="../images/greenSalsa.png"
+                picture="../images/greenSalsa.webp"
                 topingCount={orderContextLet.greenSalsa}
                 value={orderContextLet.greenSalsa}
                 sumar={greenSalsaIncrement}
@@ -276,12 +280,13 @@ const NameHandleChange = event => {
                 value={orderContextLet.greenSalsa}
                 sumar={redSalsaIncrement}
                 restar={redSalsaDecrement}
+               
               />
             </div>
 
           </aside>
         </article>
-        <OrderModel/>
+        <OrderModel />
 
       </section>
     </main>

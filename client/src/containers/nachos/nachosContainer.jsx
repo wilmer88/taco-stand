@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import bulmacollapsible from '@creativebulma/bulma-collapsible';
+import bulmaCollapsible from '@creativebulma/bulma-collapsible';
+
 
 const NachosContainer=()=>{
+  console.count("i rerenderd in nachos");
+
   const collapsiblesref = useRef(null);
   const [isopen, setIsopen] = useState("is-invisible");
 
@@ -15,7 +18,7 @@ const NachosContainer=()=>{
   }
 
   useEffect(() => {
-    bulmacollapsible.attach(".is-collapsible", {
+    bulmaCollapsible.attach(".is-collapsible", {
      container: collapsiblesref.current });
    }, [])
 
@@ -40,13 +43,10 @@ const NachosContainer=()=>{
     
     <div id="collapsible-card" className={`is-collapsible ${isopen}`}>
         <div className="card-content">
-      <p className="title is-5">
+      <div className="title is-5">
         Cheese Dip:
-        </p>
+        </div>
         <p className="subtitle is-6" >(Half 5.00)(Full 6.25)</p> 
-
-         
-     
        </div>
     </div>
 
@@ -67,34 +67,6 @@ export default NachosContainer;
 
 
 
-   {/* 
-   <p className="title is-4" style={{ marginBottom: 0 }}>Beans Nachos:  </p> 
-    <p className="subtitle is-5" >(Half 5.00)(Full 6.25)</p> 
-   <p className="title is-4" style={{ marginBottom: 0 }}>Beaf Nachos:  </p>
-     <p className="subtitle is-5">(Half 5.50)(Full 7.50)</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>Chicken Nachos:  </p> 
-       <p className="subtitle is-5" >(Half 5.50)(Full 7.50)</p>
-          <p className="title is-4" style={{ marginBottom: 0 }}>Chicken And Bean Nachos:  </p>
-           <p className="subtitle is-5" >(Half 5.50)(Full 7.50)</p>
-           <p className="title is-4" style={{ marginBottom: 0 }}>Chicken And Beef Nachos:  </p>
-           <p className="subtitle is-5" >(Half 5.00)(Full 6.25)</p>
-     <p className="title is-4" style={{ marginBottom: 0 }}>Nachos Supreme:  </p>
-      <p className="subtitle is-5">Choice of beef or Chincken. Served with beans lettuce, soure cream, tomatoes, and guacamole. (Half 5.50)(Full 7.50)</p>
   
-
-
-          <p className="title is-4" style={{ marginBottom: 0 }}>Nachos Fajita:   </p>
-      <p className="subtitle is-5" >Cooked with bell peppers, onions, and tomatoes</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>Steak  </p>
-      <p className="subtitle is-5" >(Half 8.25)(Full 9.75)</p>
-      <p className="title is-4"  style={{ marginBottom: 0 }}>Grilled Chicken  </p>
-      <p className="subtitle is-5" >(Half 7.75)(Full 9.25)</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>Shrimp  </p>
-      <p className="subtitle is-5">(Half 8.75)(Full 11.25)</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>Mix  </p>
-      <p className="subtitle is-5">(Half 8.50)(Full 10.75)</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>Tejano </p>
-      <p className="subtitle is-5">(Half 8.75)(Full 11.25)</p>
-      <p className="title is-4" style={{ marginBottom: 0 }}>* add Supreme 2.50  *add Pineapple 2.00</p> */}
-
+  
 

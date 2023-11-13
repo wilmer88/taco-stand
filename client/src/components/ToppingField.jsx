@@ -4,7 +4,7 @@ const ToppingField = (props) => {
     return (<>
    
              
-       <article className="columns is-mobile field is-grouped">
+       <article  className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
 
          <figure className="content image is-96x96 mr-1 mb-6">  

@@ -14,10 +14,7 @@ const footerStyling= {
   footerpadding:{
     padding: "25px"
   }
-  // bottomMarginFooter: {
-  //   marginBottom: "60px"
 
-  // }
 }
 
 const Footer = () => {
@@ -26,26 +23,6 @@ const Footer = () => {
  let userparam = user.userName;
 
 
-//   const pxhi = {
-//     fonte:{
-// isActive:"background: blue"
-//     }
-//   };
-//   const { index, setIndex } = useState(0);
-
-//   const setEstado0 = () =>{setIndex(0)}
-//   const setEstado1 = () =>{setIndex(1)}
-
- 
-
-  // const linkState= [
-  //   { name: "Home/Inicio", href: "/", classe: `${index===0?'nav-item isActive':null}`, onklic: ()=>setIndex(0)},
-  //   { name: "Waiting list/Fila", href: "/ordens", classe: ` ${index===1?'nav-item active':null}`, onklic: ()=>setIndex(1) },
-  //   { name: "Order/Ordenar", href: "/orden", classe: ` ${index===2?'nav-item active':null}`, onklic: ()=>setIndex(2) },
-  //   { name: "Search/Buscar", href: "/searcho", classe: ` ${index===3?'nav-item active':null}`, onklic: ()=>setIndex(3) },
-  //   { name: "Incribirse-Signup", href: "/signup", classe: ` ${index===4?'nav-item active':null}`, onklic: ()=>setIndex(4) },
-  //   { name: "Log-In/Iniciar-Sesion", href: "/login", classe:` ${index===5?'nav-item active':null}`, onklic: ()=>setIndex(5) },
-  // ];
   const linkState= [
     { name: "Home/Inicio", href: "/", },
     { name: "My Orders/ Mi Ordenes", href: "/myorders/"+ userparam},
@@ -58,10 +35,7 @@ const Footer = () => {
 
   ];
 
-  return (
-
-  
-<>
+  return (<>
 
 
       <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
@@ -87,7 +61,8 @@ const Footer = () => {
           </ul>
         </nav>
       </div>
-    </>
-  );
+
+
+    </>);
 };
 export default Footer;
