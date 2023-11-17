@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3001/ ",
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@creativebulma/bulma-collapsible": "^1.0.4",
+    "@icon/icofont": "^1.0.1-alpha.1",
     "@svgr/webpack": "^6.5.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/user-event": "^13.5.0",

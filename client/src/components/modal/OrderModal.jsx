@@ -1,6 +1,6 @@
 import { useState} from "react";
 import API from "../../utils/API";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,8 @@ const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:30
 const socket = io(URL);
 
 const OrderModel = ()=>{
+  console.count("i rerenderd in OrdenModal");
+
 
   const orderDataLet= useContext( OrderContext);
   const combo = useContext(ComboContext);

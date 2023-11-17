@@ -88,6 +88,8 @@ let combo= useContext(ComboContext);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   };
+  console.count("i rerenderd in combo container");
+
 
   const comboSeter= ()=>{
     setTimeout(() => {setCombo(inputFields);

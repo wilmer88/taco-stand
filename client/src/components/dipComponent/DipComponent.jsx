@@ -1,8 +1,7 @@
-// import React, { useState } from "react";
 import React from "react";
 
-const DipComponent = (props) => {
-  console.count("i rerenderd in DipComponet");
+const DipComponent =  (props) => {
+//   console.count("i rerenderd in DipComponet");
 
     return(<>
 
@@ -29,5 +28,6 @@ const DipComponent = (props) => {
     </>)
 };
 
-export default DipComponent 
+export default React.memo(DipComponent);
+
 

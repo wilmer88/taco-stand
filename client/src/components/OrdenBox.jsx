@@ -5,13 +5,9 @@ import OrderModel from "./modal/OrderModal";
 import DipsContainer from "../containers/dips/dipsContainer";
 import NachosContainer from "../containers/nachos/nachosContainer";
 import {useContext} from "react";
-// import { useState, useContext, useEffect} from "react";
-
 import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
-// import { HashLink } from "react-router-hash-link";
-// import { Link } from "react-router-dom";
-
+import React from "react";
 
 
 const OrdenBox = () => {
@@ -19,8 +15,6 @@ const OrdenBox = () => {
   // const user = useContext(AuthContext);
   const {setOrderDataContext}= useContext(OrderContext);
   const orderContextLet = useContext(OrderContext);
-// console.log(orderContextLet);
-// console.log(combo[0]);
 
 const NameHandleChange = event => {
   event.preventDefault();
@@ -102,20 +96,11 @@ const NameHandleChange = event => {
     setOrderDataContext({ ...orderContextLet, [name]: parseInt(value) })
   };
 
-  // useEffect(()=>{
-
-  //   setOrderDataContext(boxOrder);
-
-  //   // console.log(comboT);
-  //   // console.log(orderContextLet);
-
-  //   // doOrder()
-    
-  // },[boxOrder]);
-
   return (<>
 
-    <main className="box is-mobile is-shadowless is-align-self-center">
+
+    <main className="box is-mobile is-shadowless is-align-self-center mt-6">
+
       <section className="card" >
 
         <article className="card-content">
@@ -143,16 +128,22 @@ const NameHandleChange = event => {
                   name="tableNumber"
                   value={orderContextLet.tableNumber}
                   onChange={tableHandleChange}
+                 
                 />
               </div>   
-              <DipsContainer/>
+              <div id="nachitos" >
+</div>
+<DipsContainer  />
+
+              <  NachosContainer />
+              
 <ComboContainer/>
-<NachosContainer id="NachosSection"/>
-              <figcaption>
-                <h3 style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
+
+              <figcaption >
+                <h3 id="tacos"  style={{ textAlign: "center", background: "lightyellow", marginTop: "20px" }} > <strong>Tacos</strong></h3>
               </figcaption>
 
-              <div className="is-align-content-center columns mt-3">
+              <div  className="is-align-content-center columns mt-3">
 
                 <DropDownField
                   tagg="Azada"
@@ -227,7 +218,7 @@ const NameHandleChange = event => {
               </section>
             </div>
             <hr></hr>
-            <div  className="container mt-3">
+            <div id='ALaCarta' className="container mt-3">
               <figcaption  >
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Condimentos</strong></h3>
               </figcaption>
@@ -292,4 +283,4 @@ const NameHandleChange = event => {
     </main>
 
    </>);}
-export default OrdenBox;
+export default React.memo(OrdenBox);

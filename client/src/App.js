@@ -23,6 +23,8 @@ import ComboContext from "./context/ComboContext";
 import OrderContext from "./context/orderDataContext";
 
 const App = () => {
+  console.count("i rerenderd in App.js");
+
 
   const [orderDataContext, setOrderDataContext]= useState( {
     nombreDeOrden: "",
@@ -86,8 +88,16 @@ const App = () => {
           <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
 
         <Alert/>
+<div className="columns ">
+  <div className="column">
+  <div className="container is-max-fullhd">
+  <OrdenLevel  />
 
-          <OrdenLevel style={{marginTop:"10px"}} />
+  </div>
+
+
+  </div>
+</div>
           <Routes>
           <Route exact path="/kitchen" element={<Kitchen />}></Route>
 

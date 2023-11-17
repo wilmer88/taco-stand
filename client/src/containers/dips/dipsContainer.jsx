@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DipComponent from "../../components/dipComponent/DipComponent";
+import React from "react";
 
 const DipsContainer = () => {
 
@@ -9,7 +10,7 @@ const DipsContainer = () => {
     const [dipShow, setDipShow]= useState(0);
     const[dipCounterLetVar, setDipCounterLetVar]=useState(0);
 
-    const openDipHandelerPropFunction= ()=>{
+    const openDipHandelerPropFunction=  ()=>{
     setDipShow(1);
 
     };
@@ -66,30 +67,30 @@ handleDipDecrementProp ={handleDipDecrement}
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(Large) Cheese Dip ($10.00 ea)"
+// dipCounterprop={""}
+// dipName="(Large) Cheese Dip ($10.00 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(Normal) Gucamole Dip (4.75 ea)"
+// dipCounterprop={""}
+// dipName="(Normal) Gucamole Dip (4.75 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(large) Gucamole Dip (9.25 ea)"
+// dipCounterprop={""}
+// dipName="(large) Gucamole Dip (9.25 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 </section>
@@ -99,37 +100,37 @@ handleDipDecrementProp ={handleDipDecrement}
 <section className="columns is-centered "  >
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(Normal) Guaca Mix (7.50 ea)"
+// dipCounterprop={""}
+// dipName="(Normal) Guaca Mix (7.50 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(Large) Guaca Mix (11.75 ea)"
+// dipCounterprop={""}
+// dipName="(Large) Guaca Mix (11.75 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="Sour Cream ($1.50 ea)"
+// dipCounterprop={""}
+// dipName="Sour Cream ($1.50 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="Pico De Gallo (2.25 ea)"
+// dipCounterprop={""}
+// dipName="Pico De Gallo (2.25 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
@@ -143,38 +144,38 @@ handleDipDecrementProp ={handleDipDecrement}
 <section className="columns is-centered " >
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="Chorizo Dip (6.50 ea)"
+// dipCounterprop={""}
+// dipName="Chorizo Dip (6.50 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="Bean Dip (5.25 ea)"
+// dipCounterprop={""}
+// dipName="Bean Dip (5.25 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="El Mezquites Dip (6.75 ea) "
+// dipCounterprop={""}
+// dipName="El Mezquites Dip (6.75 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 
 
 <DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="Tejano Dip (8.25 ea)"
+// dipCounterprop={""}
+// dipName="Tejano Dip (8.25 ea)"
 // onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
+// handleDipIncrementPropFunction = {handleDipIncrement}
+// handleDipDecrementProp ={handleDipDecrement}
 />
 
 </section>
@@ -189,6 +190,7 @@ handleDipDecrementProp ={handleDipDecrement}
         type="checkbox"
         onChange={()=>{openDipHandelerPropFunction()}  }
         checked={dipShow===1}
+        name="checked"
 
     />
     <strong>View Dips Option</strong>
@@ -198,6 +200,8 @@ handleDipDecrementProp ={handleDipDecrement}
 <input type="checkbox" style={{ marginLeft: "50px" }}
     onChange={()=>closeDipContainer()}
     checked={dipShow===0}
+    name="unchecked"
+
 />
 <strong>Minimize Dips options</strong>
 </div>

@@ -13,8 +13,6 @@ const socket = io(URL);
 
 const Kitchen = () => {
 
-
-
   const {setAlert} = useContext(alertContext);
   const [kitchenOrders, setAllOrdens] = useState([]);
 
@@ -33,6 +31,13 @@ const Kitchen = () => {
     }, [setAlert]);
 
 useEffect(() => {
+  
+
+
+  socket.on("connect_error", (err) => {
+    console.log(`connect_error due to ${err.message}`);
+  });
+
   socket.on("mykitchenOrders",(arg)=>{
 console.log("new order list");
     // socket.disconnect();

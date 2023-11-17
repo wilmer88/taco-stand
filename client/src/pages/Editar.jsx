@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import OrdenHero from "../components/OrdenHero/OrdenHero";
 import API from "../utils/API";
 import {  useNavigate } from "react-router-dom";
@@ -21,7 +21,9 @@ const liestilo = {
 const Editar = () => {
   const {setAlert} = useContext(alertContext);
   const [formObj, setFormObj] = useState({});
-  const [editName, setEditName] = useState({});
+  const [editName] = useState({});
+
+  // const [editName, setEditName] = useState({});
 
   const { ordenId } = useParams();
   const navigate =  useNavigate();

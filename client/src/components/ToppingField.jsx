@@ -2,15 +2,13 @@ import React from 'react';
 const ToppingField = (props) => {
   
     return (<>
-   
-             
        <article  className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
 
          <figure className="content image is-96x96 mr-1 mb-6">  
          <p className="subtitle is-6"><strong>{props.subtitle}</strong></p>
 
-         <img id="onions" src={props.picture }alt="" style={{ overflow: "hidden" } } /> 
+         <img data-twic-src={props.picture }alt="" style={{ overflow: "hidden" } } /> 
          </figure>
          </div>
          <aside className="column"> 
