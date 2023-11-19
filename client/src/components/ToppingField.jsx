@@ -4,12 +4,15 @@ const ToppingField = (props) => {
     return (<>
        <article  className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
+            <div className='container'>
+            <p className="subtitle is-6"><strong>{props.subtitle}</strong></p>
 
-         <figure className="content image is-96x96 mr-1 mb-6">  
-         <p className="subtitle is-6"><strong>{props.subtitle}</strong></p>
+<figure className="image is 96x96 mr-1 mb-6" >  
 
-         <img data-twic-src={props.picture }alt="" style={{ overflow: "hidden" } } /> 
-         </figure>
+<img srcSet={props.picture }alt=""  /> 
+</figure>
+            </div>
+     
          </div>
          <aside className="column"> 
                  <section className="card-body">
@@ -20,8 +23,9 @@ const ToppingField = (props) => {
             <button className="button is-info is-rounded ml-3" onClick={props.restar} ><strong style={{fontSize:"19px"}}>-</strong></button> 
          </section>
          </aside>
+
           </article>  
           </>); };
-   export default ToppingField;
+   export default React.memo(ToppingField);
    
          

@@ -84,6 +84,8 @@ const OrdenLevel = () => {
 <Link className="levelHover" to="/kitchen">
 <h3 className="label"><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
 </div>
+
+
 <aside id="navLevelmodal" className={`${navmodal}`} >
 <div className="columns">
 <div className="column is-full">
@@ -96,7 +98,6 @@ const OrdenLevel = () => {
      </div>
 </div>
 </div>
-
 </aside>
 
 </nav> 

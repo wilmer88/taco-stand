@@ -266,7 +266,7 @@ const NameHandleChange = event => {
               <ToppingField
                 subtitle="Red/Roja Salsa"
                 name="redSalsa"
-                picture="../images/redSalsa.webp"
+                picture={"../images/redSalsa.webp"}
                 topingCount={orderContextLet.redSalsa}
                 value={orderContextLet.greenSalsa}
                 sumar={redSalsaIncrement}

@@ -4,15 +4,17 @@ import OnUpdateHook from "../hooks/onUpdateHook";
 
 const Alert = () => {
   const {message, type, setAlert} = useContext(alertContext);
-  OnUpdateHook(()=>{
-    if(message.length){
-      setTimeout(()=>{
-        setAlert({ message:"", type:"" })
-      }, 9500)
-    }
 
-  },[message, setAlert])
-  console.count("i rerenderd in Alert component");
+
+  // OnUpdateHook(()=>{
+  //   if(message.length){
+  //     setTimeout(()=>{
+  //       setAlert({ message:"", type:"" })
+  //     }, 9500)
+  //   }
+
+  // },[message, setAlert])
+  // console.count("i rerenderd in Alert component");
 
 
   return (
