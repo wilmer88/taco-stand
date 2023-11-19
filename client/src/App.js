@@ -13,7 +13,7 @@ import MyOrders from "./pages/my orders/myOrders"
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
 import Payment from "./pages/Payment/Payment";
-import Alert from "./components/Alert/Alert";
+
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import AdminDash from "./pages/admin/AdminDash";
@@ -80,35 +80,31 @@ const App = () => {
 
   return (
     <>
+ 
       <Router>
+     
 
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
 
-        <Alert/>
-<div className="columns ">
-  <div className="column">
-  <div className="container is-max-fullhd">
-  <OrdenLevel  />
+      
+          < OrdenLevel/>
+  
+ 
+  
 
-  </div>
-
-
-  </div>
-</div>
           <Routes>
           <Route exact path="/kitchen" element={<Kitchen />}></Route>
 
           <Route exact path="/myorders" element={<MyOrders />}></Route>
           <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>
-          <Route exact path="/allOrders" element={<AllOrdersPage />}></Route>
+          {/* <Route exact path="/allOrders" element={<AllOrdersPage />}></Route> */}
+          {/* <Route exact path="/adminDash" element={<AdminDash />}></Route> */}
+          {/* <Route exact path="/adminSignup" element={<AdminSignUp />}></Route> */}
 
-          <Route exact path="/adminDash" element={<AdminDash />}></Route>
-          <Route exact path="/adminSignup" element={<AdminSignUp />}></Route>
-
-          <Route exact path="/myorders/:userName" element={<MyOrders />}></Route>
+          {/* <Route exact path="/myorders/:userName" element={<MyOrders />}></Route> */}
             <Route exact path="/payment/:ordenId" element={<Payment />}></Route>
             <Route exact path="/signup" element={<SignUp />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
@@ -134,4 +130,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default React.memo(App);

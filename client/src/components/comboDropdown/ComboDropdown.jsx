@@ -29,4 +29,4 @@ key={nume}
 
        </>);};
 
-export default ComboDropdown;
+export default React.memo(ComboDropdown);

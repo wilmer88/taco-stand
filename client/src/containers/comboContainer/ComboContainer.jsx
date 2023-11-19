@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import ComboContext from "../../context/ComboContext";
 import alertContext from "../../context/alertContext";
 import Alert from "../../components/Alert/Alert";
 
 const ComboContainer = () => {
+  console.count("i rerenderd in combo container");
 
 const {setCombo}= useContext(ComboContext);
 let combo= useContext(ComboContext);
@@ -88,7 +89,7 @@ let combo= useContext(ComboContext);
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   };
-  console.count("i rerenderd in combo container");
+
 
 
   const comboSeter= ()=>{
@@ -198,7 +199,6 @@ let combo= useContext(ComboContext);
 
 
 
-
                   </div>
 
 
@@ -238,4 +238,4 @@ let combo= useContext(ComboContext);
   </>)
 };
 
-export default ComboContainer;
+export default React.memo(ComboContainer);

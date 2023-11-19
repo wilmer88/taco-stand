@@ -1,9 +1,10 @@
 // import { useNavigate } from "react-router-dom";
 // import API from "../../utils/API";
+import React from "react";
 
 
 const UserComponent =  (props) => {
-
+  console.count("i rerenderd in combo userComponent.jsx");
 const liestilo = {
   atras: {
     background: "lightyellow"
@@ -92,7 +93,7 @@ Nombre: {props.nombreDeOrden}
     </>);
   };
   
-  export default UserComponent;
+  export default React.memo(UserComponent);
 
 
 

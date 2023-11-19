@@ -99,13 +99,13 @@ const NameHandleChange = event => {
   return (<>
 
 
-    <main className="box is-mobile is-shadowless is-align-self-center mt-6">
+    <main className="box is-mobile is-shadowless is-align-self-center ">
 
       <section className="card" >
 
         <article className="card-content">
           <aside className="m-3 content" >
-            <div className="container mt-3">
+            <div className="container">
 
               <div className="is-align-content-center columns mt-3">
                 <NameField
@@ -135,7 +135,7 @@ const NameHandleChange = event => {
 </div>
 <DipsContainer  />
 
-              <  NachosContainer />
+<  NachosContainer />
               
 <ComboContainer/>
 
@@ -237,7 +237,7 @@ const NameHandleChange = event => {
                 subtitle="Cilantro"
                 name="cilantro"
                 picture="../images/cilantro.webp"
-                // topingCount={orderData.cilantro}
+                topingCount={orderContextLet.cilantro}
                 value={orderContextLet.cilantro}
                 sumar={cilantroIncrement}
                 restar={cilantroDecrement}

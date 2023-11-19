@@ -1,28 +1,34 @@
 import "../../components/OrdenHero/hero.css";
 import "./ordenLevel.css"
 import { Link } from "react-router-dom";
-import { useContext, useState,useEffect } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import comboContext from "../../context/ComboContext";
+import Alert from "../../components/Alert/Alert";
+import OnUpdateHook from "../../components/hooks/onUpdateHook";
+
 
 const estilo = {
  nombre: {
    background: "#e8eaf6",
-   
-  
  },
 
  cambio: {
    borderRadius: "50%"
  },
 
+ pad: {
+  padding: "60px",
+ 
+ }
 
 }
 
 const OrdenLevel = () => { 
+  console.count("i rerenderd in navbar");
+
   const [navmodal, setNavmodal]= useState("modal");
   const levelOrder = useContext(comboContext);
   const [levelComboCounter , setLevelCombo]= useState(0);
-  // let levelComboCounter 
 
   const showAboutModel= ()=>{
     if(navmodal === "modal"){
@@ -34,7 +40,7 @@ const OrdenLevel = () => {
 
   }
 
-  useEffect(()=>{
+  OnUpdateHook(()=>{
     if(levelOrder.combo[0].comboPrice === "0"){
       // console.log(levelOrder.combo.length);
       setLevelCombo(levelOrder.combo.length -1)
@@ -46,11 +52,11 @@ const OrdenLevel = () => {
       // levelComboCounter = levelOrder.combo.length
     }
 
-  }, [levelOrder, levelComboCounter])
+  }, [levelOrder.combo])
 
-  return ( 
-
-      <nav className="navbar is-fixed-top is-justify-content-center"   >
+  return ( <>
+    <section className="section" style={estilo.pad}>
+      <nav className="navbar is-fixed-top is-justify-content-center" role="navigation"   >
 
 <div className="column has-text-centered" style={estilo.nombre}>
 <Link className="levelHover" onClick={showAboutModel} >   
@@ -93,9 +99,13 @@ const OrdenLevel = () => {
 
 </aside>
 
-</nav>  
+</nav> 
 
-      )
+
+    </section>
+    <Alert/>
+    
+     </> )
     }
 
-export default OrdenLevel;
+export default  React.memo(OrdenLevel);

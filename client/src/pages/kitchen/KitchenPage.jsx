@@ -10,6 +10,8 @@ const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
 
 const Kitchen = () => {
+  console.count("i rerenderd in kitchen page");
+
 
   const {setAlert} = useContext(alertContext);
   const [orden, setAllOrdens] = useState([]);
@@ -55,16 +57,27 @@ console.log("new order list");
 
       });
 }, [setAlert]);
+console.count("i rerenderd in kitchen");
 
   return ( <>
-<div className="container is-align-self-auto is-size-7 mt-6">
+  <div className="columns">
+    <div className="column">
+    <div className="container is-align-self-auto is-size-7" >
  {orden.length ? (orden.map( res =>(
-              <LiComponent key= {res._id} {...res} />
+              <LiComponent key= {res._id} {...res}  />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: Sign in to view this page/Inicie sesion para poder ver</h1>
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No contentis available.</h1>
             )}
         </div>
 
+    </div>
+  </div>
+
+
+
+
+
+
   </> )}
 
-export default Kitchen;
+export default React.memo(Kitchen);

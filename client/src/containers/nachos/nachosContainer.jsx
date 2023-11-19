@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import bulmaCollapsible from '@creativebulma/bulma-collapsible';
 
-
 const NachosContainer=(props)=>{
   console.count("i rerenderd in nachos");
 
@@ -49,17 +48,11 @@ const NachosContainer=(props)=>{
         <p className="subtitle is-6" >(Half 5.00)(Full 6.25)</p> 
        </div>
     </div>
-
-
-
   </div>
-
 
     {/* <button type="submit" className="button is-success is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button> */}
 
-</div>
-
-    
+</div>    
    )
 };
 

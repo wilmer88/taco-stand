@@ -12,34 +12,33 @@ const MyOrders = () => {
   const [searchResult, setSearchResult] = useState({});
   const {setAlert} = useContext(alertContext)
 
-  useEffect(() => {
+//   useEffect(() => {
 
-  if(!user.userName || !userName)
-  {
-    setAlert({message:"User Must Login - Usario Debe Iniciar Sesion", type:"is-danger"}, 5000);
-  } 
+//   if(!user.userName || !userName)
+//   {
+//     setAlert({message:"User Must Login - Usario Debe Iniciar Sesion", type:"is-danger"}, 5000);
+//   } 
 
-    else {
+//     else {
 
-      API.findUser(userName).then((response ) => {
-        if(response.data.length === 0)
-        {
-          setSearchResult({});
-        }
-        else
-        {
-          console.log(response.data)
-          setSearchResult(response.data.orders);
-          setAlert({message:"retrived all orders", type:"is-success"});
-        }; }).catch((err) =>{ 
-            console.log(err);
-            setAlert({message:"Failed to to get waiting list/ usario debe iniciar sesion", type:"is-danger"}); 
-          });
+//       API.findUser(userName).then((response ) => {
+//         if(response.data.length === 0)
+//         {
+//           setSearchResult({});
+//         }
+//         else
+//         {
+//           console.log(response.data)
+//           setSearchResult(response.data.orders);
+//           setAlert({message:"retrived all orders", type:"is-success"});
+//         }; }).catch((err) =>{ 
+//             console.log(err);
+//             setAlert({message:"Failed to to get waiting list/ usario debe iniciar sesion", type:"is-danger"}); 
+//           });
 
-        };
+//         };
 
- },[setAlert,user.userName,userName
-]);
+//  },[setAlert,user.userName,userName]);
 
   return (<>
   
@@ -55,5 +54,5 @@ const MyOrders = () => {
   
 };
 
-export default MyOrders;
+export default React.memo(MyOrders);
 

@@ -1,9 +1,7 @@
 import {  useNavigate } from "react-router-dom";
+import React from "react";
 import API from "../utils/API";
 // import React, {alertContext, useContext} from "../../context/alertContext";
-
-
-
 const LiComponent =  (props) => {
 
 const liestilo = {
@@ -13,6 +11,8 @@ const liestilo = {
  };
 
   const navigate =  useNavigate();
+
+  console.count("i rerenderd in liComponent");
   // const {setAlert} = useContext(alertContext);
 
   function eliminar(id){
@@ -66,10 +66,12 @@ let comboTofix =props.comboVirtual;
   let prepareVar = false;
   if(props.pagado === true){disableVar = true};
   if(props.preparada === true){prepareVar = true};
+  console.count("i rerenderd in admin component");
+
 
     return (<>
     
-        <div className="columns is-mobile mb-6 ">
+        <div className="columns is-mobile ">
   <div className="column is-1"></div>
   <div className="column is-narrow-mobile mb-6">
   <hr></hr>
@@ -215,7 +217,7 @@ Nombre: {props.nombreDeOrden}
     </>);
   };
   
-  export default LiComponent;
+  export default React.memo(LiComponent);
 
 
 

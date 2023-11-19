@@ -1,4 +1,3 @@
-// import OrdenHero from "../components/OrdenHero/OrdenHero";
 import React from "react";
 import OrdenBox from "../components/OrdenBox";
 import { Link } from "react-router-dom";
@@ -7,8 +6,7 @@ const OrdenPage = () => {
   console.count("i rerenderd in ordenPage");
 
     return (<>
-        {/* <OrdenHero/> */}
- <footer className="footer mt-6" >
+ <footer className="footer" >
  <div className="content is-full has-text-centered">
 
 
