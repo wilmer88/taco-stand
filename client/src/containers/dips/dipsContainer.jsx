@@ -1,5 +1,6 @@
-import { useState } from "react";
-import DipComponent from "../../components/dipComponent/DipComponent";
+import{ useState}  from "react";
+import DipsModel from "../../components/modal/DipsModal";
+
 import React from "react";
 
 const DipsContainer = () => {
@@ -8,7 +9,6 @@ const DipsContainer = () => {
 
 
     const [dipShow, setDipShow]= useState(0);
-    const[dipCounterLetVar, setDipCounterLetVar]=useState(0);
 
     const openDipHandelerPropFunction=  ()=>{
     setDipShow(1);
@@ -19,181 +19,92 @@ const DipsContainer = () => {
         setDipShow(0);
     };
 
-const handleDipIncrement=(event)=> {
-    event.preventDefault()
-        console.log("i work");
 
-       setDipCounterLetVar(dipCounterLetVar + 1);
-               console.log(dipCounterLetVar);
 
-    };
 
-    const handleDipDecrement = (event)=>{
-        event.preventDefault();
+    const toggleColapseDips = (event)=>{
+   
+event.preventDefault()
+  
+        if(dipShow===1){
+          closeDipContainer()  
+        }
+       else {
+        
+     openDipHandelerPropFunction()
 
-        if(dipCounterLetVar >= 1){
+       }
 
-        setDipCounterLetVar(dipCounterLetVar - 1);
-        }}
+
+     
+          
+      
+
+    }
     
     return (<>
+       <hr></hr>
+                 <div className="container" >
 
-        <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
-            <h3 style={{ marginBottom: "10px" }}> <strong>Dips</strong></h3>
-            <div>      <h6 style={{ marginBottom: 0 }}>Mezquites Dip: </h6>   <p style={{ marginBottom: 0 }}> Beef or chicken with cheese dip and pico de gallo</p></div>
-            <div>      <h6 style={{ marginBottom: 0 }}>Tejano Dip: </h6>   <p style={{ marginBottom: 0 }}> Steak, grilled chicken, shrimp and cheesedip</p></div>
-
-         
-
-        </figcaption>
-                    <div className="container" >
                         <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
+                     
+                        <div className="card" style={{background: "lightyellow"}}>
+                        <header className="card-header" >
+                     
 
-           
-
-                            {dipShow === 1 &&
-
-
-<>
-<section className="columns is-vcentered "  >
-
-<DipComponent 
-dipCounterprop={dipCounterLetVar}
-dipName="(Normal) Cheese Dip (4.75 ea)"
-// onClick = {handleDipIncrement()}
-handleDipIncrementPropFunction = {handleDipIncrement}
-handleDipDecrementProp ={handleDipDecrement}
-/>
-
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="(Large) Cheese Dip ($10.00 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="(Normal) Gucamole Dip (4.75 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
+                       
+            <h3  className="card-header-title is-4" style={{ marginBottom: "10px",justifyContent:"center" }}> <strong>Dips</strong></h3>
 
 
 
-<DipComponent 
-// dipCounterprop={""}
-// dipName="(large) Gucamole Dip (9.25 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-</section>
-
-
-
-<section className="columns is-centered "  >
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="(Normal) Guaca Mix (7.50 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="(Large) Guaca Mix (11.75 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="Sour Cream ($1.50 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="Pico De Gallo (2.25 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
+<div className="dropdown">
+<div className="dropdown-trigger"> 
+<button href="#collapsible-card" data-action="collapse" className={`button`} aria-label="more options"  onClick={ toggleColapseDips}  >
+  
+  <span className="icon">
+				<i className="fas fa-angle-up"  aria-hidden="false"></i>
+			</span>
+      </button>
+</div>
+</div>
+x
 
 
 
 
+                        </header>
+                        {dipShow === 1 && <>
+<div className="mt-2"><h6 style={{ marginBottom: 0 }}>Mezquites Dip: </h6>   <p style={{ marginBottom: 0 }}> Beef or chicken with cheese dip and pico de gallo</p></div>
+ 
+ <div><h6 style={{ marginBottom: 0 }}>Tejano Dip: </h6>   <p style={{ marginBottom: 0 }}> Steak, grilled chicken, shrimp and cheesedip</p></div>
 
-</section>
-
-
-
-<section className="columns is-centered " >
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="Chorizo Dip (6.50 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
-
-<DipComponent 
-// dipCounterprop={""}
-// dipName="Bean Dip (5.25 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
+<DipsModel/>
+</>}
+                        
+                       
+                            
 
 
-<DipComponent 
-// dipCounterprop={""}
-// dipName="El Mezquites Dip (6.75 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
+                        
 
 
 
-<DipComponent 
-// dipCounterprop={""}
-// dipName="Tejano Dip (8.25 ea)"
-// onClick = {handleDipIncrement()}
-// handleDipIncrementPropFunction = {handleDipIncrement}
-// handleDipDecrementProp ={handleDipDecrement}
-/>
+                        </div>
+                        
 
-</section>
-   
-   </>
 
-   } 
-    <div  style={{ textAlign: "center", background: "tan" }}>
 
+
+    <div className="container" style={{ textAlign: "center", background: "tan" }}>
 <div className="checkbox">
     <input
         type="checkbox"
         onChange={()=>{openDipHandelerPropFunction()}  }
         checked={dipShow===1}
         name="checked"
-
     />
-    <strong>View Dips Option</strong>
+
+    <strong>View Dips</strong>
 </div>
 
 <div className="checkbox">
@@ -201,11 +112,9 @@ handleDipDecrementProp ={handleDipDecrement}
     onChange={()=>closeDipContainer()}
     checked={dipShow===0}
     name="unchecked"
-
 />
-<strong>Minimize Dips options</strong>
+<strong>Minimize Dips</strong>
 </div>
-
 </div>
 
 </form>

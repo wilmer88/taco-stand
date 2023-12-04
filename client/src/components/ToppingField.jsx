@@ -4,12 +4,12 @@ const ToppingField = (props) => {
     return (<>
        <article  className="columns is-mobile field is-grouped">
          <div className="column is-responsive mb-5">
-            <div className='container'>
+            <div className='container'style={{width: "10rem"}}>
             <p className="subtitle is-6"><strong>{props.subtitle}</strong></p>
 
-<figure className="image is 96x96 mr-1 mb-6" >  
+<figure className="image is-96x96 is-fullwidth mr-1 mb-6" >  
 
-<img srcSet={props.picture }alt=""  /> 
+<img src={props.picture} loading="eager" alt=""/> 
 </figure>
             </div>
      

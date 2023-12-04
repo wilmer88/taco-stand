@@ -182,7 +182,7 @@ const NameHandleChange = event => {
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Bebidas</strong></h3>
               </figcaption>
-              <section id="codimentsSection" className="columns mt-3">
+              <section id="codimentsSection" className="column mt-3">
 
                 <DropDownField
                   tagg="Horchata Grande"
@@ -218,7 +218,7 @@ const NameHandleChange = event => {
               </section>
             </div>
             <hr></hr>
-            <div id='ALaCarta' className="container mt-3">
+            <div id='ALaCarta' className="container mt-3" >
               <figcaption  >
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Condimentos</strong></h3>
               </figcaption>

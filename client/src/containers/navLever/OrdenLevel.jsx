@@ -60,12 +60,11 @@ const OrdenLevel = () => {
 
 <div className="column has-text-centered" style={estilo.nombre}>
 <Link className="levelHover" onClick={showAboutModel} >   
-<h3 className="label"><i className="icofont-login icofont-2x"></i>About </h3>
+<h3 className="label"><i className="icofont-login icofont-1x"></i>About </h3>
 </Link>
 </div>
 
 <div className="level-item is-hoverable " >
-
 <Link className="levelHover" to="/">   
 <h3 className="label"  ><i className="icofont-home "></i>Home</h3>
 </Link>
