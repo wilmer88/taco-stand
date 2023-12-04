@@ -6,25 +6,24 @@ const DipComponent =  (props) => {
 
     return(<>
 
-<div className="column has-text-centered is-3">
     <div className="container">
     <div className="box" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px", }} >
-
-<div> <strong>{props.dipName}:</strong>  <mark style={{fontSize:"20px"}}><strong > {props.dipCounterprop}</strong></mark>  </div>
-</div>
-{/* <div>  ({props.dipSize})</div> */}
-<aside className="">
-{/* <div>{props.dipCounterprop} </div> */}
-
-        <button className="button is-rounded is-light ml-3" onClick={props.handleDipIncrementPropFunction}><strong style={{fontSize:"26px"}}>+</strong></button>
+    <p className="subtitle "><strong>{props.subtitle}</strong></p>
 
 
-<button className="button is-info is-rounded ml-3" onClick={props.handleDipDecrementProp} ><strong style={{fontSize:"19px"}}>-</strong></button>
+<div> <p><strong>{props.dipNameProp}:</strong>  </p>  <mark s><strong > {props.dipCounterprop}</strong></mark>  </div>
+<aside>
+
+<button className="button is-info is-rounded ml-3" onClick={ props.handleDipIncrementPropFunction} ><strong style={{fontSize:"19px"}}>+</strong></button>
+
+
+        <button className="button is-rounded is-light ml-3" onClick={props.handleDipDecrementProp}><strong style={{fontSize:"26px"}}>-</strong></button>
 
  </aside>
+</div>
+
 
     </div>
-</div>
 
     </>)
 };

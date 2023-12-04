@@ -6,21 +6,21 @@ import SignUp from "./pages/SignUp";
 import OrdenLevel from "./containers/navLever/OrdenLevel";
 import Kitchen  from "./pages/kitchen";
 import OrdenPage from "./pages/OrdenPage";
-import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
+// import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import Editar from "./pages/Editar";
 import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders"
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer";
 import Payment from "./pages/Payment/Payment";
-
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
-import AdminDash from "./pages/admin/AdminDash";
-import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
+// import AdminDash from "./pages/admin/AdminDash";
+// import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import OrderContext from "./context/orderDataContext";
+import DipsContext from "./context/DipContext";
 
 const App = () => {
   console.count("i rerenderd in App.js");
@@ -31,6 +31,7 @@ const App = () => {
     phoneNumber:"",
     tableNumber:"",
     combo:[],
+    dips:[],
     azada:0,
     pollo: 0,
     barbacoa: 0,
@@ -58,13 +59,22 @@ const App = () => {
     choice1: "",
     choice2: "",
     key: 1,
-  }])
+  }]);
+
+  const [dips, setDips] = useState(
+    {
+      dipName:"", 
+      dipCount:0,
+       dipPrize:0,
+    }
+
+  );
 
 
   const [alert, setAlert] = useState({
     message:"",
     type:"",
-  })
+  });
 
   const [jwt, setJwt] = useState("");
   const [userName, setUserName] = useState("");
@@ -88,13 +98,8 @@ const App = () => {
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
-
-      
+            <DipsContext.Provider value={{...dips, setDips:setDips}}>
           < OrdenLevel/>
-  
- 
-  
-
           <Routes>
           <Route exact path="/kitchen" element={<Kitchen />}></Route>
 
@@ -118,13 +123,13 @@ const App = () => {
              <Footer />
 
 ): null }
-          </OrderContext.Provider>
 
 
+</DipsContext.Provider>
+</OrderContext.Provider>
 </ComboContext.Provider>
-        </alertContext.Provider>
-
-        </AuthContext.Provider>
+</alertContext.Provider>
+</AuthContext.Provider>
       </Router>
     </>
   );

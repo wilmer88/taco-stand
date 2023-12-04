@@ -35,7 +35,7 @@ const NachosContainer=()=>{
 <div className="dropdown-trigger"> 
 <button onClick={toggleColapse}>
   <span className="icon">
-				<i className="fas fa-angle-up"  aria-hidden="false"></i>
+				<i className="fas fa-angle-down"  aria-hidden="false"></i>
 			</span>
       </button>
 </div>
@@ -52,7 +52,7 @@ const NachosContainer=()=>{
           </div>} </div>
 
   <aside className={`${navmodal}`} >
-    
+
 <div className="modal-background"></div>
      <div className="modal-content">
      <div className="box is-mobile">
