@@ -1,7 +1,8 @@
 import React from "react";
 
 const DipComponent =  (props) => {
-//   console.count("i rerenderd in DipComponet");
+
+  console.count("i rerenderd in DipComponet");
 
     return(<>
 
@@ -28,6 +29,6 @@ const DipComponent =  (props) => {
     </>)
 };
 
-export default React.memo(DipComponent);
+export default  React.memo(DipComponent);
 
 

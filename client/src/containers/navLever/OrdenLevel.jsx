@@ -1,7 +1,7 @@
 import "../../components/OrdenHero/hero.css";
 import "./ordenLevel.css"
 import { Link } from "react-router-dom";
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState } from "react";
 import comboContext from "../../context/ComboContext";
 import Alert from "../../components/Alert/Alert";
 import OnUpdateHook from "../../components/hooks/onUpdateHook";
@@ -58,9 +58,9 @@ const OrdenLevel = () => {
     <section className="section" style={estilo.pad}>
       <nav className="navbar is-fixed-top is-justify-content-center" role="navigation"   >
 
-<div className="column has-text-centered" style={estilo.nombre}>
-<Link className="levelHover" onClick={showAboutModel} >   
-<h3 className="label"><i className="icofont-login icofont-1x"></i>About </h3>
+<div className="column has-text-centered" >
+<Link className="levelHover" onClick={showAboutModel}  >   
+<h3 className="label" style={estilo.nombre}><i className="icofont-login icofont-2x"></i>About </h3>
 </Link>
 </div>
 
@@ -79,9 +79,9 @@ const OrdenLevel = () => {
 
 </div>
 
-<div className="column has-text-centered" style={estilo.nombre}>
+<div className="column has-text-centered" >
 <Link className="levelHover" to="/kitchen">
-<h3 className="label"><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
+<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
 </div>
 
 
@@ -90,10 +90,10 @@ const OrdenLevel = () => {
 <div className="column is-full">
 <div className="modal-background"></div>
      <div className="modal-content ">
-     <div className="box is-mobile">
+    
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"></button>
      <img  id="aboutImage" src="./images/aboutLosMezquites.webp"alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
- </div>
+
      </div>
 </div>
 </div>

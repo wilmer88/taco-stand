@@ -1,11 +1,11 @@
+import React from "react";
 import {useState } from "react";
 
 import DipComponent from "../../components/dipComponent/DipComponent";
 
 const DipsModel = ()=>{
-
-    const[dipCounterLetVar, setDipCounterLetVar]=useState(0);
-    console.count("i rerenderd in dipsModal");
+  // console.count("i rerenderd in dipsModal");
+  const[dipCounterLetVar, setDipCounterLetVar]=useState(0);    
     const [dipmodal, setDipmodal]= useState("modal");
 
     const showAboutModel= (e)=>{
@@ -16,25 +16,24 @@ const DipsModel = ()=>{
       if(dipmodal === "modal is-active"){
         setDipmodal("modal")
       }
-  
     };
 
     const handleDipIncrement=(event)=> {
-        event.preventDefault()
-            console.log("i work");
+      event.preventDefault()
     
-           setDipCounterLetVar(dipCounterLetVar + 1);
-                   console.log(dipCounterLetVar);
-    
-        };
-    
-        const handleDipDecrement = (event)=>{
-            event.preventDefault();
-    
-            if(dipCounterLetVar >= 1){
-    
-            setDipCounterLetVar(dipCounterLetVar - 1);
-            }}
+  
+         setDipCounterLetVar(dipCounterLetVar + 1);
+                 console.log(dipCounterLetVar);
+  
+      };
+  
+      const handleDipDecrement = (event)=>{
+          event.preventDefault();
+  
+          if(dipCounterLetVar >= 1){
+  
+          setDipCounterLetVar(dipCounterLetVar - 1);
+          }}
 
 
     return(<>
@@ -42,12 +41,12 @@ const DipsModel = ()=>{
 
 <aside id="dipmodal" className={`${dipmodal}`} >
 
-
 <div className="modal-background"></div>
+
      <div className="modal-content ">
      <div className="box is-mobile">
-<section className="columns is-vcentered "  >
-        
+<div className="columns is-vcentered"  >
+
 <DipComponent 
 dipCounterprop={dipCounterLetVar}
 dipName="(Normal) Cheese Dip (4.75 ea)"
@@ -57,7 +56,7 @@ handleDipDecrementProp ={handleDipDecrement}
 />
 
 
-<section className="columns is-centered "  >
+
 <DipComponent 
 // dipCounterprop={""}
 // dipName="(Normal) Guaca Mix (7.50 ea)"
@@ -65,11 +64,11 @@ handleDipDecrementProp ={handleDipDecrement}
 // handleDipIncrementPropFunction = {handleDipIncrement}
 // handleDipDecrementProp ={handleDipDecrement}
 />
-</section>
 
 
 
-<section className="columns is-centered " >
+
+
 <DipComponent 
 // dipCounterprop={""}
 // dipName="Chorizo Dip (6.50 ea)"
@@ -77,16 +76,13 @@ handleDipDecrementProp ={handleDipDecrement}
 // handleDipIncrementPropFunction = {handleDipIncrement}
 // handleDipDecrementProp ={handleDipDecrement}
 />
-</section>
 
-</section>
+
+</div>
 
  </div>
      </div>
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
-
-
-
 </aside>
 
 
@@ -107,4 +103,4 @@ handleDipDecrementProp ={handleDipDecrement}
 
 };
 
-export default DipsModel;
+export default  React.memo(DipsModel)
