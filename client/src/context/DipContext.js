@@ -1,14 +1,14 @@
 import  React from "react";
 
-const DipsContext = React.createContext(
+const dipContext = React.createContext(
     
     
     
  {
   combo: [{
-    dipName:"", 
-    dipCount:0,
-     dipPrize:0,
+
+    cheeseDipRegular:0,
+    cheeseDipLarge:0,
   }],
       
       setDips:()=>{}
@@ -17,4 +17,4 @@ const DipsContext = React.createContext(
     )
 
 
-export default DipsContext;
+export default dipContext;

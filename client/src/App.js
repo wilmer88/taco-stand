@@ -20,7 +20,7 @@ import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import OrderContext from "./context/orderDataContext";
-import DipsContext from "./context/DipContext";
+import dipContext from "./context/DipContext";
 
 const App = () => {
   console.count("i rerenderd in App.js");
@@ -61,11 +61,11 @@ const App = () => {
     key: 1,
   }]);
 
-  const [dips, setDips] = useState(
+  const [dip, setDips] = useState(
     {
-      dipName:"", 
-      dipCount:0,
-       dipPrize:0,
+      cheeseDipRegular:0,
+      cheeseDipLarge:0,
+
     }
 
   );
@@ -98,7 +98,7 @@ const App = () => {
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
-            <DipsContext.Provider value={{...dips, setDips:setDips}}>
+            <dipContext.Provider value={{...dip, setDips:setDips}}>
           < OrdenLevel/>
           <Routes>
           <Route exact path="/kitchen" element={<Kitchen />}></Route>
@@ -120,12 +120,10 @@ const App = () => {
 
           </Routes>
           {jwt !== "" ? (
-             <Footer />
-
-): null }
+             <Footer />): null }
 
 
-</DipsContext.Provider>
+</dipContext.Provider>
 </OrderContext.Provider>
 </ComboContext.Provider>
 </alertContext.Provider>

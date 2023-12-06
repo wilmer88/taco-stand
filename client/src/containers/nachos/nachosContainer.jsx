@@ -2,8 +2,8 @@ import {useState } from "react";
 import NachoSelect from "../../components/NachoSelect/NachoSelect";
 
 const NachosContainer=()=>{
-
   console.count("i rerenderd in nachos");
+
   const [navmodal, setNavmodal]= useState("modal");
   const showAboutModel= ()=>{
     if(navmodal === "modal"){
@@ -26,19 +26,17 @@ const NachosContainer=()=>{
   };
 
     return(<>
-<div className="card" style={{background: "lightyellow"}}>
+<div className="card mb-5" style={{background: "lightyellow"}}>
     <header className="card-header" >
 <h3  className="card-header-title is-4"  style={{justifyContent:"center"}}>
-<strong>Nachos</strong>
+Nachos
 </h3>
-<div className="dropdown">
 <div className="dropdown-trigger"> 
 <button onClick={toggleColapse}>
   <span className="icon">
 				<i className="fas fa-angle-down"  aria-hidden="false"></i>
 			</span>
       </button>
-</div>
 </div>
  </header>
         { isopen === 1 &&
@@ -60,21 +58,11 @@ const NachosContainer=()=>{
      <div className="column mb-2">
       <NachoSelect
       subtitle1="(Half 8.25)"
-      subtitle2="(Full 8.25)"
+      
       topingCount="0"
       nachosName="Cheese Nachos" 
       />
       
-       {/* <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      nachosName="Cheese Nachos" 
-      /> */}
-        </div> 
-
-        <hr></hr>
-
-        <div className="column mb-2">
       <NachoSelect
       subtitle="(Half 8.25)"
       topingCount="0"
@@ -84,11 +72,8 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
-        </div> 
 
-        <hr></hr>
 
-        <div className="column mb-2">
       <NachoSelect
       subtitle="(Half 8.25)"
       topingCount="0"
@@ -98,11 +83,8 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
-        </div> 
 
-        <hr></hr>
 
-        <div className="column mb-2">  
       <NachoSelect
       subtitle="(Half 8.25)"
       topingCount="0"
@@ -112,11 +94,7 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
-        </div> 
 
-        <hr></hr>
-
-        <div className="column mb-2">
       <NachoSelect
       subtitle="(Half 8.25)"
       topingCount="0"
@@ -127,12 +105,8 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
-        </div> 
 
-        <hr></hr>
-
-        <div className="column mb-2">
-        <strong><p >Nachos Supreme:  </p></strong>
+<p >Nachos Supreme:  </p>
        <p>Choice of beef or Chincken. Served with beans lettuce, soure cream, tomatoes, and guacamole. (Half 5.50)(Full 7.50)</p>     
       <NachoSelect
     
@@ -143,12 +117,8 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
-        </div> 
 
-        <div className="column mb-2">
       <strong> <p>Steak  </p> </strong>
-
-      <hr></hr>
 
       <NachoSelect
       subtitle="(Half 8.25)"
@@ -159,12 +129,11 @@ const NachosContainer=()=>{
       subtitle="(Full 9.75)"
       topingCount="0"
       />
+   
         </div> 
+</div> 
  </div>
-     </div>
-</aside>
-
-<hr></hr></> );
+</aside></> );
 };
 
 export default NachosContainer;

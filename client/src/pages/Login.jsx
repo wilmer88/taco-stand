@@ -49,9 +49,7 @@ const ULog = () => {
     };
       
     return (<>
-      <div style={pxhi.logpad}>
         <br></br>
-  <div className='columns is-mobile' >
 
 <div className="column is-two-fifth"></div>
 
@@ -96,8 +94,6 @@ const ULog = () => {
     </div>
   
   <div className="column is-two-fifth"></div>
-  </div>
-  </div>
 
     </>);
   };

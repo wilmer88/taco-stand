@@ -101,10 +101,10 @@ let combo= useContext(ComboContext);
   return (<>
 
     <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
-      <h3 style={{ marginBottom: "10px" }}> <strong>Combos</strong></h3>
-      <div> <h6 style={{ marginBottom: 0 }}>CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
-      <h6 style={{ marginBottom: 0 }}>   ADD SUPREME FOR 2.50</h6>
-      <p style={{ marginBottom: 0 }}>All combos are served with rice and beans.</p>
+      <h3> <strong>Combos</strong></h3>
+      <div> <h6 className="mb-0">CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
+      <h6 className="mb-0">   ADD SUPREME FOR 2.50</h6>
+      <p>All combos are served with rice and beans.</p>
     </figcaption>
 
     {
@@ -112,9 +112,8 @@ let combo= useContext(ComboContext);
         return (
 
           <div className="container" key={index}>
-            <form style={{ alignContent: "center", marginLeft: "5px", marginBottom: "10px" }} >
 
-              <div className="control" style={{ textAlign: "center", background: "tan" }}>
+              <div style={{ textAlign: "center", background: "tan" }}>
 
                 {
 
@@ -126,8 +125,6 @@ let combo= useContext(ComboContext);
                   <input
                     type="radio"
                     name={"comboPrice"}
-                    // onChange={event => handleSupremeChange(index, event)}
-
                     onChange={event => {  handleFormChange(index, event); comboSeter(); }}
                     value={"9"}
                     checked={input.comboPrice === "9"}
@@ -210,7 +207,7 @@ let combo= useContext(ComboContext);
               {
                 input.comboPrice !== "0" &&
                 // inputFields.length > 1 &&
-                <button type="button" className="button is-danger is-small" onClick={() => { removeCombo(index) }}
+                <button className="button is-danger is-small" onClick={() => { removeCombo(index) }}
                   style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px" }}>Remove Combo</button>
               }
 
@@ -226,8 +223,6 @@ let combo= useContext(ComboContext);
 
 
 
-            </form>
-            <hr></hr>
           </div>
 
 

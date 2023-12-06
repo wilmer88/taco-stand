@@ -3,6 +3,7 @@ import "./ordenLevel.css"
 import { Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import comboContext from "../../context/ComboContext";
+import dipContext from "../../context/DipContext";
 import Alert from "../../components/Alert/Alert";
 import OnUpdateHook from "../../components/hooks/onUpdateHook";
 
@@ -18,7 +19,6 @@ const estilo = {
 
  pad: {
   padding: "60px",
- 
  }
 
 }
@@ -27,32 +27,35 @@ const OrdenLevel = () => {
   console.count("i rerenderd in navbar");
 
   const [navmodal, setNavmodal]= useState("modal");
-  const levelOrder = useContext(comboContext);
-  const [levelComboCounter , setLevelCombo]= useState(0);
+  const levelComboOrder = useContext(comboContext);
+  const [levelCounter, setLevelCounter]= useState(0);
+  const dips= useContext(dipContext);
 
   const showAboutModel= ()=>{
     if(navmodal === "modal"){
-      setNavmodal("modal is-active")
+      setNavmodal("modal is-active");
     }
     if(navmodal === "modal is-active"){
-      setNavmodal("modal")
+      setNavmodal("modal");
     }
 
   }
 
+  
   OnUpdateHook(()=>{
-    if(levelOrder.combo[0].comboPrice === "0"){
-      // console.log(levelOrder.combo.length);
-      setLevelCombo(levelOrder.combo.length -1)
-      // levelComboCounter = levelOrder.combo.length
-    }
-    if(levelOrder.combo[0].comboPrice !== "0"){
-      console.log(levelOrder.combo.length);
-      setLevelCombo(levelOrder.combo.length)
-      // levelComboCounter = levelOrder.combo.length
-    }
+    let combolengthFrunt = levelComboOrder.combo.length
 
-  }, [levelOrder.combo])
+    if(levelComboOrder.combo[0].comboPrice === "0"){
+      combolengthFrunt = combolengthFrunt - 1
+    }
+ 
+
+      console.log(levelComboOrder.combo.length);
+      console.log(dips.cheeseDipRegular);
+
+      setLevelCounter(combolengthFrunt + dips.cheeseDipRegular );
+
+  }, [levelComboOrder.combo,dips])
 
   return ( <>
     <section className="section" style={estilo.pad}>
@@ -81,7 +84,7 @@ const OrdenLevel = () => {
 
 <div className="column has-text-centered" >
 <Link className="levelHover" to="/kitchen">
-<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order {levelComboCounter} </h3></Link>
+<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {levelCounter} </h3></Link>
 </div>
 
 

@@ -1,20 +1,18 @@
 import React, {useContext, useEffect} from "react";
 import alertContext from "../../context/alertContext";
-import OnUpdateHook from "../hooks/onUpdateHook";
+// import OnUpdateHook from "../hooks/onUpdateHook";
 
 const Alert = () => {
   const {message, type, setAlert} = useContext(alertContext);
+  useEffect(()=>{
+    if(message.length){
+      setTimeout(()=>{
+        setAlert({ message:"", type:"" })
+      }, 8500)
+    }
 
-
-  // OnUpdateHook(()=>{
-  //   if(message.length){
-  //     setTimeout(()=>{
-  //       setAlert({ message:"", type:"" })
-  //     }, 9500)
-  //   }
-
-  // },[message, setAlert])
-  // console.count("i rerenderd in Alert component");
+  },[message,setAlert])
+  console.count("i rerenderd in Alert component");
 
 
   return (

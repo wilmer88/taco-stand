@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import API from '../utils/API';
 
 const SignUp = () => {
-//styling for form
   const pxhi = {
     fonte:{
       fontSize: "27px",
@@ -46,28 +45,20 @@ const [password, setPassword] = useState("");
   }
 
   return (<>
-  <div>
   <div className='columns is-mobile'>
 
 <div className="column is-two-fifth"></div>
 
-<div className= "column is-three-quarters-mobile" >
   
 <br></br>
 
-<div className="field is-mobile" >
    
 
     <div className="mt-6 box">
     <h3 className="label has-text-centered" style={pxhi.fonte}>Signup/ Inscribirse</h3>
 
-    <hr></hr>
-        <br></br>
     <form onSubmit={formSubmit}>
-    <h3 className="label has-text-centered">Correo Electronico, Telefono o Nombre/ Email, Phone# or User Name </h3>
-        <div className="field is-mobile" >
-       
-      <div className="control is-expanded">
+    <h3 className="label has-text-centered">Correo Electronico, Telefono o Nombre/ Email, Phone# or User Name </h3>       
        
         <input 
         onChange={(e) => setUserName(e.target.value)}
@@ -77,10 +68,9 @@ const [password, setPassword] = useState("");
         type="text"
          placeholder="me@gmail.com/ 7063314343/ daddypop"/>
         <br></br>
-        <br></br>
+        
         <h3 className="label has-text-centered">Crea Contraseña/ Create Password</h3>
     
-        {/* <h3 className="label has-text-centered"></h3> */}
         <input 
           onChange={(e) => setPassword(e.target.value)}
           name="password"
@@ -97,19 +87,12 @@ const [password, setPassword] = useState("");
         className="button is-info">
          Signup/ Inscribirte
         </button>
-      </div>
     
-    </div>
         </form>
     </div>
-    </div>
-  </div>
   
   <div className="column is-two-fifth"></div>
   </div>
-  </div>
-  <br></br>
-  <br></br>
 
   </>)
 };

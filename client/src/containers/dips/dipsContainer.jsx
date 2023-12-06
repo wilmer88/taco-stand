@@ -1,12 +1,14 @@
 import{ useState}  from "react";
-import DipsModel from "../../components/modal/DipsModal";
 import React from "react";
+import NachoSelect from "../../components/NachoSelect/NachoSelect";
 
 const DipsContainer = () => {
     console.count("i rerenderd in dipsContainer");
 
     const [dipShow, setDipShow]= useState(0);
+ 
 
+  
     const openDipHandelerPropFunction=  ()=>{
     setDipShow(1);
     };
@@ -24,34 +26,47 @@ const DipsContainer = () => {
      openDipHandelerPropFunction()
        }
     };
-    
-    return (<><hr></hr>
 
-<div className="card" style={{background: "lightyellow"}}>
+    const [navmodal, setNavmodal]= useState("modal");
+    const showAboutModel= ()=>{
+      if(navmodal === "modal"){
+        setNavmodal("modal is-active")
+      }
+      if(navmodal === "modal is-active"){
+        setNavmodal("modal")
+      }
+    };
+
+ 
+    return (<>
+
+    <div className="card" style={{background: "lightyellow"}}>
 <header className="card-header" >
-<h3  className="card-header-title is-4" style={{ marginBottom: "10px",justifyContent:"center" }}> <strong>Dips</strong></h3>
-<div className="dropdown">
+
+<h3  className="card-header-title is-4" style={{justifyContent:"center" }}> Dips</h3>
 <div className="dropdown-trigger"> 
 <button onClick={ toggleColapseDips}  >
 <span className="icon">
-      <i className="fas fa-angle-down"  aria-hidden="false"></i>
+      <i className="fas fa-angle-down"  aria-hidden="false"> </i>
     </span>
     </button>
 </div>
-</div> </header> {dipShow === 1 && <>
-<div className="mt-2"><h6 style={{ marginBottom: 0 }}>Mezquites Dip: </h6>   <p style={{ marginBottom: 0 }}> Beef or chicken with cheese dip and pico de gallo</p></div>
-<div><h6 style={{ marginBottom: 0 }}>Tejano Dip: </h6>   <p style={{ marginBottom: 0 }}> Steak, grilled chicken, shrimp and cheesedip</p></div>
+ </header>
 
-<DipsModel/>
+ {dipShow === 1 && <>
+ <div> <p className="is-size-6 has-text-weight-medium"> Mezquites Dip: </p>Beef or chicken with cheese dip and pico de gallo</div>
+
+ <div> <p className="is-size-6 has-text-weight-medium"> Tejano Dip: </p>Steak, grilled chicken, shrimp and cheesedip</div>
+
+<button className="button is-success is-small" onClick={showAboutModel}>Add Nachos</button>
 
 <div className="container" style={{ background: "tan" }}>
 <div className="checkbox p-4">
 <input type="checkbox"
       onChange={()=>{openDipHandelerPropFunction()}  }
       checked={dipShow===1}
-      name="checked"
-  />
-  <strong>View Dips</strong>
+      name="checked"/>
+  View Dips
 </div>
 
 <div className="checkbox p-4">
@@ -60,11 +75,35 @@ const DipsContainer = () => {
   checked={dipShow===0}
   name="unchecked"
 />
-<strong>Minimize Dips</strong>
+Minimize Dips
 </div>
-</div></>}</div>
+</div></>}
 
-<hr></hr></>)
+
+</div>
+
+
+<hr></hr>
+<aside className={`${navmodal} is-mobile`} >
+
+<div className="modal-background"></div>
+     <div className="modal-content">
+     <div className="box is-mobile">
+     <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
+     <div className="column mb-2">
+
+<NachoSelect/>
+
+   
+
+
+        </div> 
+</div> 
+ </div>
+</aside>
+
+
+</>)
 };
 
 export default DipsContainer;
