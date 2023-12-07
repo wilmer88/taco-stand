@@ -1,5 +1,5 @@
 import {useState } from "react";
-import NachoSelect from "../../components/NachoSelect/NachoSelect";
+import { Link } from "react-router-dom";
 
 const NachosContainer=()=>{
   console.count("i rerenderd in nachos");
@@ -45,8 +45,10 @@ Nachos
             <p><strong>Nachos Supreme: </strong>Served with beans lettuce, soure cream, tomatoes, and guacamole.</p>    
              <p><strong>Nachos Fajita: </strong> Steak, Grilled Chicken, Shrimp, Mix or Tejano. Cooked with bell peppers, onions, and tomatoes.</p>
           <p><strong> * add Supreme 2.50  </strong> </p> 
-             <p> <strong>*add Pineapple 2.00 </strong></p>  
-            <button className="button is-success is-small" onClick={showAboutModel}>Add Nachos</button>
+             <p> <strong>*add Pineapple 2.00 </strong></p> 
+             <Link to="/nachos">
+             <button className="button is-success is-small" >Add Nachos</button>
+             </Link> 
           </div>} </div>
 
   <aside className={`${navmodal}`} >
@@ -54,81 +56,14 @@ Nachos
 <div className="modal-background"></div>
      <div className="modal-content">
      <div className="box is-mobile">
+   
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
      <div className="column mb-2">
-      <NachoSelect
-      subtitle1="(Half 8.25)"
-      
-      topingCount="0"
-      nachosName="Cheese Nachos" 
-      />
-      
-      <NachoSelect
-      subtitle="(Half 8.25)"
-      topingCount="0"
-      />
-      
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
-
-
-      <NachoSelect
-      subtitle="(Half 8.25)"
-      topingCount="0"
-      />
-      
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
-
-
-      <NachoSelect
-      subtitle="(Half 8.25)"
-      topingCount="0"
-      />
-      
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
-
-      <NachoSelect
-      subtitle="(Half 8.25)"
-      topingCount="0"
-      />
-      
-
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
-
+  
 <p >Nachos Supreme:  </p>
        <p>Choice of beef or Chincken. Served with beans lettuce, soure cream, tomatoes, and guacamole. (Half 5.50)(Full 7.50)</p>     
-      <NachoSelect
+   
     
-      topingCount="0"
-      />
-      
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
-
-      <strong> <p>Steak  </p> </strong>
-
-      <NachoSelect
-      subtitle="(Half 8.25)"
-      topingCount="0"
-      />
-      
-       <NachoSelect
-      subtitle="(Full 9.75)"
-      topingCount="0"
-      />
    
         </div> 
 </div> 

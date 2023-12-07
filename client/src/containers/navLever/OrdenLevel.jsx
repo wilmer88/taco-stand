@@ -88,7 +88,13 @@ const OrdenLevel = () => {
 </div>
 
 
-<aside id="navLevelmodal" className={`${navmodal}`} >
+
+
+</nav> 
+
+
+    </section>
+    <aside id="navLevelmodal" className={`${navmodal}`} >
 <div className="columns">
 <div className="column is-full">
 <div className="modal-background"></div>
@@ -101,12 +107,8 @@ const OrdenLevel = () => {
 </div>
 </div>
 </aside>
+<Alert/>
 
-</nav> 
-
-
-    </section>
-    <Alert/>
     
      </> )
     }

@@ -6,6 +6,8 @@ import SignUp from "./pages/SignUp";
 import OrdenLevel from "./containers/navLever/OrdenLevel";
 import Kitchen  from "./pages/kitchen";
 import OrdenPage from "./pages/OrdenPage";
+import NachosPage from "./pages/nochosPage/NachosPage";
+import DipsPage from "./pages/dips/DipsPage";
 // import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import Editar from "./pages/Editar";
 import Login from "./pages/Login";
@@ -65,7 +67,6 @@ const App = () => {
     {
       cheeseDipRegular:0,
       cheeseDipLarge:0,
-
     }
 
   );
@@ -92,8 +93,6 @@ const App = () => {
     <>
  
       <Router>
-     
-
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
@@ -101,8 +100,11 @@ const App = () => {
             <dipContext.Provider value={{...dip, setDips:setDips}}>
           < OrdenLevel/>
           <Routes>
-          <Route exact path="/kitchen" element={<Kitchen />}></Route>
+          <Route exact path="/nachos" element={<NachosPage />}></Route>
+          <Route exact path="/dips" element={<DipsPage />}></Route>
 
+
+          <Route exact path="/kitchen" element={<Kitchen />}></Route>
           <Route exact path="/myorders" element={<MyOrders />}></Route>
           <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>
           {/* <Route exact path="/allOrders" element={<AllOrdersPage />}></Route> */}

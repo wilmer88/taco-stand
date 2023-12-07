@@ -9,7 +9,6 @@ const ComboContainer = () => {
 
 const {setCombo}= useContext(ComboContext);
 let combo= useContext(ComboContext);
-    // console.log(combo);
     
   const { setAlert } = useContext(alertContext);
 
@@ -18,7 +17,7 @@ let combo= useContext(ComboContext);
       comboId: 1,
       comboPrice: "0",
       supreme: false,
-      choice1: "nocombo created",
+      choice1: "",
       choice2: "",
       key: 1,
     }]
@@ -34,7 +33,6 @@ let combo= useContext(ComboContext);
       setCombo(listOfCombos);
 ;    }
     
-
       if (listOfCombos.length === 1) {
         listOfCombos[0].comboPrice = "0";
         setInput(listOfCombos);
@@ -68,12 +66,10 @@ let combo= useContext(ComboContext);
     data[index][event.target.name] = event.target.value;
     setInput([...data]);
     setCombo([...data]); 
-
   };
 
   const addFields = (event) => {
     event.preventDefault();
-
     let newfield = {
       comboId: inputFields.length + 1,
       comboPrice: "0",
@@ -85,7 +81,7 @@ let combo= useContext(ComboContext);
     setInput([...inputFields, newfield]);
     
     setCombo([...combo.combo, newfield]);
-    // console.log(combo);
+
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   };
@@ -95,7 +91,6 @@ let combo= useContext(ComboContext);
   const comboSeter= ()=>{
     setTimeout(() => {setCombo(inputFields);
     }, 2000);     
-
   };
 
   return (<>
@@ -192,7 +187,6 @@ let combo= useContext(ComboContext);
 
 
                     </div>
-
 
 
 

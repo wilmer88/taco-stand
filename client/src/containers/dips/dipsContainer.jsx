@@ -1,6 +1,7 @@
 import{ useState}  from "react";
 import React from "react";
-import NachoSelect from "../../components/NachoSelect/NachoSelect";
+import { Link } from "react-router-dom"
+
 
 const DipsContainer = () => {
     console.count("i rerenderd in dipsContainer");
@@ -58,7 +59,9 @@ const DipsContainer = () => {
 
  <div> <p className="is-size-6 has-text-weight-medium"> Tejano Dip: </p>Steak, grilled chicken, shrimp and cheesedip</div>
 
-<button className="button is-success is-small" onClick={showAboutModel}>Add Nachos</button>
+<Link to="/dips">
+<button className="button is-success is-small" onClick={showAboutModel}>Add Dips</button>
+</Link>
 
 <div className="container" style={{ background: "tan" }}>
 <div className="checkbox p-4">
@@ -77,7 +80,10 @@ const DipsContainer = () => {
 />
 Minimize Dips
 </div>
-</div></>}
+</div>
+
+
+</>}
 
 
 </div>
@@ -92,7 +98,7 @@ Minimize Dips
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
      <div className="column mb-2">
 
-<NachoSelect/>
+
 
    
 
