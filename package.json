@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/wilmer88/taco-stand#readme",
   "dependencies": {
-    
     "@icon/icofont": "^1.0.1-alpha.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.9",
@@ -54,6 +53,7 @@
     "path": "^0.12.7",
     "proxy-sinon-chai": "^0.0.1",
     "react-native": "^0.72.6",
+    "react-select": "^5.8.0",
     "sinon": "^13.0.2",
     "socket.io": "^4.7.1",
     "stripe": "^10.15.0",

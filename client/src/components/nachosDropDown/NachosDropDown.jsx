@@ -2,25 +2,53 @@ import React from "react";
 
 
 const NachosDropDown = (props)=>{
-    const numeros = [
-        "",
-         "Cheese Nachos(Half)($4.75)",
-         "Cheese Nachos (Full)($6.00)",
-         "Beans Nachos(Half)($5.00)",
-         "Beans Nachos(Full)($6.25)",
-        ];
+  const numeros = [
+    "",
+     "Cheese Nachos(Half)($4.75)",
+     "Cheese Nachos (Full)($6.00)",
+     "Beans Nachos(Half)($5.00)",
+     "Beans Nachos(Full)($6.25)",
+    ];
 
+    
 
     return(<>
 
-    <div className="columns is-responsive is-mobile is-centered">
-    <div className="ml-3 field">
-< h6 className="mr-6 label">
-     {props.tagg} 
-</h6>
 
-<div className="mr-6  select ">
-<select
+
+<div className="columns is-vcentered is-mobile is-centered">
+   
+
+
+<div className="checkbox p-1">
+
+<input
+ type="checkbox"
+  onChange={props.handleSupremeNachos }
+  name="NachosSupreme"
+  />
+Make Supreme
+</div>
+</div>
+
+<div className="columns is-vcentered is-mobile is-centered">
+<div className="checkbox p-1">
+<input
+ type="checkbox"
+  onChange={props.handleSupremeNachos }
+  name="NachosSupreme"
+  />
+Add Pineapple
+</div>
+
+</div>
+
+
+
+      <div className="columns is-vcentered is-mobile is-centered">
+        
+      <div onChange={props.onChangeNachos} className="select is-mobile is-centered mt-2">
+      <select
   name={props.name}
   value={props.value}
   onChange={props.onChange}
@@ -33,25 +61,36 @@ const NachosDropDown = (props)=>{
     </option>
   ))}
 </select>
+
+
+
+      </div>
+      
+
+      </div>
+      
+
+      <div className="columns is-vcentered is-mobile is-centered">
+
+<button className="button is-danger is-small mt-3 mr-3" onClick={props.removeNachos} >Remove Combo</button>
+
 </div>
-</div> 
-    </div>
-
-
-    <div className="columns is-mobile is-centered mt-2" style={{ background: "tan" }}>
-<div className="checkbox p-4">
-<input type="checkbox"
-    //   onChange={()=>{{props.handleSupremeNachos}}  }
-    //   checked={dipShow===1}
-      name="nachosSupreme"/>
-Make Supreme
-</div>
-</div>
 
 
 
-    
-    </>)
+      
+
+
+
+<hr></hr>
+
+</>)
+
+
+
+
+
+
 }
 
 export default NachosDropDown;

@@ -50,8 +50,8 @@ const OrdenLevel = () => {
     }
  
 
-      console.log(levelComboOrder.combo.length);
-      console.log(dips.cheeseDipRegular);
+      // console.log(levelComboOrder.combo.length);
+      // console.log(dips.cheeseDipRegular);
 
       setLevelCounter(combolengthFrunt + dips.cheeseDipRegular );
 
