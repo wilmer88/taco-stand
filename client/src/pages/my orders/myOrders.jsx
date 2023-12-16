@@ -1,16 +1,16 @@
 import Licomponent from "../../components/AdminComponent";
 import React, {useContext,useEffect, useState} from "react";
-import alertContext from "../../context/alertContext";
-import AuthContext from '../../context/AuthContext';
-import API from "../../utils/API"
+// import alertContext from "../../context/alertContext";
+// import AuthContext from '../../context/AuthContext';
+// import API from "../../utils/API"
 import { useParams } from "react-router-dom";
 
 const MyOrders = () => {
 
-  const { userName } = useParams();
-  const user = useContext(AuthContext);
+  // const { userName } = useParams();
+  // const user = useContext(AuthContext);
   const [searchResult, setSearchResult] = useState({});
-  const {setAlert} = useContext(alertContext)
+  // const {setAlert} = useContext(alertContext)
 
 //   useEffect(() => {
 

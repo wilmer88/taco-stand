@@ -12,7 +12,7 @@ const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 
-const OrderModel = ()=>{
+const OrderModel = (props)=>{
   console.count("i rerenderd in OrdenModal");
 
 

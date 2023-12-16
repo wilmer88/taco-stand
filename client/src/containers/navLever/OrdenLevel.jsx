@@ -8,6 +8,7 @@ import Alert from "../../components/Alert/Alert";
 import OnUpdateHook from "../../components/hooks/onUpdateHook";
 
 
+
 const estilo = {
  nombre: {
    background: "#e8eaf6",
@@ -25,11 +26,10 @@ const estilo = {
 
 const OrdenLevel = () => { 
   console.count("i rerenderd in navbar");
-
-  const [navmodal, setNavmodal]= useState("modal");
-  const levelComboOrder = useContext(comboContext);
   const [levelCounter, setLevelCounter]= useState(0);
+  const levelComboOrder = useContext(comboContext);
   const dips= useContext(dipContext);
+  const [navmodal, setNavmodal]= useState("modal");
 
   const showAboutModel= ()=>{
     if(navmodal === "modal"){
@@ -83,7 +83,7 @@ const OrdenLevel = () => {
 </div>
 
 <div className="column has-text-centered" >
-<Link className="levelHover" to="/kitchen">
+<Link className="levelHover" to="/checkoutPage">
 <h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {levelCounter} </h3></Link>
 </div>
 
@@ -107,6 +107,7 @@ const OrdenLevel = () => {
 </div>
 </div>
 </aside>
+
 <Alert/>
 
     

@@ -23,6 +23,8 @@ import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import OrderContext from "./context/orderDataContext";
 import dipContext from "./context/DipContext";
+import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
+import MenuPage from "./components/modal/MenuPage";
 
 const App = () => {
   console.count("i rerenderd in App.js");
@@ -102,6 +104,9 @@ const App = () => {
           <Routes>
           <Route exact path="/nachos" element={<NachosPage />}></Route>
           <Route exact path="/dips" element={<DipsPage />}></Route>
+          <Route exact path="/checkoutPage" element={<CheckOutPage />}></Route>
+          <Route exact path="/menuPage" element={<MenuPage />}></Route>
+
 
 
           <Route exact path="/kitchen" element={<Kitchen />}></Route>

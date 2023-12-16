@@ -2,13 +2,9 @@ import React from "react";
 
 
 const NachosDropDown = (props)=>{
-  const numeros = [
-    "",
-     "Cheese Nachos(Half)($4.75)",
-     "Cheese Nachos (Full)($6.00)",
-     "Beans Nachos(Half)($5.00)",
-     "Beans Nachos(Full)($6.25)",
-    ];
+
+ const {numeros}= props
+
 
     
 
@@ -35,8 +31,8 @@ Make Supreme
 <div className="checkbox p-1">
 <input
  type="checkbox"
-  onChange={props.handleSupremeNachos }
-  name="NachosSupreme"
+  onChange={props.handlePineapplefunc }
+  name="NachosPineapple"
   />
 Add Pineapple
 </div>
@@ -47,17 +43,20 @@ Add Pineapple
 
       <div className="columns is-vcentered is-mobile is-centered">
         
-      <div onChange={props.onChangeNachos} className="select is-mobile is-centered mt-2">
+      <div  className="select is-mobile is-centered mt-2">
       <select
-  name={props.name}
-  value={props.value}
-  onChange={props.onChange}
->
+      name={props.selectNachoName}
+      value={props.value}
+      onChange={props.onChangeNachos}
+      >
+<option>Select an option</option>
   {numeros.map((nume) => (
     <option
-     key={nume.toString()} 
-     value={nume}>
-      {nume}
+    key={nume.label}
+    value={nume.price} 
+    name={nume.label}
+     >
+      {nume.label}
     </option>
   ))}
 </select>
@@ -75,13 +74,6 @@ Add Pineapple
 <button className="button is-danger is-small mt-3 mr-3" onClick={props.removeNachos} >Remove Combo</button>
 
 </div>
-
-
-
-      
-
-
-
 <hr></hr>
 
 </>)
@@ -93,4 +85,9 @@ Add Pineapple
 
 }
 
-export default NachosDropDown;
+export default React.memo(NachosDropDown);
+
+
+    //  "Cheese Nachos (Full)($6.00)",
+    //  "Beans Nachos(Half)($5.00)",
+    //  "Beans Nachos(Full)($6.25)",

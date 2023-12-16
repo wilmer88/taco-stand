@@ -9,6 +9,7 @@ const nachosContext = React.createContext(
     comboId: 1,
     nachosName: "",
     nachosPrice: "0",
+    pineapple:false,
     supreme: false,
     key: 1,
   }],
