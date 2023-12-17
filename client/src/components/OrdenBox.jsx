@@ -8,7 +8,7 @@ import {useContext} from "react";
 import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
 import React from "react";
-
+import BurritosContainer from "../containers/Burritos/BurritosContainer";
 
 const OrdenBox = () => {
   console.count("i rerenderd in ordenBox");
@@ -133,6 +133,7 @@ const NameHandleChange = event => {
               </div>   
               <div id="nachitos" >
 </div>
+<BurritosContainer/>
 <DipsContainer  />
 
 <  NachosContainer />
@@ -182,7 +183,7 @@ const NameHandleChange = event => {
               <figcaption>
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Bebidas</strong></h3>
               </figcaption>
-              <section id="codimentsSection" className="columns mt-3">
+              <section className="columns mt-3">
 
                 <DropDownField
                   tagg="Horchata Grande"
@@ -218,7 +219,7 @@ const NameHandleChange = event => {
               </section>
             </div>
             <hr></hr>
-            <div id='ALaCarta' className="container mt-3" >
+            <div className="container mt-3" >
               <figcaption  >
                 <h3 style={{ textAlign: "center", background: "lightyellow" }} > <strong>Condimentos</strong></h3>
               </figcaption>

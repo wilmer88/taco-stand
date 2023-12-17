@@ -49,6 +49,7 @@ Add Pineapple
       value={props.value}
       onChange={props.onChangeNachos}
       >
+
 <option>Select an option</option>
   {numeros.map((nume) => (
     <option
@@ -56,8 +57,18 @@ Add Pineapple
     value={nume.price} 
     name={nume.label}
      >
-      {nume.label}
+      
+  { 
+  
+  nume.label
+  
+  }
+
+
     </option>
+
+
+
   ))}
 </select>
 

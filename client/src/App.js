@@ -25,6 +25,7 @@ import OrderContext from "./context/orderDataContext";
 import dipContext from "./context/DipContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
+import BurritoPage from "./pages/burritoPage/BurritoPage";
 
 const App = () => {
   console.count("i rerenderd in App.js");
@@ -102,6 +103,8 @@ const App = () => {
             <dipContext.Provider value={{...dip, setDips:setDips}}>
           < OrdenLevel/>
           <Routes>
+          <Route exact path="/burritopage" element={<BurritoPage />}></Route>
+
           <Route exact path="/nachos" element={<NachosPage />}></Route>
           <Route exact path="/dips" element={<DipsPage />}></Route>
           <Route exact path="/checkoutPage" element={<CheckOutPage />}></Route>
