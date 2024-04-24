@@ -21,7 +21,7 @@ app.use(express.static(__dirname + './client/public'));
 const PORT = process.env.PORT || 3001;
 
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos" ,
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -85,9 +85,4 @@ const io = new Server(server, {
 //   console.log(`server running on port ${PORT}`);
 // });
 
-
 server.listen(PORT);
-
-
-
-
