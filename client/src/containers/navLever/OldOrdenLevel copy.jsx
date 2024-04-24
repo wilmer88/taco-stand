@@ -25,6 +25,8 @@ const estilo = {
 }
 
 const OrdenLevel = () => { 
+  console.log("im combocontext!!!!!:", comboContext)
+
   // console count if for seend how many times a component rerenders
   // console.count("i rerenderd in navbar");
   const [levelCounter, setLevelCounter]= useState(0);

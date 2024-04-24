@@ -177,7 +177,7 @@ const BurritoPage = () => {
 
                 <hr></hr>
 
-    <button className="button is-success is-small" onClick={(event)=>{addNachos(event)}} > Add Nachos</button>
+    <button className="button is-success is-small" onClick={(event)=>{addNachos(event)}} > Make A Burrito Order</button>
     <MenuPage
             menuImage={"./images/dipsNachosLaCarta.jpg"}
             />

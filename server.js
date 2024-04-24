@@ -60,7 +60,7 @@ const io = new Server(server, {
 });
     io.on("connection",(socket)=>{
       console.log(`socket io connected id: ${socket.id}`);
-      // socket.on("myOrders",(arg)=>{
+      // socket.on("myOrders", (arg)=>{
       //   socket.emit("mySocketOrders", arg);
       //   console.log(arg)
       // });

@@ -3,9 +3,10 @@ const OrderContext = React.createContext({
     
 ordercontextt: [
      {
-        nombreDeOrden: "",
+        nombreDeOrden:"",
         phoneNumber:"",
         tableNumber:"",
+        burritos:[],
         combo:[],
         dips:[],
         Nachos:[],
