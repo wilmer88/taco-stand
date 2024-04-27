@@ -6,7 +6,7 @@ import comboContext from "../../context/ComboContext";
 import dipContext from "../../context/DipContext";
 import Alert from "../../components/Alert/Alert";
 import OnUpdateHook from "../../components/hooks/onUpdateHook";
-
+import orderlevelOrderDataContext from "../../context/orderDataContext";
 
 
 const estilo = {
@@ -29,6 +29,9 @@ const OrdenLevel = () => {
   // console.count("i rerenderd in navbar");
   const [levelCounter, setLevelCounter]= useState(0);
   const levelComboOrder = useContext(comboContext);
+  const levelOrderDataContext = useContext(orderlevelOrderDataContext);
+  // console.log(levelOrderDataContext);
+
   const dips= useContext(dipContext);
   const [navmodal, setNavmodal]= useState("modal");
 
@@ -51,10 +54,10 @@ const OrdenLevel = () => {
     }
  
 
-      // console.log(levelComboOrder.combo.length);
+      console.log("im from ordenlevel", levelOrderDataContext);
       // console.log(dips.cheeseDipRegular);
 
-      setLevelCounter(combolengthFrunt + dips.cheeseDipRegular );
+      setLevelCounter(levelOrderDataContext.length);
 
   }, [levelComboOrder.combo,dips])
 

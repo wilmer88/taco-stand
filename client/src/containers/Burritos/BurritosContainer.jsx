@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import MenuPage from "../../components/modal/MenuPage";
+
 
 
 
@@ -64,9 +66,14 @@ const BurritosContainer =()=>{
   <p><strong>BURRITO ROLLOS: </strong></p>
                 
                 <Link  to="/burritopage">
-                <button className="button is-success is-small"> View/Add Burritos</button>
+                <button  className="button is-success is-small">View Burritos</button>
     
     </Link>
+    <MenuPage
+            menuImage={"./images/dipsNachosLaCarta.jpg"}
+            />
+            
+     
 
             </div>  
 

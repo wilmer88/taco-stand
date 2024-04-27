@@ -26,6 +26,7 @@ const OrdenSchema = new Schema({
 
  combo: [],
  dips:[],
+ burritos:[],
 
   azada: {
     type: Number,

@@ -21,7 +21,7 @@ import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 // import AdminSignUp from "./pages/AdminSignUp/AdminSignup";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
-import OrderContext from "./context/orderDataContext";
+import AppOrderContext from "./context/orderDataContext";
 import dipContext from "./context/DipContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
@@ -35,8 +35,11 @@ const App = () => {
     nombreDeOrden: "",
     phoneNumber:"",
     tableNumber:"",
+    burritos:[],
     combo:[],
     dips:[],
+    aLaCarte:[],
+    nachos:[],
     azada:0,
     pollo: 0,
     barbacoa: 0,
@@ -99,7 +102,7 @@ const App = () => {
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
-          <OrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
+          <AppOrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
             <dipContext.Provider value={{...dip, setDips:setDips}}>
           < OrdenLevel/>
           <Routes>
@@ -134,7 +137,7 @@ const App = () => {
 
 
 </dipContext.Provider>
-</OrderContext.Provider>
+</AppOrderContext.Provider>
 </ComboContext.Provider>
 </alertContext.Provider>
 </AuthContext.Provider>

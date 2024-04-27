@@ -106,7 +106,7 @@ const NachosPage = () => {
              <p><strong>Nachos Fajita: </strong> Steak, Grilled Chicken, Shrimp, Mix or Tejano. Cooked with bell peppers, onions, and tomatoes.</p>
           <p><strong> * add Supreme 2. 50  </strong> </p> 
              <p> <strong>*add Pineapple 2.00 </strong></p> 
-    <button className="button is-success is-small" onClick={(event)=>{addNachos(event)}} > Add Nachos</button>
+    <button className="button is-success is-small" onClick={(event)=>{addNachos(event)}} > Create New Nachos Order</button>
           </div>
     
     </figcaption>

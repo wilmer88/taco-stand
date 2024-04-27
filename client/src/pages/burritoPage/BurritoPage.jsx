@@ -7,6 +7,29 @@ import MenuPage from "../../components/modal/MenuPage";
 
 
 const BurritoPage = () => {
+    console.count("i rerenderd in burrito page");
+
+
+    const [navmodal, setNavmodal]= useState("modal");
+    const showAboutModel= ()=>{
+      if(navmodal === "modal"){
+        setNavmodal("modal is-active")
+      }
+      if(navmodal === "modal is-active"){
+        setNavmodal("modal")
+      }
+    };
+  
+    const [isopen, setIsopen] = useState(0);
+  
+    const toggleColapse = ()=>{
+      if(isopen===0){
+        setIsopen(1)
+      };
+      if(isopen===1){
+        setIsopen(0)
+      };
+    };
     const numeros = [
 
         {label:"Luis Burrito(Steak)($11.25)", price:8.75},
@@ -136,16 +159,8 @@ const BurritoPage = () => {
 
     <figcaption className="columns is-mobile is-centered mt-6" style={{ background: "lightyellow" }}>
         <div className="card-content">
-   
 
-           
-
-
-
-
-              
-             
-
+            
                 <p><strong> LUIS BURRITO:  </strong>A 12' flour tortilla stuffed with your choice of steaK or grilled chicken with beans, rice, pco de gallo, burrito salsa and shredded cheese on top. 11.23</p>     
               <p><strong>BURRITO SUPREMO: </strong>Your choice of beef or chicken topped with red salsa, shredded cheese, lettuce, tomato,and sour cream. 6.00</p>    
               
@@ -177,7 +192,7 @@ const BurritoPage = () => {
 
                 <hr></hr>
 
-    <button className="button is-success is-small" onClick={(event)=>{addNachos(event)}} > Make A Burrito Order</button>
+    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event);addNachos(event)}} > Add New Burrito Order</button>
     <MenuPage
             menuImage={"./images/dipsNachosLaCarta.jpg"}
             />
@@ -194,14 +209,27 @@ const BurritoPage = () => {
 
         
     </div>
+    <aside className={`${navmodal}`} >
 
+  <div className="modal-background"></div>
+       <div className="modal-content">
+       <div className="container">
+       <button className="button is-success is-small is-centerd" onClick={(event)=>{addNachos(event)}} > Make New Burrito Order</button>
 
+    
+       </div> 
+       <div className="box is-mobile">
+     
+       <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
+   
 
-    {
+  
+       {
         nachosFields.map((nachitos,index) => {
 
-            return (<div key={index} className="container">
-
+            return (
+            
+            <div key={index} className="container">
 
 < NachosDropDown
 selectNachoName={"nachos"}
@@ -210,7 +238,8 @@ handlePineapplefunc = {(e)=>handlePinapplefunc(index,e)}
 handleSupremeNachos={(e)=>nachosSupremeHandler(index,e)}
 onChangeNachos= {e=>handleNachosChange(index,e)}
 removeNachos= {()=>removeNachos(index)}
-/>
+/>   
+
 
       </div>)
 
@@ -218,6 +247,10 @@ removeNachos= {()=>removeNachos(index)}
 
         })
     }
+     
+  </div> 
+   </div>
+  </aside>
 
 
 
