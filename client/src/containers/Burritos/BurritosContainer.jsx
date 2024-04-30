@@ -8,6 +8,8 @@ import MenuPage from "../../components/modal/MenuPage";
 
 
 const BurritosContainer =()=>{
+  console.count("i rerenderd in burrito container");
+
 
 
     const [navmodal, setNavmodal]= useState("modal");
@@ -67,14 +69,9 @@ const BurritosContainer =()=>{
                 
                 <Link  to="/burritopage">
                 <button  className="button is-success is-small">View Burritos</button>
-    
-    </Link>
-    <MenuPage
-            menuImage={"./images/dipsNachosLaCarta.jpg"}
-            />
+                 </Link>
+    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
             
-     
-
             </div>  
 
             
@@ -85,24 +82,7 @@ const BurritosContainer =()=>{
             
             </div>
   
-    <aside className={`${navmodal}`} >
-  
-  <div className="modal-background"></div>
-       <div className="modal-content">
-       <div className="box is-mobile">
-     
-       <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
-       <div className="column mb-2">
-    
-  <p >Nachos Supreme:  </p>
-         <p>Choice of beef or Chincken. Served with beans lettuce, soure cream, tomatoes, and guacamole. (Half 5.50)(Full 7.50)</p>     
-     
-      
-     
-          </div> 
-  </div> 
-   </div>
-  </aside></> );
+</> );
   };
 
 export default BurritosContainer

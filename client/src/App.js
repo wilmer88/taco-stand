@@ -26,11 +26,11 @@ import dipContext from "./context/DipContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
 import BurritoPage from "./pages/burritoPage/BurritoPage";
+import burritosContext from "./context/burritoContext";
 
 const App = () => {
-  console.count("i rerenderd in App.js");
-
-
+  // console.count("i rerenderd in App.js");
+  
   const [orderDataContext, setOrderDataContext]= useState( {
     nombreDeOrden: "",
     phoneNumber:"",
@@ -58,7 +58,16 @@ const App = () => {
     cancelar:false,
     preparada: false,
     pagado:false,
-  })
+  });
+
+  const [burritosOrder, setBurritoContext] = useState([{
+
+    burritoOrderId: 0,
+    burritoOrderName: "",
+    burritosPrice: "0",
+    key: 1,
+    
+  }])
 
    const [combo, setCombo]= useState([{
     comboId: 1,
@@ -101,44 +110,49 @@ const App = () => {
       <Router>
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
+          
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <AppOrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
             <dipContext.Provider value={{...dip, setDips:setDips}}>
+            <burritosContext.Provider value={{...burritosOrder, setBurritoContext:setBurritoContext}}>
+
           < OrdenLevel/>
           <Routes>
+{/* removed exact path react router from v5 to v6 */}
           <Route exact path="/burritopage" element={<BurritoPage />}></Route>
-
-          <Route exact path="/nachos" element={<NachosPage />}></Route>
-          <Route exact path="/dips" element={<DipsPage />}></Route>
-          <Route exact path="/checkoutPage" element={<CheckOutPage />}></Route>
-          <Route exact path="/menuPage" element={<MenuPage />}></Route>
-
+          <Route path="/nachos" element={<NachosPage />}></Route>
+          <Route path="/dips" element={<DipsPage />}></Route>
+          <Route path="/checkoutPage" element={<CheckOutPage />}></Route>
+          <Route path="/menuPage" element={<MenuPage />}></Route>
 
 
-          <Route exact path="/kitchen" element={<Kitchen />}></Route>
-          <Route exact path="/myorders" element={<MyOrders />}></Route>
-          <Route exact path="/unprepared" element={<UnpreparedOrders />}></Route>
+
+          <Route path="/kitchen" element={<Kitchen />}></Route>
+          <Route path="/myorders" element={<MyOrders />}></Route>
+          <Route path="/unprepared" element={<UnpreparedOrders />}></Route>
           {/* <Route exact path="/allOrders" element={<AllOrdersPage />}></Route> */}
           {/* <Route exact path="/adminDash" element={<AdminDash />}></Route> */}
           {/* <Route exact path="/adminSignup" element={<AdminSignUp />}></Route> */}
 
           {/* <Route exact path="/myorders/:userName" element={<MyOrders />}></Route> */}
-            <Route exact path="/payment/:ordenId" element={<Payment />}></Route>
-            <Route exact path="/signup" element={<SignUp />}></Route>
-            <Route exact path="/login" element={<Login />}></Route>
-            <Route exact path="/orden/:ordenId" element={<Editar />}></Route>
+            <Route path="/payment/:ordenId" element={<Payment />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/orden/:ordenId" element={<Editar />}></Route>
             <Route path="/orden" exact element={<OrdenPage />}></Route>
-            <Route exact path="/searcho" element={<SearchOrderPage />}></Route>
+            <Route path="/searcho" element={<SearchOrderPage />}></Route>
             <Route exact path="/" element={<StartPage />}></Route>
 
           </Routes>
           {jwt !== "" ? (
              <Footer />): null }
 
+</burritosContext.Provider>
 
 </dipContext.Provider>
 </AppOrderContext.Provider>
 </ComboContext.Provider>
+
 </alertContext.Provider>
 </AuthContext.Provider>
       </Router>

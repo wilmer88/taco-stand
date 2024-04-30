@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import nachosContext from "../../context/nachosContext"
-import NachosDropDown from "../../components/nachosDropDown/NachosDropDown";
+import OptionDropDown from "../../components/optionDropDown/OptionDropDown";
 import MenuPage from "../../components/modal/MenuPage";
 
 
@@ -123,7 +123,7 @@ const NachosPage = () => {
             return (<div key={index} className="container">
 
 
-< NachosDropDown
+< OptionDropDown
 selectNachoName={"nachos"}
 numeros={numeros}
 handlePineapplefunc = {(e)=>handlePinapplefunc(index,e)}

@@ -26,12 +26,10 @@ const estilo = {
 
 const OrdenLevel = () => { 
   // console count if for seend how many times a component rerenders
-  // console.count("i rerenderd in navbar");
+  console.count("i rerenderd in navbar");
   const [levelCounter, setLevelCounter]= useState(0);
   const levelComboOrder = useContext(comboContext);
   const levelOrderDataContext = useContext(orderlevelOrderDataContext);
-  // console.log(levelOrderDataContext);
-
   const dips= useContext(dipContext);
   const [navmodal, setNavmodal]= useState("modal");
 
@@ -41,27 +39,23 @@ const OrdenLevel = () => {
     }
     if(navmodal === "modal is-active"){
       setNavmodal("modal");
-    }
+    }};
 
-  }
-
-  
   OnUpdateHook(()=>{
+    console.log("im from ordenlevel", levelOrderDataContext);
+
     let combolengthFrunt = levelComboOrder.combo.length
 
     if(levelComboOrder.combo[0].comboPrice === "0"){
       combolengthFrunt = combolengthFrunt - 1
-    }
- 
-
-      console.log("im from ordenlevel", levelOrderDataContext);
+    };
       // console.log(dips.cheeseDipRegular);
-
       setLevelCounter(levelOrderDataContext.length);
 
   }, [levelComboOrder.combo,dips])
 
   return ( <>
+  
     <section className="section" style={estilo.pad}>
       <nav className="navbar is-fixed-top is-justify-content-center" role="navigation"   >
 

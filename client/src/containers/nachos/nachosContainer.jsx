@@ -2,7 +2,7 @@ import {useState } from "react";
 import { Link } from "react-router-dom";
 
 const NachosContainer=()=>{
-  console.count("i rerenderd in nachos");
+  console.count("i rerenderd in nachos containers");
 
   const [navmodal, setNavmodal]= useState("modal");
   const showAboutModel= ()=>{

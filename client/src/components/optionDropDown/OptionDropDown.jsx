@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const NachosDropDown = (props)=>{
+const OptionDropDown = (props)=>{
 
  const {numeros}= props
 
@@ -92,13 +92,9 @@ Add Pineapple
 </>)
 
 
-
-
-
-
 }
 
-export default React.memo(NachosDropDown);
+export default React.memo(OptionDropDown);
 
 
     //  "Cheese Nachos (Full)($6.00)",

@@ -4,15 +4,13 @@ const burritosContext = React.createContext(
     
  {
     burritoOrders: [{
-    burritoOrderId: 0,
-    burritoName: "",
+      burritosOrderId: 1,
+    burritosOrderName: "",
     burritosPrice: "0",
-    pineapple:false,
-    supreme: false,
     key: 1,
   }],
       
-   setNacho:()=>{}
+   setBurritoContext:()=>{}
  }
     
     )

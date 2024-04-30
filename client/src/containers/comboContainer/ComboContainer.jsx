@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import ComboContext from "../../context/ComboContext";
 import alertContext from "../../context/alertContext";
@@ -7,9 +7,8 @@ import Alert from "../../components/Alert/Alert";
 const ComboContainer = () => {
   console.count("i rerenderd in combo container");
 
-const {setCombo}= useContext(ComboContext);
-let combo= useContext(ComboContext);
-    
+const {setCombo, combo}= useContext(ComboContext);
+
   const { setAlert } = useContext(alertContext);
 
   const [inputFields, setInput] = useState(
@@ -22,6 +21,12 @@ let combo= useContext(ComboContext);
       key: 1,
     }]
   );
+
+  const comboSeter= ()=>{
+    setTimeout(() => {
+      // setCombo(inputFields);
+    }, 2000);     
+  };
 
   const removeCombo = (index) => {
     const listOfCombos = [...inputFields];
@@ -44,29 +49,17 @@ let combo= useContext(ComboContext);
   const handleSupremeChange = (index, event) => {
 
     let data = [...inputFields];
-    data[index][event.target.supreme] = event.currentTarget.value;
-
-    if (data[index][event.target.name] === false) {
-      // console.log("was1" + data[index][event.target.name]);
-      data[index][event.target.name] = true;
-      // console.log("now1:" + data[index][event.target.name]);
-      setInput(data);
-    }
-    else if (data[index][event.target.name] === true) {
-      // console.log("was2:" + data[index][event.target.name]);
-      data[index][event.target.name] = false;
-      // console.log("now2:" + data[index][event.target.name]);
-      setInput(data);
-    };
-
+    data[index].supreme = event.target.checked;
   };
 
-  const handleFormChange = (index, event) => {
-    let data = [...inputFields];
-    data[index][event.target.name] = event.target.value;
-    setInput([...data]);
-    setCombo([...data]); 
-  };
+  const handleFormChange = useCallback(
+    (index, event) => {
+      let data = [...inputFields];
+      data[index][event.target.name] = event.target.value;
+      setInput([...data]);
+      setCombo([...data]); 
+    },[inputFields,setCombo]
+  );
 
   const addFields = (event) => {
     event.preventDefault();
@@ -86,12 +79,7 @@ let combo= useContext(ComboContext);
 
   };
 
-
-
-  const comboSeter= ()=>{
-    setTimeout(() => {setCombo(inputFields);
-    }, 2000);     
-  };
+  console.log(inputFields);
 
   return (<>
 
@@ -209,7 +197,7 @@ let combo= useContext(ComboContext);
                 input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 4 &&
                 <>
 
-                  <button type="submit" className="button is-success is-small" onClick={addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button>
+                  <button type="submit" className="button is-success is-small" onClick={ addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button>
 
                 </>
 

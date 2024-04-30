@@ -1,15 +1,76 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import nachosContext from "../../context/nachosContext"
-import NachosDropDown from "../../components/nachosDropDown/NachosDropDown";
+import NachosDropDown from "../../components/optionDropDown/OptionDropDown";
 import MenuPage from "../../components/modal/MenuPage";
-
-
+import burritosContext from "../../context/burritoContext";
+import Alert from "../../components/Alert/Alert";
+import alertContext from "../../context/alertContext";
 
 const BurritoPage = () => {
     console.count("i rerenderd in burrito page");
+    const { setAlert } = useContext(alertContext);
 
+    const {setBurritoContext} = useContext(burritosContext);
+    const [burritosOrder, setBurittosFields] = useState(
+        [{
+          burritosOrderId: 1,
+          burritosOrderName: "",
+          burritosPrice: "0",
+          key: 1,
+        }]
+      );
 
+      const addBurritosFields = (event) => {
+        event.preventDefault();
+        let newfield = {
+      
+          burritosOrderId: burritosOrder.length + 1,
+          burritoOrderName: "",
+          burritosPrice: "0",
+          key: burritosOrder.length + 1,
+        };
+        setBurritoContext([...burritosOrder, newfield]);
+        
+        setBurittosFields([...burritosOrder, newfield]);
+    
+        setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
+    
+      };
+
+      
+      const handleBurritoFormChange = (index, event) => {
+        let data = [...burritosOrder];
+        data[index][event.target.name] = event.target.value;
+        setBurittosFields([...data]);
+        setBurritoContext([...data]); 
+      };
+
+      const burritosSeter= ()=>{
+        setTimeout(() => {setBurritoContext(burritosOrder);
+        }, 2000);     
+      };
+
+      
+      const removeBurrito = (index) => {
+        const listOfBurritos = [...burritosOrder];
+    
+        if (listOfBurritos.length >= 1) {
+            listOfBurritos.splice(index, 1);
+            burritosOrder.splice(index,1)
+            setBurittosFields(listOfBurritos);
+            setBurritoContext(listOfBurritos);
+    ;    }
+        
+          if (listOfBurritos.length === 1) {
+            listOfBurritos[0].burritosPrice = "0";
+            setBurittosFields(listOfBurritos);
+            setBurritoContext(listOfBurritos);
+    
+          };
+      };
+
+    
     const [navmodal, setNavmodal]= useState("modal");
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
@@ -78,80 +139,6 @@ const BurritoPage = () => {
 
        ];
 
-    const nachos = useContext(nachosContext);
-    const {setNacho} = useContext(nachosContext);
-    const [nachosFields, setNachosFields] = useState([]);
-
-
-    const removeNachos = (index) => {
-        const nachosToDelete=[...nachosFields];
-        if(nachosToDelete.length >= 1){
-            nachosToDelete.splice(index,1);
-            setNachosFields(nachosToDelete);
-            setNacho(nachos); 
-        }
-    }
-
-    const addNachos = (event) => {
-        let aNachoaOrder= {
-            comboId: nachosFields.length ,
-            nachosName: "",
-            nachosPrice: 0,
-            pineapple:false,
-            supreme: false,
-            key: nachosFields.length,
-        }
-        setNachosFields([...nachosFields, aNachoaOrder]);
-        setNacho([...nachos.nachos, aNachoaOrder])
-    }
-    
-
-    const handleNachosChange=(index, e)=>{
-        let data = [...nachosFields];
-            data[index].nachosName = e.target.options[e.target.selectedIndex].getAttribute("name");
-                data[index].nachosPrice = e.target.value
-        setNachosFields([...data]);
-        setNacho([...data]); 
-    }
-
-    const handlePinapplefunc = (index,e)=>{
-        let data = [...nachosFields];
-        console.log(data[index].pineapple);
-        if(data[index].pineapple === true){
-            data[index].pineapple = false;
-            data[index].nachosPrice = data[index].nachosPrice - 2
-            setNachosFields(data);
-        }
-        
-        else if(data[index].pineapple === false){
-            data[index].pineapple = true;
-            data[index].nachosPrice = 2 + data[index].nachosPrice 
-            setNachosFields(data);
-        }
-        console.log(nachosFields)
-
-
-    }
-
-    const nachosSupremeHandler= (index,e) =>{
-        let data = [...nachosFields];
-        console.log(data[index].supreme);
-        // data[index][event.target.supreme] = event.currentTargt;
-        if(data[index].supreme === true){
-            data[index].supreme = false;
-            data[index].nachosPrice = data[index].nachosPrice - 2.50
-            setNachosFields(data);
-        }
-        
-        else if(data[index].supreme === false){
-            data[index].supreme = true;
-            data[index].nachosPrice = 2.50 + data[index].nachosPrice 
-            setNachosFields(data);
-        }
-            }
-
-
-
 
     return (<>
 
@@ -192,7 +179,7 @@ const BurritoPage = () => {
 
                 <hr></hr>
 
-    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event);addNachos(event)}} > Add New Burrito Order</button>
+    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} > Add New Burrito Order</button>
     <MenuPage
             menuImage={"./images/dipsNachosLaCarta.jpg"}
             />
@@ -214,35 +201,31 @@ const BurritoPage = () => {
   <div className="modal-background"></div>
        <div className="modal-content">
        <div className="container">
-       <button className="button is-success is-small is-centerd" onClick={(event)=>{addNachos(event)}} > Make New Burrito Order</button>
+       <button className="button is-success is-small is-centerd" onClick={addBurritosFields} > Make New Burrito Order</button>
 
     
        </div> 
        <div className="box is-mobile">
      
        <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
-   
+
 
   
        {
-        nachosFields.map((nachitos,index) => {
+        burritosOrder.map((index) => {
 
             return (
             
             <div key={index} className="container">
 
 < NachosDropDown
-selectNachoName={"nachos"}
+selectNachoName={"burritos"}
 numeros={numeros}
-handlePineapplefunc = {(e)=>handlePinapplefunc(index,e)}
-handleSupremeNachos={(e)=>nachosSupremeHandler(index,e)}
-onChangeNachos= {e=>handleNachosChange(index,e)}
-removeNachos= {()=>removeNachos(index)}
+onChangeNachos= {e=>handleBurritoFormChange(index,e)}
+removeNachos= {()=>removeBurrito(index)}
 />   
 
-
       </div>)
-
 
 
         })
@@ -251,9 +234,6 @@ removeNachos= {()=>removeNachos(index)}
   </div> 
    </div>
   </aside>
-
-
-
 
        </>);};
 
