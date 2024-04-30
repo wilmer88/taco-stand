@@ -9,11 +9,9 @@ import alertContext from "../../context/alertContext";
 const ComboPage = () => {
     console.count("i rerenderd in burrito page");
 
+    const { setAlert } = useContext(alertContext);
     const {setCombo, combo}= useContext(ComboContext);
     const [isopen, setIsopen] = useState(0);
-  
-  
-  
   
     const [inputFields, setInput] = useState(
       [{
@@ -24,7 +22,7 @@ const ComboPage = () => {
         choice2: "",
         key: 1,
       }]);
-  
+
     const comboSeter= ()=>{
       setTimeout(() => {
         setCombo(inputFields);
@@ -55,7 +53,7 @@ const ComboPage = () => {
     );
   
     const addFields = (event) => {
-      event.preventDefault();
+      // event.preventDefault();
       let newfield = {
         comboId: inputFields.length + 1,
         comboPrice: "0",
@@ -64,11 +62,11 @@ const ComboPage = () => {
         choice2: "",
         key: inputFields.length + 1,
       };
-      setInput([...inputFields, newfield]);
+      setInput([newfield, ...inputFields]);
       
       setCombo([...combo, newfield]);
-  
-  
+      setAlert({ message: "Please make a selection from bellow", type: "is-success" });
+
     };
     
     const [navmodal, setNavmodal]= useState("modal");
@@ -82,6 +80,14 @@ const ComboPage = () => {
     };
 
 
+    const addComboToOrder = ()=>{
+      setAlert({ message: "ADDED ITEM'S TO ORDER", type: "is-success" });
+
+      showAboutModel();
+      comboSeter(inputFields);
+    };
+
+
     return (<>
 
     <div className="section is-justify-content-center">
@@ -89,10 +95,7 @@ const ComboPage = () => {
     <figcaption className="columns is-mobile is-centered" style={{ background: "lightyellow" }}>
         <div className="card-content">
 
-            
                 <p><strong> LUIS BURRITO:  </strong>A 12' flour tortilla stuffed with your choice of steaK or grilled chicken with beans, rice, pco de gallo, burrito salsa and shredded cheese on top. 11.23</p>     
-              
-              
 
                 <hr></hr>
 
@@ -109,17 +112,11 @@ const ComboPage = () => {
 
                 <hr></hr>
 
-    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} >  Combos</button>
+    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} >Combos</button>
     <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
-    
             
-        <Link  to="/orden">
-    <button className="button is-small">Back</button>
-    
-    </Link>
+        <Link  to="/orden"> <button className="button is-small">Back</button> </Link>
 
-    
-         
           </div>
     
     </figcaption>
@@ -135,10 +132,10 @@ const ComboPage = () => {
    <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
 
    <div className="container">
-   <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
+    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
 
-   <h6 className="mb-0">   ADD SUPREME FOR 2.50</h6>
-   <div> <h6 className="mb-0">CHOOSE FROM: Beans, cheese, beef and shreded chicken.</h6> </div>
+   <h4 className="mb-0">   ADD SUPREME FOR 2.50</h4>
+   <div> <h4 className="mb-0">CHOOSE FROM: Beans, cheese, beef and shreded chicken.</h4> </div>
 
    <p>All combos are served with rice and beans.</p>
 
@@ -146,35 +143,22 @@ const ComboPage = () => {
 
 
  <div className="container">
-{/* <button  onClick={showAboutModel} type="button" className="button is-small">Cancel Order</button> */}
-
 {
   inputFields.length < 1 ? (
 <div className=" container"> 
 <button type="submit" className="button is-success is-small" onClick={ addFields} style={{ alignContent: "center", marginLeft: "5px"}}>Start Combo</button>
 </div>
-
 ):
 
 <div className=" container"> 
-<h3>makea selection bellow!</h3>
-
+<h3>Make selections bellow!</h3>
 </div>
-
-
-
-
-
-
 
 }
 
-
+{ <Alert /> }
 
  </div>
-
-
-
 
    {
   inputFields.map((input, index) => {
@@ -185,12 +169,6 @@ const ComboPage = () => {
 
           <div className="container" style={{ textAlign: "center", background: "tan" }}>
 
-            {
-
-              inputFields.length - 1 === index &&
-              <Alert />
-
-            }
             <label className="radio">
               <input
                 type="radio"
@@ -211,16 +189,12 @@ const ComboPage = () => {
               />
               <strong>CHOOSE (3) 10.25</strong>
             </label>
-
-
           </div>
 
           {
 
 
             input.comboPrice !== "0" &&
-
-  
 
               <div className="container" style={{ textAlign: "center"}}>
 
@@ -258,57 +232,41 @@ const ComboPage = () => {
                     value={combo.choice3}
                   onChange={event =>{handleFormChange(index, event);comboSeter(); }}
                     />
+                  } 
+                  </div>  
                   }
-
-
-                </div>
-          }
-          {
-            input.comboPrice !== "0" &&
-                    // inputFields.length > 1 &&
-                    <div style={{ textAlign: "center"}}>
-                                        <button className="button is-danger is-small" onClick={() => { removeCombo(index) }}
-                    style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px" }}>Remove Combo</button>
-                    
-                    </div>
-
-
-           
-    
-          }
+                              <div style={{ textAlign: "center"}}>
 
           {
-            input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 4 &&
-            <div  style={{ textAlign: "center"}}>
-
-              <button type="submit" className="button is-success is-small" onClick={ handleFormChange} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button>
-
-            </div>
-
+            input.comboPrice !== "0" && <button className="button is-danger is-small" onClick={() => { removeCombo(index) }} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px" }}>Remove Combo</button>
           }
 
 
+          {
+            input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 10 &&
+            <>
+            <button type="submit" className="button is-info is-small" onClick={()=>{addComboToOrder(); comboSeter()}} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add Combo/s to Order</button>
+              <button type="submit" className="button is-success is-small"  onClick={()=>{addComboToOrder(); comboSeter(); addFields()}}  style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Create New Combo</button>
+            </>
+          }
 
       </div>
 
-
+      </div>
 
     )
   })
 }
  
-</div> 
-  
+    </div> 
      </div> 
 
  </div>
 </aside>
-
-
         
     </div>
 
+       </>);
+       };
 
-       </>);};
-
-export default React.memo(ComboPage)
+export default React.memo(ComboPage);

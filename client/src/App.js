@@ -111,31 +111,24 @@ const App = () => {
       <Router>
         <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
-          
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <AppOrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
             <dipContext.Provider value={{...dip, setDips:setDips}}>
             <burritosContext.Provider value={{...burritosOrder, setBurritoContext:setBurritoContext}}>
-
           < OrdenLevel/>
           <Routes>
-{/* removed exact path react router from v5 to v6 */}
           <Route exact path="/burritopage" element={<BurritoPage />}></Route>
           <Route path="/comboPage" element={<ComboPage />}></Route>
           <Route path="/nachos" element={<NachosPage />}></Route>
           <Route path="/dips" element={<DipsPage />}></Route>
           <Route path="/checkoutPage" element={<CheckOutPage />}></Route>
           <Route path="/menuPage" element={<MenuPage />}></Route>
-
-
-
           <Route path="/kitchen" element={<Kitchen />}></Route>
           <Route path="/myorders" element={<MyOrders />}></Route>
           <Route path="/unprepared" element={<UnpreparedOrders />}></Route>
           {/* <Route exact path="/allOrders" element={<AllOrdersPage />}></Route> */}
           {/* <Route exact path="/adminDash" element={<AdminDash />}></Route> */}
           {/* <Route exact path="/adminSignup" element={<AdminSignUp />}></Route> */}
-
           {/* <Route exact path="/myorders/:userName" element={<MyOrders />}></Route> */}
             <Route path="/payment/:ordenId" element={<Payment />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
@@ -150,11 +143,9 @@ const App = () => {
              <Footer />): null }
 
 </burritosContext.Provider>
-
 </dipContext.Provider>
 </AppOrderContext.Provider>
 </ComboContext.Provider>
-
 </alertContext.Provider>
 </AuthContext.Provider>
       </Router>

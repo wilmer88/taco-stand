@@ -152,12 +152,10 @@ const NameHandleChange = event => {
                 />
               </div>   
               <div id="nachitos" >
-</div>
+              </div>
 <BurritosContainer/>
-<DipsContainer  />
-
-<  NachosContainer />
-              
+<DipsContainer/>
+<NachosContainer />
 <ComboContainer/>
 
               <figcaption >

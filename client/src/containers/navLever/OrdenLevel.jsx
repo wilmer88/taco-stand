@@ -85,11 +85,7 @@ const OrdenLevel = () => {
 <h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {levelCounter} </h3></Link>
 </div>
 
-
-
-
 </nav> 
-
 
     </section>
     <aside id="navLevelmodal" className={`${navmodal}`} >
@@ -106,7 +102,10 @@ const OrdenLevel = () => {
 </div>
 </aside>
 
+<div className="container mt-3"> 
 <Alert/>
+</div>
+
 
     
      </> )
