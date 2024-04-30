@@ -3,13 +3,20 @@ import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import ComboContext from "../../context/ComboContext";
 import alertContext from "../../context/alertContext";
 import Alert from "../../components/Alert/Alert";
+import { Link } from "react-router-dom";
+import MenuPage from "../../components/modal/MenuPage";
+
+
 
 const ComboContainer = () => {
   console.count("i rerenderd in combo container");
 
-const {setCombo, combo}= useContext(ComboContext);
-
+  const {setCombo, combo}= useContext(ComboContext);
   const { setAlert } = useContext(alertContext);
+  const [isopen, setIsopen] = useState(0);
+
+
+
 
   const [inputFields, setInput] = useState(
     [{
@@ -19,8 +26,16 @@ const {setCombo, combo}= useContext(ComboContext);
       choice1: "",
       choice2: "",
       key: 1,
-    }]
-  );
+    }]);
+
+    const toggleColapse = ()=>{
+      if(isopen===0){
+        setIsopen(1)
+      };
+      if(isopen===1){
+        setIsopen(0)
+      };
+    };
 
   const comboSeter= ()=>{
     setTimeout(() => {
@@ -29,35 +44,24 @@ const {setCombo, combo}= useContext(ComboContext);
   };
 
   const removeCombo = (index) => {
-    const listOfCombos = [...inputFields];
-
-    if (listOfCombos.length > 1) {
-      listOfCombos.splice(index, 1);
-      inputFields.splice(index,1)
-      setInput(listOfCombos);
-      setCombo(listOfCombos);
-;    }
-    
-      if (listOfCombos.length === 1) {
-        listOfCombos[0].comboPrice = "0";
-        setInput(listOfCombos);
-      setCombo(listOfCombos);
-
-      };
+    const newList = inputFields.filter((_,i)=> i !== index);
+    setInput(newList);
   };
 
   const handleSupremeChange = (index, event) => {
 
     let data = [...inputFields];
     data[index].supreme = event.target.checked;
+    setInput(data);
+
   };
 
   const handleFormChange = useCallback(
     (index, event) => {
       let data = [...inputFields];
       data[index][event.target.name] = event.target.value;
-      setInput([...data]);
-      setCombo([...data]); 
+      setInput(data);
+      setCombo(data); 
     },[inputFields,setCombo]
   );
 
@@ -73,145 +77,52 @@ const {setCombo, combo}= useContext(ComboContext);
     };
     setInput([...inputFields, newfield]);
     
-    setCombo([...combo.combo, newfield]);
+    setCombo([...combo, newfield]);
 
     setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
   };
 
-  console.log(inputFields);
+  // console.log(inputFields);
 
   return (<>
 
-    <figcaption style={{ textAlign: "center", background: "lightyellow" }}>
-      <h3> <strong>Combos</strong></h3>
+    <div className="card mb-5" style={{ background: "lightyellow" }}>
+
+      <header className="card-header">
+        <h3 className="card-header-title is-4" style={{justifyContent:"center"}}>
+        Combos
+          
+          </h3> 
+
+          <div className="dropdown-trigger"> 
+  <button onClick={toggleColapse}>
+    <span className="icon">
+                  <i className="fas fa-angle-down"  aria-hidden="false"></i>
+              </span>
+        </button>
+  </div>
+          </header>
+
+          { isopen ===1 &&
+          <div className="card-content">
+            
       <div> <h6 className="mb-0">CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
       <h6 className="mb-0">   ADD SUPREME FOR 2.50</h6>
       <p>All combos are served with rice and beans.</p>
-    </figcaption>
 
-    {
-      inputFields.map((input, index) => {
-        return (
+      <Link  to="/comboPage">
+                <button  className="button is-success is-small">View/ Order Combo</button>
+                 </Link>
+    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
 
-          <div className="container" key={index}>
+            </div>
+          
+          
+          }
 
-              <div style={{ textAlign: "center", background: "tan" }}>
+    </div>
 
-                {
-
-                  inputFields.length - 1 === index &&
-                  <Alert />
-
-                }
-                <label className="radio">
-                  <input
-                    type="radio"
-                    name={"comboPrice"}
-                    onChange={event => {  handleFormChange(index, event); comboSeter(); }}
-                    value={"9"}
-                    checked={input.comboPrice === "9"}
-                  />
-                  <strong>CHOOSE(2)9.25</strong>
-                </label>
-
-                <label className="radio">
-                  <input type="radio" style={{ marginLeft: "50px" }}
-                    name={"comboPrice"}
-                    onChange={event => { handleFormChange(index, event);  comboSeter()}}
-                    value={"10"}
-                    checked={input.comboPrice === "10"}
-                  />
-                  <strong>CHOOSE (3) 10.25</strong>
-                </label>
-
-
-              </div>
-
-              {
-
-
-                input.comboPrice !== "0" &&
-
-                <div className="container">
-                  <div className="topping">
-                    <input
-                      type="checkbox"
-                      name="supreme"
-                      onChange={event =>{ handleSupremeChange(index, event);comboSeter()}}
-                      value={""}
-
-                    />
-                    <strong>Make Supreme</strong>
-
-                  </div>
-                  <div className="is-align-content-center columns mt-0">
-                    <div className="container">
-                      <ComboDropdown
-                        choiceName="Choice #1"
-                        placeholder="Tamal"
-                        name="choice1"
-                        onChange={event =>{ handleFormChange(index, event); comboSeter();}}
-                        value={input.choice1}
-                      />
-
-                      <ComboDropdown
-                        choiceName="Choice #2"
-                        placeholder="Chicken Chalupa"
-                        name="choice2"
-                      onChange={event =>{handleFormChange(index, event);comboSeter(); }}
-                        value={input.choice2}
-                      />
-                      {
-                        input.comboPrice === "10" &&
-                        <ComboDropdown
-                          choiceName="Choice #3"
-                          placeholder="beefTaco"
-                          name="choice3"
-                        value={combo.choice3}
-                      onChange={event =>{handleFormChange(index, event);comboSeter(); }}
-                        />
-                      }
-
-
-                    </div>
-
-
-
-                  </div>
-
-
-
-                </div>
-
-
-              }
-              {
-                input.comboPrice !== "0" &&
-                // inputFields.length > 1 &&
-                <button className="button is-danger is-small" onClick={() => { removeCombo(index) }}
-                  style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px", marginBottom: "2px" }}>Remove Combo</button>
-              }
-
-              {
-                input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 4 &&
-                <>
-
-                  <button type="submit" className="button is-success is-small" onClick={ addFields} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add New Combo</button>
-
-                </>
-
-              }
-
-
-
-          </div>
-
-
-
-        )
-      })
-    }
   </>)
 };
 

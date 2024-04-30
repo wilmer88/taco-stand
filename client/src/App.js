@@ -27,10 +27,11 @@ import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
 import BurritoPage from "./pages/burritoPage/BurritoPage";
 import burritosContext from "./context/burritoContext";
+import ComboPage from "./pages/comboPage/comboPage";
 
 const App = () => {
   // console.count("i rerenderd in App.js");
-  
+
   const [orderDataContext, setOrderDataContext]= useState( {
     nombreDeOrden: "",
     phoneNumber:"",
@@ -120,6 +121,7 @@ const App = () => {
           <Routes>
 {/* removed exact path react router from v5 to v6 */}
           <Route exact path="/burritopage" element={<BurritoPage />}></Route>
+          <Route path="/comboPage" element={<ComboPage />}></Route>
           <Route path="/nachos" element={<NachosPage />}></Route>
           <Route path="/dips" element={<DipsPage />}></Route>
           <Route path="/checkoutPage" element={<CheckOutPage />}></Route>

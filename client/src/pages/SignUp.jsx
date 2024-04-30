@@ -1,8 +1,10 @@
 import AuthContext from '../context/AuthContext';
-import React, {useContext, useState } from "react";
+import React, {useContext, useState, } from "react";
 import alertContext from '../context/alertContext';
 import { useNavigate } from "react-router-dom";
 import API from '../utils/API';
+import { Link } from "react-router-dom";
+
 
 const SignUp = () => {
   const pxhi = {
@@ -45,7 +47,10 @@ const [password, setPassword] = useState("");
   }
 
   return (<>
+
   <div className='columns is-mobile'>
+
+
 
 <div className="column is-two-fifth"></div>
 
@@ -55,6 +60,7 @@ const [password, setPassword] = useState("");
    
 
     <div className="mt-6 box">
+      
     <h3 className="label has-text-centered" style={pxhi.fonte}>Signup/ Inscribirse</h3>
 
     <form onSubmit={formSubmit}>
@@ -87,6 +93,7 @@ const [password, setPassword] = useState("");
         className="button is-info">
          Signup/ Inscribirte
         </button>
+    <button className="button"> <Link  to="/"> Back</Link></button>
     
         </form>
     </div>

@@ -3,16 +3,13 @@ import { Link } from "react-router-dom";
 import MenuPage from "../../components/modal/MenuPage";
 
 
-
-
-
-
 const BurritosContainer =()=>{
   console.count("i rerenderd in burrito container");
 
 
-
     const [navmodal, setNavmodal]= useState("modal");
+
+    
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
         setNavmodal("modal is-active")
@@ -68,7 +65,7 @@ const BurritosContainer =()=>{
   <p><strong>BURRITO ROLLOS: </strong></p>
                 
                 <Link  to="/burritopage">
-                <button  className="button is-success is-small">View Burritos</button>
+                <button  className="button is-success is-small">View All/ Order Burritos</button>
                  </Link>
     <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
             

@@ -170,12 +170,19 @@ const OrderModel = (props)=>{
           <div className="modal-background"></div>
           <div className="modal-content ">
             <div className="box is-mobile">
-
               <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
+
+
                 {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
                 </div><hr></hr>
-      {combo.combo[0].comboPrice !== "0" ?   ( combo.combo.map((comboParam )=>(
-    <div key={comboParam.comboId } style={{ fontSize: "25px", textAlign: "left" }}>combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}, {comboParam.choice3}</div>))):<div >no Combos</div>}
+
+
+      {combo.combo[0].comboPrice !== "0" ? (
+         combo.combo.map((comboParam, index)=> (
+    <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
+      combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
+      </div>
+    ))) : <div >no Combos</div>}
               {dips.cheeseDipRegular !==0 &&(<div style={{ fontSize: "25px", textAlign: "left" }}> Cheese Dip Regular: {dips.cheeseDipRegular}</div>)}
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}

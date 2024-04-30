@@ -179,7 +179,7 @@ const BurritoPage = () => {
 
                 <hr></hr>
 
-    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} > Add New Burrito Order</button>
+    <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} > Create Burrito Order</button>
     <MenuPage
             menuImage={"./images/dipsNachosLaCarta.jpg"}
             />
@@ -201,7 +201,7 @@ const BurritoPage = () => {
   <div className="modal-background"></div>
        <div className="modal-content">
        <div className="container">
-       <button className="button is-success is-small is-centerd" onClick={addBurritosFields} > Make New Burrito Order</button>
+       <button className="button is-success is-small is-centerd" onClick={addBurritosFields} > Make an New Burrito Order</button>
 
     
        </div> 

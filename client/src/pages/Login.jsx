@@ -3,6 +3,8 @@ import React, {useContext, useState} from 'react';
 import {  useNavigate } from "react-router-dom";
 import API from "../utils/API"
 import alertContext from '../context/alertContext';
+import { Link } from "react-router-dom";
+
 
 const ULog = () => {
 
@@ -88,6 +90,7 @@ const ULog = () => {
         className="button is-info">
          Login
         </button>
+        <button className="button"> <Link  to="/"> Back</Link></button>
 
     </form>
     </div>
