@@ -2,14 +2,12 @@ import{ useState}  from "react";
 import React from "react";
 import { Link } from "react-router-dom"
 
-
 const DipsContainer = () => {
+
     console.count("i rerenderd in dipsContainer");
 
     const [dipShow, setDipShow]= useState(0);
  
-
-  
     const openDipHandelerPropFunction=  ()=>{
     setDipShow(1);
     };
@@ -32,13 +30,12 @@ const DipsContainer = () => {
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
         setNavmodal("modal is-active")
-      }
+      };
       if(navmodal === "modal is-active"){
         setNavmodal("modal")
-      }
+      };
     };
 
- 
     return (<>
 
     <div className="card" style={{background: "lightyellow"}}>
@@ -80,16 +77,15 @@ const DipsContainer = () => {
 />
 Minimize Dips
 </div>
-</div>
 
+</div>
 
 </>}
 
-
 </div>
 
-
 <hr></hr>
+
 <aside className={`${navmodal} is-mobile`} >
 
 <div className="modal-background"></div>
@@ -97,17 +93,10 @@ Minimize Dips
      <div className="box is-mobile">
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
      <div className="column mb-2">
-
-
-
-   
-
-
         </div> 
 </div> 
  </div>
 </aside>
-
 
 </>)
 };

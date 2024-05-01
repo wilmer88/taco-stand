@@ -42,14 +42,13 @@ const OrdenLevel = () => {
     }};
 
   OnUpdateHook(()=>{
-    console.log("im from ordenlevel", levelOrderDataContext);
+    // console.log("im from ordenlevel", levelOrderDataContext);
 
     let combolengthFrunt = levelComboOrder.combo.length
 
     if(levelComboOrder.combo[0].comboPrice === "0"){
       combolengthFrunt = combolengthFrunt - 1
     };
-      // console.log(dips.cheeseDipRegular);
       setLevelCounter(levelOrderDataContext.length);
 
   }, [levelComboOrder.combo,dips])

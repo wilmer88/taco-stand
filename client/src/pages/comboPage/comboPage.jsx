@@ -7,11 +7,11 @@ import Alert from "../../components/Alert/Alert";
 import alertContext from "../../context/alertContext";
 
 const ComboPage = () => {
+  
     console.count("i rerenderd in burrito page");
 
     const { setAlert } = useContext(alertContext);
     const {setCombo, combo}= useContext(ComboContext);
-    const [isopen, setIsopen] = useState(0);
   
     const [inputFields, setInput] = useState(
       [{
@@ -36,11 +36,9 @@ const ComboPage = () => {
     };
   
     const handleSupremeChange = (index, event) => {
-  
       let data = [...inputFields];
       data[index].supreme = event.target.checked;
       setInput(data);
-  
     };
   
     const handleFormChange = useCallback(
@@ -63,30 +61,28 @@ const ComboPage = () => {
         key: inputFields.length + 1,
       };
       setInput([newfield, ...inputFields]);
-      
       setCombo([...combo, newfield]);
       setAlert({ message: "Please make a selection from bellow", type: "is-success" });
-
     };
     
     const [navmodal, setNavmodal]= useState("modal");
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
         setNavmodal("modal is-active")
-      }
+      };
       if(navmodal === "modal is-active"){
         setNavmodal("modal")
-      }
+      };
     };
 
 
     const addComboToOrder = ()=>{
       setAlert({ message: "ADDED ITEM'S TO ORDER", type: "is-success" });
-
       showAboutModel();
       comboSeter(inputFields);
     };
 
+    console.log("im from comboPage", inputFields);
 
     return (<>
 
@@ -140,7 +136,6 @@ const ComboPage = () => {
    <p>All combos are served with rice and beans.</p>
 
    </div>
-
 
  <div className="container">
 {
