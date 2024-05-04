@@ -7,34 +7,35 @@ const DipsPage = ()=>{
 
   console.log("im from DipsPage");
 
-  const { dipPageContext, setDips} = useContext(dipContext);
 
+
+  const {setDips, dips} = useContext(dipContext);
   const [dipPageOrders, setDipPageOrders] = useState({
-    dips: [
+    dipss: [
         {
             id: 1,
-            name: "Cheese Dip",
+            dipname: "Cheese Dip",
             price: "4.50",
             size: "Regular",
             quantity: 0,
         },
         {
             id: 2,
-            name: "Cheese Dip",
+            dipname: "Cheese Dip",
             price: "8.50",
             size: "Large",
             quantity: 0,
         },
         {
             id: 3,
-            name: "Guacamole Dip",
+            dipname: "Guacamole Dip",
             price: "4.75",
             size: "Regular",
             quantity: 0,
         },
         {
             id: 4,
-            name: "Guacamole Dip",
+            dipname: "Guacamole Dip",
             price: "9.25",
             size: "Large",
             quantity: 0,
@@ -42,13 +43,48 @@ const DipsPage = ()=>{
     ]
 });
 
+
+
+const addTodipContext = (event) => {
+    // event.preventDefault()
+  let filterdips = [];
+
+  for (let  i = 0; i< dipPageOrders.dipss.length; i++){
+    if (dipPageOrders.dipss[i].quantity > 0){
+      filterdips.push(dipPageOrders.dipss[i]);
+    }
+  }
+
+  setDips(filterdips);
+
+  setTimeout(() => {
+
+// console.log(dips) 
+// console.log(filterdips)
+ }, 2000);     
+  
+
+};
+
 const handleDipIncrement = useCallback((id) => {
   setDipPageOrders(prevState => ({
-      dips: prevState.dips.map(dip => 
-          dip.id === id ? { ...dip, quantity: dip.quantity + 1 } : dip
+      dipss: prevState.dipss.map(dip => 
+          dip.id === id ? { ...dip, quantity:  dip.quantity + 1 } : dip
       )
   }));
 }, []); 
+
+const handleDipDecroment = useCallback((id) => {
+  setDipPageOrders(prevState => ({
+      dips: prevState.dips.map(dip => 
+          dip.id === id ? { ...dip, quantity: dip.quantity > 0 ? dip.quantity - 1 : 0} : dip
+      )
+  }));
+}, []); 
+
+
+
+
 
     return(
         <>
@@ -57,13 +93,14 @@ const handleDipIncrement = useCallback((id) => {
         itemName="Cheese Dip"
         regularPriceDisplay="Regular(4.50)"
         largePriceDisplay="Large(8.50)"
-        regularCounter={dipPageOrders.dips[0].quantity}
-        largeCounter={dipPageOrders.dips[1].quantity}
+        regularCounter={dipPageOrders.dipss[0].quantity}
+        largeCounter={dipPageOrders.dipss[1].quantity}
         itemNameAddButtonR="cheeseDipRegular"
         itemNameAddButtonL="cheeseDipLarge"
         regularAddHandler={() => handleDipIncrement(1)}
-        />
+        regularSubtractHandler={addTodipContext}
 
+        />
 
 <div className='columns  is-responsive is-mobile is-centered  ' >
     

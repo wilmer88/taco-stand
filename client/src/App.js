@@ -32,8 +32,10 @@ import ComboPage from "./pages/comboPage/comboPage";
 const App = () => {
   console.count("i rerenderd in App.js");
 
-  const [orderDataContext, setOrderDataContext]= useState( {
-    nombreDeOrden: "",
+  const [orderDataContext, setOrderDataContext]= useState({
+      orderDataContextArray: [
+   {
+     nombreDeOrden: "",
     phoneNumber:"",
     tableNumber:"",
     burritos:[],
@@ -59,7 +61,9 @@ const App = () => {
     cancelar:false,
     preparada: false,
     pagado:false,
-  });
+  },
+  ]
+});
 
   const [burritosOrder, setBurritoContext] = useState([
     {
@@ -70,23 +74,17 @@ const App = () => {
   }
 ])
 
-   const [combo, setCombo]= useState([{
-    comboId: 1,
-    comboPrice: "0",
-    supreme: false,
-    choice1: "",
-    choice2: "",
-    key: 1,
-  }])
+   const [combo, setCombo]= useState([]);
 
-  const [dipContextItem, setDipsItem] = useState(
-    {
-      dipId: 0,
-      dipName:"",
-      dipPrice:"",
-      dipSize:"",
-      key: 0
-    }
+  const [dips, setDips] = useState(
+    [{
+      id: 1,
+      dipname: "",
+      price: "",
+      size: "",
+      quantity: 0,
+      
+    },]
   );
 
 
@@ -113,7 +111,7 @@ const App = () => {
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <AppOrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
-            <dipContext.Provider value={{...dipContextItem, setDipsItem:setDipsItem}}>
+            <dipContext.Provider value={{dips, setDips:setDips}}>
             <burritosContext.Provider value={{...burritosOrder, setBurritoContext:setBurritoContext}}>
           < OrdenLevel/>
           <Routes>

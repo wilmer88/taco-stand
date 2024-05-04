@@ -1,7 +1,7 @@
 import React from "react";
 const orderDataContext = React.createContext({
     
-orderDataContext: [
+orderDataContextArray: [
      {
         nombreDeOrden:"",
         phoneNumber:"",
@@ -11,7 +11,6 @@ orderDataContext: [
         dips:[],
         aLaCarte:[],
         nachos:[],
-        aLaCarte:[],
         azada:0,
         pollo: 0,
         barbacoa: 0,
@@ -30,11 +29,11 @@ orderDataContext: [
         cancelar:false,
         preparada: false,
         pagado:false,
-      }
+      },
 ],
 
     setOrderDataContext: ()=>{},
 
-})
+});
 
 export default orderDataContext;

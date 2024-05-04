@@ -4,7 +4,7 @@ import { useContext } from "react";
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import OrderContext from "../../context/orderDataContext";
+import orderDataContext from "../../context/orderDataContext";
 import ComboContext from "../../context/ComboContext";
 import dipContext from "../../context/DipContext";
 import {io} from "socket.io-client";
@@ -13,10 +13,10 @@ const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:30
 const socket = io(URL);
 
 const OrderModel = (props)=>{
+
   console.count("i rerenderd in OrdenModal");
 
-
-  const orderDataLet= useContext( OrderContext);
+  const orderDataLet= useContext( orderDataContext);
   const combo = useContext(ComboContext);
   const dips = useContext(dipContext);
   const [combomodal, setCombomoadal]= useState([])
@@ -24,7 +24,7 @@ const OrderModel = (props)=>{
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-
+    // console.log(dips.dips);
 
     const finalOrderHolder= {
       nombreDeOrden: orderDataLet.nombreDeOrden,
@@ -52,7 +52,6 @@ const OrderModel = (props)=>{
       pagado:false,
     };
     // console.log(finalOrderHolder);
-    // console.log(combo.combo);
     // console.log(finalOrderHolder.combo);
 
 
@@ -63,8 +62,6 @@ const OrderModel = (props)=>{
   
   const openModal = () => {
     setCombomoadal(combo.combo);
-    setDipmodal(dips);
-    console.log(dips);
     // console.log(finalOrderHolder.combo);
   
 
@@ -163,6 +160,8 @@ const OrderModel = (props)=>{
 
     // console.log(finalOrderHolder.combo);
     // console.log(dips)
+        console.log(combo.combo);
+
     return(<>
   
 
@@ -177,13 +176,17 @@ const OrderModel = (props)=>{
                 </div><hr></hr>
 
 
-      {combo.combo[0].comboPrice !== "0" ? (
+      {combo.comboPrice !== "0" ? (
          combo.combo.map((comboParam, index)=> (
     <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
       combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
       </div>
-    ))) : <div >no Combos</div>}
-              {dips.cheeseDipRegular !==0 &&(<div style={{ fontSize: "25px", textAlign: "left" }}> Cheese Dip Regular: {dips.cheeseDipRegular}</div>)}
+    ))) : <div ></div>}
+
+    
+              {dips.dips[0].quantity !==0  ?( dips.dips.map((dipOrder)=>{let thedipOrder =dipOrder
+              return(<div className="container" style={{ fontSize: "22px", textAlign: "left" }} key={dipOrder.id}> <ul> {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul> </div>)
+              })): <div ></div>}
               {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}

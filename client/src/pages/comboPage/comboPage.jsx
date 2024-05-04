@@ -5,28 +5,24 @@ import MenuPage from "../../components/modal/MenuPage";
 import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import Alert from "../../components/Alert/Alert";
 import alertContext from "../../context/alertContext";
+import orderDataContext from "../../context/orderDataContext";
 
 const ComboPage = () => {
   
     console.count("i rerenderd in burrito page");
 
+    const [navmodal, setNavmodal]= useState("modal");
+    const {setOrderDataContext, orderDataContextArray}= useContext(orderDataContext);
     const { setAlert } = useContext(alertContext);
     const {setCombo, combo}= useContext(ComboContext);
-  
-    const [inputFields, setInput] = useState(
-      [{
-        comboId: 1,
-        comboPrice: "0",
-        supreme: false,
-        choice1: "",
-        choice2: "",
-        key: 1,
-      }]);
+    const [inputFields, setInput] = useState([]);
+    // console.log(combo);
+
 
     const comboSeter= ()=>{
       setTimeout(() => {
         setCombo(inputFields);
-      }, 2000);     
+      }, 1000);     
     };
   
     const removeCombo = (index) => {
@@ -46,12 +42,10 @@ const ComboPage = () => {
         let data = [...inputFields];
         data[index][event.target.name] = event.target.value;
         setInput(data);
-        setCombo(data); 
-      },[inputFields,setCombo]
+      },[inputFields]
     );
   
     const addFields = (event) => {
-      // event.preventDefault();
       let newfield = {
         comboId: inputFields.length + 1,
         comboPrice: "0",
@@ -65,7 +59,6 @@ const ComboPage = () => {
       setAlert({ message: "Please make a selection from bellow", type: "is-success" });
     };
     
-    const [navmodal, setNavmodal]= useState("modal");
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
         setNavmodal("modal is-active")
@@ -75,14 +68,15 @@ const ComboPage = () => {
       };
     };
 
-
-    const addComboToOrder = ()=>{
+    const addComboToOrder = () => {
+      comboSeter(); // Ensure combo is set before updating orderDataContextArray
+      const updatedOrderDataContextArray = [...orderDataContextArray];
+      updatedOrderDataContextArray[0].combo= combo;
+      setOrderDataContext(updatedOrderDataContextArray);
       setAlert({ message: "ADDED ITEM'S TO ORDER", type: "is-success" });
       showAboutModel();
-      comboSeter(inputFields);
     };
-
-    console.log("im from comboPage", inputFields);
+    
 
     return (<>
 
@@ -240,8 +234,8 @@ const ComboPage = () => {
           {
             input.comboPrice !== "0" && inputFields.length - 1 === index && inputFields.length < 10 &&
             <>
-            <button type="submit" className="button is-info is-small" onClick={()=>{addComboToOrder(); comboSeter()}} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add Combo/s to Order</button>
-              <button type="submit" className="button is-success is-small"  onClick={()=>{addComboToOrder(); comboSeter(); addFields()}}  style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Create New Combo</button>
+            <button type="submit" className="button is-info is-small" onClick={()=>{addComboToOrder();}} style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add Combo(s) to Order</button>
+              <button type="submit" className="button is-success is-small"  onClick={()=>{addFields()}}  style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Create New Combo</button>
             </>
           }
 
