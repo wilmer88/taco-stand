@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ComboContext from "../../context/ComboContext";
 import MenuPage from "../../components/modal/MenuPage";
@@ -15,37 +15,58 @@ const ComboPage = () => {
     const {setOrderDataContext, orderDataContextArray}= useContext(orderDataContext);
     const { setAlert } = useContext(alertContext);
     const {setCombo, combo}= useContext(ComboContext);
-    const [inputFields, setInput] = useState([]);
-    // console.log(combo);
+    const [inputFields, setInputFields] = useState([]);
+    console.log(combo);
+    console.log(orderDataContextArray);
+
+    // console.log(orderDataContextArray);
+
+
+    useEffect(() => {
+    console.log(orderDataContextArray);
+
+      // This will ensure combo is set before updating orderDataContextArray
+      if (combo && Array.isArray[orderDataContextArray]) {
+            // console.log(orderDataContextArray);
+
+          const updatedOrderDataContextArray = orderDataContextArray;
+          console.log(updatedOrderDataContextArray);
+
+          updatedOrderDataContextArray.combo = [...combo];
+          setOrderDataContext(updatedOrderDataContextArray);
+      }
+  }, [combo]); // Dependency on combo
+    
 
 
     const comboSeter= ()=>{
-      setTimeout(() => {
+      // setTimeout(() => {
         setCombo(inputFields);
-      }, 1000);     
+      // }, 1000);     
     };
   
     const removeCombo = (index) => {
       const newList = inputFields.filter((_,i)=> i !== index);
-      setInput(newList);
+      setInputFields(newList);
       setCombo(inputFields);
     };
   
     const handleSupremeChange = (index, event) => {
       let data = [...inputFields];
       data[index].supreme = event.target.checked;
-      setInput(data);
+      setInputFields(data);
     };
   
     const handleFormChange = useCallback(
       (index, event) => {
         let data = [...inputFields];
         data[index][event.target.name] = event.target.value;
-        setInput(data);
+        setInputFields(data);
       },[inputFields]
     );
   
     const addFields = (event) => {
+      let data = [...inputFields]
       let newfield = {
         comboId: inputFields.length + 1,
         comboPrice: "0",
@@ -54,7 +75,7 @@ const ComboPage = () => {
         choice2: "",
         key: inputFields.length + 1,
       };
-      setInput([newfield, ...inputFields]);
+      setInputFields([newfield, ...data]);
       setCombo([...combo, newfield]);
       setAlert({ message: "Please make a selection from bellow", type: "is-success" });
     };
@@ -70,11 +91,10 @@ const ComboPage = () => {
 
     const addComboToOrder = () => {
       comboSeter(); // Ensure combo is set before updating orderDataContextArray
-      const updatedOrderDataContextArray = [...orderDataContextArray];
-      updatedOrderDataContextArray[0].combo= combo;
-      setOrderDataContext(updatedOrderDataContextArray);
-      setAlert({ message: "ADDED ITEM'S TO ORDER", type: "is-success" });
       showAboutModel();
+      setAlert({ message: "ADDED ITEM'S TO ORDER", type: "is-success" });
+
+
     };
     
 
@@ -102,8 +122,9 @@ const ComboPage = () => {
 
                 <hr></hr>
 
+
     <button className="button is-success is-small" onClick={(event)=>{showAboutModel(event)}} >Combos</button>
-    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
+    <MenuPage menuImage={"./images/combosQuesadillaSoupsNSaladsDesserts.jpg"} />
             
         <Link  to="/orden"> <button className="button is-small">Back</button> </Link>
 
@@ -122,7 +143,7 @@ const ComboPage = () => {
    <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
 
    <div className="container">
-    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
+    <MenuPage menuImage={"./images/combosQuesadillaSoupsNSaladsDesserts.jpg"} />
 
    <h4 className="mb-0">   ADD SUPREME FOR 2.50</h4>
    <div> <h4 className="mb-0">CHOOSE FROM: Beans, cheese, beef and shreded chicken.</h4> </div>
@@ -140,7 +161,7 @@ const ComboPage = () => {
 ):
 
 <div className=" container"> 
-<h3>Make selections bellow!</h3>
+<h3>Please Make selections bellow!</h3>
 </div>
 
 }

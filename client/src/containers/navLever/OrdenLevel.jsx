@@ -6,7 +6,7 @@ import comboContext from "../../context/ComboContext";
 import dipContext from "../../context/DipContext";
 import Alert from "../../components/Alert/Alert";
 import OnUpdateHook from "../../components/hooks/onUpdateHook";
-import orderlevelOrderDataContext from "../../context/orderDataContext";
+// import orderlevelOrderDataContext from "../../context/orderDataContext";
 import alertContext from "../../context/alertContext";
 
 const estilo = {
@@ -27,20 +27,15 @@ const estilo = {
 
 const OrdenLevel = () => { 
 
-  console.count("i rerenderd in navbar");
+  // console.count("i rerenderd in navbar");
   const levelComboContext = useContext(comboContext);
   const {dips}= useContext(dipContext);
-  const levelOrderDataContext = useContext(orderlevelOrderDataContext);
+  // const levelOrderDataContext = useContext(orderlevelOrderDataContext);
   const { setAlert } = useContext(alertContext);
-  const [levelComboCounter, setLevelComboCounter]= useState(0);
-  const [allOrdersCounter, setAllOrdersCounter] = useState(0);
+  const [levelCounter, setLevelCounter] = useState(0);
   const [dipquantity, setDipquantity] = useState(0);
   const [navmodal, setNavmodal]= useState("modal");
-  let dipholder= dips;
 
-
-  console.log(levelComboContext);
-  // console.log(levelOrderDataContext.orderDataContextArray[0].combo);
 
   const showAboutModel= ()=>{
     if(navmodal === "modal"){
@@ -50,21 +45,19 @@ const OrdenLevel = () => {
       setNavmodal("modal");
     }};
 
+  OnUpdateHook(()=>{
+    console.log(dips);
+    let amountHolder = 0
+    if(dips){
 
-  OnUpdateHook((e)=>{
-    // console.log(combolengthFrunt);
-
-    for (let i =0; i < dipholder.length; i++){
-      setDipquantity( dipholder[i].quantity + dipquantity) 
+      for (let i = 0; i < dips.length; i++){
+        amountHolder = dips[i].quantity + amountHolder;
+      };
+      setDipquantity(amountHolder);
     }
+    setLevelCounter(levelComboContext.combo.length + dipquantity)
+  }, [levelComboContext,dipquantity]);
 
-    // setLevelComboCounter()
-
-    // setAllOrdersCounter(dipquantity+combolengthFrunt)
-
-  }, [levelComboContext,dips]);
-
-  // console.log(dipquantity);
 
   return ( <>
   
@@ -94,7 +87,7 @@ const OrdenLevel = () => {
 
 <div className="column has-text-centered" >
 <Link className="levelHover" to="/checkoutPage">
-<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {} </h3></Link>
+<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {levelCounter} </h3></Link>
 </div>
 
 </nav> 

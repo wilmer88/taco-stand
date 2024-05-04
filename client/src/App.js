@@ -76,16 +76,7 @@ const App = () => {
 
    const [combo, setCombo]= useState([]);
 
-  const [dips, setDips] = useState(
-    [{
-      id: 1,
-      dipname: "",
-      price: "",
-      size: "",
-      quantity: 0,
-      
-    },]
-  );
+  const [dips, setDips] = useState([]);
 
 
   const [alert, setAlert] = useState({

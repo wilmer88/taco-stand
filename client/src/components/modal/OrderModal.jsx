@@ -1,6 +1,5 @@
-import { useState} from "react";
+import { useState, useContext} from "react";
 import API from "../../utils/API";
-import { useContext } from "react";
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +16,8 @@ const OrderModel = (props)=>{
   console.count("i rerenderd in OrdenModal");
 
   const orderDataLet= useContext( orderDataContext);
-  const combo = useContext(ComboContext);
+  const combo= useContext(ComboContext);
   const dips = useContext(dipContext);
-  const [combomodal, setCombomoadal]= useState([])
   const [dipmodal,setDipmodal] = useState([]);
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
@@ -30,7 +28,7 @@ const OrderModel = (props)=>{
       nombreDeOrden: orderDataLet.nombreDeOrden,
       phoneNumber:"",
       tableNumber:"",
-      combo:combomodal,
+      combo:combo,
       dips: dipmodal,
       azada: orderDataLet.azada,
       pollo: 0,
@@ -61,7 +59,7 @@ const OrderModel = (props)=>{
   async function secondFunction() {navigate("/")};
   
   const openModal = () => {
-    setCombomoadal(combo.combo);
+    // setCombomoadal(combo.combo);
     // console.log(finalOrderHolder.combo);
   
 
@@ -160,7 +158,7 @@ const OrderModel = (props)=>{
 
     // console.log(finalOrderHolder.combo);
     // console.log(dips)
-        console.log(combo.combo);
+        // console.log(combo.combo);
 
     return(<>
   
@@ -176,7 +174,7 @@ const OrderModel = (props)=>{
                 </div><hr></hr>
 
 
-      {combo.comboPrice !== "0" ? (
+      {combo.combo.comboPrice !== "0" ? (
          combo.combo.map((comboParam, index)=> (
     <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
       combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}

@@ -1,7 +1,7 @@
 import React from "react";
 const orderDataContext = React.createContext({
     
-orderDataContextArray: [
+orderDataContextArray:[
      {
         nombreDeOrden:"",
         phoneNumber:"",
@@ -29,8 +29,7 @@ orderDataContextArray: [
         cancelar:false,
         preparada: false,
         pagado:false,
-      },
-],
+      }],
 
     setOrderDataContext: ()=>{},
 

@@ -15,9 +15,6 @@ const ComboContainer = () => {
   const { setAlert } = useContext(alertContext);
   const [isopen, setIsopen] = useState(0);
 
-
-
-
   const [inputFields, setInput] = useState(
     [{
       comboId: 1,
@@ -107,14 +104,14 @@ const ComboContainer = () => {
           { isopen ===1 &&
           <div className="card-content">
             
-      <div> <h6 className="mb-0">CHOOSE FROM:</h6> <p>Beans, cheese, beef and shreded chicken.</p> </div>
-      <h6 className="mb-0">   ADD SUPREME FOR 2.50</h6>
+      <div> <h6 className="mb-0">CHOOSE FROM:</h6> <p> Our deliciously prepared options of, Shreded Chicken, Cheese, Beef and/or Beans.</p> </div>
+      <h6 className="mb-0"> (Optional) ADD SUPREME FOR 2.50</h6>
       <p>All combos are served with rice and beans.</p>
 
       <Link  to="/comboPage">
-                <button  className="button is-success is-small">View/ Order Combo</button>
+                <button  className="button is-success is-small">View and Add Combos</button>
                  </Link>
-    <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
+    <MenuPage menuImage={"./images/combosQuesadillaSoupsNSaladsDesserts.jpg"} />
 
             </div>
           
