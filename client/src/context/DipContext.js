@@ -1,12 +1,8 @@
-import  React from "react";
-
-const dipContext = React.createContext(
-
- {
-  dips: [
-], setDips:()=>{}
- }
+import { createContext } from "react";
  
- )
-
-export default dipContext;
+  const DipContext = createContext({
+    dipsArr: [],
+    setDips: ()=>{}
+  });
+ 
+export default DipContext;

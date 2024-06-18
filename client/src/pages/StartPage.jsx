@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 import MenuPage from "../components/modal/MenuPage";
 import React, { useContext, useState } from "react";
 
-
 const StartPage = ()=> {
-  console.count("i rerenderd in start page");
 
- 
+  // console.count("i rerenderd in start page");
+
     const liestilo = {
 
         opaci: {
@@ -44,25 +43,22 @@ const StartPage = ()=> {
   <div className="ml-3  field">
     
   <br></br>
- <Link to="./orden"> <button className="button is-black is-outlined">Ordene Ya!/Order Now</button></Link> 
+ <Link to="./orden"> <button className="button is-black is-outlined">Order Now</button></Link> 
  <br></br>
  <br></br>
- <Link to="./kitchen"><button className="button is-black is-outlined">Cancelar Orden/Cancel Order</button></Link>
+ <Link to="./kitchen"><button className="button is-black is-outlined">Cancel Order</button></Link>
  <br></br>
  <br></br>
- <Link to="./ordens"><button className="button is-black is-outlined">Ver Ordenes/See Orders</button></Link>
+ {/* <Link to="./ordens"><button className="button is-black is-outlined">See Orders</button></Link> */}
  <br></br>
  <br></br>
  <Link to="./login"><button className="button is-black is-outlined"> Iniciar Sesion/Log In</button></Link>
  <br></br>
  <br></br>
  <Link to="./signup"><button className="button is-black is-outlined">Inscribirse/Sign Up</button></Link>
-
  <br></br>
  <br></br>
- <Link className="levelHover" onClick={showAboutModel} > <button className="button is-black is-outlined"> 
-Contact</button></Link> 
-
+ <Link className="levelHover" onClick={showAboutModel} > <button className="button is-black is-outlined"> Contact</button></Link> 
 
 </div>
 </div>

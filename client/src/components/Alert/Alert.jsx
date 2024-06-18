@@ -12,7 +12,7 @@ const Alert = () => {
     }
 
   },[message,setAlert])
-  console.count("i rerenderd in Alert component");
+  // console.count("i rerenderd in Alert component");
 
 
   return (
@@ -32,4 +32,4 @@ const Alert = () => {
   );
 };
 
-export default React.memo(Alert);
+export default (Alert);

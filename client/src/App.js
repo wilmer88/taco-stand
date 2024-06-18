@@ -7,7 +7,7 @@ import OrdenLevel from "./containers/navLever/OrdenLevel";
 import Kitchen  from "./pages/kitchen";
 import OrdenPage from "./pages/OrdenPage";
 import NachosPage from "./pages/nochosPage/NachosPage";
-import DipsPage from "./pages/dips/DipsPage";
+import DipsPage from "./pages/dipsPageFolder/DipsPage";
 // import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import Editar from "./pages/Editar";
 import Login from "./pages/Login";
@@ -22,7 +22,7 @@ import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import AppOrderContext from "./context/orderDataContext";
-import dipContext from "./context/DipContext";
+import DipContext from "./context/DipContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
 import BurritoPage from "./pages/burritoPage/BurritoPage";
@@ -76,7 +76,7 @@ const App = () => {
 
    const [combo, setCombo]= useState([]);
 
-  const [dips, setDips] = useState([]);
+  const [dipsArr, setDips] = useState([]);
 
 
   const [alert, setAlert] = useState({
@@ -102,7 +102,7 @@ const App = () => {
         <alertContext.Provider value ={{...alert, setAlert:setAlert}}> 
         <ComboContext.Provider value={{combo,setCombo:setCombo}}>
           <AppOrderContext.Provider value={{...orderDataContext, setOrderDataContext:setOrderDataContext}}>
-            <dipContext.Provider value={{dips, setDips:setDips}}>
+            <DipContext.Provider value={{dipsArr, setDips}}>
             <burritosContext.Provider value={{...burritosOrder, setBurritoContext:setBurritoContext}}>
           < OrdenLevel/>
           <Routes>
@@ -132,7 +132,7 @@ const App = () => {
              <Footer />): null }
 
 </burritosContext.Provider>
-</dipContext.Provider>
+</DipContext.Provider>
 </AppOrderContext.Provider>
 </ComboContext.Provider>
 </alertContext.Provider>
@@ -142,4 +142,4 @@ const App = () => {
   );
 }
 
-export default React.memo(App);
+export default App;

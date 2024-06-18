@@ -317,4 +317,4 @@ const NameHandleChange = event => {
         </> );
 };
 
-export default React.memo(OrdenPage);
+export default (OrdenPage);

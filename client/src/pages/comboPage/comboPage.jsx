@@ -9,7 +9,7 @@ import orderDataContext from "../../context/orderDataContext";
 
 const ComboPage = () => {
   
-    console.count("i rerenderd in burrito page");
+    console.count("i rerenderd in Combopage");
 
     const [navmodal, setNavmodal]= useState("modal");
     const {setOrderDataContext, orderDataContextArray}= useContext(orderDataContext);
@@ -279,4 +279,4 @@ const ComboPage = () => {
        </>);
        };
 
-export default React.memo(ComboPage);
+export default (ComboPage);

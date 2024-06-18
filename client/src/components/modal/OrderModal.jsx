@@ -13,24 +13,25 @@ const socket = io(URL);
 
 const OrderModel = (props)=>{
 
-  console.count("i rerenderd in OrdenModal");
+  // console.count("i rerenderd in OrdenModal");
 
-  const orderDataLet= useContext( orderDataContext);
-  const combo= useContext(ComboContext);
-  const dips = useContext(dipContext);
-  const [dipmodal,setDipmodal] = useState([]);
+  const {orderDataContextArray}= useContext(orderDataContext);
+  const {combo, setCombo}= useContext(ComboContext);
+  const {dipsArr, setDips} = useContext(dipContext);
     const [showModel, setshowModel] = useState("modal");
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
-    // console.log(dips.dips);
+    // console.log(combo);
+    // console.log(dipsArr);
+
 
     const finalOrderHolder= {
-      nombreDeOrden: orderDataLet.nombreDeOrden,
+      nombreDeOrden: orderDataContextArray.nombreDeOrden,
       phoneNumber:"",
       tableNumber:"",
       combo:combo,
-      dips: dipmodal,
-      azada: orderDataLet.azada,
+      dips: dipsArr,
+      azada: orderDataContextArray.azada,
       pollo: 0,
       barbacoa: 0,
       pastor: 0,
@@ -49,22 +50,13 @@ const OrderModel = (props)=>{
       preparada: false,
       pagado:false,
     };
-    // console.log(finalOrderHolder);
-    // console.log(finalOrderHolder.combo);
-
-
-
-
-
   async function secondFunction() {navigate("/")};
   
   const openModal = () => {
+    console.log("Current combo:", combo);
+
     // setCombomoadal(combo.combo);
     // console.log(finalOrderHolder.combo);
-  
-
-
-
      setshowModel("modal is-active");
     // setCombo1(comboT);
     // setOrderData(ordenObj);   
@@ -76,17 +68,13 @@ const OrderModel = (props)=>{
   };
 
   const handleClose = () => { setshowModel("modal") };
-
   async function firstFunction(e) {
     console.log(finalOrderHolder)
     handleClose();
     alert("thanks for your order/ Gracias por su orden!");
   };
 
-  // console.log(orderDataLet)
   const handleSubmit = (e) => {
-    
-
     API.create(finalOrderHolder).then((response) => {
       socket.emit("rs", response.data);
       firstFunction();
@@ -157,8 +145,9 @@ const OrderModel = (props)=>{
     // console.log(finalOrderHolder.combo);
 
     // console.log(finalOrderHolder.combo);
-    // console.log(dips)
-        // console.log(combo.combo);
+    // console.log(dips);
+        // console.log(orderDataContextArray[0].combo);
+
 
     return(<>
   
@@ -167,25 +156,30 @@ const OrderModel = (props)=>{
           <div className="modal-background"></div>
           <div className="modal-content ">
             <div className="box is-mobile">
-              <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
+              {/* <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
 
 
-                {orderDataLet.nombreDeOrden !== 0 && (<div >{orderDataLet.nombreDeOrden}</div>)}
+                {orderDataContextArray[0].nombreDeOrden !== 0 && (<div >{orderDataContextArray[0].nombreDeOrden }</div>)}
                 </div><hr></hr>
 
 
-      {combo.combo.comboPrice !== "0" ? (
-         combo.combo.map((comboParam, index)=> (
-    <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
-      combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
-      </div>
-    ))) : <div ></div>}
+      {
+      combo?.length > 0  ?  ( 
+        combo?.map((comboParam, index) => 
+          (
+  <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
+    combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
+  </div>
+       ))
+                          )  : <div>nocombo</div>
+      }
 
     
-              {dips.dips[0].quantity !==0  ?( dips.dips.map((dipOrder)=>{let thedipOrder =dipOrder
+              {dipsArr.length > 0  ?( dipsArr.dips.map((dipOrder)=>{let thedipOrder =dipOrder
               return(<div className="container" style={{ fontSize: "22px", textAlign: "left" }} key={dipOrder.id}> <ul> {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul> </div>)
               })): <div ></div>}
-              {orderDataLet.azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataLet.azada}</div>)}
+               */}
+              {orderDataContextArray[0].azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataContextArray.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}
               {/* {orderData.pastor !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pastor: {orderData.pastor}</div>)} */}
@@ -212,7 +206,10 @@ const OrderModel = (props)=>{
           <button onClick={handleClose} type="button" className="modal-close is-large" aria-label="close"></button>
         </aside>
 
-        <footer className="card-footer">
+
+         
+
+        <footer className="card-footer mt-3">
           <div className="card-footer-item">
             <span>
               <button id="modalButton" onClick={openModal} className="button is-medium is-success is-light" data-target="modal-js-example">

@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useState } from "react";
-import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
+// import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import ComboContext from "../../context/ComboContext";
 import alertContext from "../../context/alertContext";
-import Alert from "../../components/Alert/Alert";
+// import Alert from "../../components/Alert/Alert";
 import { Link } from "react-router-dom";
 import MenuPage from "../../components/modal/MenuPage";
 
@@ -34,51 +34,51 @@ const ComboContainer = () => {
       };
     };
 
-  const comboSeter= ()=>{
-    setTimeout(() => {
-      // setCombo(inputFields);
-    }, 2000);     
-  };
+  // const comboSeter= ()=>{
+  //   setTimeout(() => {
+  //     // setCombo(inputFields);
+  //   }, 2000);     
+  // };
 
-  const removeCombo = (index) => {
-    const newList = inputFields.filter((_,i)=> i !== index);
-    setInput(newList);
-  };
+  // const removeCombo = (index) => {
+  //   const newList = inputFields.filter((_,i)=> i !== index);
+  //   setInput(newList);
+  // };
 
-  const handleSupremeChange = (index, event) => {
+  // const handleSupremeChange = (index, event) => {
 
-    let data = [...inputFields];
-    data[index].supreme = event.target.checked;
-    setInput(data);
+  //   let data = [...inputFields];
+  //   data[index].supreme = event.target.checked;
+  //   setInput(data);
 
-  };
+  // };
 
-  const handleFormChange = useCallback(
-    (index, event) => {
-      let data = [...inputFields];
-      data[index][event.target.name] = event.target.value;
-      setInput(data);
-      setCombo(data); 
-    },[inputFields,setCombo]
-  );
+  // const handleFormChange = useCallback(
+  //   (index, event) => {
+  //     let data = [...inputFields];
+  //     data[index][event.target.name] = event.target.value;
+  //     setInput(data);
+  //     setCombo(data); 
+  //   },[inputFields,setCombo]
+  // );
 
-  const addFields = (event) => {
-    event.preventDefault();
-    let newfield = {
-      comboId: inputFields.length + 1,
-      comboPrice: "0",
-      supreme: false,
-      choice1: "",
-      choice2: "",
-      key: inputFields.length + 1,
-    };
-    setInput([...inputFields, newfield]);
+  // const addFields = (event) => {
+  //   event.preventDefault();
+  //   let newfield = {
+  //     comboId: inputFields.length + 1,
+  //     comboPrice: "0",
+  //     supreme: false,
+  //     choice1: "",
+  //     choice2: "",
+  //     key: inputFields.length + 1,
+  //   };
+  //   setInput([...inputFields, newfield]);
     
-    setCombo([...combo, newfield]);
+  //   setCombo([...combo, newfield]);
 
-    setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
+  //   setAlert({ message: "Please make a choice from bellow!", type: "is-success" });
 
-  };
+  // };
 
   // console.log(inputFields);
 
@@ -123,4 +123,4 @@ const ComboContainer = () => {
   </>)
 };
 
-export default React.memo(ComboContainer);
+export default (ComboContainer);
