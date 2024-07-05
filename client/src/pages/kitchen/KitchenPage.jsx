@@ -1,6 +1,8 @@
 import React, {useContext,useEffect, useState, } from "react";
+import UserComponent from "../../components/userComponent/UserComponent";
+
 import alertContext from "../../context/alertContext";
-import API from "../utils/API";
+import API from "../../utils/API";
 import {io} from "socket.io-client";
 // import KitchenComponent from "../../components/kitchenComponent/KitchenComponent";
 import LiComponent from "../../components/AdminComponent";
@@ -8,6 +10,7 @@ const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 // const socket= io.connect("https://taco-stand.herokuapp.com/");
+
 
 const Kitchen = () => {
   console.count("i rerenderd in kitchen page");
@@ -21,7 +24,7 @@ const Kitchen = () => {
 
 
  
-     API.allOrdens().then((response ) => {
+     API.kitchenOrders().then((response ) => {
       console.log(response.data);
 
       console.log(response.data)
@@ -41,7 +44,7 @@ useEffect(() => {
   socket.on("myOrders",(arg)=>{
 console.log("new order list");
     // socket.disconnect();
- API.allOrdens().then((response ) => {
+ API.kitchenOrders().then((response ) => {
   console.log(response.data);
 
   setAllOrdens(response.data);
@@ -64,7 +67,7 @@ console.count("i rerenderd in kitchen");
     <div className="column">
     <div className="container is-align-self-auto is-size-7" >
  {orden.length ? (orden.map( res =>(
-              <LiComponent key= {res._id} {...res}  />
+              <UserComponent key= {res._id} {...res}  />
             ))
             ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No contentis available.</h1>
             )}

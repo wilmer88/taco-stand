@@ -1,23 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import MenuPage from "../../components/modal/MenuPage";
 
 
 const BurritosContainer =()=>{
-  console.count("i rerenderd in burrito container");
+  // console.count("i rerenderd in burrito container");
 
 
-    const [navmodal, setNavmodal]= useState("modal");
+    // const [navmodal, setNavmodal]= useState("modal");
 
     
-    const showAboutModel= ()=>{
-      if(navmodal === "modal"){
-        setNavmodal("modal is-active")
-      }
-      if(navmodal === "modal is-active"){
-        setNavmodal("modal")
-      }
-    };
+    // const showAboutModel= ()=>{
+    //   if(navmodal === "modal"){
+    //     setNavmodal("modal is-active")
+    //   }
+    //   if(navmodal === "modal is-active"){
+    //     setNavmodal("modal")
+    //   }
+    // };
   
     const [isopen, setIsopen] = useState(0);
   

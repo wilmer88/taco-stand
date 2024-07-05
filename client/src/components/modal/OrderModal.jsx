@@ -22,7 +22,7 @@ const OrderModel = (props)=>{
     const navigate = useNavigate();
     const { setAlert } = useContext(alertContext);
     // console.log(combo);
-    // console.log(dipsArr);
+    console.log(dipsArr);
 
 
     const finalOrderHolder= {
@@ -156,29 +156,20 @@ const OrderModel = (props)=>{
           <div className="modal-background"></div>
           <div className="modal-content ">
             <div className="box is-mobile">
-              {/* <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
-
-
-                {orderDataContextArray[0].nombreDeOrden !== 0 && (<div >{orderDataContextArray[0].nombreDeOrden }</div>)}
-                </div><hr></hr>
-
-
-      {
-      combo?.length > 0  ?  ( 
-        combo?.map((comboParam, index) => 
-          (
+            <div style={{ fontSize: "30px", fontWeight: "bold" }}>Is this correct?
+                {orderDataContextArray[0].nombreDeOrden != "" && (<div >{orderDataContextArray[0].nombreDeOrden }</div>)}
+                </div>
+                <hr></hr>
+      {combo?.length > 0  ?  ( 
+        combo?.map((comboParam, index) =>(
   <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
     combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
-  </div>
-       ))
-                          )  : <div>nocombo</div>
-      }
-
+  </div>))) : <div></div>}
     
-              {dipsArr.length > 0  ?( dipsArr.dips.map((dipOrder)=>{let thedipOrder =dipOrder
-              return(<div className="container" style={{ fontSize: "22px", textAlign: "left" }} key={dipOrder.id}> <ul> {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul> </div>)
+              {dipsArr.length > 0  ?( dipsArr.map((dipOrder)=>{let thedipOrder =dipOrder
+              return(<div className="container" style={{ fontSize: "22px", textAlign: "left" }} key={dipOrder.id}> <ul>  {thedipOrder.size} {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul> </div>)
               })): <div ></div>}
-               */}
+              
               {orderDataContextArray[0].azada !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Azada: {orderDataContextArray.azada}</div>)}
               {/* {orderData.pollo !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Pollo: {orderData.pollo}</div>)} */}
               {/* {orderData.barbacoa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}>Barbacoa: {orderData.barbacoa}</div>)} */}

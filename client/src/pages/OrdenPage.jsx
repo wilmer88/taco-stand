@@ -1,27 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ToppingField from "../components/ToppingField";
-import NameField from "../components/NameField";
 import DropDownField from "../components/DropDownField";
-import OrderModel from "../components/modal/OrderModal";
 import DipsContainer from "../containers/dips/dipsContainer";
 import NachosContainer from "../containers/nachos/nachosContainer";
 import { useContext } from "react";
 import ComboContainer from "../containers/comboContainer/ComboContainer";
 import OrderContext from "../context/orderDataContext";
 import BurritosContainer from "../containers/Burritos/BurritosContainer";
+import OrderDetails from "../containers/orderDetailFolder/orderDetails";
 // import { interfaces } from "mocha";
 
 const OrdenPage = () => {
-  console.count("i rerenderd in ordenpage");
+  // console.count("i rerenderd in ordenpage");
   // const user = useContext(AuthContext);
   const orderContext = useContext(OrderContext);
 
-const NameHandleChange = event => {
-  event.preventDefault();
-  const { name, value } = event.target;
-  orderContext.setOrderDataContext({ ...orderContext, [name]: value });
-};
+
 
   const cebollaIncrement = (event) => {
     event.preventDefault();
@@ -92,25 +87,9 @@ const NameHandleChange = event => {
     }
   };
 
-  const phoneHandleChange = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    const intValue= parseInt(value,10);
-    if(!isNaN(intValue)) {
-      orderContext.setOrderDataContext({ ...orderContext, [name]: intValue });
 
-    }
-  };
 
-  const tableHandleChange = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    const intValue= parseInt(value,10);
-    if(!isNaN(intValue)) {
-      orderContext.setOrderDataContext({ ...orderContext, [name]: intValue });
 
-    }
-  };
 
     return (<>
  <footer className="footer" >
@@ -126,35 +105,12 @@ const NameHandleChange = event => {
         <article className="card-content">
           <aside className="m-3 content" >
             <div className="container">
-
-              <div className="is-align-content-center columns mt-3">
-                <NameField
-                  nameOfInputField="Name:"
-                  placeholder="Ashley"
-                  name="nombreDeOrden"
-                  value={orderContext.nombreDeOrden}
-                  onChange={NameHandleChange}
-                />
-                <NameField
-                  nameOfInputField="Phone#"
-                  placeholder="7063314752"
-                  name="phoneNumber"
-                  value={orderContext.phoneNumber}
-                  onChange={phoneHandleChange}
-                />
-                   <NameField
-                  nameOfInputField={<> <strong>Table# </strong>( optional) </>}
-                  placeholder="14"
-                  name="tableNumber"
-                  value={orderContext.tableNumber}
-                  onChange={tableHandleChange}
-                 
-                />
-              </div>   
+ 
               <div id="nachitos" >
               </div>
+              <DipsContainer/>
+
 <BurritosContainer/>
-<DipsContainer/>
 <NachosContainer />
 <ComboContainer/>
 
@@ -293,10 +249,22 @@ const NameHandleChange = event => {
                
               />
             </div>
+            <OrderDetails/>              
+
 
           </aside>
         </article>
-        <OrderModel />
+        <span>
+        <Link to="/checkoutPage">
+
+              <button id="modalButton" className="button is-medium is-success is-light" data-target="modal-js-example">
+         
+             Checkout
+                  
+             
+              </button>
+              </Link>
+            </span>
 
       </section>
     </main> </div>

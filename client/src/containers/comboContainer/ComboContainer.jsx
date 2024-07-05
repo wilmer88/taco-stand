@@ -1,7 +1,7 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, {  useState } from "react";
 // import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
-import ComboContext from "../../context/ComboContext";
-import alertContext from "../../context/alertContext";
+// import ComboContext from "../../context/ComboContext";
+// import alertContext from "../../context/alertContext";
 // import Alert from "../../components/Alert/Alert";
 import { Link } from "react-router-dom";
 import MenuPage from "../../components/modal/MenuPage";
@@ -9,21 +9,21 @@ import MenuPage from "../../components/modal/MenuPage";
 
 
 const ComboContainer = () => {
-  console.count("i rerenderd in combo container");
+  // console.count("i rerenderd in combo container");
 
-  const {setCombo, combo}= useContext(ComboContext);
-  const { setAlert } = useContext(alertContext);
+  // const {setCombo, combo}= useContext(ComboContext);
+  // const { setAlert } = useContext(alertContext);
   const [isopen, setIsopen] = useState(0);
 
-  const [inputFields, setInput] = useState(
-    [{
-      comboId: 1,
-      comboPrice: "0",
-      supreme: false,
-      choice1: "",
-      choice2: "",
-      key: 1,
-    }]);
+  // const [inputFields, setInput] = useState(
+  //   [{
+  //     comboId: 1,
+  //     comboPrice: "0",
+  //     supreme: false,
+  //     choice1: "",
+  //     choice2: "",
+  //     key: 1,
+  //   }]);
 
     const toggleColapse = ()=>{
       if(isopen===0){

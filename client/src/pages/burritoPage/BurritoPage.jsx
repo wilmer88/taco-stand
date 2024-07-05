@@ -8,7 +8,7 @@ import Alert from "../../components/Alert/Alert";
 import alertContext from "../../context/alertContext";
 
 const BurritoPage = () => {
-    console.count("i rerenderd in burrito page");
+    // console.count("i rerenderd in burrito page");
     const { setAlert } = useContext(alertContext);
 
     const {setBurritoContext} = useContext(burritosContext);

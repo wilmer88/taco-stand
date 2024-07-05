@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const DipsContainer = () => {
 
-    console.count("i rerenderd in dipsContainer");
+    // console.count("i rerenderd in dipsContainer");
 
     const [dipShow, setDipShow]= useState(0);
  

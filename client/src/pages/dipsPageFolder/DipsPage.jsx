@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const DipsPage = () => {
 
+      console.count("i rerenderd in orderLevel client/src/pages/dipsPageFolder/DipsPage");
+
     const navigate = useNavigate();
     const { setAlert } = useContext(AlertContext);
     const { dipsArr, setDips } = useContext(DipContext);
@@ -16,7 +18,7 @@ const DipsPage = () => {
 
     const [dipPageOrders, setDipPageOrders] = useState({
         dips: [
-            { id: 1, dipname: "Cheese Dip", price: "4.50", size: "Regular", quantity: 0 },
+            { id: 1, dipname: "Cheese Dip", price: 4.50, size: "Regular", quantity: 0 },
             { id: 2, dipname: "Cheese Dip", price: "8.50", size: "Large", quantity: 0 },
             { id: 3, dipname: "Guacamole Dip", price: "4.75", size: "Regular", quantity: 0 },
             { id: 4, dipname: "Guacamole Dip", price: "9.25", size: "Large", quantity: 0 }
@@ -24,9 +26,18 @@ const DipsPage = () => {
     });
 
     const handleDipIncrement = (id) => {
-        setDipPageOrders(prevState => ({
+            setDipPageOrders(prevState => ({
             dips: prevState.dips.map(dip => dip.id === id ? { ...dip, quantity: dip.quantity + 1 } : dip)
-        }));
+            }));
+    };
+
+    const RegularDipDecrementHandler = (id) => {
+        if(dipsArr.length > 0 ){
+            setDipPageOrders(prevState => ({
+                dips: prevState.dips.map(dip => dip.id === id ? { ...dip, quantity: dip.quantity - 1 } : dip)
+            }));
+        };
+    
     };
 
     const handleSave = () => {
@@ -63,6 +74,7 @@ const DipsPage = () => {
                 itemNameAddButtonR="cheeseDipRegular"
                 itemNameAddButtonL="cheeseDipLarge"
                 regularAddHandler={() => handleDipIncrement(1)}
+                regularSubtractHandler={()=> RegularDipDecrementHandler(1)}
                 largeAddHandler={() => handleDipIncrement(2)}
             />
             <div className='columns is-responsive is-mobile is-centered'>

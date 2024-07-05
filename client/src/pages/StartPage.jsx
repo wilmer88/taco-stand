@@ -36,12 +36,10 @@ const StartPage = ()=> {
   <div className="column is-two-fifth"> </div>
   <div className= "mt-4 column is-full-mobile"  >
   <div className="container">
-  <div className="box"  >
+  {/* <div className="box"  > */}
 
   <h2 className="label has-text-centered" style={liestilo.fonte}>What Do You Want To DO?</h2>
-
   <div className="ml-3  field">
-    
   <br></br>
  <Link to="./orden"> <button className="button is-black is-outlined">Order Now</button></Link> 
  <br></br>
@@ -59,9 +57,8 @@ const StartPage = ()=> {
  <br></br>
  <br></br>
  <Link className="levelHover" onClick={showAboutModel} > <button className="button is-black is-outlined"> Contact</button></Link> 
-
 </div>
-</div>
+{/* </div> */}
 </div>
 
   </div>
@@ -76,7 +73,6 @@ const StartPage = ()=> {
     
      <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"></button>
      <img  id="aboutImage" src="./images/aboutLosMezquites.webp"alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
-
      </div>
 </div>
 </div>
