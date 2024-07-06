@@ -1,6 +1,13 @@
 #dipnav{
     padding: 10px 0;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+
+
 
 
 
@@ -8,4 +15,10 @@
 
 .dipContainer{
     padding: 20px 0;
+}
+
+.dipsButtons{
+    position: absolute;
+
+
 }

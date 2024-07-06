@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OrderDataContext from "../../context/orderDataContext";
 import ComboContext from "../../context/ComboContext";
-import DipContext from "../../context/DipContext";
 import {io} from "socket.io-client";
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
@@ -15,7 +14,6 @@ const CheckOutPage =()=>{
  
     let total = 0
     const {OrderContextObj, setOrderDataContext} = useContext(OrderDataContext);
-    const { dipsArr,setDips } = useContext(DipContext);
     const { combo } = useContext(ComboContext);
     const { setAlert } = useContext(alertContext);
     const navigate = useNavigate();
@@ -27,7 +25,7 @@ const CheckOutPage =()=>{
         tableNumber:"",
         burritos:[],
         combo:[],
-        dips:dipsArr,
+        dips:OrderContextObj.dips,
         aLaCarte:[],
         nachos:[],
         azada:0,
@@ -63,7 +61,7 @@ const CheckOutPage =()=>{
         tableNumber:"",
         burritos:[],
         combo:[],
-        dips:dipsArr,
+        dips:OrderContextObj.dips,
         aLaCarte:[],
         nachos:[],
         azada:0,
@@ -91,7 +89,7 @@ const CheckOutPage =()=>{
         tableNumber:"",
         burritos:[],
         combo:[],
-        dips:dipsArr,
+        dips:OrderContextObj.dips,
         aLaCarte:[],
         nachos:[],
         azada:0,
@@ -114,7 +112,7 @@ const CheckOutPage =()=>{
         pagado:false,
       });
 
-      setDips([])
+  
       setAlert({ message: "You successfully placed order!", type: "is-success" });
       API.allOrdens().then((response)=>{
         // console.log(response.data)
@@ -126,7 +124,7 @@ const CheckOutPage =()=>{
     .catch((err) => { console.log(err) });
   };
 
-  if(dipsArr.length > 0){total =  dipsArr[0].price * dipsArr[0].quantity + total;};
+  if(OrderContextObj.dips.length > 0){total =  OrderContextObj.dips[0].price * OrderContextObj.dips[0].quantity + total;};
 
   useEffect(()=>{
 
@@ -147,7 +145,7 @@ const CheckOutPage =()=>{
     combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
   </div>))) : <div></div>}
     
-              {dipsArr.length > 0  ?( dipsArr.map((dipOrder)=>{let thedipOrder =dipOrder
+              {OrderContextObj.dips.length > 0  ?( OrderContextObj.dips.map((dipOrder)=>{let thedipOrder =dipOrder
               return(<div className="container" style={{ fontSize: "18px", textAlign: "left" }} key={dipOrder.id}> <ul>  {thedipOrder.size} {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul>
                <Link to="/dips">
                <button  type="button"  className="button is-small  is-dark is-light"><strong>Edit Dips</strong></button>

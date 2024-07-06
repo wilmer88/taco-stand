@@ -1,0 +1,11 @@
+#dipContainerButtons{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+@media (max-width: 600px) {
+    #dipContainerButtons{
+        padding: 10px 0;
+    }
+}

@@ -1,7 +1,7 @@
 import{ useState}  from "react";
 import React from "react";
 import { Link } from "react-router-dom"
-
+import "./dipContainer.css"
 const DipsContainer = () => {
 
     // console.count("i rerenderd in dipsContainer");
@@ -38,6 +38,24 @@ const DipsContainer = () => {
     };
 
     return (<>
+<aside className={`${navmodal} is-mobile`} >
+
+<div className="modal-background"></div>
+     <div className="modal-content">
+     <div className="box is-mobile">
+     <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
+     <img
+                    id="aboutImage"
+                    src="./images/dipNachoAla.jpg"
+                    alt="Los Mesquites About info 678 800-7036"
+                    style={{ overflow: "hidden" }}
+                  />
+
+     <div className="column mb-2">
+        </div> 
+</div> 
+ </div>
+</aside>
 
     <div className="card" style={{background: "lightyellow"}}>
 <header className="card-header" >
@@ -57,9 +75,29 @@ const DipsContainer = () => {
 
  <div> <p className="is-size-6 has-text-weight-medium"> Tejano Dip: </p>Steak, grilled chicken, shrimp and cheesedip</div>
 
-<Link to="/dips">
-<button className="button is-success is-small" onClick={showAboutModel}>Add Dips</button>
+<div  id="dipContainerButtons" className="is-justify-content-center">
+<div className="field is-grouped">
+  <Link to="/dips">
+<button className="button is-success is-small mb-1" >Add/ Edit Dips</button>
 </Link>
+<button className="button is-info is-small ml-2 mb-2" onClick={showAboutModel}>Menu Image</button>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+  
+
+
+
+
+
+
 
 <div className="container" style={{ background: "tan" }}>
 <div className="checkbox p-4">
@@ -87,17 +125,6 @@ Minimize Dips
 
 <hr></hr>
 
-<aside className={`${navmodal} is-mobile`} >
-
-<div className="modal-background"></div>
-     <div className="modal-content">
-     <div className="box is-mobile">
-     <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"> x</button>
-     <div className="column mb-2">
-        </div> 
-</div> 
- </div>
-</aside>
 
 </>)
 };

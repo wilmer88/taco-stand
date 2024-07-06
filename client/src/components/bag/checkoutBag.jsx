@@ -58,7 +58,7 @@ const CheckoutBag= () => {
   
 
 <Link className="levelHover" to="/checkoutPage">
-<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Order: {levelPageCounter} </h3>
+<h3 className="label" style={estilo.nombre}><i className="icofont-list icofont-2x"></i>Your Bag: {levelPageCounter} </h3>
 </Link>
 
  
