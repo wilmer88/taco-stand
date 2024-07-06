@@ -3,6 +3,7 @@ import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import comboContext from "../../context/ComboContext";
 import DipContext from "../../context/DipContext";
+import OrderDataContext from "../../context/orderDataContext";
 
 
 // import OnUpdateHook from "../hooks/onUpdateHook";
@@ -21,10 +22,11 @@ const estilo = {
 const CheckoutBag= () => {
 
     const [levelPageCounter, setLevelCounter] = useState(0);
+    const{OrderContextObj}= useContext(OrderDataContext);
 
   const { combo } = useContext(comboContext);
   const { dipsArr } = useContext(DipContext);
-  const totalDipQuantity = useMemo(() => dipsArr.reduce((sum, dip) => sum + dip.quantity, 0), [dipsArr]);
+  const totalDipQuantity = useMemo(() => OrderContextObj.dips.reduce((sum, dip) => sum + dip.quantity, 0), [dipsArr]);
   const comboCount = useMemo(() => combo.combo?.length || 0, [combo.combo]);
 
 

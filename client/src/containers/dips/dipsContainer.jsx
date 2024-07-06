@@ -7,6 +7,8 @@ const DipsContainer = () => {
     // console.count("i rerenderd in dipsContainer");
 
     const [dipShow, setDipShow]= useState(0);
+    const [navmodal, setNavmodal]= useState("modal");
+
  
     const openDipHandelerPropFunction=  ()=>{
     setDipShow(1);
@@ -26,7 +28,6 @@ const DipsContainer = () => {
        }
     };
 
-    const [navmodal, setNavmodal]= useState("modal");
     const showAboutModel= ()=>{
       if(navmodal === "modal"){
         setNavmodal("modal is-active")

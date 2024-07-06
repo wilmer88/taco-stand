@@ -15,7 +15,7 @@ const estilo = {
     borderRadius: "50%"
   },
   pad: {
-    padding: "40px",
+    padding: "25px",
   },
 };
 
@@ -26,8 +26,12 @@ const OrdenLevel = () => {
   const [navmodal, setNavmodal] = useState("modal");
   return (<>
 
-    <section className="section mb-6" style={estilo.pad}>
+
+  <div>
+  <section className="section mb-6" style={estilo.pad}>
+
       <nav className="navbar is-fixed-top is-justify-content-center" role="navigation"   >
+        
 
         <div className="column has-text-centered" >
           <Link className="levelHover" onClick={toggleModal}  >
@@ -54,6 +58,9 @@ const OrdenLevel = () => {
           <CheckoutBag />
         </div>
 
+      <Alert />
+    
+
       </nav>
 
     </section>
@@ -72,9 +79,12 @@ const OrdenLevel = () => {
     </aside>
 
 
-    <div className="container mt-3">
-      <Alert />
-    </div>
+
+
+  </div>
+
+
+
 
   </>)
 }
