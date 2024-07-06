@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState, useMemo, useCallback} from "rea
 import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import comboContext from "../../context/ComboContext";
-import DipContext from "../../context/DipContext";
 import OrderDataContext from "../../context/orderDataContext";
 
 
@@ -25,8 +24,7 @@ const CheckoutBag= () => {
     const{OrderContextObj}= useContext(OrderDataContext);
 
   const { combo } = useContext(comboContext);
-  const { dipsArr } = useContext(DipContext);
-  const totalDipQuantity = useMemo(() => OrderContextObj.dips.reduce((sum, dip) => sum + dip.quantity, 0), [dipsArr]);
+  const totalDipQuantity = useMemo(() => OrderContextObj.dips.reduce((sum, dip) => sum + dip.quantity, 0), [OrderContextObj.dips]);
   const comboCount = useMemo(() => combo.combo?.length || 0, [combo.combo]);
 
 
@@ -43,6 +41,7 @@ const CheckoutBag= () => {
   // console.count("i rerenderd in Alert component");
 
   useEffect(() => {
+    // console.log(totalDipQuantity);
     // console.log("Memoized - Total Dip Quantity:", totalDipQuantity);
     // console.log("Memoized - Combo Count:", comboCount);
     // console.log("Current Level Page Counter:", levelPageCounter);
@@ -51,7 +50,7 @@ const CheckoutBag= () => {
 
     // console.log("Updated Level Counter to:", totalDipQuantity + comboCount);
 
-}, [totalDipQuantity, comboCount]);
+}, [totalDipQuantity, comboCount,OrderContextObj]);
 
 
   return (
