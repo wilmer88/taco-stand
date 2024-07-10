@@ -119,9 +119,9 @@ const App = () => {
                   <Route path="/login" element={<Login />} />
                   <Route path="/orden/:ordenId" element={<Editar />} />
                   <Route path="/orden" exact element={
-                  <ProtectedRoute>
+
                   <OrdenPage />
-                  </ProtectedRoute>        
+                  
                     } />
                   <Route path="/searcho" element={<SearchOrderPage />} />
                   <Route exact path="/" element={<StartPage />} />

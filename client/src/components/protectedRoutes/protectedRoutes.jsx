@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
   // Check if there is a JWT token
   if (!jwt) {
     // User not authenticated, redirect them to the login page
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   // If the user is authenticated, allow access to the children components
