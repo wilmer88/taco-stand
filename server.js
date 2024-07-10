@@ -49,12 +49,13 @@ app.get("*", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-// let activeOrders = [];
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000" || "https://taco-stand.herokuapp.com/",
+    // origin: "http://localhost:3000" || "https://taco-stand.herokuapp.com/",
+    origin: "http://localhost:3000" || "mongodb://127.0.0.1/tacos",
+
     methods: [ "GET", "POST"]
   }
 });
@@ -81,8 +82,8 @@ const io = new Server(server, {
         console.log(`user disconnected`,socket.id)
       });
 });
-// app.listen(PORT, () => {
-//   console.log(`server running on port ${PORT}`);
-// });
 
-server.listen(PORT);
+
+server.listen(PORT, ()=>{
+  console.log(`server running on port ${PORT}`)
+});

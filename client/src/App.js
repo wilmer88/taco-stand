@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
 import SignUp from "./pages/SignUp";
@@ -18,14 +18,17 @@ import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
 import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
-import DipContext from "./context/DipContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
 import BurritoPage from "./pages/burritoPage/BurritoPage";
 import burritosContext from "./context/burritoContext";
 import ComboPage from "./pages/comboPage/comboPage";
 import OrderDataContext from "./context/orderDataContext";
+import NotFoundPage from "./pages/notFound/notFound";
+import ProtectedRoute from "./components/protectedRoutes/protectedRoutes";
+
 const App = () => {
+  const userContextLogIn = useContext(AuthContext);
   const [OrderContextObj, setOrderDataContext] = useState({
     nombreDeOrden: "",
     phoneNumber: "",
@@ -66,9 +69,6 @@ const App = () => {
 
   const [combo, setCombo] = useState([]);
 
-  const [dipsArr, setDips] = useState([          
-  ]);
-
   const [alert, setAlert] = useState({
     message: "",
     type: "",
@@ -76,49 +76,60 @@ const App = () => {
 
   const [jwt, setJwt] = useState("");
   const [userName, setUserName] = useState("");
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
     if (jwt) {
       setAxiosDefaults(jwt);
     }
-  }, [jwt]);
+  }, [jwt, userContextLogIn]);
 
   return (
     <Router>
-      <AuthContext.Provider value={{ jwt, setJwt, userName, setUserName }}>
+      <AuthContext.Provider
+        value={{
+          jwt,
+          setJwt: setJwt,
+          userName,
+          setUserName: setUserName,
+          userRole,
+          setUserRole: setUserRole,
+        }}
+      >
         <alertContext.Provider value={{ ...alert, setAlert: setAlert }}>
           <ComboContext.Provider value={{ combo, setCombo: setCombo }}>
-            <OrderDataContext.Provider
-              value={{ OrderContextObj, setOrderDataContext }}
-            >
-              <DipContext.Provider value={{ dipsArr, setDips }}>
-                <burritosContext.Provider
-                  value={{ burritosOrder, setBurritoContext }}
-                >
-                  <OrdenLevel />
+            <OrderDataContext.Provider value={{ OrderContextObj, setOrderDataContext }}>
+              <burritosContext.Provider value={{ burritosOrder, setBurritoContext }}>
+                <OrdenLevel />
 
-                  <Routes>
-                    <Route path="/burritopage" element={<BurritoPage />} />
-                    <Route path="/comboPage" element={<ComboPage />} />
-                    <Route path="/nachos" element={<NachosPage />} />
-                    <Route path="/dips" element={<DipsPage />} />
-                    <Route path="/checkoutPage" element={<CheckOutPage />} />
-                    <Route path="/menuPage" element={<MenuPage />} />
-                    <Route path="/kitchen" element={<Kitchen />} />
-                    <Route path="/myorders" element={<MyOrders />} />
-                    <Route path="/unprepared" element={<UnpreparedOrders />} />
-                    <Route path="/payment/:ordenId" element={<Payment />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/orden/:ordenId" element={<Editar />} />
-                    <Route path="/orden" exact element={<OrdenPage />} />
-                    <Route path="/searcho" element={<SearchOrderPage />} />
-                    <Route exact path="/" element={<StartPage />} />
-                  </Routes>
+                <Routes>
 
-                  {jwt !== "" ? <Footer /> : null}
-                </burritosContext.Provider>
-              </DipContext.Provider>
+
+                  <Route path="/burritopage" element={<BurritoPage />} />
+                  <Route path="/comboPage" element={<ComboPage />} />
+                  <Route path="/nachos" element={<NachosPage />} />
+                  <Route path="/dips" element={<DipsPage />} />
+                  <Route path="/checkoutPage" element={<CheckOutPage />} />
+                  <Route path="/menuPage" element={<MenuPage />} />
+                  <Route path="/kitchen" element={<Kitchen />} />
+                  <Route path="/myorders" element={<MyOrders />} />
+                  <Route path="/unprepared" element={<UnpreparedOrders />} />
+                  <Route path="/payment/:ordenId" element={<Payment />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/orden/:ordenId" element={<Editar />} />
+                  <Route path="/orden" exact element={
+                  <ProtectedRoute>
+                  <OrdenPage />
+                  </ProtectedRoute>        
+                    } />
+                  <Route path="/searcho" element={<SearchOrderPage />} />
+                  <Route exact path="/" element={<StartPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+
+                {userRole === "administrador" ? <Footer /> : null}
+              </burritosContext.Provider>
             </OrderDataContext.Provider>
           </ComboContext.Provider>
         </alertContext.Provider>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import OrderDataContext from "../../context/orderDataContext";
 import ComboContext from "../../context/ComboContext";
 import {io} from "socket.io-client";
+
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
@@ -17,7 +18,6 @@ const CheckOutPage =()=>{
     const { combo } = useContext(ComboContext);
     const { setAlert } = useContext(alertContext);
     const navigate = useNavigate();
-
 
     const [finalOrderHolder, setFinalOrder]= useState({
         nombreDeOrden: OrderContextObj.nombreDeOrden,
@@ -52,76 +52,84 @@ const CheckOutPage =()=>{
 
         async function secondFunction(){navigate("/"); };
 
-    
   const handleCheckoutSubmit = (e) => {
-    API.create(finalOrderHolder).then((response) => {
-      setOrderDataContext({
-        nombreDeOrden: "",
-        phoneNumber:"",
-        tableNumber:"",
-        burritos:[],
-        combo:[],
-        dips:OrderContextObj.dips,
-        aLaCarte:[],
-        nachos:[],
-        azada:0,
-        pollo: 0,
-        barbacoa: 0,
-        pastor: 0,
-        chorizo: 0,
-        cebolla: 0,
-        cilantro: 0,
-        pico: 0,
-        redSalsa: 0,
-        greenSalsa: 0,
-        largeHorchata: 0,
-        smallHorchata: 0,
-        coca: 0,
-        sprite: 0,
-        fanta: 0,
-        cancelar:false,
-        preparada: false,
-        pagado:false,
-      });     
-      setFinalOrder({
-        nombreDeOrden: "",
-        phoneNumber:"",
-        tableNumber:"",
-        burritos:[],
-        combo:[],
-        dips:OrderContextObj.dips,
-        aLaCarte:[],
-        nachos:[],
-        azada:0,
-        pollo: 0,
-        barbacoa: 0,
-        pastor: 0,
-        chorizo: 0,
-        cebolla: 0,
-        cilantro: 0,
-        pico: 0,
-        redSalsa: 0,
-        greenSalsa: 0,
-        largeHorchata: 0,
-        smallHorchata: 0,
-        coca: 0,
-        sprite: 0,
-        fanta: 0,
-        cancelar:false,
-        preparada: false,
-        pagado:false,
-      });
 
+    if(OrderContextObj.nombreDeOrden && OrderContextObj.phoneNumber !==""){
+
+      API.create(finalOrderHolder).then((response) => {
+        setOrderDataContext({
+          nombreDeOrden: "",
+          phoneNumber:"",
+          tableNumber:"",
+          burritos:[],
+          combo:[],
+          dips:OrderContextObj.dips,
+          aLaCarte:[],
+          nachos:[],
+          azada:0,
+          pollo: 0,
+          barbacoa: 0,
+          pastor: 0,
+          chorizo: 0,
+          cebolla: 0,
+          cilantro: 0,
+          pico: 0,
+          redSalsa: 0,
+          greenSalsa: 0,
+          largeHorchata: 0,
+          smallHorchata: 0,
+          coca: 0,
+          sprite: 0,
+          fanta: 0,
+          cancelar:false,
+          preparada: false,
+          pagado:false,
+        });     
+        setFinalOrder({
+          nombreDeOrden: "",
+          phoneNumber:"",
+          tableNumber:"",
+          burritos:[],
+          combo:[],
+          dips:OrderContextObj.dips,
+          aLaCarte:[],
+          nachos:[],
+          azada:0,
+          pollo: 0,
+          barbacoa: 0,
+          pastor: 0,
+          chorizo: 0,
+          cebolla: 0,
+          cilantro: 0,
+          pico: 0,
+          redSalsa: 0,
+          greenSalsa: 0,
+          largeHorchata: 0,
+          smallHorchata: 0,
+          coca: 0,
+          sprite: 0,
+          fanta: 0,
+          cancelar:false,
+          preparada: false,
+          pagado:false,
+        });
   
-      setAlert({ message: "You successfully placed order!", type: "is-success" });
-      API.allOrdens().then((response)=>{
-        // console.log(response.data)
-        socket.emit("rs", response.data);
+        setAlert({ message: "You successfully placed order!", type: "is-success" });
+  
+        API.allOrdens().then((response)=>{
+          // console.log(response.data)
+          socket.emit("rs", response.data);
+        })
+        secondFunction();
       })
-      secondFunction();
 
-    })
-    .catch((err) => { console.log(err) });
+      .catch((err) => { console.log(err) });   
+    } else{
+
+      alert("name and phone number must be included with orders");
+      navigate("/orden")
+
+    }
   };
 
   if(OrderContextObj.dips.length > 0){total =  OrderContextObj.dips[0].price * OrderContextObj.dips[0].quantity + total;};

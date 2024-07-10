@@ -32,24 +32,36 @@ const StartPage = ()=> {
           }};
   
     return (<>
-  <div className='columns is-mobile'style={liestilo.starterPadding}>
+
+<aside id="navLevelmodal" className={`${navmodal}`} >
+<div className="columns">
+<div className="column is-full">
+<div className="modal-background"></div>
+     <div className="modal-content ">
+    
+     <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"></button>
+     <img  id="aboutImage" src="./images/aboutLosMezquites.webp"alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
+     </div>
+</div>
+</div>
+</aside>
+
+
+
+    <div className='columns is-mobile mt-6'style={liestilo.starterPadding}>
   <div className="column is-two-fifth"> </div>
   <div className= "mt-4 column is-full-mobile"  >
   <div className="container">
   {/* <div className="box"  > */}
 
-  <h2 className="label has-text-centered" style={liestilo.fonte}>What Do You Want To DO?</h2>
+  <h2 className="label has-text-centered" style={liestilo.fonte}></h2>
   <div className="ml-3  field">
   <br></br>
  <Link to="./orden"> <button className="button is-black is-outlined">Order Now</button></Link> 
  <br></br>
  <br></br>
- <Link to="./kitchen"><button className="button is-black is-outlined">Cancel Order</button></Link>
- <br></br>
- <br></br>
- {/* <Link to="./ordens"><button className="button is-black is-outlined">See Orders</button></Link> */}
- <br></br>
- <br></br>
+
+
  <Link to="./login"><button className="button is-black is-outlined"> Iniciar Sesion/Log In</button></Link>
  <br></br>
  <br></br>
@@ -65,18 +77,10 @@ const StartPage = ()=> {
 
   <div className="column is-two-fifth"></div>
   </div>
-  <aside id="navLevelmodal" className={`${navmodal}`} >
-<div className="columns">
-<div className="column is-full">
-<div className="modal-background"></div>
-     <div className="modal-content ">
-    
-     <button onClick={showAboutModel} type="button" className="modal-close is-large" aria-label="close"></button>
-     <img  id="aboutImage" src="./images/aboutLosMezquites.webp"alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
-     </div>
-</div>
-</div>
-</aside>
+
+
+
+
 
    </>)
   }

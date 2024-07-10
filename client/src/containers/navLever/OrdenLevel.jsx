@@ -25,10 +25,25 @@ const OrdenLevel = () => {
   const toggleModal = useCallback(() => { setNavmodal(prev => (prev === "modal" ? "modal is-active" : "modal")); }, []);
   const [navmodal, setNavmodal] = useState("modal");
   return (<>
-
-
   <div>
-  <section className="section mb-6" style={estilo.pad}>
+    
+  </div>
+    <aside id="navLevelmodal" className={`${navmodal}`} >
+      <div className="columns">
+        <div className="column is-full">
+          <div className="modal-background"></div>
+          <div className="modal-content ">
+
+            <button onClick={toggleModal} type="button" className="modal-close is-large" aria-label="close"></button>
+            <img id="aboutImage" src="./images/aboutLosMezquites.webp" alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
+
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  <div className=" mb-6">
+  <section className="section" style={estilo.pad}>
 
       <nav className="navbar is-fixed-top is-justify-content-center" role="navigation"   >
         
@@ -64,19 +79,7 @@ const OrdenLevel = () => {
       </nav>
 
     </section>
-    <aside id="navLevelmodal" className={`${navmodal}`} >
-      <div className="columns">
-        <div className="column is-full">
-          <div className="modal-background"></div>
-          <div className="modal-content ">
 
-            <button onClick={toggleModal} type="button" className="modal-close is-large" aria-label="close"></button>
-            <img id="aboutImage" src="./images/aboutLosMezquites.webp" alt="Los Mesquites About info 678 800-7036" style={{ overflow: "hidden" }} />
-
-          </div>
-        </div>
-      </div>
-    </aside>
 
 
 

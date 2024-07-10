@@ -95,8 +95,3 @@ Add Pineapple
 }
 
 export default React.memo(OptionDropDown);
-
-
-    //  "Cheese Nachos (Full)($6.00)",
-    //  "Beans Nachos(Half)($5.00)",
-    //  "Beans Nachos(Full)($6.25)",

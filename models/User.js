@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  roll: {
-    type: String,
-    // unique: true,
-    trim: true,
-  },
+
     userName: {
     type: String,
     // unique: true,
@@ -20,6 +16,12 @@ const UserSchema = new Schema({
     trim: true,
     // required: "phone number is Required",
   },
+  userRole: {
+    type: String,
+    // unique: true,
+    trim: true,
+    required: "roll is Required",
+  },
   orders: [{
     type: Schema.Types.ObjectId,
     ref: "Orden",
@@ -30,7 +32,7 @@ const UserSchema = new Schema({
   
   password: {
     type: String,
-    required: "user Name is Required",
+    required: "password is Required",
     trim:true
   }
 

@@ -2,11 +2,11 @@ import React from "react";
 const AuthContext = React.createContext({
     userName: "",
     jwt: "",
-    roll: "",
+    userRole: "",
 
     setUserName: ()=>{},
  setJwt: () =>{},
- setRoll:()=>{}
+ setUserRole:()=>{},
 })
 
 export default AuthContext;

@@ -24,12 +24,14 @@ module.exports = {
                   password: founduser.password,
                 },
                 process.env.SECRET
-                // "chango"
+              
               );
+            
               res.status(200).json({
                 error: false,
                 userName: founduser.userName,
                 data: token,
+                userRole: founduser.userRole,
                 message: "succesfully logged in",
               });
             } else {

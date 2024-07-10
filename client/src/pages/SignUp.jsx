@@ -22,13 +22,15 @@ const SignUp = () => {
 
 const [userName, setUserName] = useState("");
 const [password, setPassword] = useState("");
+const [signUpUserRole, setSignUpUserRole]= useState("")
 
   function formSubmit (e){
     e.preventDefault();
 
     API.signup({
       userName: userName,
-      password: password
+      password: password,
+      userRole: signUpUserRole,
     }).then((response) => {
     setAlert({message:"You successfully signed up!", type:"is-success"});
 
@@ -38,8 +40,9 @@ const [password, setPassword] = useState("");
 
       setTimeout(() => {navigate("/ordens")
       alert("welcome you are signd up")}, 1500);
-       setUserName("")
-       setPassword("")
+       setUserName("");
+       setPassword("");
+       setSignUpUserRole("");
       }).catch((err) => {
     setAlert({message:"Faild to sign up!", type:"is-danger"});
         console.log(err);
