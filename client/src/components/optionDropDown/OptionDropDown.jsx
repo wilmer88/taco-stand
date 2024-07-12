@@ -84,7 +84,7 @@ Add Pineapple
       <button type="submit" className="button is-success is-small" style={{ alignContent: "center", marginLeft: "5px", marginTop: "15px" }}>Add Selection</button>
 
 
-<button className="button is-danger is-small mt-3 mr-3" onClick={props.removeNachos} >Remove Combo</button>
+<button className="button is-danger is-small mt-3 mr-3" onClick={props.removeDip} >Remove Combo</button>
 
 </div>
 <hr></hr>

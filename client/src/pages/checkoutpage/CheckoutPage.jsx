@@ -13,11 +13,15 @@ const socket = io(URL);
 
 const CheckOutPage =()=>{
  
-    let total = 0
+  
     const {OrderContextObj, setOrderDataContext} = useContext(OrderDataContext);
     const { combo } = useContext(ComboContext);
     const { setAlert } = useContext(alertContext);
     const navigate = useNavigate();
+    const burrototal =OrderContextObj.burritos[0]?.price;
+    const dipTotal=  OrderContextObj.dips[0]?.price;
+    const comboTotal = OrderContextObj.combo[0]?.price || 0;
+    const allTotal= burrototal + dipTotal
 
     const [finalOrderHolder, setFinalOrder]= useState({
         nombreDeOrden: OrderContextObj.nombreDeOrden,
@@ -132,11 +136,12 @@ const CheckOutPage =()=>{
     }
   };
 
-  if(OrderContextObj.dips.length > 0){total =  OrderContextObj.dips[0].price * OrderContextObj.dips[0].quantity + total;};
-
+ 
   useEffect(()=>{
 
   },[OrderContextObj])
+
+  
 
     return(
         <aside id="checkout">
@@ -144,19 +149,31 @@ const CheckOutPage =()=>{
           <div className="container">
             <div className="box is-mobile">
             <div style={{ fontSize: "30px", fontWeight: "bold" }}>
+
                 {OrderContextObj.nombreDeOrden !=="" && (<div >{OrderContextObj.nombreDeOrden }'s Order</div>)}
+
                 </div>
+
                 <hr></hr>
-      {combo?.length > 0  ?  ( 
-        combo?.map((comboParam, index) =>(
-  <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
-    combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2}
-  </div>))) : <div></div>}
+
+                {combo?.length > 0  ?  ( 
+                  combo?.map((comboParam, index) =>(
+            <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
+              combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2 || 0}
+            </div>))) : <div></div>}
     
               {OrderContextObj.dips.length > 0  ?( OrderContextObj.dips.map((dipOrder)=>{let thedipOrder =dipOrder
               return(<div className="container" style={{ fontSize: "18px", textAlign: "left" }} key={dipOrder.id}> <ul>  {thedipOrder.size} {thedipOrder.dipname}: ${thedipOrder.price}ea  QTY:{thedipOrder.quantity} </ul>
                <Link to="/dips">
                <button  type="button"  className="button is-small  is-dark is-light"><strong>Edit Dips</strong></button>
+               </Link>
+                            </div>)
+              })): <div ></div>}
+
+             {OrderContextObj.burritos.length > 0  ?( OrderContextObj.burritos.map((dipOrder)=>{let thedipOrder =dipOrder
+              return(<div className="container" style={{ fontSize: "18px", textAlign: "left" }} key={thedipOrder.burritosOrderId}> <ul>{thedipOrder.burritosOrderName}: ea  </ul>
+               <Link to="/burritopage">
+               <button  type="button"  className="button is-small  is-dark is-light"><strong>Edit Burritos</strong></button>
                </Link>
                             </div>)
               })): <div ></div>}
@@ -179,7 +196,7 @@ const CheckOutPage =()=>{
               {/* {orderData.greenSalsa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Salsa Verde: {orderData.greenSalsa}</div>)} */}
               <hr></hr>
              
-              <div style={{ fontSize: "18px", textAlign: "left" }}> Total: {total?.toFixed(2)}</div>
+              <div style={{ fontSize: "18px", textAlign: "left" }}> Total: ${allTotal?.toFixed(2)}</div>
 
  
               {/* <button onClick={handleClose} type="button" className="button is-medium is-dark" >Update Order</button> */}

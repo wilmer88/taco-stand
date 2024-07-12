@@ -73,10 +73,11 @@ const OrdenLevel = () => {
           <CheckoutBag />
         </div>
 
-      <Alert />
+
     
 
       </nav>
+      <Alert />
 
     </section>
 

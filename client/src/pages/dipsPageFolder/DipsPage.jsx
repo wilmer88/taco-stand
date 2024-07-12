@@ -99,13 +99,16 @@ const DipsPage = () => {
   }, []);
 
   const dipDecrementHandler = (id) => {
-    if (OrderContextObj.dips.length > 0) {
-      setDipPageOrders((prevState) => ({
-        dips: prevState.dips.map((dip) =>
-          dip.id === id ? { ...dip, quantity: dip.quantity - 1 } : dip
-        ),
-      }));
-    }
+    setDipPageOrders((prevState) => {
+      const newDips = prevState.dips.map((dip) => {
+        if (dip.id === id && dip.quantity > 0) {
+          return { ...dip, quantity: dip.quantity - 1 };
+        }
+        return dip;
+      });
+      console.log("Dips after decrementing:", newDips);
+      return { dips: newDips };
+    });
   };
 
   const handleSave = () => {
@@ -144,7 +147,7 @@ const DipsPage = () => {
   useEffect(() => {
     handlePageLoad();
     // console.log(dipPageOrders);
-  }, []);
+  });
 
   const showAboutModel = useCallback(() => {
     setNavmodal((prev) => (prev === "modal" ? "modal is-active" : "modal"));

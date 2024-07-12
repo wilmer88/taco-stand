@@ -7,6 +7,7 @@ import OrderDataContext from "../../context/orderDataContext";
 import BurritosDropdown from "../../components/burritosDropdown/burritosDropdown";
 
 const BurritoPage = () => {
+  
   const { OrderContextObj, setOrderDataContext } = useContext(OrderDataContext);
   const [burritosOrder, setBurritosOrder] = useState(OrderContextObj.burritos || []);  
 
@@ -14,30 +15,31 @@ const BurritoPage = () => {
     const { name, options, selectedIndex } = event.target;
     const text = options[selectedIndex].text;
     const value = parseFloat(options[selectedIndex].value);
-
+  
     console.log(`Handling form change for index ${index}`);
     console.log(`Field: ${name}, Selected Text: ${text}, Value: ${value}`);
-
+  
     if (isNaN(value)) {
         console.error('Parsed value is NaN, check your value inputs.');
         return;  // Abort the update if value is NaN
     }
-
+  
     const updatedFields = burritosOrder.map((burrito, idx) => {
         if (idx === index) {
-            return { ...burrito, [name]: text, price: value };
+            return { ...burrito, [name]: value, burritosOrderName: text, price: value };
         }
         return burrito;
     });
-
+  
     console.log('Updated burritosOrder:', updatedFields);
-
+  
     setBurritosOrder(updatedFields);
     setOrderDataContext(prevState => ({
         ...prevState,
         burritos: updatedFields
     }));
-};
+  };
+  
 
 
   
@@ -79,58 +81,57 @@ const BurritoPage = () => {
 
   const numeros = [
 
-    {label:"", price:8},
 
 
     {label:"Luis Burrito(Steak)($11.25)", price:8.75},
-    {label:"Luis Burrito(Grilled Chicken)($11.25)", price:8.75},
-    {label:"Burrito Supremo(Beef)($6.00)", price:6},
-    {label:"Burrito Supremo(Chicken)($6.00)", price:6},
-    {label:"Burrito Mi Tierra(Steak)($11.25)", price:6},
-    {label:"Burrito Mi Tierra(Chicken)($11.25)", price:6},
-    {label:"Burrito De Barbacoa($9.75)", price:6},
-    {label:"Burrito Frito(Steak)(11.00)", price:6},
-    {label:"Burrito Frito(Chicken)(11.00)", price:6},
+    {label:"Luis Burrito(Grilled Chicken)($11.25)", price:11.25},
+    {label:"Burrito Supremo(Beef)($6.00)", price:6.00},
+    {label:"Burrito Supremo(Chicken)($6.00)", price:6.00},
+    {label:"Burrito Mi Tierra(Steak)($11.25)", price:11.25},
+    {label:"Burrito Mi Tierra(Chicken)($11.25)", price:11.25},
+    {label:"Burrito De Barbacoa($9.75)", price:9.75},
+    {label:"Burrito Frito(Steak)(11.00)", price:11.00},
+    {label:"Burrito Frito(Chicken)(11.00)", price:11.00},
 
-    {label:"Burrito Fajita(One)(Steak)(7.25)", price:6},
-    {label:"Burrito Fajita(Two)(Steak)(11.75)", price:6},
+    {label:"Burrito Fajita(One)(Steak)(7.25)", price:7.25},
+    {label:"Burrito Fajita(Two)(Steak)(11.75)", price:11.75},
 
-    {label:"Burrito Fajita(one)(Grillled Chicken)(11.00)", price:6},
-    {label:"Burrito Fajita(Two)(Grilled Chicken)(6.75)", price:6},
+    {label:"Burrito Fajita(one)(Grillled Chicken)(11.00)", price:11.00},
+    {label:"Burrito Fajita(Two)(Grilled Chicken)(6.75)", price:6.75},
 
-    {label:"Burrito Fajita(One)(Shrimp)(8.50)", price:6},
-    {label:"Burrito Fajita(Two)(Shrimp)(13.25)", price:6},
-
-
-    {label:"Burrito Fajita(Mix)(One)(7.75)", price:6},
-    {label:"Burrito Fajita(Mix)(Two)(12.75)", price:6},
+    {label:"Burrito Fajita(One)(Shrimp)(8.50)", price:8.50},
+    {label:"Burrito Fajita(Two)(Shrimp)(13.25)", price:13.25},
 
 
-    {label:"Burrito Fajita(Texano)(One)(8.50)", price:6},
-    {label:"Burrito Fajita(Texano)(Two)(13.25)", price:6},
-
-    {label:"Burrito Rollos(One)(Steak)(9.25)", price:6},
-    {label:"Burrito Rollos(Two)(Steak)(12.75)", price:6},
-
-    {label:"Burrito Rollos(one)(Grillled Chicken)(8.75)", price:6},
-    {label:"Burrito Rollos(Two)(Grilled Chicken)(11.75)", price:6},
-
-    {label:"Burrito Rollos(One)(Shrimp)(11.75)", price:6},
-    {label:"Burrito Rollos(Two)(Shrimp)(14.75)", price:6},
+    {label:"Burrito Fajita(Mix)(One)(7.75)", price:7.75},
+    {label:"Burrito Fajita(Mix)(Two)(12.75)", price:12.75},
 
 
-    {label:"Burrito Rollos(Mix)(One)(10.75)", price:6},
-    {label:"Burrito Rollos(Mix)(Two)(13.75)", price:6},
+    {label:"Burrito Fajita(Texano)(One)(8.50)", price:8.50},
+    {label:"Burrito Fajita(Texano)(Two)(13.25)", price:13.25},
+
+    {label:"Burrito Rollos(One)(Steak)(9.25)", price:9.25},
+    {label:"Burrito Rollos(Two)(Steak)(12.75)", price:12.75},
+
+    {label:"Burrito Rollos(one)(Grillled Chicken)(8.75)", price:8.75},
+    {label:"Burrito Rollos(Two)(Grilled Chicken)(11.75)", price:11.75},
+
+    {label:"Burrito Rollos(One)(Shrimp)(11.75)", price:11.75},
+    {label:"Burrito Rollos(Two)(Shrimp)(14.75)", price:14.75},
 
 
-    {label:"Burrito Rollos(Texano)(One)(11.75)", price:6},
-    {label:"Burrito Rollos(Texano)(Two)(14.75)", price:6},  ];
+    {label:"Burrito Rollos(Mix)(One)(10.75)", price:10.75},
+    {label:"Burrito Rollos(Mix)(Two)(13.75)", price:13.75},
+
+
+    {label:"Burrito Rollos(Texano)(One)(11.75)", price:11.75},
+    {label:"Burrito Rollos(Texano)(Two)(14.75)", price:14.75},  ];
 
 
   return (
     <>
       <footer id="dipnav" className="navbar is-fixed-bottom is-align-self-center">
-        <button className="button is-success is-small" onClick={toggleModal}>Create Burrito Order</button>
+        <button className="button is-success is-small" onClick={toggleModal}>Create/ Edit Burrito</button>
         <MenuPage menuImage={"./images/dipsNachosLaCarta.jpg"} />
         <Link to="/orden">
           <button className="button is-small">Back</button>
