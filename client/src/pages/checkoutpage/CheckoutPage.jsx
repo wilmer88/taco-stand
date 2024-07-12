@@ -48,7 +48,7 @@ const CheckOutPage =()=>{
         pagado:false,
       });
 
-      async function firstFunction(){alert("thanks for your order/ Gracias por su orden!");};
+      // async function firstFunction(){alert("thanks for your order/ Gracias por su orden!");};
 
         async function secondFunction(){navigate("/"); };
 

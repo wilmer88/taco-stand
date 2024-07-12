@@ -22,6 +22,7 @@ const CheckoutBag= () => {
 
     const [levelPageCounter, setLevelCounter] = useState(0);
     const{OrderContextObj}= useContext(OrderDataContext);
+    const burritoCount = useMemo(() => OrderContextObj.burritos?.length || 0, [OrderContextObj.burritos]);
 
   const { combo } = useContext(comboContext);
   const totalDipQuantity = useMemo(() => OrderContextObj.dips.reduce((sum, dip) => sum + dip.quantity, 0), [OrderContextObj.dips]);
@@ -46,7 +47,7 @@ const CheckoutBag= () => {
     // console.log("Memoized - Combo Count:", comboCount);
     // console.log("Current Level Page Counter:", levelPageCounter);
 
-    setLevelCounter(totalDipQuantity + comboCount);
+    setLevelCounter(totalDipQuantity + comboCount + burritoCount);
 
     // console.log("Updated Level Counter to:", totalDipQuantity + comboCount);
 

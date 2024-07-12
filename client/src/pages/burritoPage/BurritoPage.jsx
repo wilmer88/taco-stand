@@ -1,73 +1,87 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import NachosDropDown from "../../components/optionDropDown/OptionDropDown";
 import MenuPage from "../../components/modal/MenuPage";
-import Alert from "../../components/Alert/Alert";
-import alertContext from "../../context/alertContext";
+// import Alert from "../../components/Alert/Alert";
+// import alertContext from "../../context/alertContext";
 import OrderDataContext from "../../context/orderDataContext";
+import BurritosDropdown from "../../components/burritosDropdown/burritosDropdown";
 
 const BurritoPage = () => {
   const { OrderContextObj, setOrderDataContext } = useContext(OrderDataContext);
-  console.log(OrderContextObj);
-  const { setAlert } = useContext(alertContext);
-
-  const [burritosOrder, setBurritosFields] = useState([
-    {
-      burritosOrderId: 1,
-      burritosOrderName: "",
-      burritosPrice: "0",
-      key: 1,
-    },
-  ]);
-
-  const addBurritosFields = (event) => {
-    event.preventDefault();
-    setBurritosFields(prevFields => {
-      const newField = {
-        burritosOrderId: prevFields.length + 1,
-        burritoOrderName: "",
-        burritosPrice: "0",
-        key: prevFields.length + 1,
-      };
-      const updatedFields = [...prevFields, newField];
-      setOrderDataContext(prevState => ({...prevState, burritos: updatedFields}));
-      return updatedFields;
-    });
-    setAlert({ message: "Please make a choice from below!", type: "is-success" });
-  };
+  const [burritosOrder, setBurritosOrder] = useState(OrderContextObj.burritos || []);  
 
   const handleBurritoFormChange = (index, event) => {
-    setBurritosFields(currentFields => {
-      const updatedFields = currentFields.map((field, idx) => {
+    const { name, options, selectedIndex } = event.target;
+    const text = options[selectedIndex].text;
+    const value = parseFloat(options[selectedIndex].value);
+
+    console.log(`Handling form change for index ${index}`);
+    console.log(`Field: ${name}, Selected Text: ${text}, Value: ${value}`);
+
+    if (isNaN(value)) {
+        console.error('Parsed value is NaN, check your value inputs.');
+        return;  // Abort the update if value is NaN
+    }
+
+    const updatedFields = burritosOrder.map((burrito, idx) => {
         if (idx === index) {
-          return {...field, [event.target.name]: event.target.value};
+            return { ...burrito, [name]: text, price: value };
         }
-        return field;
-      });
-      setOrderDataContext(prevState => ({...prevState, burritos: updatedFields}));
-      return updatedFields;
+        return burrito;
     });
+
+    console.log('Updated burritosOrder:', updatedFields);
+
+    setBurritosOrder(updatedFields);
+    setOrderDataContext(prevState => ({
+        ...prevState,
+        burritos: updatedFields
+    }));
+};
+
+
+  
+  
+  const addBurritosFields = (event) => {
+    event.preventDefault();
+    const newField = {
+      burritosOrderId: OrderContextObj.burritos.length + 1,
+      burritosOrderName: "",
+      burritosPrice: 0,
+      key: `burrito-${OrderContextObj.burritos.length + 1}`,  // Use a unique key
+    };
+    setOrderDataContext(prevState => ({
+      ...prevState,
+      burritos: [...prevState.burritos, newField]
+    }));
   };
+  
+
 
   const removeBurrito = (index) => {
-    setBurritosFields(prevFields => {
-      const updatedFields = prevFields.filter((_, idx) => idx !== index);
-      setOrderDataContext(prevState => ({...prevState, burritos: updatedFields}));
-      return updatedFields;
-    });
+    const updatedFields = OrderContextObj.burritos.filter((_, idx) => idx !== index);
+    setOrderDataContext(prevState => ({
+      ...prevState,
+      burritos: updatedFields
+    }));
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  const toggleModal = () => setIsModalOpen(prev => !prev);
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+  useEffect(() => {
+    if (OrderContextObj.burritos && OrderContextObj.burritos.length > 0) {
+        setBurritosOrder(OrderContextObj.burritos);
+    }
+}, [OrderContextObj.burritos]);
+  
+
 
   const numeros = [
+
+    {label:"", price:8},
+
+
     {label:"Luis Burrito(Steak)($11.25)", price:8.75},
     {label:"Luis Burrito(Grilled Chicken)($11.25)", price:8.75},
     {label:"Burrito Supremo(Beef)($6.00)", price:6},
@@ -111,6 +125,7 @@ const BurritoPage = () => {
 
     {label:"Burrito Rollos(Texano)(One)(11.75)", price:6},
     {label:"Burrito Rollos(Texano)(Two)(14.75)", price:6},  ];
+
 
   return (
     <>
@@ -163,19 +178,27 @@ const BurritoPage = () => {
         <div className="modal-background" onClick={toggleModal}></div>
         <div className="modal-content">
           <div className="container">
-            <button className="button is-success is-small is-centered" onClick={addBurritosFields}>Make a New Burrito Order</button>
+
+            <button className="button is-info is-small is-centered" onClick={addBurritosFields}>Make a New Burrito Order</button>
+            <Link to="/orden">
+          <button className="button is-small">Back</button>
+        </Link>
           </div>
           <div className="box is-mobile">
             <button onClick={toggleModal} type="button" className="modal-close is-large" aria-label="close">x</button>
-            {
-              burritosOrder.map((burrito, index) => (
-                <div key={burrito.burritosOrderId} className="container">
-                  <NachosDropDown
-                    selectNachoName={"burritos"}
-                    numeros={numeros}
-                    onChangeNachos={(e) => handleBurritoFormChange(index, e)}
-                    removeNachos={() => removeBurrito(index)}
-                  />
+            {OrderContextObj.burritos.map((burrito, index) => (
+    <div key={burrito.burritosOrderId} className="container">
+           
+<BurritosDropdown
+    selectNachoName="price"
+    numeros={numeros}
+    value={burrito.price}  // Assuming you want to control selection based on price
+    onChangeNachos={(e) => handleBurritoFormChange(index, e)}
+    removeNachos={() => removeBurrito(index)}
+    deleteBurrito={()=> removeBurrito(index) }
+/>
+
+
                 </div>
               ))
             }

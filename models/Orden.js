@@ -6,8 +6,6 @@ const OrdenSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
     strictPopulate: false,
-
-
   },
   nombreDeOrden: {
     type: String,
