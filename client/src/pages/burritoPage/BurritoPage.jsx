@@ -40,10 +40,6 @@ const BurritoPage = () => {
     }));
   };
   
-
-
-  
-  
   const addBurritosFields = (event) => {
     event.preventDefault();
     const newField = {
@@ -58,8 +54,6 @@ const BurritoPage = () => {
     }));
   };
   
-
-
   const removeBurrito = (index) => {
     const updatedFields = OrderContextObj.burritos.filter((_, idx) => idx !== index);
     setOrderDataContext(prevState => ({

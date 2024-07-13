@@ -18,10 +18,14 @@ const CheckOutPage =()=>{
     const { combo } = useContext(ComboContext);
     const { setAlert } = useContext(alertContext);
     const navigate = useNavigate();
-    const burrototal =OrderContextObj.burritos[0]?.price;
-    const dipTotal=  OrderContextObj.dips[0]?.price;
+    const burrototal = OrderContextObj.burritos.reduce((daTotal,aBurrito) => 
+      daTotal + (aBurrito.price || 0),0
+    );
+    const dipTotal=  OrderContextObj.dips.reduce((added_dips,adipOrder)=>
+      added_dips + (adipOrder.price || 0),0
+    );
     const comboTotal = OrderContextObj.combo[0]?.price || 0;
-    const allTotal= burrototal + dipTotal
+    const allTotal= burrototal + dipTotal + comboTotal
 
     const [finalOrderHolder, setFinalOrder]= useState({
         nombreDeOrden: OrderContextObj.nombreDeOrden,

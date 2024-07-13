@@ -1,54 +1,30 @@
-import React, { useContext, useState, useCallback, useEffect } from "react";
+import React, { useContext, useState, useCallback} from "react";
 import { Link } from "react-router-dom";
-import ComboContext from "../../context/ComboContext";
 import MenuPage from "../../components/modal/MenuPage";
 import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
 import Alert from "../../components/Alert/Alert";
 import alertContext from "../../context/alertContext";
-import orderDataContext from "../../context/orderDataContext";
+import OrderDataContext from "../../context/orderDataContext";
 
 const ComboPage = () => {
   
     console.count("i rerenderd in Combopage");
 
     const [navmodal, setNavmodal]= useState("modal");
-    const {setOrderDataContext, orderDataContextArray}= useContext(orderDataContext);
+    const {OrderContextObj,setOrderDataContext}= useContext(OrderDataContext);
     const { setAlert } = useContext(alertContext);
-    const {setCombo, combo}= useContext(ComboContext);
     const [inputFields, setInputFields] = useState([]);
-    console.log(combo);
-    console.log(orderDataContextArray);
-
-    // console.log(orderDataContextArray);
-
-
-    useEffect(() => {
-    console.log(orderDataContextArray);
-
-      // This will ensure combo is set before updating orderDataContextArray
-      if (combo && Array.isArray[orderDataContextArray]) {
-            // console.log(orderDataContextArray);
-
-          const updatedOrderDataContextArray = orderDataContextArray;
-          console.log(updatedOrderDataContextArray);
-
-          updatedOrderDataContextArray.combo = [...combo];
-          setOrderDataContext(updatedOrderDataContextArray);
-      }
-  }, [combo]); // Dependency on combo
-    
-
 
     const comboSeter= ()=>{
       // setTimeout(() => {
-        setCombo(inputFields);
+        setOrderDataContext(inputFields);
       // }, 1000);     
     };
   
     const removeCombo = (index) => {
       const newList = inputFields.filter((_,i)=> i !== index);
       setInputFields(newList);
-      setCombo(inputFields);
+      setOrderDataContext(...OrderContextObj.burritos,newList);
     };
   
     const handleSupremeChange = (index, event) => {
@@ -57,26 +33,28 @@ const ComboPage = () => {
       setInputFields(data);
     };
   
-    const handleFormChange = useCallback(
-      (index, event) => {
-        let data = [...inputFields];
-        data[index][event.target.name] = event.target.value;
-        setInputFields(data);
-      },[inputFields]
-    );
+    const handleFormChange = useCallback((index, event) => {
+      setInputFields(currenetFields => {
+      const newData = [...currenetFields];
+      newData[index][event.target.name] = event.target.value;
+      return newData;});
+      },[]);
   
-    const addFields = (event) => {
-      let data = [...inputFields]
-      let newfield = {
+    const addFields = () => {
+      const newfield = {
         comboId: inputFields.length + 1,
         comboPrice: "0",
         supreme: false,
         choice1: "",
         choice2: "",
+        choice3:"",
         key: inputFields.length + 1,
       };
-      setInputFields([newfield, ...data]);
-      setCombo([...combo, newfield]);
+      setInputFields(prevFields => {
+        const allFields = [newfield, ...prevFields];
+        setOrderDataContext([...OrderContextObj.burritos, newfield]);
+        return allFields;
+      });
       setAlert({ message: "Please make a selection from bellow", type: "is-success" });
     };
     
@@ -183,7 +161,7 @@ const ComboPage = () => {
               <input
                 type="radio"
                 name={"comboPrice"}
-                onChange={event => {  handleFormChange(index, event); comboSeter(); }}
+                onChange={event => handleFormChange(index, event)}
                 value={"9"}
                 checked={input.comboPrice === "9"}
               />
@@ -239,7 +217,7 @@ const ComboPage = () => {
                       choiceName="Choice #3"
                       placeholder="beefTaco"
                       name="choice3"
-                    value={combo.choice3}
+                    value={input.choice3}
                   onChange={event =>{handleFormChange(index, event);comboSeter(); }}
                     />
                   } 
