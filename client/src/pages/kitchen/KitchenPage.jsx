@@ -1,5 +1,6 @@
 import React, {useContext,useEffect, useState, } from "react";
 import UserComponent from "../../components/userComponent/UserComponent";
+import KitchenComponent from "../../components/kitchenComponent/KitchenComponent";
 
 import alertContext from "../../context/alertContext";
 import API from "../../utils/API";
@@ -24,7 +25,7 @@ const Kitchen = () => {
 
 
  
-     API.kitchenOrders().then((response ) => {
+     API.apiUnprepared().then((response ) => {
       console.log(response.data);
 
       console.log(response.data)
@@ -67,9 +68,9 @@ console.count("i rerenderd in kitchen");
     <div className="column">
     <div className="container is-align-self-auto is-size-7" >
  {orden.length ? (orden.map( res =>(
-              <UserComponent key= {res._id} {...res}  />
+              <KitchenComponent key= {res._id} {...res}  />
             ))
-            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No contentis available.</h1>
+            ): (<h1 style={{textAlign: "center" , fontSize: "22px", background: "lightyellow"}}>msg: No Unprepared Orders.</h1>
             )}
         </div>
 

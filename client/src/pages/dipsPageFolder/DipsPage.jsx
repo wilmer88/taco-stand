@@ -96,7 +96,7 @@ const DipsPage = () => {
 
   return (<>
 
-      <footer id="dipnav" className="navbar is-fixed-bottom is-align-self-center">
+      <div id="dipnav" className="navbar is-fixed-top is-align-self-center">
         <p id="dipButtons" className="level-item has-text-right	">
           <Link to="/orden">
             <button className="button is-light is-small mr-3">Back</button>
@@ -110,7 +110,7 @@ const DipsPage = () => {
             Menu Image
           </button>
         </p>
-      </footer>
+      </div>
 
 
       <div className="section">

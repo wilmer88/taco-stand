@@ -29,16 +29,19 @@ const liestilo = {
     
   };
 
-  function pagarOrden(id) {
-    console.log(id);
-    navigate(`/payment/${id}`);
-    
+
+  function changeToPrepared(id) {
+    API.apiChangeToPaid(id, {preparada: true}).then((updatedResource) => {
+      console.log(updatedResource.data);
+      navigate("/ordens");
+  
+    }).catch((err) => {
+      console.log(err);
+    })
   };
 
-  let aguasNsodas = props.canDrinkVirtual + props.aguasVirtual;
+  let prepareVar = false;
   let linePrice = props.tacosVirtual + props.canDrinkVirtual + props.topingVirtual + props.aguasVirtual;
-  let tacosTofix = props.tacosVirtual;
-  let fixTopings = props.topingVirtual;
   let disableVar = false;
   if(props.pagado === true){disableVar = true};
 
@@ -61,18 +64,25 @@ name: {props.nombreDeOrden}
    <tbody >
    <tr >
    {/* {props.combos !== 0 && (<th >Combos</th>)} */}
-
-    {props.azada !== 0 && (<th >Azada</th>)}
+   {props.dips !== 0 && (
+  <td>
+    {props.dips.map((dip, index) => (
+      <div key={index}>
+        {dip.dipname} - ${dip.price} ({dip.size}) QTY: {dip.quantity}
+      </div>
+    ))}
+  </td>
+)}   
+ {props.azada !== 0 && (<th >Azada</th>)}
     {props.pollo !== 0 && (<th>Pollo</th>)}
     {props.barbacoa !== 0 && (<th>Barbacoa</th>)}
     {props.pastor !== 0 && (<th>Pastor</th>)}
     {props.chorizo !== 0 && (<th>Chorizo</th>)}
 </tr>
 </tbody>
-<tbody  >
-<tr  >
+<tbody>
+<tr>
 {/* {props.combo !== 0 && (props.combo.combo.map((kitchencomboOrder)=>(<td>{kitchencomboOrder}</td>)))} */}
-
 {props.azada !== 0 && (<td>{props.azada}</td>)}
 {props.pollo !== 0 && (<td>{props.pollo}</td>)}
 {props.barbacoa !== 0 && (<td>{props.barbacoa}</td>)}
@@ -129,20 +139,18 @@ name: {props.nombreDeOrden}
 
     <br></br>
       <form id="liOrder">
-    <div htmlFor="liOrder" style={liestilo.atras} className="label" >Tacos: <span>{tacosTofix?.toFixed(2)}</span> </div>
-    <div htmlFor="liOrder" style={liestilo.atras} className="label">Bebidas/drinks: $<span>{aguasNsodas?.toFixed(2)}</span> </div>
-    <div htmlFor="liOrder" style={liestilo.atras} className="label">Extra Porciones/Toppings: $<span>{fixTopings?.toFixed(2)}</span> </div>
+   
   <div htmlFor="liOrder" style={liestilo.atras} className="label">Precio/ Total: $<span>{linePrice?.toFixed(2)}</span> </div>
   <div htmlFor="liOrder" style={liestilo.atras} className="label">Pagado/ Paid: {String(props.pagado)} </div>
+  <div htmlFor="liOrder" style={liestilo.atras} className="label">Prepared: {String(props.preparada)} </div>
+
   </form>
     <time dateTime="2016-1-1">{props.timeCreated}</time>
  
 </div>
 <footer className="card-footer">
- <div className="card-footer-item"> <button className="button is-danger is-light" onClick={()=> eliminar(props._id)}>cancelar</button></div>
-  <div className="card-footer-item"> <button className="button is-success is-light" onClick={()=> editarOrden(props._id)}>editar</button></div>
 
-  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> pagarOrden(props._id)} disabled={disableVar}>pagar/pay</button></div>
+  <div className="card-footer-item"> <button className="button  is-info"  onClick={()=> changeToPrepared(props._id)} disabled={prepareVar} >Complete</button></div>
 </footer>
 </div>
   </div>

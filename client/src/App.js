@@ -115,7 +115,7 @@ const App = () => {
                   <Route path="/menuPage" element={<MenuPage />} />
                   
                   <Route path="/myorders" element={<MyOrders />} />
-                  <Route path="/unprepared" element={<Kitchen />} />
+                  <Route path="/kitchen" element={<Kitchen />} />
                   <Route path="/payment/:ordenId" element={<Payment />} />
                   <Route path="/signup" element={<SignUp />} />
                   <Route path="/login" element={<Login />} />
@@ -132,9 +132,11 @@ const App = () => {
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
 
-                {/* {userRole === "administrador" ? */}
+                {
+                userRole === "administrador" ?
                  <Footer />
-                  {/* // : null} */}
+                  : null
+                 }
 
               </burritosContext.Provider>
             </OrderDataContext.Provider>

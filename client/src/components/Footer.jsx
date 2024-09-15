@@ -30,7 +30,7 @@ const Footer = () => {
     { name: "All orders", href: "/allOrders"},
     { name: "Order/ Ordenar", href: "/orden"},
     { name: "Search/ Buscar", href: "/searcho"},
-    { name: "Unprepared", href: "/unprepared"},
+    { name: "Kitchen", href: "/kitchen"},
     { name: "Sign-up/ Incribirse", href: "/signup"},
 
   ];
@@ -40,7 +40,7 @@ const Footer = () => {
 
       <div className="scrolling-wrapper" style={footerStyling.footerpadding} >
         <nav
-          className="navbar is-mobile tabs is-centered  is-fixed-bottom  "
+          className="navbar is-mobile tabs is-centered  is-fixed-bottom mt-6 "
           aria-label="breadcrumbs"
         >
           <ul className="nav nav-tabs mb-4 ">
