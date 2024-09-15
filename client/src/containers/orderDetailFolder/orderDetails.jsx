@@ -3,6 +3,7 @@ import NameField from "../../components/NameField";
 import OrderDataContext from "../../context/orderDataContext";
 
 const OrderDetails = () => {
+
   const { OrderContextObj, setOrderDataContext } = useContext(OrderDataContext);
 
   const handleChange = (event) => {
@@ -13,11 +14,20 @@ const OrderDetails = () => {
 
   const handleNumberChange = (event) => {
     const { name, value } = event.target;
-    const intValue = parseInt(value, 10);
-    if (!isNaN(intValue)) {
-      console.log(`Updating ${name} to ${intValue}`); // Debugging log
-      setOrderDataContext((prevContext) => ({ ...prevContext, [name]: intValue }));
-    }
+
+    if(value === "") {
+      setOrderDataContext((prevContext) => ({...prevContext, [name]: ""}));
+    } else {
+
+      const intValue = parseInt(value, 10);
+
+      if (!isNaN(intValue)) {
+        //console.log(`Updating ${name} to ${intValue}`); // Debugging log
+        setOrderDataContext((prevContext) => ({ ...prevContext, [name]: intValue }));
+      };
+
+    };
+
   };
 
   return (

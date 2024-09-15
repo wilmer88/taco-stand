@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback} from "react";
+import React, { useContext, useState, useCallback, useEffect} from "react";
 import { Link } from "react-router-dom";
 import MenuPage from "../../components/modal/MenuPage";
 import ComboDropdown from '../../components/comboDropdown/ComboDropdown';
@@ -8,10 +8,10 @@ import OrderDataContext from "../../context/orderDataContext";
 
 const ComboPage = () => {
   
-    console.count("i rerenderd in Combopage");
+    // console.count("i rerenderd in Combopage");
 
     const [navmodal, setNavmodal]= useState("modal");
-    const {OrderContextObj,setOrderDataContext}= useContext(OrderDataContext);
+    const {setOrderDataContext}= useContext(OrderDataContext);
     const { setAlert } = useContext(alertContext);
     const [inputFields, setInputFields] = useState([]);
 
@@ -22,50 +22,62 @@ const ComboPage = () => {
     };
   
     const removeCombo = (index) => {
-      const newList = inputFields.filter((_,i)=> i !== index);
-      setInputFields(newList);
-      setOrderDataContext(...OrderContextObj.burritos,newList);
-    };
+      setInputFields(currentFields => {
+          const newList = currentFields.filter((_, i) => i !== index);
+          // Assuming 'burritos' should include the updated list
+          setOrderDataContext(prevContext => ({
+              ...prevContext,
+              burritos: newList
+          }));
+          return newList;
+      });
+  };
+  
   
     const handleSupremeChange = (index, event) => {
-      let data = [...inputFields];
-      data[index].supreme = event.target.checked;
-      setInputFields(data);
-    };
-  
-    const handleFormChange = useCallback((index, event) => {
-      setInputFields(currenetFields => {
-      const newData = [...currenetFields];
-      newData[index][event.target.name] = event.target.value;
-      return newData;});
-      },[]);
-  
-    const addFields = () => {
-      const newfield = {
-        comboId: inputFields.length + 1,
-        comboPrice: "0",
-        supreme: false,
-        choice1: "",
-        choice2: "",
-        choice3:"",
-        key: inputFields.length + 1,
-      };
-      setInputFields(prevFields => {
-        const allFields = [newfield, ...prevFields];
-        setOrderDataContext([...OrderContextObj.burritos, newfield]);
-        return allFields;
+      setInputFields(currentFields => {
+        const data = [...currentFields];
+        data[index].supreme = event.target.checked;
+        return data;
       });
-      setAlert({ message: "Please make a selection from bellow", type: "is-success" });
     };
     
-    const showAboutModel= ()=>{
-      if(navmodal === "modal"){
-        setNavmodal("modal is-active")
-      };
-      if(navmodal === "modal is-active"){
-        setNavmodal("modal")
-      };
+
+    const handleFormChange = (index, event) => {
+      setInputFields(currentFields => {
+        const newData = [...currentFields];
+        // Assuming the name is something like "comboPrice-0", "comboPrice-1", etc.
+        // Extracting the base name and the index if needed:
+        const baseName = event.target.name.split('-')[0]; // This would be "comboPrice"
+        newData[index][baseName] = event.target.value; // Update the correct property
+        return newData;
+      });
     };
+    
+  
+  
+    
+  
+      const addFields = () => {
+        const newField = {
+            comboId: inputFields.length + 1,
+            comboPrice: "0",
+            supreme: false,
+            choice1: "",
+            choice2: "",
+            choice3: "",
+            key: Date.now(),  // Using Date.now() to ensure a unique key for each entry
+        };
+    
+        setInputFields(prevFields => [...prevFields, newField]);
+        setAlert({ message: "Please make a selection from below", type: "is-success" });
+    };
+    
+    
+    const showAboutModel = () => {
+      setNavmodal(prevState => prevState === "modal" ? "modal is-active" : "modal");
+    };
+    
 
     const addComboToOrder = () => {
       comboSeter(); // Ensure combo is set before updating orderDataContextArray
@@ -74,6 +86,16 @@ const ComboPage = () => {
 
 
     };
+    
+    useEffect(() => {
+      if (inputFields.length > 0) {
+          setOrderDataContext(prevContext => ({
+              ...prevContext,
+              combo: [...prevContext.combo, ...inputFields]
+          }));
+      }
+  }, [inputFields]); // Only update context when inputFields changes
+  
     
 
     return (<>
@@ -150,34 +172,35 @@ const ComboPage = () => {
 
    {
   inputFields.map((input, index) => {
+    console.log(`Rendering combo ${index} with price: ${input.comboPrice}`); // Debug state before rendering
     return (
 
-      <div className="container" key={index}>
+      <div className="container" key={`combo-${index}`}>
         <hr></hr>
 
-          <div className="container" style={{ textAlign: "center", background: "tan" }}>
+        <div className="container" style={{ textAlign: "center", background: "tan" }}>
+  <label className="radio">
+    <input
+      type="radio"
+      name={`comboPrice-${index}`}
+      onChange={event => handleFormChange(index, event)}
+      value={"9"}
+      checked={inputFields[index].comboPrice === "9"}    />
+    <strong>CHOOSE(2)9.25</strong>
+  </label>
 
-            <label className="radio">
-              <input
-                type="radio"
-                name={"comboPrice"}
-                onChange={event => handleFormChange(index, event)}
-                value={"9"}
-                checked={input.comboPrice === "9"}
-              />
-              <strong>CHOOSE(2)9.25</strong>
-            </label>
+  <label className="radio">
+  <input
+  type="radio"
+  name={`comboPrice-${index}`}
+  onChange={event => handleFormChange(index, event)}
+  value="10"
+  checked={inputFields[index].comboPrice === "10"}
+/>
+    <strong>CHOOSE (3) 10.25</strong>
+  </label>
+</div>
 
-            <label className="radio">
-              <input type="radio" style={{ marginLeft: "50px" }}
-                name={"comboPrice"}
-                onChange={event => { handleFormChange(index, event);  comboSeter()}}
-                value={"10"}
-                checked={input.comboPrice === "10"}
-              />
-              <strong>CHOOSE (3) 10.25</strong>
-            </label>
-          </div>
 
           {
 

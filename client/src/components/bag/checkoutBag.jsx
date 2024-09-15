@@ -25,7 +25,7 @@ const CheckoutBag= () => {
     const burritoCount = useMemo(() => OrderContextObj.burritos?.length || 0, [OrderContextObj.burritos]);
 
   const { combo } = useContext(comboContext);
-  const totalDipQuantity = useMemo(() => OrderContextObj.dips.reduce((sum, dip) => sum + dip.quantity, 0), [OrderContextObj.dips]);
+  const totalDipQuantity = useMemo(() => OrderContextObj.dips?.reduce((sum, dip) => sum + dip.quantity, 0), [OrderContextObj.dips]);
   const comboCount = useMemo(() => combo.combo?.length || 0, [combo.combo]);
 
 

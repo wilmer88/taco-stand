@@ -93,7 +93,7 @@ const DipsPage = () => {
       const newDips = prevState.dips.map((dip) =>
         dip.id === id ? { ...dip, quantity: dip.quantity + 1 } : dip
       );
-      console.log("Dips after incrementing:", newDips);
+      //console.log("Dips after incrementing:", newDips);
       return { dips: newDips };
     });
   }, []);
@@ -106,7 +106,7 @@ const DipsPage = () => {
         }
         return dip;
       });
-      console.log("Dips after decrementing:", newDips);
+     // console.log("Dips after decrementing:", newDips);
       return { dips: newDips };
     });
   };
@@ -147,7 +147,7 @@ const DipsPage = () => {
   useEffect(() => {
     handlePageLoad();
     // console.log(dipPageOrders);
-  });
+  },[OrderContextObj.dips]);
 
   const showAboutModel = useCallback(() => {
     setNavmodal((prev) => (prev === "modal" ? "modal is-active" : "modal"));
