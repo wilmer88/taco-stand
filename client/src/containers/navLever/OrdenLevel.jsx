@@ -60,7 +60,7 @@ const OrdenLevel = () => {
           </Link>
           <Link className="levelHover" to="/orden">
             <h3 className="label">
-              <div>Menu</div>
+              <div>Order Now!</div>
               <img src={"/images/mezquitesLogo.webp"} alt="" style={{ height: "65px", width: "120px" }} />
             </h3>
           </Link>

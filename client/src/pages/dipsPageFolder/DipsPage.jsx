@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, { useContext, useState, useEffect, useCallback, useRef } from "react";
 import RegularNlargeComponent from "../../components/regularNlargeComponent/regularNlargeComponent";
 import { Link } from "react-router-dom";
 import AlertContext from "../../context/alertContext";
@@ -14,79 +14,21 @@ const DipsPage = () => {
 
   const [dipPageOrders, setDipPageOrders] = useState({
     dips: [
-      {
-        id: 1,
-        dipname: "Cheese Dip",
-        price: 4.5,
-        size: "Regular",
-        quantity: 0,
-      },
+      { id: 1, dipname: "Cheese Dip", price: 4.5, size: "Regular", quantity: 0 },
       { id: 2, dipname: "Cheese Dip", price: 8.75, size: "Large", quantity: 0 },
-      {
-        id: 3,
-        dipname: "Guacamole Dip",
-        price: "4.75",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 4,
-        dipname: "Guacamole Dip",
-        price: "9.25",
-        size: "Large",
-        quantity: 0,
-      },
-      {
-        id: 5,
-        dipname: "Guaca Mix",
-        price: "4.75",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 6,
-        dipname: "Guaca Mix",
-        price: "11.75",
-        size: "Large",
-        quantity: 0,
-      },
-      {
-        id: 7,
-        dipname: "Sour Cream",
-        price: "1.50",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 8,
-        dipname: "Chorizo Dip",
-        price: "6.50",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 9,
-        dipname: "Bean Dip",
-        price: "5.25",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 10,
-        dipname: "El Mezquites Dip Beef",
-        price: "6.75",
-        size: "Regular",
-        quantity: 0,
-      },
-      {
-        id: 11,
-        dipname: "Texano Dip",
-        price: "6.75",
-        size: "Regular",
-        quantity: 0,
-      },
+      { id: 3, dipname: "Guacamole Dip", price: "4.75", size: "Regular", quantity: 0 },
+      { id: 4, dipname: "Guacamole Dip", price: "9.25", size: "Large", quantity: 0 },
+      { id: 5, dipname: "Guaca Mix", price: "4.75", size: "Regular", quantity: 0 },
+      { id: 6, dipname: "Guaca Mix", price: "11.75", size: "Large", quantity: 0 },
+      { id: 7, dipname: "Sour Cream", price: "1.50", size: "Regular", quantity: 0 },
+      { id: 8, dipname: "Chorizo Dip", price: "6.50", size: "Regular", quantity: 0 },
+      { id: 9, dipname: "Bean Dip", price: "5.25", size: "Regular", quantity: 0 },
+      { id: 10, dipname: "El Mezquites Dip Beef", price: "6.75", size: "Regular", quantity: 0 },
+      { id: 11, dipname: "Texano Dip", price: "6.75", size: "Regular", quantity: 0 },
     ],
   });
+
+  const dipPageOrdersRef = useRef(dipPageOrders.dips);
 
   const handleDipIncrement = useCallback((id) => {
     setDipPageOrders((prevState) => {
@@ -128,23 +70,22 @@ const DipsPage = () => {
     }
   };
 
-  const handlePageLoad = () => {
-    // Checking if dips array in the context has any items
-    if (OrderContextObj.dips?.length > 0) {
-      const updatedDips = OrderContextObj.dips.map((contextDip) => {
-        const existingDip = dipPageOrders.dips.find(
-          (pageDip) => pageDip.id === contextDip.id
-        );
-        // This ensures any updates in quantity are reflected
-        return existingDip
-          ? { ...existingDip, quantity: contextDip.quantity }
-          : contextDip;
-      });
-      setDipPageOrders({ dips: updatedDips });
-    }
-  };
-
   useEffect(() => {
+    const handlePageLoad = () => {
+      // Checking if dips array in the context has any items
+      if (OrderContextObj.dips?.length > 0) {
+        const updatedDips = OrderContextObj.dips.map((contextDip) => {
+          const existingDip = dipPageOrdersRef.current.find(
+            (pageDip) => pageDip.id === contextDip.id
+          );
+          // This ensures any updates in quantity are reflected
+          return existingDip
+            ? { ...existingDip, quantity: contextDip.quantity }
+            : contextDip;
+        });
+        setDipPageOrders({ dips: updatedDips });
+      }
+    };
     handlePageLoad();
     // console.log(dipPageOrders);
   },[OrderContextObj.dips]);
