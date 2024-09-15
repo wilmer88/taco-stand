@@ -27,7 +27,7 @@ const Footer = () => {
     { name: "Home/Inicio", href: "/", },
     { name: "My Orders/ Mi Ordenes", href: "/myorders/"+ userparam},
 
-    { name: "All orders", href: "/ordens"},
+    { name: "All orders", href: "/allOrders"},
     { name: "Order/ Ordenar", href: "/orden"},
     { name: "Search/ Buscar", href: "/searcho"},
     { name: "Unprepared", href: "/unprepared"},

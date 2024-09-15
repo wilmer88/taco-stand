@@ -1,110 +1,127 @@
-import AuthContext from '../context/AuthContext';
-import React, {useContext, useState, } from "react";
-import alertContext from '../context/alertContext';
+import AuthContext from "../context/AuthContext";
+import React, { useContext, useState } from "react";
+import alertContext from "../context/alertContext";
 import { useNavigate } from "react-router-dom";
-import API from '../utils/API';
+import API from "../utils/API";
 import { Link } from "react-router-dom";
-
 
 const SignUp = () => {
   const pxhi = {
-    fonte:{
+    fonte: {
       fontSize: "27px",
-      background: "lightyellow"
-    }
+      background: "lightyellow",
+    },
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const {setJwt}  = useContext(AuthContext);
-  const {setAlert} = useContext(alertContext);
-  const user = useContext(AuthContext);
+  const { setJwt, setUserName, setUserRole } = useContext(AuthContext);
+  const { setAlert } = useContext(alertContext);
+ 
 
-const [userName, setUserName] = useState("");
-const [password, setPassword] = useState("");
-const [signUpUserRole, setSignUpUserRole]= useState("")
+  const [userNameHolder, setSignUpUserNameHolder] = useState("");
+  const [userPasswordHolder, setSignUpPasswordHolder] = useState("");
+  const [signUpUserRoleHolder, setSignUpUserRoleHolder] = useState("");
 
-  function formSubmit (e){
+  function formSubmit(e) {
     e.preventDefault();
 
     API.signup({
-      userName: userName,
-      password: password,
-      userRole: signUpUserRole,
-    }).then((response) => {
-    setAlert({message:"You successfully signed up!", type:"is-success"});
+      userName: userNameHolder,
+      password: userPasswordHolder,
+      userRole: signUpUserRoleHolder,
+    })
+      .then((response) => {
+        setAlert({
+          message: "You successfully signed up!",
+          type: "is-success",
+        });
 
-      console.log(response.data);
-      setJwt(response.data.data);
-      user.setUserName(response.data.userName);
+        console.log(response.data);
+        setJwt(response.data.data);
+        setUserName(response.data.userName);
+        setUserRole(response.data.userRole);
 
-      setTimeout(() => {navigate("/ordens")
-      alert("welcome you are signd up")}, 1500);
-       setUserName("");
-       setPassword("");
-       setSignUpUserRole("");
-      }).catch((err) => {
-    setAlert({message:"Faild to sign up!", type:"is-danger"});
+        setTimeout(() => {
+          navigate("/");
+          alert("welcome you are signd up");
+        }, 1500);
+        setSignUpUserNameHolder("");
+        userPasswordHolder("");
+        setSignUpUserRoleHolder("");
+      })
+      .catch((err) => {
+        setAlert({ message: "Faild to sign up!", type: "is-danger" });
         console.log(err);
       });
   }
 
-  return (<>
-
-  <div className='columns is-mobile'>
-
-
-
-<div className="column is-two-fifth"></div>
-
-  
-<br></br>
-
-   
-
-    <div className="mt-6 box">
-      
-    <h3 className="label has-text-centered" style={pxhi.fonte}>Signup/ Inscribirse</h3>
-
-    <form onSubmit={formSubmit}>
-    <h3 className="label has-text-centered">Correo Electronico, Telefono o Nombre/ Email, Phone# or User Name </h3>       
-       
-        <input 
-        onChange={(e) => setUserName(e.target.value)}
-        name="userName"
-        className="input" 
-        value={userName}
-        type="text"
-         placeholder="me@gmail.com/ 7063314343/ daddypop"/>
-        <br></br>
-        
-        <h3 className="label has-text-centered">Crea Contraseña/ Create Password</h3>
-    
-        <input 
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          className="input" 
-          value={password}
-        type="text" 
-        placeholder="Contraseña-Password"/>
+  return (
+    <>
+      <div className="columns is-mobile">
+        <div className="column is-two-fifth"></div>
 
         <br></br>
-        <br></br>
-        <button 
-          type="submit"
-          value="Submit"
-        className="button is-info">
-         Signup/ Inscribirte
-        </button>
-    <button className="button"> <Link  to="/"> Back</Link></button>
-    
-        </form>
-    </div>
-  
-  <div className="column is-two-fifth"></div>
-  </div>
+        <div className="mt-6 box">
+          <h3 className="label has-text-centered" style={pxhi.fonte}>
+            Signup/ Inscribirse
+          </h3>
 
-  </>)
+          <form onSubmit={formSubmit}>
+            <h3 className="label has-text-centered">
+              (create or use) Email, Phone# or User Name{" "}
+            </h3>
+
+            <input
+              onChange={(e) => setSignUpUserNameHolder(e.target.value)}
+              name="userName"
+              className="input"
+              value={userNameHolder}
+              type="text"
+              placeholder="me@gmail.com/ 7063314343/ daddypop"
+            />
+            <br></br>
+
+            <h3 className="label has-text-centered">Create Password</h3>
+
+            <input
+              onChange={(e) => setSignUpPasswordHolder(e.target.value)}
+              name="password"
+              className="input"
+              value={userPasswordHolder}
+              type="text"
+              placeholder="Password"
+            />
+
+            <br></br>
+
+            <h3 className="label has-text-centered">User Role</h3>
+
+            <input
+              onChange={(e) => setSignUpUserRoleHolder(e.target.value)}
+              name="userRole"
+              className="input"
+              value={signUpUserRoleHolder}
+              type="text"
+              placeholder="server"
+            />
+
+            <br></br>
+            <br></br>
+            <button type="submit" value="Submit" className="button is-info">
+              Signup/ Inscribirte
+            </button>
+            <button className="button">
+              {" "}
+              <Link to="/"> Back</Link>
+            </button>
+          </form>
+        </div>
+
+        <div className="column is-two-fifth"></div>
+      </div>
+    </>
+  );
 };
 
 export default SignUp;

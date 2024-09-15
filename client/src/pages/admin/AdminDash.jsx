@@ -8,7 +8,7 @@ const AdminDash = () => {
     const {setAlert} = useContext(alertContext)
     const [den, setDen] = useState([])
   useEffect(() => {
-    API.adminOrdens().then((response ) => {
+    API.allOrders().then((response ) => {
        console.log(response.data);
         setDen(response.data);
         setAlert({message:"retrived all orders", type:"is-success"});

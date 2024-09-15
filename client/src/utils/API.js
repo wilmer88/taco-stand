@@ -1,6 +1,9 @@
 import axios from "axios";
 const clientApiCalls =
 {
+  allOrders: function () {
+    return axios.get("/api/allOrders");
+  },
   findUser: function(userName) {
     return axios.get("/api/myorders/"+ userName);
   },

@@ -16,7 +16,6 @@ import Footer from "./components/Footer";
 import Payment from "./pages/Payment/Payment";
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
-import UnpreparedOrders from "./pages/unpreparedOrders/UnpreparedOrders";
 import ComboContext from "./context/ComboContext";
 import CheckOutPage from "./pages/checkoutpage/CheckoutPage";
 import MenuPage from "./components/modal/MenuPage";
@@ -25,6 +24,9 @@ import burritosContext from "./context/burritoContext";
 import ComboPage from "./pages/comboPage/comboPage";
 import OrderDataContext from "./context/orderDataContext";
 import NotFoundPage from "./pages/notFound/notFound";
+// import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
+// import AdminDash from "./pages/admin/AdminDash";
+import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 import ProtectedRoute from "./components/protectedRoutes/protectedRoutes";
 
 const App = () => {
@@ -111,13 +113,15 @@ const App = () => {
                   <Route path="/dips" element={<DipsPage />} />
                   <Route path="/checkoutPage" element={<CheckOutPage />} />
                   <Route path="/menuPage" element={<MenuPage />} />
-                  <Route path="/kitchen" element={<Kitchen />} />
+                  
                   <Route path="/myorders" element={<MyOrders />} />
-                  <Route path="/unprepared" element={<UnpreparedOrders />} />
+                  <Route path="/unprepared" element={<Kitchen />} />
                   <Route path="/payment/:ordenId" element={<Payment />} />
                   <Route path="/signup" element={<SignUp />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/orden/:ordenId" element={<Editar />} />
+                  <Route path="/allOrders" element={<AllOrdersPage />} />
+
                   <Route path="/orden" exact element={
 
                   <OrdenPage />
@@ -128,7 +132,10 @@ const App = () => {
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
 
-                {userRole === "administrador" ? <Footer /> : null}
+                {/* {userRole === "administrador" ? */}
+                 <Footer />
+                  {/* // : null} */}
+
               </burritosContext.Provider>
             </OrderDataContext.Provider>
           </ComboContext.Provider>

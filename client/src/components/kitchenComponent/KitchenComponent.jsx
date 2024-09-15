@@ -52,7 +52,7 @@ const liestilo = {
 <header is-family-monospace="true" style={liestilo.atras} className="card-header">
   <div  className="card-header-title is-family-monospace is-size-4">
     {/* change data */}
-Nombre: {props.nombreDeOrden}
+name: {props.nombreDeOrden}
  </div>
 </header>
 <div className="card-content is-mobile ">

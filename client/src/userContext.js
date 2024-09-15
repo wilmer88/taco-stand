@@ -2,10 +2,10 @@ import React from "react";
 const UserContext = React.createContext({
 token: "",
 userName:"",
-roll:"",
+userRole:"",
 setToken: () => {},
-setUserName: ()=> {}
-
+setUserName: ()=> {},
+setUserRolle: ()=> {}
 });
 
 export default UserContext;

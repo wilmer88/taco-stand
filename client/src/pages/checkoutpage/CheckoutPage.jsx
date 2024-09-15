@@ -29,7 +29,7 @@ const CheckOutPage =()=>{
 
     const [finalOrderHolder, setFinalOrder]= useState({
         nombreDeOrden: OrderContextObj.nombreDeOrden,
-        phoneNumber:"",
+        phoneNumber:OrderContextObj.phoneNumber,
         tableNumber:"",
         burritos:[],
         combo:[],

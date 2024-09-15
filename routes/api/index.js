@@ -6,6 +6,7 @@ const searchRoutes = require("./search");
 const stripeRoutes = require("./payment");
 const adminDash = require("./admin");
 const kitchen = require("./kitchen");
+const adminOrders = require("./orders");
 
 
 router.use("/adminDash", adminDash);
@@ -17,10 +18,10 @@ router.use("/myorders", userRoutes);
 router.use("/searcho", searchRoutes);
 router.use("/unprepared", adminDash);
 router.use("/kitchen", kitchen);
+router.use("/allOrders",adminOrders);
 
 
 
 
 
-// router.use("/drinks", drinksRoutes);
 module.exports = router;

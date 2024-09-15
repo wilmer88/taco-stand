@@ -17,9 +17,10 @@ const AllOrdersPage = () => {
   useEffect(() => {
     // console.log(arg);
         // socket.disconnect();
-     API.allOrdens().then((response ) => {
+     API.allOrders().then((response ) => {
+      console.log(response)
       setAllOrdens(response.data);
-        setAlert({message:"retrived all orders", type:"is-success"});
+        // setAlert({message:"retrived all orders", type:"is-success"});
  
       }).catch((err) =>{ 
           console.log(err)
@@ -31,7 +32,7 @@ useEffect(() => {
   socket.on("myOrders",(arg)=>{
 console.log("new order list");
     // socket.disconnect();
- API.allOrdens().then((response ) => {
+ API.allOrders().then((response ) => {
   setAllOrdens(response.data);
     setAlert({message:"client created order", type:"is-success"},);
     // return socket.disconnect();

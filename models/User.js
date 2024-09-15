@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     type: String,
     // unique: true,
     trim: true,
-    required: "roll is Required",
+    required: "user role is Required",
   },
   orders: [{
     type: Schema.Types.ObjectId,

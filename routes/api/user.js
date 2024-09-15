@@ -6,8 +6,4 @@ router.route("/:keyword")
 router.route("/")
   .post(userController.signup)
 
-
-
-
-
 module.exports = router;

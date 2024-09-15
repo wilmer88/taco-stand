@@ -21,7 +21,9 @@ app.use(express.static(__dirname + './client/public'));
 const PORT = process.env.PORT || 3001;
 
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos",
+mongoose.connect("mongodb://127.0.0.1/tacos",
+
+// mongoose.connect("mongodb://127.0.0.1/tacos" || process.env.MONGODB_URI ,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

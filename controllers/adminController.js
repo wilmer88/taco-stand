@@ -3,7 +3,7 @@ const { Orden } = require("../models");
 const db = require("../models");
 module.exports = {
 
-      adminOrdens: function(req, res) {
+      allOrdens: function(req, res) {
         
 //         console.log(req.headers);
 //  if (!req.headers.authorization) {
