@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "./context/AuthContext";
 import StartPage from "./pages/StartPage";
-import SignUp from "./pages/SignUp";
+// import SignUp from "./pages/SignUp";
+import ClientSignUp from "./pages/clientSignUp/ClientSignUp";
 import OrdenLevel from "./containers/navLever/OrdenLevel";
 import Kitchen from "./pages/kitchen/KitchenPage";
 import OrdenPage from "./pages/OrdenPage";
@@ -12,7 +13,8 @@ import Editar from "./pages/Editar";
 import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
+import ClientFooter from "./containers/clientFooter/ClientFooter";
 import Payment from "./pages/Payment/Payment";
 import alertContext from "./context/alertContext";
 import SearchOrderPage from "./pages/searchOrderPage/SearchOrderPage";
@@ -27,7 +29,7 @@ import NotFoundPage from "./pages/notFound/notFound";
 // import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
 // import AdminDash from "./pages/admin/AdminDash";
 import AllOrdersPage from "./pages/allOrders/AllOrdersPage";
-import ProtectedRoute from "./components/protectedRoutes/protectedRoutes";
+// import ProtectedRoute from "./components/protectedRoutes/protectedRoutes";
 
 const App = () => {
   const userContextLogIn = useContext(AuthContext);
@@ -117,7 +119,7 @@ const App = () => {
                   <Route path="/myorders" element={<MyOrders />} />
                   <Route path="/kitchen" element={<Kitchen />} />
                   <Route path="/payment/:ordenId" element={<Payment />} />
-                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/signup" element={<ClientSignUp />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/orden/:ordenId" element={<Editar />} />
                   <Route path="/allOrders" element={<AllOrdersPage />} />
@@ -133,9 +135,11 @@ const App = () => {
                 </Routes>
 
                 {
-                userRole === "administrador" ?
-                 <Footer />
-                  : null
+                // userRole === "administrador" ?
+                //  <Footer />
+                <ClientFooter />
+
+                  // : null
                  }
 
               </burritosContext.Provider>

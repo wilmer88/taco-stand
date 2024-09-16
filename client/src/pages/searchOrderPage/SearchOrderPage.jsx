@@ -50,8 +50,8 @@ import API from "../../utils/API";
         return (<>
          
          <form>
-      <div className="column is-mobile is-three-fifths is-offset-one-fifth .is-narrow-desktop" > 
-      <div className='box' >
+      <div className="column is-mobile is-three-fifths is-offset-one-fifth .is-narrow-desktop " > 
+      <div className='box mt-6' >
          <h3 id='searchPageLabel' className="label has-text-centered" >Search/ Buscar</h3>
       <input 
       onChange={handelSearchChange}

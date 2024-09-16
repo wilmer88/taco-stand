@@ -4,18 +4,16 @@ import alertContext from "../../context/alertContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OrderDataContext from "../../context/orderDataContext";
-import ComboContext from "../../context/ComboContext";
 import {io} from "socket.io-client";
 
 const IS_PROD = process.env.NODE_ENV === "production";
 const URL = IS_PROD ? "https://taco-stand.herokuapp.com/" : "http://localhost:3001";
 const socket = io(URL);
 
-const CheckOutPage =()=>{
+const CheckOutPage = ()=>{
  
   
     const {OrderContextObj, setOrderDataContext} = useContext(OrderDataContext);
-    const { combo } = useContext(ComboContext);
     const { setAlert } = useContext(alertContext);
     const navigate = useNavigate();
     const burrototal = OrderContextObj.burritos.reduce((daTotal,aBurrito) => 
@@ -160,8 +158,8 @@ const CheckOutPage =()=>{
 
                 <hr></hr>
 
-                {combo?.length > 0  ?  ( 
-                  combo?.map((comboParam, index) =>(
+                {OrderContextObj.combo?.length > 0  ?  ( 
+                  OrderContextObj.combo?.map((comboParam, index) =>(
             <div key={index } style={{ fontSize: "25px", textAlign: "left" }}>
               combo#{comboParam.comboId }: {comboParam.choice1}, {comboParam.choice2 || 0}
             </div>))) : <div></div>}
@@ -200,13 +198,15 @@ const CheckOutPage =()=>{
               {/* {orderData.greenSalsa !== 0 && (<div style={{ fontSize: "25px", textAlign: "left" }}> Salsa Verde: {orderData.greenSalsa}</div>)} */}
               <hr></hr>
              
-              <div style={{ fontSize: "18px", textAlign: "left" }}> Total: ${allTotal?.toFixed(2)}</div>
+             { allTotal !== 0 && <div style={{ fontSize: "18px", textAlign: "left" }}> Total: ${allTotal?.toFixed(2)}</div> }
+             { allTotal === 0 && <div style={{ fontSize: "18px", textAlign: "left" }}> Food Bag empty</div> }
+
 
  
               {/* <button onClick={handleClose} type="button" className="button is-medium is-dark" >Update Order</button> */}
               <br></br>
               <br></br>
-              <button style={{ fontSize: "18px" }} type="button" onClick={handleCheckoutSubmit} className="button is-medium  is-primary is-light"><strong>Place Order</strong></button>
+             {allTotal !== 0 && <button style={{ fontSize: "18px" }} type="button" onClick={handleCheckoutSubmit} className="button is-medium  is-primary is-light"><strong>Place Order</strong></button>}
             </div>
           </div>
           {/* <button onClick={handleClose} type="button" className="modal-close is-large" aria-label="close"></button> */}
