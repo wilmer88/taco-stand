@@ -18,13 +18,17 @@ const Alert = () => {
   return (
     <>
       {message  && (
-  
-          <div className="container has-text-centered" style={{paddingTop:"5%"}}>
+        <div className="mt-6">
+            
+            <div className="container has-text-centered " style={{paddingTop:"5%"}}>
           <div className={`notification ${type || "is-info "} is-light`}>
           <button className="delete" onClick={()=>{setAlert({message:"", type:""})} }></button>
           {message} 
           </div>
         </div>
+
+        </div>
+
  
     
       )}

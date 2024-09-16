@@ -63,41 +63,14 @@ const CheckOutPage = ()=>{
     if(OrderContextObj.nombreDeOrden && OrderContextObj.phoneNumber !==""){
 
       API.create(finalOrderHolder).then((response) => {
-        setOrderDataContext({
-          nombreDeOrden: "",
-          phoneNumber:"",
-          tableNumber:"",
-          burritos:[],
-          combo:[],
-          dips:OrderContextObj.dips,
-          aLaCarte:[],
-          nachos:[],
-          azada:0,
-          pollo: 0,
-          barbacoa: 0,
-          pastor: 0,
-          chorizo: 0,
-          cebolla: 0,
-          cilantro: 0,
-          pico: 0,
-          redSalsa: 0,
-          greenSalsa: 0,
-          largeHorchata: 0,
-          smallHorchata: 0,
-          coca: 0,
-          sprite: 0,
-          fanta: 0,
-          cancelar:false,
-          preparada: false,
-          pagado:false,
-        });     
+  
         setFinalOrder({
           nombreDeOrden: "",
           phoneNumber:"",
           tableNumber:"",
           burritos:[],
           combo:[],
-          dips:OrderContextObj.dips,
+          dips:[],
           aLaCarte:[],
           nachos:[],
           azada:0,
@@ -119,17 +92,45 @@ const CheckOutPage = ()=>{
           preparada: false,
           pagado:false,
         });
-  
-        setAlert({ message: "You successfully placed order!", type: "is-success" });
-  
-        API.allOrdens().then((response)=>{
-          // console.log(response.data)
-          socket.emit("rs", response.data);
-        })
-        secondFunction();
-      })
 
-      .catch((err) => { console.log(err) });   
+        setOrderDataContext(
+          {
+            nombreDeOrden: "",
+            phoneNumber:"",
+            tableNumber:"",
+            burritos:[],
+            combo:[],
+            dips:[],
+            aLaCarte:[],
+            nachos:[],
+            azada:0,
+            pollo: 0,
+            barbacoa: 0,
+            pastor: 0,
+            chorizo: 0,
+            cebolla: 0,
+            cilantro: 0,
+            pico: 0,
+            redSalsa: 0,
+            greenSalsa: 0,
+            largeHorchata: 0,
+            smallHorchata: 0,
+            coca: 0,
+            sprite: 0,
+            fanta: 0,
+            cancelar:false,
+            preparada: false,
+            pagado:false,
+
+          }
+
+        )
+  
+        alert("order placed. Please call to change or cancel order.");
+        secondFunction();
+
+      }).catch((err) => { console.log(err) });   
+
     } else{
 
       alert("name and phone number must be included with orders");
@@ -149,14 +150,15 @@ const CheckOutPage = ()=>{
         <aside id="checkout">
           {/* <div></div> */}
           <div className="container">
-            <div className="box is-mobile">
-            <div style={{ fontSize: "30px", fontWeight: "bold" }}>
-
-                {OrderContextObj.nombreDeOrden !=="" && (<div >{OrderContextObj.nombreDeOrden }'s Order</div>)}
-
-                </div>
+            <div className="box is-mobile mt-6">
+        
 
                 <hr></hr>
+                <div style={{ fontSize: "30px", fontWeight: "bold" }}>
+
+{OrderContextObj.nombreDeOrden !=="" && (<div >{OrderContextObj.nombreDeOrden }'s Order</div>)}
+
+</div>
 
                 {OrderContextObj.combo?.length > 0  ?  ( 
                   OrderContextObj.combo?.map((comboParam, index) =>(
