@@ -36,6 +36,7 @@ signup: function(req, res) {
                   error: false,
                   data: token,
                   userName:newUser.userName,
+                  userRole:newUser.userRole,
                   message: "succesfully signed up",
                 });
               })

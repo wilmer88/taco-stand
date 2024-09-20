@@ -14,14 +14,12 @@ const ClientSignUp = () => {
   };
 
   const navigate = useNavigate();
-
-  const { setJwt, setUserName, setUserRole } = useContext(AuthContext);
   const { setAlert } = useContext(alertContext);
- 
-
   const [userNameHolder, setSignUpUserNameHolder] = useState("");
   const [userPasswordHolder, setSignUpPasswordHolder] = useState("");
   const [signUpUserRoleHolder, setSignUpUserRoleHolder] = useState("");
+  const { setJwt, setUserName, setUserRole } = useContext(AuthContext);
+
 
   function formSubmit(e) {
     e.preventDefault();
@@ -47,7 +45,7 @@ const ClientSignUp = () => {
           alert("welcome you are signd up");
         }, 1500);
         setSignUpUserNameHolder("");
-        userPasswordHolder("");
+        setSignUpPasswordHolder("");
         setSignUpUserRoleHolder("");
       })
       .catch((err) => {

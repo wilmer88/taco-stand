@@ -13,7 +13,7 @@ import Editar from "./pages/Editar";
 import Login from "./pages/Login";
 import MyOrders from "./pages/my orders/myOrders";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import ClientFooter from "./containers/clientFooter/ClientFooter";
 import Payment from "./pages/Payment/Payment";
 import alertContext from "./context/alertContext";
@@ -135,12 +135,15 @@ const App = () => {
                 </Routes>
 
                 {
-                // userRole === "administrador" ?
-                //  <Footer />
-                <ClientFooter />
-
-                  // : null
+                 userRole === "administrador" ?
+                   <Footer />
+                
+                   :  <ClientFooter />
                  }
+
+          
+
+
 
               </burritosContext.Provider>
             </OrderDataContext.Provider>
