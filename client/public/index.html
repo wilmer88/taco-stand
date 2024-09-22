@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <title>Los Mezquites</title>
-
-  </head>
-
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
-  <link defer rel="preload" href="manifest.json" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link type="text/css" rel="stylesheet" href="/icofont/icofont.min.css" async/>
-  <script defer rel=preconnect as="font" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <noscript><link rel="stylesheet" href="manifest.jsons"></noscript>
-  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <body>
-    <html class="has-navbar-fixed-top">
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link rel="stylesheet" href="/icofont/icofont.min.css"/>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body class="has-navbar-fixed-top">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-   
     <div id="root"></div>
-
-  </body>
-
+    <!-- Ensure the script below points to the correct URL in production -->
+    <script src="/socket.io/socket.io.js"></script>
+</body>
 </html>
