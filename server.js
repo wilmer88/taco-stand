@@ -51,7 +51,8 @@ if (process.env.NODE_ENV === "production") {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://taco-stand.herokuapp.com"],
+    // origin: ["http://localhost:3000", "https://taco-stand.herokuapp.com"],
+    origin: "http://localhost:3000" || "mongodb://127.0.0.1/tacos",
     methods: ["GET", "POST"]
   }
 });
