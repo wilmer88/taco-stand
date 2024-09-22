@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/wilmer88/taco-stand/issues"
   },
-  "homepage": "https://github.com/wilmer88/taco-stand#readme",
+  "homepage": ".",
   "dependencies": {
     "@icon/icofont": "^1.0.1-alpha.1",
     "@react-navigation/stack": "^6.3.20",
