@@ -39,10 +39,12 @@ app.use(routes);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+  // This serves the index.html for all routes that don't match API endpoints
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
-}
+};
+
 
 // Error handling middleware should be the last piece of middleware
   app.use((err, req, res, next) => {
