@@ -24,18 +24,25 @@ const logger = winston.createLogger({
 
 app.use(express.json());
 app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://taco-stand.herokuapp.com'],
+  methods: ['GET', 'POST'],
+}));
+
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client', 'public')));
 app.use(routes);
 
 // Static files for production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname,"client","build")));
-  app.get("*", function (request, response) {
-    response.sendFile(path.join(__dirname, "client", "build", "index.html"));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
-  };
+}
 
 // Error handling middleware should be the last piece of middleware
   app.use((err, req, res, next) => {
@@ -49,12 +56,7 @@ if (process.env.NODE_ENV === "production") {
 
   // Socket.io configuration
 const server = http.createServer(app);
-// const io = new Server(server, {
-//   cors: {
-//     origin: ["http://localhost:3000"],
-//     methods: ["GET", "POST"]
-//   }
-// });
+
 
 const io = new Server(server, {
   cors: {
