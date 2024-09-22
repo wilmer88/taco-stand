@@ -49,13 +49,20 @@ if (process.env.NODE_ENV === "production") {
 
   // Socket.io configuration
 const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: ["http://localhost:3000"],
+//     methods: ["GET", "POST"]
+//   }
+// });
+
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://taco-stand.herokuapp.com"],
-    // origin: "http://localhost:3000" || "mongodb://127.0.0.1/tacos",
+    origin: ["https://taco-stand.herokuapp.com"],
     methods: ["GET", "POST"]
   }
 });
+
 
     io.on("connection",(socket)=>{
       console.log(`socket io connected id: ${socket.id}`);
