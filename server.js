@@ -58,7 +58,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://taco-stand.herokuapp.com"],
+    origin: ["https://taco-stand.herokuapp.com", "http://localhost:3000"],
     methods: ["GET", "POST"]
   }
 });
