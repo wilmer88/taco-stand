@@ -55,10 +55,11 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.NODE_ENV === 'production' 
+    origin: process.env.NODE_ENV === 'production'
       ? "https://taco-stand.herokuapp.com"  // Production URL
       : "http://localhost:3000",  // Development URL
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true  // Ensure credentials are allowed if needed
   }
 });
 
@@ -80,14 +81,18 @@ io.on("connection", (socket) => {
 });
 
 const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
+// MongoDB connection
 mongoose.set("strictQuery", false);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/tacos", {
+mongoose.connect( process.env.MONGODB_URI ||  "mongodb://127.0.0.1/tacos", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => {
-  console.log("MongoDB connected");
+}).then(() =>{
+  console.log("MongoDB has been connected");
 }).catch((err) => {
   console.error(`Error connecting to MongoDB: ${err.message}`);
 });
@@ -101,11 +106,22 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error:", err);
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 // Clean shutdown function
 function gracefulShutdown() {
   console.log('Received kill signal, shutting down gracefully.');
-  server.close(() =>
+  server.close(() => {
+    console.log('Closed out remaining connections.');
+    mongoose.connection.close(false, () => {
+      console.log('MongoDB connection closed.');
+      process.exit(0);
+    });
+  });
+
+  setTimeout(() => {
+    console.error('Could not close connections in time, forcefully shutting down');
+    process.exit(1);
+  }, 10000);
+}
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);
